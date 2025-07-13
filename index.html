@@ -1,27 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>AI Assistant Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    .rainbow {
-      background: linear-gradient(
-        to right,
-        #00e6d8 0,
-        #c15bff 25%,
-        #ff00a6 50%,
-        #ff2c1c 75%,
-        #ffb800 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    h1 {
-      font-size: 4rem;
-      margin-top: 2rem;
-    }
-
     @layer properties {
       @property --elh { syntax: '<number>'; inherits: true; initial-value: 1; }
       @property --erx { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
@@ -43,10 +26,10 @@
     body {
       margin: 0;
       padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
-      font-family: 'Segoe UI', sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
@@ -60,10 +43,22 @@
       100% { background-position: 0% 50%; }
     }
 
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .rainbow {
+      background: linear-gradient(to right, #00e6d8, #c15bff, #ff00a6, #ff2c1c, #ffb800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .ai-bot {
       scale: 4.2;
       width: 34px;
       aspect-ratio: 1;
+      margin-bottom: 2rem;
       position: relative;
       display: grid;
       place-items: center;
@@ -85,20 +80,12 @@
       top: 6px;
       width: 2px;
       height: 8px;
-      background: var(--c,1);
-      border-radius: 2px 0 0 2px;
+      background: var(--c);
+      border-radius: 2px;
     }
 
-    .head::before {
-      left: -4px;
-      scale: var(--ealw, 1) 1;
-    }
-
-    .head::after {
-      right: -4px;
-      border-radius: 0 2px 2px 0;
-      scale: var(--earw, 1) 1;
-    }
+    .head::before { left: -4px; scale: var(--ealw, 1) 1; }
+    .head::after  { right: -4px; scale: var(--earw, 1) 1; }
 
     .face {
       display: flex;
@@ -109,7 +96,7 @@
       background: var(--surface);
       translate: var(--fx) 0;
       border-radius: 4px;
-      padding: 4px 4px 2px 4px;
+      padding: 4px 4px 2px;
       gap: 3px;
     }
 
@@ -135,15 +122,14 @@
       width: 5px;
       height: 8px;
       scale: 1 var(--elh);
-      filter: drop-shadow(0 0 2px var(--c2));
       background: repeating-linear-gradient(to bottom, var(--c), var(--c) .25px, transparent .25px, transparent .6px), linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
       border-radius: 1px;
       translate: var(--erx) 0;
+      filter: drop-shadow(0 0 2px var(--c2));
     }
 
     .eyes::after {
       scale: 1 var(--erh);
-      translate: var(--erx) 0;
     }
 
     .mouth {
@@ -174,7 +160,6 @@
     }
 
     .chatbox {
-      margin-top: 2rem;
       width: 100%;
       max-width: 500px;
       background: rgba(255, 255, 255, 0.05);
@@ -184,12 +169,11 @@
     }
 
     .messages {
-      border: 1px solid #444;
-      padding: 1rem;
       height: 200px;
       overflow-y: auto;
       background: #0f1624;
       border-radius: 8px;
+      padding: 1rem;
       margin-bottom: 1rem;
     }
 
@@ -225,9 +209,9 @@
     }
   </style>
 </head>
-
 <body>
-  <h1><strong class="rainbow">AI Assistant</strong></h1>
+
+  <h1><span class="rainbow">AI Assistant</span></h1>
 
   <div class="ai-bot">
     <div class="head">
@@ -268,41 +252,31 @@
       }, 800);
     }
 
-    function startListening() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
-      recognition.lang = 'en-US';
-      recognition.start();
-
-      recognition.onresult = function(event) {
-        const userText = event.results[0][0].transcript;
-        addMessage("🧑: " + userText);
-        respondToUser(userText);
-      };
-    }
-
-    function sendMessage() {
-      const input = document.getElementById("userInput");
-      const text = input.value.trim();
-      if (text === "") return;
-      addMessage("🧑: " + text);
-      respondToUser(text);
-      input.value = "";
-    }
-
-    function respondToUser(input) {
-      let response;
-      if (/your name/i.test(input)) {
-        response = "🤖: My name is AI Assistant, built to help you!";
-      } else if (/your college/i.test(input)) {
-        response = "🤖: I study at AI University with Suhana Tiwari.";
-      } else if (/cc/i.test(input)) {
-        response = "🤖: I live in the cloud, but my creator Suhana Tiwari is from India.";
-      } else {
-        response = "🤖: . You said: " + input;
+    async function respondToUser(input) {
+      addMessage("🤖: Thinking...");
+      try {
+        const res = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer YOUR_OPENAI_API_KEY" // 🔐 Replace with your key
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+              { role: "system", content: "You are a helpful and fun assistant." },
+              { role: "user", content: input }
+            ]
+          })
+        });
+        const data = await res.json();
+        const reply = data.choices[0].message.content;
+        updateLastMessage("🤖: " + reply);
+        speak(reply);
+      } catch (err) {
+        updateLastMessage("🤖: Sorry, something went wrong.");
+        console.error(err);
       }
-      addMessage(response);
-      speak(response.replace("🤖: ", ""));
     }
 
     function addMessage(message) {
@@ -313,22 +287,38 @@
       box.scrollTop = box.scrollHeight;
     }
 
+    function updateLastMessage(text) {
+      const box = document.getElementById("messages");
+      const last = box.lastElementChild;
+      if (last) last.textContent = text;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage("🧑: " + text);
+      respondToUser(text);
+      input.value = "";
+    }
+
+    function startListening() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.start();
+      recognition.onresult = function (event) {
+        const userText = event.results[0][0].transcript;
+        addMessage("🧑: " + userText);
+        respondToUser(userText);
+      };
+    }
+
     window.onload = () => {
-      const welcome = "Hello! I am your AI assistant. Welcome to our website. Ask me anything about features, help, or information!";
+      const welcome = "Hello! I am your AI assistant. Ask me anything!";
       addMessage("🤖: " + welcome);
       speak(welcome);
     };
- 
-
-    function switchTab(tabId, element) {
-      const tabs = document.querySelectorAll('.tab');
-      const contents = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      contents.forEach(content => content.style.display = 'none');
-
-      element.classList.add('active');
-      document.getElementById("tab-" + tabId).style.display = 'block';
-    }
   </script>
 </body>
 </html>
