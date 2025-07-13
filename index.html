@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Assistant Bot</title>
   <style>
     body {
@@ -15,6 +15,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
       color: white;
     }
 
@@ -24,23 +25,94 @@
       100% { background-position: 0% 50%; }
     }
 
-    .rainbow {
-      background: linear-gradient(
-        to right,
-        #00e6d8 0,
-        #c15bff 25%,
-        #ff00a6 50%,
-        #ff2c1c 75%,
-        #ffb800 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     h1 {
       font-size: 3rem;
       text-align: center;
       margin: 1rem 0;
+    }
+
+    .rainbow {
+      background: linear-gradient(to right, #00e6d8, #c15bff, #ff00a6, #ff2c1c, #ffb800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab {
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      border: none;
+      background: #1f4068;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .tab.active {
+      background: linear-gradient(45deg, #00f0ff, #ff00d4);
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    .tab:hover {
+      transform: scale(1.05);
+    }
+
+    .tab-content {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .chatbox {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .messages {
+      height: 200px;
+      overflow-y: auto;
+      background: #0f1624;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    input {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #00f0ff, #ff00d4);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00f0ff;
     }
 
     .ai-bot {
@@ -51,6 +123,8 @@
       place-items: center;
       filter: drop-shadow(0 0 10px #00f0ff);
       animation: moveBot 3s ease-in-out infinite;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
     @keyframes moveBot {
@@ -126,58 +200,11 @@
       50% { transform: scaleY(1.8); }
     }
 
-    .chatbox {
-      width: 100%;
-      max-width: 500px;
-      margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-    }
-
-    .messages {
-      height: 200px;
-      overflow-y: auto;
-      background: #0f1624;
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .input-area {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    input {
-      flex: 1;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      background: linear-gradient(45deg, #00f0ff, #ff00d4);
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #00f0ff;
-    }
-
     .caption {
-      margin-top: 1rem;
       font-size: 1rem;
       color: #ccc;
       text-align: center;
+      margin-bottom: 1rem;
     }
 
     @media (max-width: 600px) {
@@ -196,7 +223,41 @@
 <body>
   <h1><strong class="rainbow">AI Assistant</strong></h1>
 
-  <button onclick="welcomeUser()">Start Assistant</button>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('chat', this)">Chat</button>
+    <button class="tab" onclick="switchTab('weather', this)">Weather</button>
+    <button class="tab" onclick="switchTab('study', this)">Study</button>
+  </div>
+
+  <!-- Chat Tab -->
+  <div class="tab-content" id="tab-chat">
+    <div class="chatbox">
+      <div class="messages" id="messages"></div>
+      <div class="input-area">
+        <input id="userInput" type="text" placeholder="Ask something..." />
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="startListening()">🎤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weather Tab -->
+  <div class="tab-content" id="tab-weather" style="display: none;">
+    <div class="chatbox">
+      <h3>🌦️ Weather Assistant</h3>
+      <p>Weather feature coming soon! You’ll be able to get live weather data here.</p>
+    </div>
+  </div>
+
+  <!-- Study Tab -->
+  <div class="tab-content" id="tab-study" style="display: none;">
+    <div class="chatbox">
+      <h3>📘 Study Assistant</h3>
+      <p>This section will provide study tips, summaries, and more.</p>
+    </div>
+  </div>
+
+  <div class="caption">Your friendly talking assistant ready to help anytime!</div>
 
   <div class="ai-bot">
     <div class="head">
@@ -204,17 +265,6 @@
         <div class="eyes"></div>
         <div class="mouth"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="caption">Your friendly talking assistant ready to help anytime!</div>
-
-  <div class="chatbox">
-    <div class="messages" id="messages"></div>
-    <div class="input-area">
-      <input id="userInput" type="text" placeholder="Ask something..." />
-      <button onclick="sendMessage()">Send</button>
-      <button onclick="startListening()">🎤</button>
     </div>
   </div>
 
@@ -277,10 +327,14 @@
       box.scrollTop = box.scrollHeight;
     }
 
-    function welcomeUser() {
-      const welcome = "Hello! I am your AI assistant. Welcome to our website. Ask me anything about features, help, or information!";
-      addMessage("🤖: " + welcome);
-      speak(welcome);
+    function switchTab(tabId, element) {
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      contents.forEach(content => content.style.display = 'none');
+
+      element.classList.add('active');
+      document.getElementById("tab-" + tabId).style.display = 'block';
     }
   </script>
 </body>
