@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Assistant Bot</title>
+  <title>AI Assistant with QR Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <style>
     :root {
       --surface: #1a1a2e;
@@ -34,11 +36,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
       font-size: 3rem;
+      text-align: center;
       margin-bottom: 2rem;
     }
 
@@ -48,21 +56,60 @@
       -webkit-text-fill-color: transparent;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .chatbox {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    .messages {
+      height: 200px;
+      overflow-y: auto;
+      background: #0f1624;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      flex-grow: 1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00f0ff, #ff00d4);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00f0ff;
     }
 
     .ai-bot {
       scale: 4.2;
       width: 34px;
       aspect-ratio: 1;
-      margin-bottom: 2rem;
       display: grid;
       place-items: center;
       animation: blink 2.4s ease infinite, move-head 4.2s infinite, mouth 1.2s ease-in infinite;
       filter: drop-shadow(0 0 10px var(--c2));
+      transform: translateX(-20%);
       position: relative;
     }
 
@@ -91,24 +138,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      inset: 0 3px;
       position: absolute;
+      inset: 0 3px;
       background: var(--surface);
       translate: var(--fx) 0;
       border-radius: 4px;
       padding: 4px 4px 2px;
       gap: 3px;
-    }
-
-    .face::before {
-      content: '';
-      background: var(--c);
-      position: absolute;
-      height: 1px;
-      width: 10px;
-      top: -2px;
-      border-radius: 2px 2px 0 0;
-      mask: radial-gradient(circle at 50% 100%, transparent 45%, black 45%);
     }
 
     .eyes {
@@ -122,14 +158,11 @@
       width: 5px;
       height: 8px;
       scale: 1 var(--elh);
-      background: repeating-linear-gradient(to bottom, var(--c), var(--c) 0.25px, transparent 0.25px, transparent 0.6px), linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
+      background: repeating-linear-gradient(to bottom, var(--c), var(--c) .25px, transparent .25px, transparent .6px),
+                  linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
       border-radius: 1px;
       translate: var(--erx) 0;
       filter: drop-shadow(0 0 2px var(--c2));
-    }
-
-    .eyes::after {
-      scale: 1 var(--erh);
     }
 
     .mouth {
@@ -137,8 +170,8 @@
       height: 2px;
       background: var(--c2);
       border-radius: 0 0 1px 1px;
-      scale: var(--mw, 1) var(--mh, 1);
       filter: drop-shadow(0 0 2px var(--c2));
+      scale: var(--mw, 1) var(--mh, 1);
     }
 
     @keyframes blink {
@@ -159,52 +192,18 @@
       30% { --erx: -20%; --fx: -10%; --ealw: .5; --earw: 1.5; }
     }
 
-    .chatbox {
-      max-width: 500px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-    }
-
-    .messages {
-      background: #0f1624;
+    canvas {
+      margin-top: 1rem;
+      background: white;
+      padding: 10px;
       border-radius: 8px;
-      padding: 1rem;
-      height: 200px;
-      overflow-y: auto;
-      margin-bottom: 1rem;
     }
 
-    .messages div {
-      margin-bottom: 0.5rem;
-    }
-
-    .input-area {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    input {
-      flex: 1;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-    }
-
-    button {
-      background: linear-gradient(45deg, #00f0ff, #ff00d4);
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+    #downloadQR {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #00f0ff;
       cursor: pointer;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #00f0ff;
     }
   </style>
 </head>
@@ -227,6 +226,17 @@
       <button onclick="sendMessage()">Send</button>
       <button onclick="startListening()">🎤</button>
     </div>
+
+    <label><strong>Scan QR Image:</strong></label>
+    <input type="file" id="qrInput" accept="image/*" onchange="scanQRFromImage(event)">
+
+    <br/><br/>
+
+    <label><strong>Generate QR from Text:</strong></label>
+    <input type="text" id="qrTextInput" placeholder="Enter text..." />
+    <button onclick="generateQR()">Generate QR</button>
+    <canvas id="qrCanvas"></canvas>
+    <div id="downloadQR" onclick="downloadQRCanvas()">📥 Download QR Code</div>
   </div>
 
   <script>
@@ -234,7 +244,7 @@
 
     function speak(text) {
       const utter = new SpeechSynthesisUtterance(text);
-      utter.pitch = 1.1;
+      utter.pitch = 1.2;
       utter.rate = 1;
       synth.speak(utter);
       animateBotTalking();
@@ -251,73 +261,90 @@
     }
 
     function addMessage(msg) {
-      const box = document.getElementById('messages');
-      const div = document.createElement('div');
+      const box = document.getElementById("messages");
+      const div = document.createElement("div");
       div.textContent = msg;
       box.appendChild(div);
       box.scrollTop = box.scrollHeight;
     }
 
-    function updateLastMessage(newMsg) {
-      const box = document.getElementById('messages');
-      const last = box.lastElementChild;
-      if (last) last.textContent = newMsg;
-    }
-
-    async function respondToUser(prompt) {
-      addMessage("🤖: Thinking...");
-      try {
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer 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" // Replace with your own
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-              { role: "system", content: "You are a smart and friendly AI assistant." },
-              { role: "user", content: prompt }
-            ]
-          })
-        });
-        const data = await res.json();
-        const reply = data.choices[0].message.content;
-        updateLastMessage("🤖: " + reply);
-        speak(reply);
-      } catch (err) {
-        updateLastMessage("🤖: Oops, there was an error!");
-        console.error(err);
-      }
-    }
-
     function sendMessage() {
       const input = document.getElementById("userInput");
-      const msg = input.value.trim();
-      if (!msg) return;
-      addMessage("🧑: " + msg);
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage("🧑: " + text);
+      respondToUser(text);
       input.value = "";
-      respondToUser(msg);
     }
 
     function startListening() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert("Your browser doesn't support voice input.");
-        return;
-      }
       const recognition = new SpeechRecognition();
-      recognition.lang = "en-US";
+      recognition.lang = 'en-US';
       recognition.start();
-      recognition.onresult = (e) => {
-        const text = e.results[0][0].transcript;
-        addMessage("🧑: " + text);
-        respondToUser(text);
+      recognition.onresult = function(event) {
+        const userText = event.results[0][0].transcript;
+        addMessage("🧑: " + userText);
+        respondToUser(userText);
       };
     }
 
+    function respondToUser(input) {
+  let response;
+
+  input = input.toLowerCase();
+
+  if (input.includes("your name")) {
+    response = "🤖: My name is AI Assistant, built to help you!";
+  } else if (input.includes("your college")) {
+    response = "🤖: I'm part of Suhana's college AI project!";
+  } else if (input.includes("your creator")) {
+    response = "🤖: I was created by Suhana, with the help of Apple-level innovation!";
+  } else if (input.includes("apple")) {
+    response = "🤖: Apple is a leading tech company known for the iPhone, Mac, and more!";
+  } else {
+    response = "🤖: You said: " + input;
+  }
+
+  addMessage(response);
+  speak(response.replace("🤖: ", ""));
+}
+
+
+    async function scanQRFromImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      try {
+        const html5QrCode = new Html5Qrcode("qrInput");
+        const decodedText = await html5QrCode.scanFile(file, true);
+        addMessage("📷 QR Code: " + decodedText);
+        speak("QR code contains: " + decodedText);
+      } catch (err) {
+        addMessage("❌ Could not detect QR code.");
+      }
+    }
+
+    function generateQR() {
+      const text = document.getElementById("qrTextInput").value;
+      if (!text) return alert("Enter some text first.");
+      const canvas = document.getElementById("qrCanvas");
+      QRCode.toCanvas(canvas, text, { width: 200, color: { dark: "#00f0ff", light: "#0000" } }, err => {
+        if (err) return alert("QR generation failed.");
+        addMessage("✅ QR Code generated.");
+        speak("QR code created successfully.");
+      });
+    }
+
+    function downloadQRCanvas() {
+      const canvas = document.getElementById("qrCanvas");
+      const link = document.createElement("a");
+      link.download = "qr-code.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+
     window.onload = () => {
-      const welcome = "Hi! I’m your AI assistant. Ask me anything!";
+      const welcome = "Hi! I am your AI Assistant. Ask something or scan or generate a QR code.";
       addMessage("🤖: " + welcome);
       speak(welcome);
     };
