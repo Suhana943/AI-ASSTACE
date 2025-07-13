@@ -5,22 +5,22 @@
   <title>AI Assistant Bot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    @layer properties {
-      @property --elh { syntax: '<number>'; inherits: true; initial-value: 1; }
-      @property --erx { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
-      @property --fx { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
-      @property --ealw { syntax: '<number>'; inherits: true; initial-value: 1; }
-      @property --earw { syntax: '<number>'; inherits: true; initial-value: 1; }
-      @property --erh { syntax: '<number>'; inherits: true; initial-value: 1; }
-      @property --mh { syntax: '<number>'; inherits: true; initial-value: 1; }
-      @property --mw { syntax: '<number>'; inherits: true; initial-value: 1; }
-    }
-
     :root {
       --surface: #1a1a2e;
       --c: white;
       --c2: #00f0ff;
       --c3: #ff00d4;
+    }
+
+    @layer properties {
+      @property --elh { syntax: '<number>'; initial-value: 1; }
+      @property --erx { syntax: '<percentage>'; initial-value: 0%; }
+      @property --fx { syntax: '<percentage>'; initial-value: 0%; }
+      @property --ealw { syntax: '<number>'; initial-value: 1; }
+      @property --earw { syntax: '<number>'; initial-value: 1; }
+      @property --erh { syntax: '<number>'; initial-value: 1; }
+      @property --mh { syntax: '<number>'; initial-value: 1; }
+      @property --mw { syntax: '<number>'; initial-value: 1; }
     }
 
     body {
@@ -37,12 +37,6 @@
       min-height: 100vh;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     h1 {
       font-size: 3rem;
       margin-bottom: 2rem;
@@ -54,24 +48,30 @@
       -webkit-text-fill-color: transparent;
     }
 
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .ai-bot {
       scale: 4.2;
       width: 34px;
       aspect-ratio: 1;
       margin-bottom: 2rem;
-      position: relative;
       display: grid;
       place-items: center;
       animation: blink 2.4s ease infinite, move-head 4.2s infinite, mouth 1.2s ease-in infinite;
       filter: drop-shadow(0 0 10px var(--c2));
+      position: relative;
     }
 
     .head {
       background: linear-gradient(var(--c) 80%, color-mix(in srgb, var(--c), black 30%), var(--c));
       border-radius: .375rem;
-      position: absolute;
       width: 28px;
       height: 20px;
+      position: absolute;
     }
 
     .head::before, .head::after {
@@ -91,8 +91,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: absolute;
       inset: 0 3px;
+      position: absolute;
       background: var(--surface);
       translate: var(--fx) 0;
       border-radius: 4px;
@@ -122,7 +122,7 @@
       width: 5px;
       height: 8px;
       scale: 1 var(--elh);
-      background: repeating-linear-gradient(to bottom, var(--c), var(--c) .25px, transparent .25px, transparent .6px), linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
+      background: repeating-linear-gradient(to bottom, var(--c), var(--c) 0.25px, transparent 0.25px, transparent 0.6px), linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
       border-radius: 1px;
       translate: var(--erx) 0;
       filter: drop-shadow(0 0 2px var(--c2));
@@ -137,8 +137,8 @@
       height: 2px;
       background: var(--c2);
       border-radius: 0 0 1px 1px;
-      filter: drop-shadow(0 0 2px var(--c2));
       scale: var(--mw, 1) var(--mh, 1);
+      filter: drop-shadow(0 0 2px var(--c2));
     }
 
     @keyframes blink {
@@ -160,20 +160,20 @@
     }
 
     .chatbox {
-      width: 100%;
       max-width: 500px;
+      width: 100%;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
       padding: 1rem;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
     }
 
     .messages {
-      height: 200px;
-      overflow-y: auto;
       background: #0f1624;
       border-radius: 8px;
       padding: 1rem;
+      height: 200px;
+      overflow-y: auto;
       margin-bottom: 1rem;
     }
 
@@ -187,7 +187,7 @@
     }
 
     input {
-      flex-grow: 1;
+      flex: 1;
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
@@ -200,7 +200,6 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
       cursor: pointer;
-      transition: 0.3s;
     }
 
     button:hover {
@@ -210,7 +209,6 @@
   </style>
 </head>
 <body>
-
   <h1><span class="rainbow">AI Assistant</span></h1>
 
   <div class="ai-bot">
@@ -236,7 +234,7 @@
 
     function speak(text) {
       const utter = new SpeechSynthesisUtterance(text);
-      utter.pitch = 1.2;
+      utter.pitch = 1.1;
       utter.rate = 1;
       synth.speak(utter);
       animateBotTalking();
@@ -252,20 +250,34 @@
       }, 800);
     }
 
-    async function respondToUser(input) {
+    function addMessage(msg) {
+      const box = document.getElementById('messages');
+      const div = document.createElement('div');
+      div.textContent = msg;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function updateLastMessage(newMsg) {
+      const box = document.getElementById('messages');
+      const last = box.lastElementChild;
+      if (last) last.textContent = newMsg;
+    }
+
+    async function respondToUser(prompt) {
       addMessage("🤖: Thinking...");
       try {
         const res = await fetch("https://api.openai.com/v1/chat/completions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-        "Authorization": "Bearer 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" // 🔐 Replace with your key
+            "Authorization": "Bearer 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" // Replace with your own
           },
           body: JSON.stringify({
             model: "gpt-3.5-turbo",
             messages: [
-              { role: "system", content: "You are a helpful and fun assistant." },
-              { role: "user", content: input }
+              { role: "system", content: "You are a smart and friendly AI assistant." },
+              { role: "user", content: prompt }
             ]
           })
         });
@@ -274,48 +286,38 @@
         updateLastMessage("🤖: " + reply);
         speak(reply);
       } catch (err) {
-        updateLastMessage("🤖: Sorry, something went wrong.");
+        updateLastMessage("🤖: Oops, there was an error!");
         console.error(err);
       }
     }
 
-    function addMessage(message) {
-      const box = document.getElementById("messages");
-      const div = document.createElement("div");
-      div.textContent = message;
-      box.appendChild(div);
-      box.scrollTop = box.scrollHeight;
-    }
-
-    function updateLastMessage(text) {
-      const box = document.getElementById("messages");
-      const last = box.lastElementChild;
-      if (last) last.textContent = text;
-    }
-
     function sendMessage() {
       const input = document.getElementById("userInput");
-      const text = input.value.trim();
-      if (!text) return;
-      addMessage("🧑: " + text);
-      respondToUser(text);
+      const msg = input.value.trim();
+      if (!msg) return;
+      addMessage("🧑: " + msg);
       input.value = "";
+      respondToUser(msg);
     }
 
     function startListening() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Your browser doesn't support voice input.");
+        return;
+      }
       const recognition = new SpeechRecognition();
-      recognition.lang = 'en-US';
+      recognition.lang = "en-US";
       recognition.start();
-      recognition.onresult = function (event) {
-        const userText = event.results[0][0].transcript;
-        addMessage("🧑: " + userText);
-        respondToUser(userText);
+      recognition.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        addMessage("🧑: " + text);
+        respondToUser(text);
       };
     }
 
     window.onload = () => {
-      const welcome = "Hello! I am your AI assistant. Ask me anything!";
+      const welcome = "Hi! I’m your AI assistant. Ask me anything!";
       addMessage("🤖: " + welcome);
       speak(welcome);
     };
