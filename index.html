@@ -1,469 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suhana Tiwari - Portfolio</title>
-    <!-- Tailwind CSS CDN for utility-first styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter for a clean, modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons (e.g., LinkedIn, GitHub) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>AI Assistant with QR Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <style>
+    :root {
+      --surface: #1a1a2e;
+      --c: white;
+      --c2: #00f0ff;
+      --c3: #ff00d4;
+    }
 
-    <!-- Spline Viewer Script - This is crucial for embedding your 3D scene -->
-    <!-- It's placed here in the head to ensure it's loaded before the custom element is used -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.32/build/spline-viewer.js"></script>
+    @layer properties {
+      @property --elh { syntax: '<number>'; initial-value: 1; }
+      @property --erx { syntax: '<percentage>'; initial-value: 0%; }
+      @property --fx { syntax: '<percentage>'; initial-value: 0%; }
+      @property --ealw { syntax: '<number>'; initial-value: 1; }
+      @property --earw { syntax: '<number>'; initial-value: 1; }
+      @property --erh { syntax: '<number>'; initial-value: 1; }
+      @property --mh { syntax: '<number>'; initial-value: 1; }
+      @property --mw { syntax: '<number>'; initial-value: 1; }
+    }
 
-    <style>
-        /* Custom CSS for base styles and font family */
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            color: #334155; /* Darker text color */
-            /* No background color here, as Spline will be the background */
-        }
-        /* Ensure spline-viewer takes full available space within its container */
-        spline-viewer {
-            width: 100%;
-            height: 100%;
-            display: block; /* Important to remove extra space below inline elements */
-            /* No border-radius or overflow here, as it's full screen background */
-        }
-        /* Spline Background Container */
-        .spline-background-container {
-            position: fixed; /* Fixes the Spline to the viewport */
-            top: 0;
-            left: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            z-index: -1; /* Send it to the background */
-            pointer-events: none; /* Allow clicks to pass through to elements below */
-            overflow: hidden; /* Hide any overflow from the spline */
-        }
-        /* Overlay for better text readability on top of Spline */
-        .spline-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(248, 250, 252, 0.85); /* Light blue-gray with transparency */
-            /* Adjust opacity as needed to balance visibility of Spline and readability of text */
-            pointer-events: none; /* Allow clicks to pass through */
-        }
-        /* Content sections need a higher z-index and their own background */
-        section, header, footer {
-            position: relative; /* Needed for z-index to work */
-            z-index: 10; /* Ensure content is above the Spline background */
-            background-color: transparent; /* Start with transparent, apply specific backgrounds to content divs */
-        }
-        /* Specific height for the spline container within the project section, if still needed */
-        .spline-container {
-            height: 600px; /* Adjust this height as needed for your Spline scene */
-            width: 100%;
-            min-height: 400px; /* Minimum height for smaller screens */
-            max-height: 80vh; /* Max height relative to viewport height */
-            border-radius: 0.75rem; /* Rounded corners for the viewer */
-            overflow: hidden; /* Hide any overflow */
-        }
-        /* Smooth scroll behavior for navigation links */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Fade-out animation for loading overlay */
-        .fade-out {
-            opacity: 0;
-            transition: opacity 0.5s ease-out;
-        }
-        .hidden-after-fade {
-            display: none;
-        }
-    </style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .rainbow {
+      background: linear-gradient(to right, #00e6d8, #c15bff, #ff00a6, #ff2c1c, #ffb800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .chatbox {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    .messages {
+      height: 200px;
+      overflow-y: auto;
+      background: #0f1624;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      flex-grow: 1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00f0ff, #ff00d4);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    .ai-bot {
+      scale: 4.2;
+      width: 34px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      animation: blink 2.4s ease infinite, move-head 4.2s infinite, mouth 1.2s ease-in infinite;
+      filter: drop-shadow(0 0 10px var(--c2));
+      transform: translateX(-20%);
+      position: relative;
+    }
+
+    .head {
+      background: linear-gradient(var(--c) 80%, color-mix(in srgb, var(--c), black 30%), var(--c));
+      border-radius: .375rem;
+      width: 28px;
+      height: 20px;
+      position: absolute;
+    }
+
+    .head::before, .head::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      width: 2px;
+      height: 8px;
+      background: var(--c);
+      border-radius: 2px;
+    }
+
+    .head::before { left: -4px; scale: var(--ealw, 1) 1; }
+    .head::after  { right: -4px; scale: var(--earw, 1) 1; }
+
+    .face {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      inset: 0 3px;
+      background: var(--surface);
+      translate: var(--fx) 0;
+      border-radius: 4px;
+      padding: 4px 4px 2px;
+      gap: 3px;
+    }
+
+    .eyes {
+      display: flex;
+      height: 8px;
+      gap: 6px;
+    }
+
+    .eyes::before, .eyes::after {
+      content: '';
+      width: 5px;
+      height: 8px;
+      scale: 1 var(--elh);
+      background: repeating-linear-gradient(to bottom, var(--c), var(--c) .25px, transparent .25px, transparent .6px),
+                  linear-gradient(to bottom, var(--c3), transparent 60%), var(--c2);
+      border-radius: 1px;
+      translate: var(--erx) 0;
+      filter: drop-shadow(0 0 2px var(--c2));
+    }
+
+    .mouth {
+      width: 10px;
+      height: 2px;
+      background: var(--c2);
+      border-radius: 0 0 1px 1px;
+      filter: drop-shadow(0 0 2px var(--c2));
+      scale: var(--mw, 1) var(--mh, 1);
+    }
+
+    @keyframes blink {
+      from,10%,to { --elh: 1; --erh: 1; }
+      2% { --elh: .2; }
+      8% { --erh: .1; }
+    }
+
+    @keyframes mouth {
+      from,30%,70%,to { --mh: 1; --mw: 1; }
+      20% { --mh: .5; }
+      60% { --mw: .7; }
+    }
+
+    @keyframes move-head {
+      from,20%,40%,to { --erx: 0%; --fx: 0%; --ealw: 1; --earw: 1; }
+      10% { --erx: 20%; --fx: 10%; --ealw: 1.5; --earw: .5; }
+      30% { --erx: -20%; --fx: -10%; --ealw: .5; --earw: 1.5; }
+    }
+
+    canvas {
+      margin-top: 1rem;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    #downloadQR {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #00f0ff;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
+  <h1><span class="rainbow">AI Assistant</span></h1>
 
-    <!-- Spline Background Container - This holds the full-screen Spline scene -->
-    <div class="spline-background-container">
-        <spline-viewer url="https://prod.spline.design/Zwc90nifzhun45yZ/scene.splinecode"></spline-viewer>
-        <!-- Optional: An overlay to make text more readable on top of the Spline background -->
-        <div class="spline-overlay"></div>
+  <div class="ai-bot">
+    <div class="head">
+      <div class="face">
+        <div class="eyes"></div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbox">
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <input id="userInput" type="text" placeholder="Ask something..." />
+      <button onclick="sendMessage()">Send</button>
+      <button onclick="startListening()">🎤</button>
     </div>
 
-    <!-- Header and Navigation -->
-    <header class="bg-gray-900 text-white py-4 shadow-lg sticky top-0 z-50 bg-opacity-90">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-            <!-- Portfolio Title / Your Name -->
-            <h1 class="text-3xl font-bold text-indigo-300 mb-2 md:mb-0">Suhana Tiwari</h1>
-            <!-- Navigation Menu -->
-            <nav aria-label="Main Navigation">
-                <ul class="flex space-x-6">
-                    <li><a href="#about" class="hover:text-indigo-400 transition-colors duration-300" aria-label="Go to About section">About</a></li>
-                    <li><a href="#skills" class="hover:text-indigo-400 transition-colors duration-300" aria-label="Go to Skills section">Skills</a></li>
-                    <li><a href="#projects" class="hover:text-indigo-400 transition-colors duration-300" aria-label="Go to Projects section">Projects</a></li>
-                    <li><a href="#certifications" class="hover:text-indigo-400 transition-colors duration-300" aria-label="Go to Certifications section">Certifications</a></li>
-                    <li><a href="#contact" class="hover:text-indigo-400 transition-colors duration-300" aria-label="Go to Contact section">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <label><strong>Scan QR Image:</strong></label>
+    <input type="file" id="qrInput" accept="image/*" onchange="scanQRFromImage(event)">
 
-    <!-- Hero Section - First impression of your portfolio -->
-    <section id="hero" class="py-20 md:py-32 text-center shadow-inner rounded-b-3xl bg-gradient-to-r from-indigo-600 to-purple-700 text-white bg-opacity-90">
-        <div class="container mx-auto px-4">
-            <!-- Main Headline with dynamic role -->
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
-                Suhana Tiwari | <span class="text-yellow-300"> AI/ML Developer & IoT Enthusiast</span>
-            </h2>
-            <!-- Catchy Tagline -->
-            <p class="text-xl md:text-2xl mb-8 opacity-90">
-                Innovating at the intersection of Artificial Intelligence, Machine Learning, and the Internet of Things.
-            </p>
-            <!-- Call to Action Button -->
-            <a href="#projects" class="bg-white text-indigo-700 hover:bg-indigo-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 transform hover:scale-105" aria-label="Explore my work projects">
-                Explore My Work <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </section>
+    <br/><br/>
 
-    <!-- About Me Section - Introduce yourself and your professional journey -->
-    <section id="about" class="py-16 md:py-24 bg-white rounded-xl shadow-lg my-8 mx-4 md:mx-auto max-w-6xl bg-opacity-95">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center md:space-x-12">
-                <!-- Professional Photo -->
-                <div class="md:w-1/3 mb-8 md:mb-0">
-                    <img src="https://placehold.co/400x400/6366F1/FFFFFF?text=Suhana+Tiwari" alt="Suhana Tiwari's Professional Photo" class="rounded-full shadow-xl w-48 h-48 mx-auto md:mx-0 object-cover border-4 border-indigo-300">
-                </div>
-                <!-- About Me Text Content -->
-                <div class="md:w-2/3 text-lg leading-relaxed text-gray-700">
-                    <p class="mb-4">
-                        Welcome to my portfolio! I am <strong class="text-indigo-600">Suhana Tiwari</strong>, a passionate and results-driven <strong class="text-indigo-600">AI/ML Developer and IoT Enthusiast</strong> with a strong foundation in leveraging cutting-edge technologies to solve complex problems. My journey into these fields was fueled by a desire to innovate and create impactful solutions that bridge the digital and physical worlds.
-                    </p>
-                    <p class="mb-4">
-                        My expertise spans across developing intelligent systems, crafting robust software solutions, and building interconnected IoT devices. I thrive on bringing ideas to life through code and hardware, always aiming for efficiency, scalability, and user-centricity.
-                    </p>
-                    <p>
-                        My core values revolve around continuous learning, collaborative problem-solving, and delivering measurable value. I thrive in dynamic environments where I can apply my expertise to contribute to meaningful projects.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <label><strong>Generate QR from Text:</strong></label>
+    <input type="text" id="qrTextInput" placeholder="Enter text..." />
+    <button onclick="generateQR()">Generate QR</button>
+    <canvas id="qrCanvas"></canvas>
+    <div id="downloadQR" onclick="downloadQRCanvas()">📥 Download QR Code</div>
+  </div>
 
-    <!-- Skills Section - Detail your technical and soft skills -->
-    <section id="skills" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-lg my-8 mx-4 md:mx-auto max-w-6xl bg-opacity-95">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Skills & Expertise</h2>
-            <p class="text-center text-lg mb-10 text-gray-600">
-                My proficiency is backed by rigorous training and practical application in AI/ML, Software Development, and IoT.
-            </p>
+  <script>
+    const synth = window.speechSynthesis;
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.pitch = 1.2;
+      utter.rate = 1;
+      synth.speak(utter);
+      animateBotTalking();
+    }
 
-                <!-- Skill Category 1: AI & Machine Learning -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-red-100">
-                    <h3 class="text-2xl font-semibold mb-4 text-red-700 flex items-center">
-                        <i class="fas fa-brain mr-3 text-red-500"></i> AI & Machine Learning
-                    </h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong>Deep Learning:</strong> TensorFlow, Keras, PyTorch for neural networks.</li>
-                        <li><strong>Computer Vision:</strong> Image recognition, object detection (OpenCV).</li>
-                        <li><strong>Natural Language Processing (NLP):</strong> Text analysis, sentiment analysis.</li>
-                        <li><strong>Predictive Modeling:</strong> Regression, classification, clustering.</li>
-                        <li><strong>Data Preprocessing:</strong> Feature engineering, data augmentation.</li>
-                        <li><strong>Model Deployment:</strong> REST APIs, Docker.</li>
-                        <li><strong>Reinforcement Learning:</strong> Basics and application in simulations.</li>
-                    </ul>
-                </div>
+    function animateBotTalking() {
+      const bot = document.querySelector('.ai-bot');
+      bot.style.setProperty('--mh', 1.5);
+      bot.style.setProperty('--mw', 1.5);
+      setTimeout(() => {
+        bot.style.setProperty('--mh', 1);
+        bot.style.setProperty('--mw', 1);
+      }, 800);
+    }
 
-                <!-- Skill Category 2: Software Development -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-blue-100">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-700 flex items-center">
-                        <i class="fas fa-code mr-3 text-blue-500"></i> Software Development
-                    </h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong>Python:</strong> Flask, Django, Data Science libraries (Pandas, NumPy).</li>
-                        <li><strong>JavaScript:</strong> Node.js, React, Frontend frameworks.</li>
-                        <li><strong>Cloud Platforms:</strong> AWS, Google Cloud Platform (GCP), Azure.</li>
-                        <li><strong>Database Management:</strong> SQL (PostgreSQL, MySQL), NoSQL (MongoDB).</li>
-                        <li><strong>API Development:</strong> RESTful APIs, GraphQL.</li>
-                        <li><strong>Version Control:</strong> Git, GitHub.</li>
-                        <li><strong>Containerization:</strong> Docker, Kubernetes.</li>
-                    </ul>
-                </div>
+    function addMessage(msg) {
+      const box = document.getElementById("messages");
+      const div = document.createElement("div");
+      div.textContent = msg;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
 
-                <!-- Skill Category 3: IoT & Embedded Systems -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-green-100">
-                    <h3 class="text-2xl font-semibold mb-4 text-green-700 flex items-center">
-                        <i class="fas fa-microchip mr-3 text-green-500"></i> IoT & Embedded Systems
-                    </h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong>Microcontrollers:</strong> Arduino, ESP32, Raspberry Pi programming.</li>
-                        <li><strong>Sensor Integration:</strong> Data acquisition from various sensors.</li>
-                        <li><strong>Communication Protocols:</strong> MQTT, HTTP, Bluetooth, Wi-Fi.</li>
-                        <li><strong>Cloud Integration:</strong> Connecting IoT devices to cloud platforms (AWS IoT, Google Cloud IoT Core).</li>
-                        <li><strong>Edge Computing:</strong> Processing data closer to the source.</li>
-                        <li><strong>Firmware Development:</strong> C/C++ for embedded systems.</li>
-                        <li><strong>Data Streaming:</strong> Real-time data processing from IoT devices.</li>
-                    </ul>
-                </div>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage("🧑: " + text);
+      respondToUser(text);
+      input.value = "";
+    }
 
-                <!-- General Skills -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-yellow-100 col-span-1 md:col-span-2 lg:col-span-3">
-                    <h3 class="text-2xl font-semibold mb-4 text-yellow-700 flex items-center">
-                        <i class="fas fa-lightbulb mr-3 text-yellow-500"></i> General Professional Skills
-                    </h3>
-                    <ul class="list-disc list-inside text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-2">
-                        <li><strong>Problem-Solving:</strong> Analytical and creative approach to challenges.</li>
-                        <li><strong>Critical Thinking:</strong> Evaluating information and making informed decisions.</li>
-                        <li><strong>Communication:</strong> Clear and concise verbal and written communication.</li>
-                        <li><strong>Collaboration:</strong> Effective teamwork and cross-functional cooperation.</li>
-                        <li><strong>Adaptability:</strong> Thriving in fast-paced and evolving environments.</li>
-                        <li><strong>Continuous Learning:</strong> Committed to staying updated with industry trends.</li>
-                    </ul>
-                </div>
+    function startListening() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.start();
+      recognition.onresult = function(event) {
+        const userText = event.results[0][0].transcript;
+        addMessage("🧑: " + userText);
+        respondToUser(userText);
+      };
+    }
 
-            </div>
-        </div>
-    </section>
+    function respondToUser(input) {
+  let response;
 
-    <!-- Projects / Case Studies Section - Showcase your work and achievements -->
-    <section id="projects" class="py-16 md:py-24 bg-white rounded-xl shadow-lg my-8 mx-4 md:mx-auto max-w-6xl bg-opacity-95">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">My Projects & Interactive Showcase</h2>
-            <p class="text-center text-lg mb-10 text-gray-600">
-                Here are some of my key projects, demonstrating the practical application of my skills in AI/ML, Software Development, and IoT.
-            </p>
+  input = input.toLowerCase();
 
-            <!-- Project Item 1: AI/ML - Real-time Object Detection for Security -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-8 border border-red-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-2xl font-semibold mb-3 text-red-700">Project: Real-time Object Detection for Security Surveillance</h3>
-                <p class="text-gray-700 mb-4">
-                    <strong>Role:</strong> AI/ML Developer <br>
-                    <strong>Challenge:</strong> Develop an intelligent surveillance system capable of identifying specific objects (e.g., unauthorized personnel, suspicious packages) in live video feeds to enhance security.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Approach:</strong> Built a deep learning model using TensorFlow and Keras, trained on a custom dataset of security footage. Integrated the model with a live video stream for real-time inference. Implemented alert mechanisms for detected anomalies.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Skills Applied:</strong> Deep Learning (TensorFlow, Keras), Computer Vision (OpenCV), Python, Data Augmentation, Model Deployment.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Solution & Results:</strong> Deployed a robust object detection system with 92% accuracy in identifying target objects. The system significantly <strong class="text-green-600">reduced false alarms by 40%</strong> and improved response times for security personnel.
-                </p>
-                <div class="mt-4">
-                    <img src="https://placehold.co/600x350/F87171/FFFFFF?text=Object+Detection+Screenshot" alt="Object Detection Screenshot" class="rounded-lg shadow-md w-full max-w-xl mx-auto">
-                    <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block" aria-label="View full case study for Real-time Object Detection">View Project Details (Link coming soon)</a>
-                </div>
-            </div>
+  if (input.includes("your name")) {
+    response = "🤖: My name is AI Assistant, built to help you!";
+  } else if (input.includes("your college")) {
+    response = "🤖: I'm part of Suhana's college AI project!";
+  } else if (input.includes("your creator")) {
+    response = "🤖: I was created by Suhana, with the help of Apple-level innovation!";
+  } else if (input.includes("apple")) {
+    response = "🤖: Apple is a leading tech company known for the iPhone, Mac, and more!";
+  } else {
+    response = "🤖: You said: " + input;
+  }
 
-            <!-- Project Item 2: Developer - SaaS Platform for Project Management -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-8 border border-blue-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-2xl font-semibold mb-3 text-blue-700">Project: Collaborative SaaS Platform for Agile Project Management</h3>
-                <p class="text-gray-700 mb-4">
-                    <strong>Role:</strong> Full-stack Developer <br>
-                    <strong>Challenge:</strong> Design and develop a scalable web-based platform to facilitate agile project management for distributed teams, including task tracking, communication, and reporting features.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Approach:</strong> Developed the backend using Python (Django REST Framework) with a PostgreSQL database, and the frontend with React. Implemented real-time updates using WebSockets and integrated third-party APIs for enhanced functionality. Deployed on AWS.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Skills Applied:</strong> Python (Django), React, PostgreSQL, RESTful APIs, AWS Deployment, Git, UI/UX Principles.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Solution & Results:</strong> Launched a user-friendly SaaS platform that improved team collaboration by <strong class="text-green-600">25%</strong> and streamlined project workflows, leading to a <strong class="text-green-600">15% reduction in project delays</strong> for pilot teams.
-                </p>
-                <div class="mt-4">
-                    <img src="https://placehold.co/600x350/60A5FA/FFFFFF?text=SaaS+Platform+Mockup" alt="SaaS Platform Mockup" class="rounded-lg shadow-md w-full max-w-xl mx-auto">
-                    <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block" aria-label="View live demo of SaaS Platform">View Live Demo (Link coming soon)</a>
-                </div>
-            </div>
+  addMessage(response);
+  speak(response.replace("🤖: ", ""));
+}
 
-            <!-- Project Item 3: IoT - Smart Home Energy Monitoring System -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-8 border border-green-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-2xl font-semibold mb-3 text-green-700">Project: Smart Home Energy Monitoring System with Predictive Analytics</h3>
-                <p class="text-gray-700 mb-4">
-                    <strong>Role:</strong> IoT Developer <br>
-                    <strong>Challenge:</strong> Create an IoT system to monitor household energy consumption in real-time and provide predictive insights to help users reduce their electricity bills.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Approach:</strong> Used ESP32 microcontrollers to collect energy data from smart meters, transmitted via MQTT to a cloud platform (Google Cloud IoT Core). Developed a Python-based backend to analyze data and a simple web dashboard to visualize consumption and predictions.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Skills Applied:</strong> ESP32 Programming (C++), MQTT, Google Cloud IoT Core, Python (Data Analysis), Web Development (Flask), Data Visualization.
-                </p>
-                <p class="text-gray-700 mb-4">
-                    <strong>Solution & Results:</strong> Successfully deployed a prototype system that provided accurate real-time energy data. Users of the prototype reported an average <strong class="text-green-600">10-15% reduction in energy consumption</strong> due to actionable insights.
-                </p>
-                <div class="mt-4">
-                    <img src="https://placehold.co/600x350/4ADE80/FFFFFF?text=IoT+Dashboard+Screenshot" alt="IoT Dashboard Screenshot" class="rounded-lg shadow-md w-full max-w-xl mx-auto">
-                    <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block" aria-label="View project repository for Smart Home Energy System">View Project Repository (Link coming soon)</a>
-                </div>
-            </div>
 
-            <!-- Interactive 3D Spline Showcase - This is now a regular project item -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-8 border border-indigo-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-2xl font-semibold mb-3 text-indigo-700">Interactive 3D Showcase: [Your Spline Scene Title]</h3>
-                <p class="text-gray-700 mb-4">
-                    This interactive 3D model, created using Spline, demonstrates my ability to craft engaging and dynamic digital experiences. It could be a product prototype, a data visualization concept, or an abstract art piece. Interact with it to explore!
-                </p>
-                <div class="spline-container relative w-full rounded-lg shadow-lg overflow-hidden border border-indigo-200">
-                    <!-- The Spline Viewer itself -->
-                    <spline-viewer url="https://prod.spline.design/Zwc90nifzhun45yZ/scene.splinecode"></spline-viewer>
-                    <!-- Loading overlay for better UX -->
-                    <div id="spline-loading" class="absolute inset-0 bg-gray-200 bg-opacity-75 flex items-center justify-center text-gray-800 text-lg font-semibold rounded-lg transition-opacity duration-500">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> Loading 3D Scene...
-                    </div>
-                </div>
-                <p class="text-sm text-gray-500 mt-2">
-                    *Note: The 3D scene may take a moment to load depending on its complexity and your internet connection.
-                </p>
-            </div>
+    async function scanQRFromImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      try {
+        const html5QrCode = new Html5Qrcode("qrInput");
+        const decodedText = await html5QrCode.scanFile(file, true);
+        addMessage("📷 QR Code: " + decodedText);
+        speak("QR code contains: " + decodedText);
+      } catch (err) {
+        addMessage("❌ Could not detect QR code.");
+      }
+    }
 
-            <!-- JavaScript to hide loading overlay once Spline is ready (basic example) -->
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const splineViewer = document.querySelector('spline-viewer');
-                    const loadingOverlay = document.getElementById('spline-loading');
+    function generateQR() {
+      const text = document.getElementById("qrTextInput").value;
+      if (!text) return alert("Enter some text first.");
+      const canvas = document.getElementById("qrCanvas");
+      QRCode.toCanvas(canvas, text, { width: 200, color: { dark: "#00f0ff", light: "#0000" } }, err => {
+        if (err) return alert("QR generation failed.");
+        addMessage("✅ QR Code generated.");
+        speak("QR code created successfully.");
+      });
+    }
 
-                    if (splineViewer && loadingOverlay) {
-                        // A simple timeout is used here as the spline-viewer component
-                        // does not emit a standard 'ready' event that is easily accessible.
-                        // For more complex loading logic, you might need to explore
-                        // Spline's specific API or check for the presence of the canvas element.
-                        setTimeout(() => {
-                            loadingOverlay.classList.add('fade-out'); // Start fade out
-                            loadingOverlay.addEventListener('transitionend', () => {
-                                loadingOverlay.classList.add('hidden-after-fade'); // Hide completely after fade
-                            }, { once: true }); // Ensure listener only runs once
-                        }, 3000); // Hide after 3 seconds, adjust as needed
-                    } else if (loadingOverlay) {
-                        // If splineViewer element is not found, hide loading overlay anyway
-                        loadingOverlay.classList.add('hidden-after-fade');
-                        console.warn("Spline viewer element not found. Check your HTML structure.");
-                    }
-                });
-            </script>
+    function downloadQRCanvas() {
+      const canvas = document.getElementById("qrCanvas");
+      const link = document.createElement("a");
+      link.download = "qr-code.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    }
 
-            <!-- Add more project items as needed -->
-
-        </div>
-    </section>
-
-    <!-- Certifications Section - Highlight your professional credentials -->
-    <section id="certifications" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-lg my-8 mx-4 md:mx-auto max-w-6xl bg-opacity-95">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">My Google Professional Certifications</h2>
-            <p class="text-center text-lg mb-10 text-gray-600">
-                My commitment to professional development is underscored by these industry-recognized credentials from Google.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                <!-- Google Data Analytics Professional Certificate -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-indigo-200">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/60x60/4F46E5/FFFFFF?text=DA" alt="Google Data Analytics Badge" class="w-16 h-16 mr-4 rounded-full">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-indigo-700">Google Data Analytics Professional Certificate</h3>
-                            <p class="text-gray-600">Issued by Google (via Coursera)</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        This certificate validated my skills in data collection, cleaning, analysis, visualization, and storytelling using tools like SQL, R, and Tableau.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-sm mb-4">
-                        <li><strong>Key Skills:</strong> SQL, R, Tableau, Data Cleaning, Statistical Analysis, Data Storytelling.</li>
-                        <li><strong>Completion Date:</strong> Month, Year</li>
-                    </ul>
-                    <a href="[Link to your Credly badge for Data Analytics]" target="_blank" class="text-indigo-600 hover:underline font-medium" aria-label="Verify Google Data Analytics Certificate">
-                        Verify Credential <i class="fas fa-external-link-alt ml-1 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Google UX Design Professional Certificate -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-purple-200">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/60x60/8B5CF6/FFFFFF?text=UX" alt="Google UX Design Badge" class="w-16 h-16 mr-4 rounded-full">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-purple-700">Google UX Design Professional Certificate</h3>
-                            <p class="text-gray-600">Issued by Google (via Coursera)</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        Focused on user-centered design principles, from research and ideation to wireframing, prototyping, and usability testing with Figma and Adobe XD.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-sm mb-4">
-                        <li><strong>Key Skills:</strong> User Research, Wireframing, Prototyping, Usability Testing, Figma, Adobe XD.</li>
-                        <li><strong>Completion Date:</strong> Month, Year</li>
-                    </ul>
-                    <a href="[Link to your Credly badge for UX Design]" target="_blank" class="text-purple-600 hover:underline font-medium" aria-label="Verify Google UX Design Certificate">
-                        Verify Credential <i class="fas fa-external-link-alt ml-1 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Google Project Management Professional Certificate -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-green-200">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/60x60/10B981/FFFFFF?text=PM" alt="Google Project Management Badge" class="w-16 h-16 mr-4 rounded-full">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-green-700">Google Project Management Professional Certificate</h3>
-                            <p class="text-gray-600">Issued by Google (via Coursera)</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        Mastered Agile, Scrum, and Waterfall methodologies, alongside essential skills in project planning, risk management, and stakeholder communication.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-sm mb-4">
-                        <li><strong>Key Skills:</strong> Agile, Scrum, Project Planning, Risk Management, Stakeholder Management.</li>
-                        <li><strong>Completion Date:</strong> Month, Year</li>
-                    </ul>
-                    <a href="[Link to your Credly badge for Project Management]" target="_blank" class="text-green-600 hover:underline font-medium" aria-label="Verify Google Project Management Certificate">
-                        Verify Credential <i class="fas fa-external-link-alt ml-1 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Add more Google Certificates as needed (IT Support, Cybersecurity, Digital Marketing, etc.) -->
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section - How to reach you -->
-    <section id="contact" class="py-16 md:py-24 bg-gradient-to-r from-indigo-700 to-purple-800 text-white rounded-t-3xl shadow-inner bg-opacity-90">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8">Get in Touch</h2>
-            <p class="text-xl mb-10 opacity-90">
-                I'm always open to new opportunities, collaborations, and discussions. Feel free to reach out!
-            </p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
-                <div class="flex items-center text-lg">
-                    <i class="fas fa-envelope text-indigo-300 text-2xl mr-3"></i>
-                    <a href="mailto:your.email@example.com" class="hover:underline" aria-label="Send me an email">your.email@example.com</a>
-                </div>
-                <div class="flex items-center text-lg">
-                    <i class="fab fa-linkedin text-indigo-300 text-2xl mr-3"></i>
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:underline" aria-label="Connect with me on LinkedIn">LinkedIn Profile</a>
-                </div>
-                <!-- Add more social links as applicable -->
-                <div class="flex items-center text-lg">
-                    <i class="fab fa-github text-indigo-300 text-2xl mr-3"></i>
-                    <a href="https://github.com/yourusername" target="_blank" class="hover:underline" aria-label="View my GitHub profile">GitHub Profile</a>
-                </div>
-            </div>
-            <!-- Optional: Add a simple contact form here if desired -->
-        </div>
-    </section>
-
-    <!-- Footer - Copyright and acknowledgment -->
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center bg-opacity-90">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2025 Suhana Tiwari. All rights reserved.</p>
-            <p class="text-sm mt-2">Built with <span class="text-red-500">&hearts;</span> and passion.</p>
-        </div>
-    </footer>
-
+    window.onload = () => {
+      const welcome = "Hi! I am your AI Assistant. Ask something or scan or generate a QR code.";
+      addMessage("🤖: " + welcome);
+      speak(welcome);
+    };
+  </script>
 </body>
 </html>
