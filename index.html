@@ -711,7 +711,117 @@
         <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
           <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed QR Scanner Engine</h3>
           
-          <div id="scanResultOverlay"></div>
+          <div id="scanResultOverlay"></di<v>
 
           <div class="file-wrapper">
-            <span class="custom-file-btn" id="fileLabel"><
+            <span class="custom-file-btn" id="fileLabel">
+              <script>
+    let globallyStoredBase64PhotoAssetString = ""; 
+
+    function toggleAuthModal(show) {
+      const modal = document.getElementById('authModalOverlay');
+      modal.classList.toggle('active', show);
+    }
+
+    function switchQRTab(panelId, tabElement) {
+      document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.tab-card').forEach(tab => tab.classList.remove('active'));
+      
+      document.getElementById(panelId).classList.add('active');
+      tabElement.classList.add('active');
+    }
+
+    function openHardwareSystemPhotoBrowser() {
+      document.getElementById('hardwareNativePhotoUploader').click();
+    }
+
+    function convertTargetPhotoIntoBase64Stream(event) {
+      const activeUploadedFileObject = event.target.files[0];
+      if (!activeUploadedFileObject) return;
+
+      const continuousStreamReader = new FileReader();
+      continuousStreamReader.onload = function(e) {
+        globallyStoredBase64PhotoAssetString = e.target.result; 
+        
+        document.getElementById('livePreviewImgElement').src = globallyStoredBase64PhotoAssetString;
+        document.getElementById('livePreviewFileMetaName').textContent = activeUploadedFileObject.name;
+        document.getElementById('previewInlineFileThumbnailBar').style.display = 'flex';
+      };
+      continuousStreamReader.readAsDataURL(activeUploadedFileObject);
+    }
+
+    function processSelectedFormQR() {
+      let finalPayload = "";
+      
+      if (document.getElementById('urlPanel').classList.contains('active')) {
+        finalPayload = document.getElementById('urlInput').value.trim();
+        if(finalPayload && !finalPayload.startsWith('http')) {
+          return alert("Link Validation Error: URL must start with http:// or https://");
+        }
+      } else if (document.getElementById('imagePanel').classList.contains('active')) {
+        if (globallyStoredBase64PhotoAssetString) {
+          finalPayload = globallyStoredBase64PhotoAssetString;
+        } else {
+          return alert("Uploader Empty: Kindly browse or upload a valid photo file first.");
+        }
+      } else {
+        finalPayload = document.getElementById('restInput').value.trim();
+      }
+
+      if (!finalPayload) return alert("System Halt: Please enter data before generating.");
+
+      const targetCanvas = document.getElementById("vectorCanvas");
+      const placeholder = document.getElementById("placeholderText");
+      
+      // Reset layout animation state smoothly
+      targetCanvas.style.display = "none";
+
+      setTimeout(() => {
+        QRCode.toCanvas(targetCanvas, finalPayload, { 
+          width: 220, margin: 1,
+          color: { dark: "#0f172a", light: "#ffffff" } 
+        }, err => {
+          if (err) return alert("Engine Compilation Error.");
+          
+          placeholder.style.display = "none";
+          targetCanvas.style.display = "block";
+          document.getElementById("exportAction").style.display = "inline-flex";
+        });
+      }, 50); // Execution delay enables lag-free rendering animation
+    }
+
+    function triggerCanvasDownload() {
+      const finalCanvas = document.getElementById("vectorCanvas");
+      const triggerLink = document.getElementById("exportAction");
+      triggerLink.href = finalCanvas.toDataURL("image/png");
+      triggerLink.download = "nexus_qr_matrix.png";
+    }
+
+    async function processImportedQR(e) {
+      const binaryFile = e.target.files[0];
+      if (!binaryFile) return;
+      const fileLabel = document.getElementById('fileLabel');
+      const resultOverlay = document.getElementById('scanResultOverlay');
+      
+      fileLabel.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Decoding Matrix Asset...`;
+      resultOverlay.style.display = "none";
+      
+      try {
+        const matrixScannerInstance = new Html5Qrcode("mediaUpload");
+        const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
+        resultOverlay.textContent = `Scanned QR Content Array: ${parsedResult}`;
+        resultOverlay.style.background = "rgba(16, 185, 129, 0.08)";
+        resultOverlay.style.borderColor = "#10b981"; resultOverlay.style.color = "#065f46";
+        resultOverlay.style.display = "block";
+      } catch (err) {
+        resultOverlay.textContent = "Failed parsing image configuration asset.";
+        resultOverlay.style.background = "rgba(239, 68, 68, 0.08)";
+        resultOverlay.style.borderColor = "#ef4444"; resultOverlay.style.color = "#991b1b";
+        resultOverlay.style.display = "block";
+      } finally {
+        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset`;
+      }
+    }
+  </script>
+</body>
+            </html>
