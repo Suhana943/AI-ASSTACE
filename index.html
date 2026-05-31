@@ -1,4 +1,4 @@
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@
   <script src="https://unpkg.com/html5-qrcode" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -45,98 +45,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       overflow-x: hidden;
-    }
-
-    /* --- Smooth Navigation Bar --- */
-    .navbar {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-auth-btns {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-login {
-      background: transparent;
-      color: var(--text-main);
-      border: none;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 0.6rem 1.2rem;
-      border-radius: 10px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn-login:hover {
-      background: #f1f5f9;
-    }
-
-    .btn-signup {
-      background: var(--text-main);
-      color: #ffffff;
-      border: none;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 0.6rem 1.2rem;
-      border-radius: 10px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn-signup:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
+      padding: 2rem 1rem;
     }
 
     /* --- Container Layout --- */
@@ -148,7 +59,6 @@
       border-radius: 32px;
       padding: 3.5rem;
       box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04);
-      margin: 3rem 1rem;
       will-change: transform;
     }
 
@@ -479,113 +389,6 @@
       word-break: break-all;
     }
 
-    /* --- High Performance Auth Modal Matrix --- */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.3);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .auth-modal {
-      background: #ffffff;
-      width: 100%;
-      max-width: 420px;
-      border-radius: 24px;
-      padding: 2.5rem;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);
-      transform: scale(0.94) translateY(12px);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-    }
-
-    .modal-overlay.active .auth-modal {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.25rem; right: 1.25rem;
-      background: #f1f5f9;
-      border: none;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-
-    .modal-close:hover {
-      background: #e2e8f0;
-    }
-
-    .modal-header h4 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-header p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .auth-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .social-login-btn {
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 0.8rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-      transition: background 0.2s;
-    }
-
-    .social-login-btn:hover {
-      background: #f8fafc;
-    }
-
-    .form-separator {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      position: relative;
-      margin: 0.5rem 0 1rem 0;
-    }
-
     /* SEO Block Architecture */
     .seo-hub-panel {
       margin-top: 4.5rem;
@@ -609,22 +412,6 @@
   </style>
 </head>
 <body>
-
-  <nav class="navbar">
-    <a href="#" class="nav-brand">
-      <i class="fa-solid fa-layer-group"></i> NexusQR Studio
-    </a>
-    <ul class="nav-links">
-      <li><a href="#generator">QR Generator</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#api">Developer API</a></li>
-    </ul>
-    <div class="nav-auth-btns">
-      <button class="btn-login" onclick="toggleAuthModal(true)">Sign In</button>
-      <button class="btn-signup" onclick="toggleAuthModal(true)">Create Account</button>
-    </div>
-  </nav>
 
   <div class="container" id="generator">
     <header>
@@ -711,17 +498,28 @@
         <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
           <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed QR Scanner Engine</h3>
           
-          <div id="scanResultOverlay"></di<v>
+          <div id="scanResultOverlay"></div>
 
           <div class="file-wrapper">
-            <span class="custom-file-btn" id="fileLabel">
-              <script>
-    let globallyStoredBase64PhotoAssetString = ""; 
+            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset</span>
+            <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
+          </div>
+        </div>
 
-    function toggleAuthModal(show) {
-      const modal = document.getElementById('authModalOverlay');
-      modal.classList.toggle('active', show);
-    }
+      </div>
+    </div>
+
+    <div class="seo-hub-panel">
+      <h2>Advanced Free Enterprise Matrix Engine: The All-in-One QR Code Framework</h2>
+      <p>
+        In today's global logistics ecosystem, a <strong>free dynamic qr code generator</strong> is mandatory for digital scaling. Our multi-utility framework features comprehensive <strong>image to qr</strong> data pathways, <strong>photo to qr code</strong> asset mapping, and high-density <strong>link to qr maker</strong> configurations. Optimize search layouts seamlessly with maximum authority.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    let globallyStoredBase64PhotoAssetString = ""; 
 
     function switchQRTab(panelId, tabElement) {
       document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
@@ -773,7 +571,6 @@
       const targetCanvas = document.getElementById("vectorCanvas");
       const placeholder = document.getElementById("placeholderText");
       
-      // Reset layout animation state smoothly
       targetCanvas.style.display = "none";
 
       setTimeout(() => {
@@ -787,7 +584,7 @@
           targetCanvas.style.display = "block";
           document.getElementById("exportAction").style.display = "inline-flex";
         });
-      }, 50); // Execution delay enables lag-free rendering animation
+      }, 50); 
     }
 
     function triggerCanvasDownload() {
@@ -824,4 +621,4 @@
     }
   </script>
 </body>
-            </html>
+</html>
