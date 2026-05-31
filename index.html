@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
   
   <style>
     :root {
-      --bg-global: #f1f5f9;        
+      --bg-global: #f8fafc;        
       --panel-bg: #ffffff;         
       --border-color: #e2e8f0;     
       --text-main: #0f172a;        
@@ -25,6 +24,7 @@
       --primary: #2563eb;          
       --secondary: #4f46e5;        
       --input-bg: #f8fafc;         
+      --success-green: #10b981;
     }
 
     * {
@@ -37,16 +37,105 @@
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
       background-color: var(--bg-global);
       background-image: 
-        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.06) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.06) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1rem;
     }
 
+    /* --- NEW: Professional Navigation Bar --- */
+    .navbar {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* Mobile optimization */
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-auth-btns {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: var(--text-main);
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-login:hover {
+      background: #f1f5f9;
+    }
+
+    .btn-signup {
+      background: var(--text-main);
+      color: #ffffff;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-signup:hover {
+      opacity: 0.9;
+    }
+
+    /* --- Container Layout --- */
     .container {
       width: 100%;
       max-width: 1050px; 
@@ -54,7 +143,8 @@
       border: 1px solid var(--border-color);
       border-radius: 32px;
       padding: 3.5rem;
-      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04);
+      margin: 3rem 1rem;
     }
 
     header {
@@ -67,12 +157,10 @@
     }
 
     .brand-title {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
       letter-spacing: -0.04em;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
     }
 
     .brand-tagline {
@@ -81,7 +169,7 @@
       font-weight: 500;
     }
 
-    /* --- NEW: Interactive Attractive Tab Switcher --- */
+    /* Tab Switcher Interface Custom Design Layout */
     .tab-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -124,7 +212,6 @@
       color: var(--text-muted);
     }
 
-    /* Active Tab Glow States */
     .tab-card.active {
       background: #ffffff;
       border-color: var(--primary);
@@ -136,7 +223,7 @@
       color: var(--primary);
     }
 
-    /* Workplace Grid Setup */
+    /* Workplace Grid Separation */
     .qr-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -155,7 +242,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
     }
 
     .qr-card h3 { 
@@ -204,7 +291,6 @@
       box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
     }
 
-    /* Sub-panels for dynamic forms */
     .input-panel {
       display: none;
       flex-direction: column;
@@ -213,6 +299,83 @@
 
     .input-panel.active {
       display: flex;
+    }
+
+    /* Custom UI Direct Image Upload Dropzone Field Box */
+    .premium-file-dropzone-wrapper {
+      background-color: var(--input-bg);
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 2.2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .premium-file-dropzone-wrapper:hover {
+      border-color: var(--primary);
+      background-color: rgba(37, 99, 235, 0.01);
+    }
+
+    .premium-file-dropzone-wrapper i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .premium-file-dropzone-wrapper p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .premium-file-dropzone-wrapper span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* Live Mini Preview Overlay Element Box Row */
+    .live-uploader-thumb-panel {
+      margin-top: 1rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-align: left;
+      display: none; 
+    }
+
+    .live-uploader-thumb-panel img {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+
+    .thumb-info-block h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .thumb-info-block p {
+      font-size: 0.75rem;
+      color: var(--success-green);
+      font-weight: 600;
+    }
+
+    #hardwareNativePhotoUploader {
+      display: none;
     }
 
     .canvas-display {
@@ -299,6 +462,108 @@
       word-break: break-all;
     }
 
+    /* --- NEW: Interactive Attractive Auth Modals --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .auth-modal {
+      background: #ffffff;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      padding: 2.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .modal-overlay.active .auth-modal {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: #f1f5f9;
+      border: none;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-weight: bold;
+    }
+
+    .modal-header h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-header p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .social-login-btn {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 0.8rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      transition: background 0.2s;
+    }
+
+    .social-login-btn:hover {
+      background: #f8fafc;
+    }
+
+    .form-separator {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      position: relative;
+      margin: 0.5rem 0 1rem 0;
+    }
+
     /* SEO Block Architecture */
     .seo-hub-panel {
       margin-top: 4.5rem;
@@ -319,24 +584,27 @@
       line-height: 1.7;
       margin-bottom: 2rem;
     }
-
-    .keyword-matrix-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .keyword-node {
-      background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-    }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <i class="fa-solid fa-layer-group"></i> NexusQR Studio
+    </a>
+    <ul class="nav-links">
+      <li><a href="#generator">QR Generator</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#api">Developer API</a></li>
+    </ul>
+    <div class="nav-auth-btns">
+      <button class="btn-login" onclick="toggleAuthModal(true)">Sign In</button>
+      <button class="btn-signup" onclick="toggleAuthModal(true)">Create Account</button>
+    </div>
+  </nav>
+
+  <div class="container" id="generator">
     <header>
       <h1 class="brand-title">NexusQR Studio</h1>
       <p class="brand-tagline">Advanced Multi-Format Enterprise QR Code Engine</p>
@@ -351,7 +619,7 @@
       <div class="tab-card" onclick="switchQRTab('imagePanel', this)">
         <i class="fa-solid fa-image"></i>
         <span>Image / Photo to QR</span>
-        <p>Images, Galleries & PDFs</p>
+        <p>Direct Local File Upload</p>
       </div>
       <div class="tab-card" onclick="switchQRTab('restPanel', this)">
         <i class="fa-solid fa-font"></i>
@@ -375,10 +643,25 @@
 
         <div id="imagePanel" class="input-panel">
           <div>
-            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.5rem;">Host Image / Photo Online URL</label>
-            <input type="url" id="imageInput" class="field-input" placeholder="https://imgbb.com/your-uploaded-photo-link" />
+            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.5rem;">Select Photo / Image from Device Gallery</label>
+            
+            <div class="premium-file-dropzone-wrapper" onclick="openHardwareSystemPhotoBrowser()">
+              <i class="fa-solid fa-images"></i>
+              <p>Click to select image file</p>
+              <span>Supports PNG, JPG, JPEG files up to 5MB directly</span>
+              
+              <div class="live-uploader-thumb-panel" id="previewInlineFileThumbnailBar" onclick="event.stopPropagation();">
+                <img id="livePreviewImgElement" src="" alt="Live Uploaded Stream Target">
+                <div class="thumb-info-block">
+                  <h5 id="livePreviewFileMetaName">selected_photo.jpg</h5>
+                  <p>✓ Photo Asset Stream Loaded</p>
+                </div>
+              </div>
+            </div>
+            
+            <input type="file" id="hardwareNativePhotoUploader" accept="image/*" onchange="convertTargetPhotoIntoBase64Stream(event)" />
           </div>
-          <small class="helper-text">Tip: Upload your image/photo to a cloud drive (Google Drive, ImgBB, Dropbox) and paste the shareable public link here to map it directly into the QR code.</small>
+          <small class="helper-text">Converts raw local photo assets instantly into secure responsive vector matrices codes.</small>
         </div>
 
         <div id="restPanel" class="input-panel">
@@ -426,87 +709,4 @@
 
   </div>
 
-  <script>
-    // Tab Controller Interface Switch Logic
-    function switchQRTab(panelId, tabElement) {
-      // Deactivate all input sub-panels
-      document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
-      // Deactivate all tab element styles
-      document.querySelectorAll('.tab-card').forEach(tab => tab.classList.remove('active'));
-      
-      // Activate selected units
-      document.getElementById(panelId).classList.add('active');
-      tabElement.classList.add('active');
-    }
-
-    // Dynamic Form Router Compile Core Logic
-    function processSelectedFormQR() {
-      let finalPayload = "";
-      
-      // Detect active sub-panel
-      if (document.getElementById('urlPanel').classList.contains('active')) {
-        finalPayload = document.getElementById('urlInput').value.trim();
-        if(finalPayload && !finalPayload.startsWith('http')) {
-          return alert("Link Validation Error: URL must start with http:// or https://");
-        }
-      } else if (document.getElementById('imagePanel').classList.contains('active')) {
-        finalPayload = document.getElementById('imageInput').value.trim();
-        if(finalPayload && !finalPayload.startsWith('http')) {
-          return alert("Photo Link Error: Cloud hosted photo URL must start with http:// or https://");
-        }
-      } else {
-        finalPayload = document.getElementById('restInput').value.trim();
-      }
-
-      if (!finalPayload) return alert("System Halt: Please enter data before generating.");
-
-      const targetCanvas = document.getElementById("vectorCanvas");
-      const placeholder = document.getElementById("placeholderText");
-      
-      QRCode.toCanvas(targetCanvas, finalPayload, { 
-        width: 220, margin: 1,
-        color: { dark: "#0f172a", light: "#ffffff" } 
-      }, err => {
-        if (err) return alert("Engine Compilation Error.");
-        
-        placeholder.style.display = "none";
-        targetCanvas.style.display = "block";
-        document.getElementById("exportAction").style.display = "inline-flex";
-      });
-    }
-
-    function triggerCanvasDownload() {
-      const finalCanvas = document.getElementById("vectorCanvas");
-      const triggerLink = document.getElementById("exportAction");
-      triggerLink.href = finalCanvas.toDataURL("image/png");
-      triggerLink.download = "nexus_qr_matrix.png";
-    }
-
-    async function processImportedQR(e) {
-      const binaryFile = e.target.files[0];
-      if (!binaryFile) return;
-      const fileLabel = document.getElementById('fileLabel');
-      const resultOverlay = document.getElementById('scanResultOverlay');
-      
-      fileLabel.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Decoding Matrix Asset...`;
-      resultOverlay.style.display = "none";
-      
-      try {
-        const matrixScannerInstance = new Html5Qrcode("mediaUpload");
-        const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
-        resultOverlay.textContent = `Scanned QR Content Array: ${parsedResult}`;
-        resultOverlay.style.background = "rgba(16, 185, 129, 0.08)";
-        resultOverlay.style.borderColor = "#10b981"; resultOverlay.style.color = "#065f46";
-        resultOverlay.style.display = "block";
-      } catch (err) {
-        resultOverlay.textContent = "Failed parsing image configuration asset.";
-        resultOverlay.style.background = "rgba(239, 68, 68, 0.08)";
-        resultOverlay.style.borderColor = "#ef4444"; resultOverlay.style.color = "#991b1b";
-        resultOverlay.style.display = "block";
-      } finally {
-        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset`;
-      }
-    }
-  </script>
-</body>
-</html>
+  <div clas
