@@ -1,17 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The QR Code Generator - Premium Dark UI Suite</title>
+  <title>The QR Code Generator - Elite Studio Suite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO Search Engine Architecture Optimizations -->
   <meta name="description" content="Create custom high-resolution dynamic QR codes instantly. Premium vector matrix generator for URL links, images, photos, and digital text assets." />
   <meta name="keywords" content="qr, qr code, qr generator, image to qr, photo to qr, link to qr, qr maker, scan qr" />
   <meta name="robots" content="index, follow" />
   
-  <!-- External Asset Engine CDNs -->
   <script src="https://unpkg.com/html5-qrcode" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,14 +16,14 @@
   
   <style>
     :root {
-      --bg-dark: #121212;
-      --card-bg: #1e1e1e;
-      --accent-green: #68a03c;
-      --accent-green-hover: #578832;
-      --text-light: #ffffff;
-      --text-gray: #aaaaaa;
-      --border-gray: #333333;
-      --input-dark: #2a2a2a;
+      --bg-space-dark: #090d16;
+      --card-premium-dark: #131b2e;
+      --accent-brand-green: #68a03c;
+      --accent-brand-hover: #558531;
+      --text-glow-white: #ffffff;
+      --text-dim-slate: #64748b;
+      --border-glow-line: #1e293b;
+      --nested-input-bg: #0b111e;
     }
 
     * {
@@ -37,543 +34,502 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background-color: var(--bg-space-dark);
+      color: var(--text-glow-white);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem 1rem;
+      padding: 2.5rem 1rem;
     }
 
-    /* Top Navbar Lookalike Layer */
-    .nav-header {
+    /* Elite Top Navigation Layout Bar */
+    .studio-navbar {
       width: 100%;
-      max-width: 480px;
+      max-width: 1040px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.5rem 0.25rem;
-      margin-bottom: 1.2rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.7);
     }
 
-    .brand-logo {
+    .brand-identity {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
+      gap: 0.85rem;
     }
 
-    .brand-logo span {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: var(--text-gray);
-      margin-top: -2px;
-    }
-
-    .btn-top-signup {
-      background-color: var(--accent-green);
-      color: #ffffff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-
-    .menu-burger {
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: var(--text-light);
-    }
-
-    /* Main Container matching the screenshot card grid */
-    .app-card {
-      width: 100%;
-      max-width: 480px;
-      background-color: var(--card-bg);
-      border-radius: 28px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    /* Horizontal Custom Categories Slider */
-    .scroller-wrapper {
-      position: relative;
-      width: 100%;
-    }
-
-    .type-scroller {
-      display: flex;
-      gap: 0.8rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-      scrollbar-width: none; 
-    }
-    .type-scroller::-webkit-scrollbar { display: none; }
-
-    .scroll-node {
-      flex: 0 0 calc(33.33% - 0.6rem);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.9rem 0.5rem;
+    .brand-identity .logo-wrapper {
+      background: linear-gradient(135deg, var(--accent-brand-green), #86efac);
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(104, 160, 60, 0.3);
+    }
+
+    .brand-identity i { font-size: 1.3rem; color: #090d16; }
+
+    .brand-title h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+    .brand-title span { font-size: 0.7rem; color: var(--accent-brand-green); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: 1px; }
+
+    .nav-cta-btn {
+      background-color: var(--accent-brand-green);
+      color: var(--text-glow-white);
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
+    .nav-cta-btn:hover { background-color: var(--accent-brand-hover); transform: translateY(-1px); }
+
+    /* Master Workspace Frame Grid layout */
+    .master-workspace-grid {
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 890px) {
+      .master-workspace-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Left Control Desk Board Sheet Panels */
+    .control-desk-card {
+      background-color: var(--card-premium-dark);
+      border: 1px solid var(--border-glow-line);
+      border-radius: 28px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .workspace-section { display: flex; flex-direction: column; gap: 1rem; }
+
+    .section-headline {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-headline span {
+      background-color: rgba(104, 160, 60, 0.15);
+      color: var(--accent-brand-green);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+
+    /* High Fidelity Format Navigation Menu Hub */
+    .premium-tab-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      background-color: var(--nested-input-bg);
+      padding: 0.45rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-trigger-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 0.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .tab-trigger-node i { font-size: 1.15rem; color: var(--text-dim-slate); transition: color 0.2s; }
+    .tab-trigger-node span { font-size: 0.88rem; font-weight: 600; color: var(--text-dim-slate); transition: color 0.2s; }
+
+    .tab-trigger-node:hover { background-color: rgba(255,255,255,0.02); }
     
-    .scroll-node i {
-      font-size: 1.25rem;
-      color: var(--accent-green);
+    /* Highlight States Active Panel Tabs Trigger */
+    .tab-trigger-node.active-state {
+      background-color: var(--card-premium-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+    .tab-trigger-node.active-state i { color: var(--accent-brand-green); }
+    .tab-trigger-node.active-state span { color: var(--text-glow-white); }
 
-    .scroll-node span {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--accent-green);
-    }
-
-    /* Active Tab Glow Configurations */
-    .scroll-node.active {
-      background-color: rgba(255,255,255,0.06);
-      border: 1px solid var(--border-gray);
-    }
-    .scroll-node.active i, .scroll-node.active span {
-      color: var(--text-light);
-    }
-
-    .arrow-next {
-      position: absolute;
-      right: -5px;
-      top: 35%;
-      color: var(--text-gray);
-      font-size: 1rem;
-      pointer-events: none;
-    }
-
-    /* Action Title Label */
-    .action-title-text {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-top: 0.5rem;
-    }
-
-    /* Warning Banner Block */
-    .info-banner {
-      background-color: rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 0.9rem 1rem;
+    /* Custom Informative Alert Badge Overlay Container */
+    .system-status-banner {
+      background: linear-gradient(90deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.2));
+      border-left: 3px solid var(--accent-brand-green);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 0.88rem;
-      color: #dddddd;
-    }
-    .info-banner i {
-      color: var(--text-gray);
-      font-size: 1.05rem;
+      line-height: 1.4;
     }
 
-    /* Interactive Input Routing */
-    .panel-input-container { display: none; }
-    .panel-input-container.active { display: block; }
+    /* Routed Viewports Controls Container Frame Array */
+    .routed-viewport-panel { display: none; }
+    .routed-viewport-panel.active-viewport { display: block; }
 
-    .native-input {
+    .studio-premium-input {
       width: 100%;
-      background-color: var(--input-dark);
-      border: 1px solid #3c3c3c;
-      border-radius: 8px;
-      padding: 1rem;
-      color: var(--text-light);
-      font-size: 0.92rem;
-      outline: none;
-    }
-    .native-input:focus { border-color: var(--accent-green); }
-
-    /* Custom File Drop Box Style for Image/Photo Selection */
-    .custom-file-box {
-      width: 100%;
-      background-color: var(--input-dark);
-      border: 2px dashed #444444;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .custom-file-box:hover {
-      border-color: var(--accent-green);
-      background-color: rgba(104, 160, 60, 0.05);
-    }
-    .custom-file-box i {
-      font-size: 1.8rem;
-      color: var(--accent-green);
-      margin-bottom: 0.5rem;
-    }
-    .custom-file-box p {
-      font-size: 0.85rem;
-      color: var(--text-gray);
-    }
-    .file-status-tag {
-      font-size: 0.8rem;
-      color: var(--accent-green);
-      margin-top: 0.4rem;
-      font-weight: 600;
-      display: none;
-    }
-
-    /* Centered Theme Action Button */
-    .btn-main-action {
-      background-color: var(--accent-green);
-      color: var(--text-light);
-      border: none;
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: background-color 0.2s;
-    }
-    .btn-main-action:hover { background-color: var(--accent-green-hover); }
-
-    /* --- Live QR Grid Viewport Frame --- */
-    .output-section-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: center;
-      margin-top: 0.5rem;
-    }
-
-    .qr-canvas-holder {
-      background-color: #ffffff;
+      background-color: var(--nested-input-bg);
+      border: 1px solid var(--border-glow-line);
+      border-radius: 14px;
       padding: 1.2rem;
+      color: var(--text-glow-white);
+      font-size: 0.98rem;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .studio-premium-input:focus {
+      border-color: var(--accent-brand-green);
+      box-shadow: 0 0 0 4px rgba(104, 160, 60, 0.12);
+    }
+
+    /* Intelligent Photo Cloud Micro Drop Interface Zone Element */
+    .intelligent-dropzone {
+      background-color: var(--nested-input-bg);
+      border: 2px dashed var(--border-glow-line);
       border-radius: 16px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .intelligent-dropzone:hover {
+      border-color: var(--accent-brand-green);
+      background-color: rgba(104, 160, 60, 0.01);
+    }
+    .intelligent-dropzone i { font-size: 2.5rem; color: var(--accent-brand-green); margin-bottom: 0.75rem; }
+    .intelligent-dropzone p { font-size: 0.95rem; font-weight: 600; color: #cbd5e1; }
+    .intelligent-dropzone span { font-size: 0.78rem; color: var(--text-dim-slate); display: block; margin-top: 0.35rem; }
+
+    /* Live Mini Preview Overlay Box inside Dropzone */
+    .uploaded-thumbnail-preview-box {
+      margin-top: 1rem;
+      background-color: var(--card-premium-dark);
+      border: 1px solid var(--border-glow-line);
+      border-radius: 12px;
+      padding: 0.75rem;
       display: flex;
-      justify-content: center;
       align-items: center;
-      min-height: 200px;
+      gap: 0.85rem;
+      text-align: left;
+      display: none; /* Controlled via script initialization */
     }
-
-    canvas {
-      width: 100% !important;
-      height: auto !important;
-      max-width: 170px;
-    }
-
-    /* Live Styling Preset Elements Layout */
-    .presets-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      align-items: center;
-    }
-
-    .preset-icon-btn { font-size: 0.9rem; color: var(--text-gray); cursor: pointer; }
-
-    .mini-preset-preview {
+    .uploaded-thumbnail-preview-box img {
       width: 44px;
       height: 44px;
       border-radius: 8px;
-      border: 2px solid var(--border-gray);
-      padding: 3px;
-      background: #ffffff;
-      cursor: pointer;
-      transition: transform 0.2s;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .mini-preset-preview:hover { transform: scale(1.05); }
-    .mini-preset-preview img { width: 100%; height: 100%; object-fit: contain; }
+    .thumb-meta-text h5 { font-size: 0.85rem; font-weight: 600; color: var(--text-glow-white); overflow: hidden; text-overflow: ellipsis; max-width: 240px; white-space: nowrap; }
+    .thumb-meta-text p { font-size: 0.75rem; color: var(--accent-brand-green); font-weight: 500; }
 
-    /* Footer Action Toolbar */
-    .bottom-toolbar {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .tool-btn {
-      background-color: rgba(255,255,255,0.08);
+    /* Master Execution Activation Key Button Trigger */
+    .btn-activation-execute {
+      background: linear-gradient(180deg, var(--accent-brand-green), var(--accent-brand-hover));
+      color: var(--text-glow-white);
       border: none;
-      border-radius: 8px;
-      color: var(--text-gray);
-      padding: 0.9rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    
-    .tool-btn.active-save { background-color: #333333; color: #888888; cursor: not-allowed; }
-    .tool-btn.btn-iconic { color: var(--text-light); font-size: 1.05rem; }
-
-    .floating-plus-btn {
-      background-color: var(--accent-green);
-      color: var(--text-light);
-      border-radius: 50%;
-      font-size: 1.2rem;
-      border: none;
+      padding: 1.2rem;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      justify-self: center;
+      gap: 0.6rem;
+      transition: all 0.2s;
+      box-shadow: 0 10px 25px -5px rgba(104, 160, 60, 0.2);
+    }
+    .btn-activation-execute:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 30px -5px rgba(104, 160, 60, 0.3);
     }
 
-    #mediaFileInput { display: none; }
-    #imageSourceInput { display: none; }
+    /* RIGHT STANDALONE DISPLAY PREVIEW HUD CARD CONTAINER */
+    .preview-hub-card {
+      background-color: var(--card-premium-dark);
+      border: 1px solid var(--border-glow-line);
+      border-radius: 28px;
+      padding: 2.5rem;
+      position: sticky;
+      top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
 
-    /* Invisible Metadata Semantic SEO Layer */
-    .seo-footer-text {
+    .hud-title-badge {
       width: 100%;
-      max-width: 480px;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #222222; 
-      line-height: 1.5;
+      text-align: left;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    /* High Precision Geometric Graphic Render Port Pool Frame */
+    .geometric-matrix-viewport {
+      background-color: #ffffff;
+      padding: 1.75rem;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 240px;
+      aspect-ratio: 1;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .geometric-matrix-viewport canvas { width: 100% !important; height: auto !important; }
+
+    /* Custom Live Color Theme Swatcher Selector Configuration Interface */
+    .palette-swatch-center {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background-color: var(--nested-input-bg);
+      padding: 0.65rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid var(--border-glow-line);
+    }
+    .palette-swatch-center label { font-size: 0.8rem; font-weight: 700; color: var(--text-dim-slate); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .swatch-node-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .swatch-node-dot:hover { transform: scale(1.2); }
+    .swatch-node-dot.active-selected-dot { border-color: var(--text-glow-white); transform: scale(1.1); }
+
+    /* Control Actions Base Grid Utility Bar */
+    .utility-action-bar-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .hud-action-btn {
+      background-color: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-glow-line);
+      border-radius: 12px;
+      color: #cbd5e1;
+      padding: 0.95rem 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hud-action-btn:hover { background-color: rgba(255,255,255,0.06); color: var(--text-glow-white); border-color: #475569; }
+    .hud-action-btn.disabled-state { background-color: #0d1321; color: #334155; cursor: not-allowed; border-color: #1e293b; }
+
+    .scan-action-trigger {
+      background-color: var(--accent-brand-green);
+      color: #090d16;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: background 0.2s;
+    }
+    .scan-action-trigger:hover { background-color: var(--accent-brand-hover); color: var(--text-glow-white); }
+
+    #hiddenScannerBridgeElement { display: none; }
+    #hiddenImageUploaderBridge { display: none; }
+
+    /* Invisible Metadata Semantic SEO Layer Network Core Overlay Mapping Grid */
+    .seo-semantic-crawler-layer {
+      width: 100%;
+      max-width: 1040px;
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-glow-line);
+      font-size: 0.78rem;
+      color: #0f1624; 
+      line-height: 1.6;
       text-align: justify;
     }
   </style>
 </head>
 <body>
 
-  <!-- Premium Header Line Interface -->
-  <div class="nav-header">
-    <div class="brand-logo">
-      <i class="fa-solid fa-qrcode" style="color: #68a03c;"></i>
-      <div>THE QR CODE<br><span>GENERATOR</span></div>
+  <div class="studio-navbar">
+    <div class="brand-identity">
+      <div class="logo-wrapper"><i class="fa-solid fa-qrcode"></i></div>
+      <div class="brand-title">
+        <h1>THE QR STUDIO</h1>
+        <span>Next-Gen Enterprise Engine</span>
+      </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 1.2rem;">
-      <button class="btn-top-signup">Sign up free</button>
-      <i class="fa-solid fa-bars menu-burger"></i>
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <button class="nav-cta-btn">Sign up free</button>
+      <i class="fa-solid fa-bars-staggered" style="font-size: 1.3rem; cursor: pointer;"></i>
     </div>
   </div>
 
-  <!-- Application Central Grid Box Panel -->
-  <div class="app-card">
+  <div class="master-workspace-grid">
     
-    <!-- Custom Touch Navigation Carousel Slider -->
-    <div class="scroller-wrapper">
-      <div class="type-scroller">
-        <div class="scroll-node active" id="tabUrl" onclick="toggleAppFormat('url')">
-          <i class="fa-solid fa-link"></i>
-          <span>URL</span>
-        </div>
-        <div class="scroll-node" id="tabPdf" onclick="toggleAppFormat('pdf')">
-          <i class="fa-solid fa-file-pdf"></i>
-          <span>PDF</span>
-        </div>
-        <div class="scroll-node" id="tabImage" onclick="toggleAppFormat('image')">
-          <i class="fa-solid fa-image"></i>
-          <span>IMAGE</span>
-        </div>
-      </div>
-      <i class="fa-solid fa-chevron-right arrow-next"></i>
-    </div>
-
-    <!-- Live Title Headline Description -->
-    <div class="action-title-text" id="actionHeadlineTitle">Link a Website URL to share easily</div>
-
-    <!-- Alert Box Container -->
-    <div class="info-banner">
-      <i class="fa-solid fa-circle-info"></i>
-      <span>Only available for dynamic codes</span>
-    </div>
-
-    <!-- Form Data Dynamic Targets Inputs -->
-    <div id="urlInputGroup" class="panel-input-container active">
-      <input type="url" id="urlInputField" class="native-input" placeholder="https://example.com" oninput="liveCompileMatrixQR()" />
-    </div>
-
-    <div id="pdfInputGroup" class="panel-input-container">
-      <input type="url" id="pdfInputField" class="native-input" placeholder="Cloud shareable PDF link (Drive/Dropbox)" oninput="liveCompileMatrixQR()" />
-    </div>
-
-    <!-- Upgraded Native Photo/Image File Converter Interface Module -->
-    <div id="imageInputGroup" class="panel-input-container">
-      <div class="custom-file-box" onclick="triggerImageFilePicker()">
-        <i class="fa-solid fa-cloud-arrow-up"></i>
-        <p>Click to upload Photo / Image Asset</p>
-        <div class="file-status-tag" id="imageUploadStatus">✓ Image file loaded inside vector pool</div>
-      </div>
-      <input type="file" id="imageSourceInput" accept="image/*" onchange="convertImageToMatrixPayload(event)" />
-    </div>
-
-    <!-- Core Form Action Commit Node -->
-    <button class="btn-main-action">Sign up free</button>
-
-    <!-- Matrix Geometric Output Interface -->
-    <div class="output-section-grid">
-      <div class="qr-canvas-holder">
-        <canvas id="appVectorCanvas"></canvas>
-      </div>
+    <div class="control-desk-card">
       
-      <!-- Live Preset Color Swatcher Sidebar Carousel -->
-      <div class="presets-stack">
-        <i class="fa-solid fa-chevron-up preset-icon-btn"></i>
-        <div class="mini-preset-preview" onclick="applyColorPreset('#000000')">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Sample" alt="Classic Black">
+      <div class="workspace-section">
+        <div class="section-headline"><span>01</span> Choose Content Structure</div>
+        <div class="premium-tab-bar">
+          <button class="tab-trigger-node active-state" id="tabNodeUrl" onclick="routeStudioWorkspace('url')">
+            <i class="fa-solid fa-globe"></i>
+            <span>Website URL</span>
+          </button>
+          <button class="tab-trigger-node" id="tabNodePdf" onclick="routeStudioWorkspace('pdf')">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>PDF Link</span>
+          </button>
+          <button class="tab-trigger-node" id="tabNodeImage" onclick="routeStudioWorkspace('image')">
+            <i class="fa-solid fa-camera-retro"></i>
+            <span>Image File</span>
+          </button>
         </div>
-        <div class="mini-preset-preview" style="border-color: #a855f7;" onclick="applyColorPreset('#6b21a8')">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Sample&color=6b21a8" alt="Royal Purple">
-        </div>
-        <div class="mini-preset-preview" style="border-color: #10b981;" onclick="applyColorPreset('#047857')">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Sample&color=047857" alt="Teal Variant">
-        </div>
-        <i class="fa-solid fa-chevron-down preset-icon-btn"></i>
       </div>
+
+      <div class="system-status-banner">
+        <i class="fa-solid fa-compass-drafting" style="color: var(--accent-brand-green); font-size: 1.1rem;"></i>
+        <span id="studioInstructionLabel">Enter a secure HTTP/HTTPS address parameters to parse into your structural dynamic matrix tracking network loop asset.</span>
+      </div>
+
+      <div class="workspace-section">
+        <div class="section-headline"><span>02</span> Configure Target Parameters</div>
+        
+        <div id="panelRouteUrl" class="routed-viewport-panel active-viewport">
+          <input type="url" id="inputUrlTargetData" class="studio-premium-input" placeholder="https://brand.com/campaign-landing-address" oninput="executeLiveMatrixCompilePipeline()" />
+        </div>
+
+        <div id="panelRoutePdf" class="routed-viewport-panel">
+          <input type="url" id="inputPdfTargetData" class="studio-premium-input" placeholder="Paste target cloud hosted presentation document link..." oninput="executeLiveMatrixCompilePipeline()" />
+        </div>
+
+        <div id="panelRouteImage" class="routed-viewport-panel">
+          <div class="intelligent-dropzone" onclick="launchSystemHardwareUploader()">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <p>Select local photo or graphic asset</p>
+            <span>Supports high resolution PNG, JPEG, JPG up to 10MB safely</span>
+            
+            <div class="uploaded-thumbnail-preview-box" id="thumbnailPreviewContainer" onclick="event.stopPropagation();">
+              <img id="livePreviewThumbImg" src="" alt="Thumbnail Preview">
+              <div class="thumb-meta-text">
+                <h5 id="livePreviewFileName">asset_file_stream.jpg</h5>
+                <p>✓ Matrix Pool Loaded</p>
+              </div>
+            </div>
+          </div>
+          <input type="file" id="hiddenImageUploaderBridge" accept="image/*" onchange="processFileStreamIntoBase64(event)" />
+        </div>
+      </div>
+
+      <button class="btn-activation-execute">
+        <span>Compile Dynamic Production Asset</span>
+        <i class="fa-solid fa-bolt-lightning"></i>
+      </button>
+
     </div>
 
-    <!-- Bottom Actions Control Center HUD -->
-    <div class="bottom-toolbar">
-      <button class="tool-btn active-save">Save</button>
-      <button class="tool-btn btn-iconic" onclick="downloadMatrixAsset()"><i class="fa-solid fa-download"></i></button>
-      <button class="tool-btn btn-iconic" onclick="triggerImportScanner()"><i class="fa-solid fa-copy"></i></button>
-      <button class="floating-plus-btn" onclick="triggerImportScanner()"><i class="fa-solid fa-plus"></i></button>
-    </div>
+    <div class="preview-hub-card">
+      <div class="hud-title-badge">
+        <i class="fa-solid fa-microchip" style="color: var(--accent-brand-green);"></i>
+        <span>High-Precision Realtime Vector Output</span>
+      </div>
 
-    <!-- Hidden system native scanning utility file bridge hook -->
-    <input type="file" id="mediaFileInput" accept="image/*" onchange="decodeUploadedImageQR(event)" />
+      <div class="geometric-matrix-viewport">
+        <canvas id="studioMasterVectorCanvas"></canvas>
+      </div>
+
+      <div class="palette-swatch-center">
+        <label>Theme Matrix:</label>
+        <div class="swatch-node-dot active-selected-dot" style="background-color: #000000;" onclick="shiftActiveMatrixColorTheme('#000000', this)"></div>
+        <div class="swatch-node-dot" style="background-color: #1d4ed8;" onclick="shiftActiveMatrixColorTheme('#1d4ed8', this)"></div>
+        <div class="swatch-node-dot" style="background-color: #6d28d9;" onclick="shiftActiveMatrixColorTheme('#6d28d9', this)"></div>
+        <div class="swatch-node-dot" style="background-color: #047857;" onclick="shiftActiveMatrixColorTheme('#047857', this)"></div>
+      </div>
+
+      <div class="utility-action-bar-grid">
+        <button class="hud-action-btn disabled-state">Save</button>
+        <button class="hud-action-btn" onclick="executeAssetExportDownload()"><i class="fa-solid fa-file-arrow-down"></i> Export PNG</button>
+        <button class="scan-action-trigger" onclick="launchOfflineHardwareScanner()"><i class="fa-solid fa-expand"></i> Scan QR</button>
+      </div>
+
+    </div>
 
   </div>
 
-  <!-- Deep Crawl Semantic Optimizer Keyword Hub for Search Engines -->
-  <div class="seo-footer-text">
+  <input type="file" id="hiddenScannerBridgeElement" accept="image/*" onchange="decodeImportedGraphicMatrix(event)" />
+
+  <div class="seo-semantic-crawler-layer">
     Utilize our flagship free dynamic qr code generator platform suite. Built natively to execute instant data conversions such as cloud hosted photo to qr code configurations, digital document image to qr link matrices, and robust business analytics tracking endpoints seamlessly.
   </div>
 
   <script>
-    let activeColorNode = "#000000";
-    let imageBase64DataString = ""; // Stores conversion strings for targeted rendering
+    let activeMatrixHexColorToken = "#000000";
+    let internalBufferedBase64ImagePayload = "";
 
-    // Application Router Layout Format Toggle Controllers
-    function toggleAppFormat(formatType) {
-      document.querySelectorAll('.scroll-node').forEach(n => n.classList.remove('active'));
-      document.querySelectorAll('.panel-input-container').forEach(c => c.classList.remove('active'));
+    // Multi-Format Interface Router Panel Switch Logic Engine
+    function routeStudioWorkspace(viewportCodeKey) {
+      document.querySelectorAll('.tab-trigger-node').forEach(t => t.classList.remove('active-state'));
+      document.querySelectorAll('.routed-viewport-panel').forEach(v => v.classList.remove('active-viewport'));
       
-      const headline = document.getElementById('actionHeadlineTitle');
+      const instructionsLabelNode = document.getElementById('studioInstructionLabel');
 
-      if (formatType === 'url') {
-        document.getElementById('tabUrl').classList.add('active');
-        document.getElementById('urlInputGroup').classList.add('active');
-        headline.textContent = "Link a Website URL to share easily";
-      } else if (formatType === 'pdf') {
-        document.getElementById('tabPdf').classList.add('active');
-        document.getElementById('pdfInputGroup').classList.add('active');
-        headline.textContent = "Link a PDF document to share easily";
+      if (viewportCodeKey === 'url') {
+        document.getElementById('tabNodeUrl').classList.add('active-state');
+        document.getElementById('panelRouteUrl').classList.add('active-viewport');
+        instructionsLabelNode.textContent = "Enter a secure HTTP/HTTPS address parameters to parse into your structural dynamic matrix tracking network loop asset.";
+      } else if (viewportCodeKey === 'pdf') {
+        document.getElementById('tabNodePdf').classList.add('active-state');
+        document.getElementById('panelRoutePdf').classList.add('active-viewport');
+        instructionsLabelNode.textContent = "Embed external document endpoints or hosted cloud presentation data files into your secure geometric payload blueprint matrices.";
       } else {
-        document.getElementById('tabImage').classList.add('active');
-        document.getElementById('imageInputGroup').classList.add('active');
-        headline.textContent = "Upload an image asset to share instantly via vector matrix";
+        document.getElementById('tabNodeImage').classList.add('active-state');
+        document.getElementById('panelRouteImage').classList.add('active-viewport');
+        instructionsLabelNode.textContent = "Directly load local raw images, photos or branding graphic components into instant scan-ready base64 encrypted matrix streams.";
       }
-      liveCompileMatrixQR();
-    }
-
-    // Trigger File System Picker Hidden Field
-    function triggerImageFilePicker() {
-      document.getElementById('imageSourceInput').click();
-    }
-
-    // Convert Native File Stream into Base64 Pipeline
-    function convertImageToMatrixPayload(event) {
-      const selectedFile = event.target.files[0];
-      if (!selectedFile) return;
-
-      const fileScannerReader = new FileReader();
-      fileScannerReader.onload = function(e) {
-        imageBase64DataString = e.target.result; // Dynamic base64 parsed token
-        document.getElementById('imageUploadStatus').style.display = 'block';
-        liveCompileMatrixQR();
-      };
-      fileScannerReader.readAsDataURL(selectedFile);
-    }
-
-    // High Performance QR Vector Canvas Rendering Compiler Core Engine
-    function liveCompileMatrixQR() {
-      let rawStringPayload = "https://theqrcode-generator.com"; // Fallback platform token routing path
-      
-      if (document.getElementById('urlInputGroup').classList.contains('active')) {
-        const val = document.getElementById('urlInputField').value.trim();
-        if(val) rawStringPayload = val;
-      } else if (document.getElementById('pdfInputGroup').classList.contains('active')) {
-        const val = document.getElementById('pdfInputField').value.trim();
-        if(val) rawStringPayload = val;
-      } else {
-        // Image processing state pipeline logic router
-        if(imageBase64DataString) {
-          rawStringPayload = imageBase64DataString;
-        } else {
-          rawStringPayload = "No image asset attached to target layout matrix.";
-        }
-      }
-
-      const renderingCanvas = document.getElementById("appVectorCanvas");
-      
-      QRCode.toCanvas(renderingCanvas, rawStringPayload, {
-        width: 170,
-        margin: 0,
-        color: {
-          dark: activeColorNode,
-          light: "#ffffff"
-        }
-      }, exception => {
-        if (exception) console.error("Matrix compilation script execution interrupted.");
-      });
-    }
-
-    // Live Custom Aesthetic Palette Preset Swatcher Linker
-    function applyColorPreset(hexValue) {
-      activeColorNode = hexValue;
-      liveCompileMatrixQR();
-    }
-
-    // Direct High-Res Canvas Asset Download Pipeline Execution
-    function downloadMatrixAsset() {
-      const finalSrcCanvas = document.getElementById("appVectorCanvas");
-      const dynamicVirtualAnchor = document.createElement("a");
-      dynamicVirtualAnchor.href = finalSrcCanvas.toDataURL("image/png");
-      dynamicVirtualAnchor.download = "qr_matrix_export.png";
-      dynamicVirtualAnchor.click();
-    }
-
-    // Serverless Geometric Multi-Format Scanner Decoding Engine
-    function triggerImportScanner() {
-      document.getElementById('mediaFileInput').click();
-    }
-
-    async function decodeUploadedImageQR(event) {
-      const targetBlobFile = event.target.files[0];
-      if (!targetBlobFile) return;
-      
-      try {
-        const decoderEngineInstance = new Html5Qrcode("mediaFileInput");
-        const structuralResultText = await decoderEngineInstance.scanFile(targetBlobFile, true);
-        alert(`Decoded Matrix Content Successfully:\n\n${structuralResultText}`);
-      } catch (err) {
-        alert("Decoding Error: Target data structure cannot be verified or parsed successfully.");
-      }
-    }
-
-    // Window Run Init Boot Trigger
-    window.onload = () => {
-      liveCompileMatrixQR();
-    };
-  </script>
-</body>
-</html>
+      executeLiveMatrixCompilePip
