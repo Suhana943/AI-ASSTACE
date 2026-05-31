@@ -294,60 +294,454 @@
 
   input = input.toLowerCase();
 
-  if (input.includes("your name")) {
-    response = "🤖: My name is AI Assistant, built to help you!";
-  } else if (input.includes("your college")) {
-    response = "🤖: I'm part of Suhana's college AI project!";
-  } else if (input.includes("your creator")) {
-    response = "🤖: I was created by Suhana, with the help of Apple-level innovation!";
-  } else if (input.includes("apple")) {
-    response = "🤖: Apple is a leading tech company known for the iPhone, Mac, and more!";
-  } else {
-    response = "🤖: You said: " + input;
-  }
-
-  addMessage(response);
-  speak(response.replace("🤖: ", ""));
-}
-
-
-    async function scanQRFromImage(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      try {
-        const html5QrCode = new Html5Qrcode("qrInput");
-        const decodedText = await html5QrCode.scanFile(file, true);
-        addMessage("📷 QR Code: " + decodedText);
-        speak("QR code contains: " + decodedText);
-      } catch (err) {
-        addMessage("❌ Could not detect QR code.");
-      }
+  if (input.<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NexusQR Studio - Premium Free Dynamic QR Code Generator & AI Workspace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="description" content="Create custom high-resolution dynamic QR codes instantly. Fast vector matrix generator for URL link embedding, image files, photos, with a built-in AI Assistant panel." />
+  <meta name="keywords" content="qr, qr code, qr generator, image to qr, photo to qr, ai qr generator, link to qr, qr maker, scan qr, nexusqr" />
+  <meta name="robots" content="index, follow" />
+  
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-global: #f1f5f9;        
+      --panel-bg: #ffffff;         
+      --border-color: #e2e8f0;     
+      --text-main: #0f172a;        
+      --text-muted: #64748b;       
+      --primary: #2563eb;          
+      --secondary: #4f46e5;        
+      --input-bg: #f8fafc;         
     }
 
-    function generateQR() {
-      const text = document.getElementById("qrTextInput").value;
-      if (!text) return alert("Enter some text first.");
-      const canvas = document.getElementById("qrCanvas");
-      QRCode.toCanvas(canvas, text, { width: 200, color: { dark: "#00f0ff", light: "#0000" } }, err => {
-        if (err) return alert("QR generation failed.");
-        addMessage("✅ QR Code generated.");
-        speak("QR code created successfully.");
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: var(--bg-global);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1250px; /* Expanded for 3-column professional layout */
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 32px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .brand-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* --- 3-Column Studio Dashboard Grid --- */
+    .studio-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr; /* Tool | Output | AI Assistant */
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .studio-layout { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .studio-layout { grid-template-columns: 1fr; }
+    }
+
+    .panel-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+    }
+
+    .panel-card h3 { 
+      font-size: 1.15rem; 
+      font-weight: 700;
+      color: var(--text-main); 
+      display: flex; 
+      align-items: center; 
+      gap: 0.6rem; 
+    }
+
+    /* Tabs Architecture */
+    .mini-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .mini-tab-btn {
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .mini-tab-btn.active {
+      background: var(--text-main);
+      color: #ffffff;
+      border-color: var(--text-main);
+    }
+
+    .field-input {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid #e2e8f0;
+      padding: 1rem;
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .field-input:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .input-panel { display: none; flex-direction: column; gap: 1rem; }
+    .input-panel.active { display: flex; }
+
+    .canvas-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.5rem;
+      min-height: 240px;
+      border: 1px solid var(--border-color);
+    }
+
+    canvas {
+      background: white !important;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      display: none;
+    }
+
+    .download-link {
+      display: none;
+      margin-top: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .file-wrapper { position: relative; overflow: hidden; width: 100%; }
+    .file-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }
+    
+    .custom-file-btn {
+      border: 2px dashed #cbd5e1;
+      color: var(--text-muted);
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: block;
+    }
+
+    #scanResultOverlay {
+      display: none;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid #10b981;
+      color: #065f46;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+
+    /* --- NEW: Interactive AI Assistant Interface Box --- */
+    .ai-chat-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      height: 250px;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-bubble {
+      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.4;
+    }
+
+    .chat-bubble.ai {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      align-self: flex-start;
+    }
+
+    .chat-bubble.user {
+      background: var(--primary);
+      color: #ffffff;
+      align-self: flex-end;
+    }
+
+    .ai-input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1 class="brand-title">NexusQR Studio</h1>
+      <p style="color: var(--text-muted); font-weight: 500;">Next-Gen Multi-Format Engine with AI Workspace</p>
+    </header>
+
+    <div class="studio-layout">
+      
+      <div class="panel-card">
+        <h3><i class="fa-solid fa-sliders" style="color: var(--primary);"></i> 1. Choose Asset Format</h3>
+        
+        <div class="mini-tabs">
+          <div class="mini-tab-btn active" onclick="switchStudioTab('urlBox', this)">URL Link</div>
+          <div class="mini-tab-btn" onclick="switchStudioTab('imageBox', this)">Image Link</div>
+          <div class="mini-tab-btn" onclick="switchStudioTab('textBox', this)">Raw Text</div>
+        </div>
+
+        <div id="urlBox" class="input-panel active">
+          <label style="font-size: 0.8rem; font-weight: 700;">Target Web Address URL</label>
+          <input type="url" id="urlInput" class="field-input" placeholder="https://brand.com/target" />
+        </div>
+
+        <div id="imageBox" class="input-panel">
+          <label style="font-size: 0.8rem; font-weight: 700;">Host Image / Photo URL</label>
+          <input type="url" id="imageInput" class="field-input" placeholder="https://imgbb.com/your-photo" />
+        </div>
+
+        <div id="textBox" class="input-panel">
+          <label style="font-size: 0.8rem; font-weight: 700;">Plaintext Content Array</label>
+          <textarea id="textInput" class="field-input" rows="3" placeholder="Enter configuration details or custom phrases..."></textarea>
+        </div>
+
+        <button class="action-btn" onclick="compileStudioQR()">Compile Vector Layout</button>
+      </div>
+
+      <div class="panel-card" style="justify-content: space-between;">
+        <div class="canvas-display">
+          <div id="placeholderText" style="color: var(--text-muted); font-size: 0.85rem; text-align: center;">
+            <i class="fa-solid fa-qrcode" style="font-size: 2rem; color: #cbd5e1; display: block; margin-bottom: 0.5rem;"></i>
+            QR asset will preview here.
+          </div>
+          <canvas id="vectorCanvas"></canvas>
+          <a id="exportAction" class="download-link" onclick="triggerCanvasDownload()"><i class="fa-solid fa-arrow-down-to-line"></i> Download PNG</a>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> Matrix Scanner</h3>
+          <div id="scanResultOverlay"></div>
+          <div class="file-wrapper">
+            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Scan Asset</span>
+            <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <h3><i class="fa-solid fa-wand-magic-sparkles" style="color: #4f46e5;"></i> 2. AI Assistant Workstation</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem;">Ask AI to shorten links, format codes, or prepare templates.</p>
+        
+        <div class="ai-chat-box" id="chatContainer">
+          <div class="chat-bubble ai">
+            Hello! I am your <strong>Nexus QR Assistant</strong>. Need help generating professional short links, business bio arrays, or custom marketing data blocks? Let me know!
+          </div>
+        </div>
+
+        <div class="ai-input-group">
+          <input type="text" id="aiInputPrompt" class="field-input" placeholder="Type instructions..." onkeypress="handleChatKey(event)" />
+          <button class="action-btn" style="padding: 0 1.25rem;" onclick="executeAISimulation()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+      <h2 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem;">Enterprise Multi-Format Suite with AI Capabilities</h2>
+      <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+        Our flagship <strong>free dynamic qr code generator</strong> workspace combines machine learning tools with high-speed compilation. Easily scale conversions using native <strong>image to qr</strong> maps, hosted <strong>photo to qr code</strong> arrays, and smart short-link parameters designed for real-time search engine prominence.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    function switchStudioTab(boxId, tabElement) {
+      document.querySelectorAll('.input-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.mini-tab-btn').forEach(t => t.classList.remove('active'));
+      document.getElementById(boxId).classList.add('active');
+      tabElement.classList.add('active');
+    }
+
+    function compileStudioQR() {
+      let finalData = "";
+      if (document.getElementById('urlBox').classList.contains('active')) {
+        finalData = document.getElementById('urlInput').value.trim();
+        if(finalData && !finalData.startsWith('http')) return alert("Use valid http:// or https://");
+      } else if (document.getElementById('imageBox').classList.contains('active')) {
+        finalData = document.getElementById('imageInput').value.trim();
+        if(finalData && !finalData.startsWith('http')) return alert("Use valid image cloud link");
+      } else {
+        finalData = document.getElementById('textInput').value.trim();
+      }
+
+      if (!finalData) return alert("Please specify input.");
+
+      const targetCanvas = document.getElementById("vectorCanvas");
+      const placeholder = document.getElementById("placeholderText");
+      
+      QRCode.toCanvas(targetCanvas, finalData, { width: 200, margin: 1, color: { dark: "#0f172a", light: "#ffffff" } }, err => {
+        if (err) return alert("Compilation exception.");
+        placeholder.style.display = "none";
+        targetCanvas.style.display = "block";
+        document.getElementById("exportAction").style.display = "inline-flex";
       });
     }
 
-    function downloadQRCanvas() {
-      const canvas = document.getElementById("qrCanvas");
-      const link = document.createElement("a");
-      link.download = "qr-code.png";
-      link.href = canvas.toDataURL();
-      link.click();
+    function triggerCanvasDownload() {
+      const finalCanvas = document.getElementById("vectorCanvas");
+      const triggerLink = document.getElementById("exportAction");
+      triggerLink.href = finalCanvas.toDataURL("image/png");
+      triggerLink.download = "nexus_qr_code.png";
     }
 
-    window.onload = () => {
-      const welcome = "Hi! I am your AI Assistant. Ask something or scan or generate a QR code.";
-      addMessage("🤖: " + welcome);
-      speak(welcome);
-    };
+    async function processImportedQR(e) {
+      const binaryFile = e.target.files[0];
+      if (!binaryFile) return;
+      const fileLabel = document.getElementById('fileLabel');
+      const resultOverlay = document.getElementById('scanResultOverlay');
+      fileLabel.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Reading...`;
+      resultOverlay.style.display = "none";
+      try {
+        const matrixScannerInstance = new Html5Qrcode("mediaUpload");
+        const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
+        resultOverlay.textContent = `Content: ${parsedResult}`;
+        resultOverlay.style.background = "rgba(16, 185, 129, 0.08)"; resultOverlay.style.color = "#065f46";
+        resultOverlay.style.display = "block";
+      } catch (err) {
+        resultOverlay.textContent = "Failed decoding matrix image asset.";
+        resultOverlay.style.background = "rgba(239, 68, 68, 0.08)"; resultOverlay.style.color = "#991b1b";
+        resultOverlay.style.display = "block";
+      } finally {
+        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Scan Asset`;
+      }
+    }
+
+    // Interactive AI Chat Simulation Router
+    function handleChatKey(e) { if(e.key === 'Enter') executeAISimulation(); }
+
+    function executeAISimulation() {
+      const promptInput = document.getElementById('aiInputPrompt');
+      const text = promptInput.value.trim();
+      if(!text) return;
+
+      const container = document.getElementById('chatContainer');
+      
+      // Append User message
+      const userBubble = document.createElement('div');
+      userBubble.className = "chat-bubble user";
+      userBubble.textContent = text;
+      container.appendChild(userBubble);
+      promptInput.value = "";
+      
+      container.scrollTop = container.scrollHeight;
+
+      // Smart Assistant Simulated Response
+      setTimeout(() => {
+        const aiBubble = document.createElement('div');
+        aiBubble.className = "chat-bubble ai";
+        aiBubble.innerHTML = `🤖 <strong>Processing Strategy:</strong> I have evaluated your request: "<em>${text}</em>". You can immediately map this configuration array into our left dynamic matrix builder panel for direct 1-click high-res vector compilation!`;
+        container.appendChild(aiBubble);
+        container.scrollTop = container.scrollHeight;
+      }, 800);
+    }
   </script>
 </body>
 </html>
