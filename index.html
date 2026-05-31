@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
   <script src="https://unpkg.com/html5-qrcode" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -44,14 +45,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow-x: hidden;
     }
 
-    /* --- NEW: Professional Navigation Bar --- */
+    /* --- Smooth Navigation Bar --- */
     .navbar {
       width: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
       padding: 1rem 2rem;
       display: flex;
@@ -60,6 +62,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-brand {
@@ -82,7 +85,7 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; } /* Mobile optimization */
+      .nav-links { display: none; }
     }
 
     .nav-links a {
@@ -90,7 +93,7 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       font-weight: 600;
-      transition: color 0.2s;
+      transition: color 0.25s ease;
     }
 
     .nav-links a:hover {
@@ -112,7 +115,7 @@
       cursor: pointer;
       padding: 0.6rem 1.2rem;
       border-radius: 10px;
-      transition: background 0.2s;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-login:hover {
@@ -128,11 +131,12 @@
       cursor: pointer;
       padding: 0.6rem 1.2rem;
       border-radius: 10px;
-      transition: opacity 0.2s;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-signup:hover {
       opacity: 0.9;
+      transform: translateY(-1px);
     }
 
     /* --- Container Layout --- */
@@ -145,6 +149,7 @@
       padding: 3.5rem;
       box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04);
       margin: 3rem 1rem;
+      will-change: transform;
     }
 
     header {
@@ -169,7 +174,7 @@
       font-weight: 500;
     }
 
-    /* Tab Switcher Interface Custom Design Layout */
+    /* Tab Switcher Interface Transitions Engine */
     .tab-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -188,7 +193,7 @@
       border-radius: 16px;
       cursor: pointer;
       text-align: center;
-      transition: all 0.25s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -198,7 +203,7 @@
     .tab-card i {
       font-size: 1.5rem;
       color: var(--text-muted);
-      transition: color 0.25s;
+      transition: color 0.3s ease;
     }
 
     .tab-card span {
@@ -215,8 +220,8 @@
     .tab-card.active {
       background: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.15);
-      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.12);
+      transform: translateY(-4px);
     }
 
     .tab-card.active i {
@@ -242,7 +247,6 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
     }
 
     .qr-card h3 { 
@@ -263,7 +267,7 @@
       color: var(--text-main);
       font-size: 0.95rem;
       font-weight: 500;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .field-input:focus {
@@ -282,23 +286,29 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       text-align: center;
     }
 
     .action-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
     }
 
     .input-panel {
       display: none;
       flex-direction: column;
       gap: 1.2rem;
+      animation: fadeInSmooth 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
     .input-panel.active {
       display: flex;
+    }
+
+    @keyframes fadeInSmooth {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Custom UI Direct Image Upload Dropzone Field Box */
@@ -336,7 +346,7 @@
       margin-top: 0.25rem;
     }
 
-    /* Live Mini Preview Overlay Element Box Row */
+    /* Live Mini Preview Overlay Box Row */
     .live-uploader-thumb-panel {
       margin-top: 1rem;
       background: #ffffff;
@@ -348,6 +358,7 @@
       gap: 0.85rem;
       text-align: left;
       display: none; 
+      animation: fadeInSmooth 0.25s ease-out;
     }
 
     .live-uploader-thumb-panel img {
@@ -403,6 +414,12 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       display: none;
+      animation: scaleUpQRCode 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes scaleUpQRCode {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .download-link {
@@ -462,20 +479,20 @@
       word-break: break-all;
     }
 
-    /* --- NEW: Interactive Attractive Auth Modals --- */
+    /* --- High Performance Auth Modal Matrix --- */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 1000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .modal-overlay.active {
@@ -490,14 +507,14 @@
       border-radius: 24px;
       padding: 2.5rem;
       border: 1px solid var(--border-color);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);
+      transform: scale(0.94) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
     }
 
     .modal-overlay.active .auth-modal {
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
 
     .modal-close {
@@ -513,6 +530,11 @@
       justify-content: center;
       color: var(--text-muted);
       font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e2e8f0;
     }
 
     .modal-header h4 {
@@ -692,21 +714,4 @@
           <div id="scanResultOverlay"></div>
 
           <div class="file-wrapper">
-            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset</span>
-            <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="seo-hub-panel">
-      <h2>Advanced Free Enterprise Matrix Engine: The All-in-One QR Code Framework</h2>
-      <p>
-        In today's global logistics ecosystem, a <strong>free dynamic qr code generator</strong> is mandatory for digital scaling. Our multi-utility framework features comprehensive <strong>image to qr</strong> data pathways, <strong>photo to qr code</strong> asset mapping, and high-density <strong>link to qr maker</strong> configurations. Optimize search layouts seamlessly with maximum authority.
-      </p>
-    </div>
-
-  </div>
-
-  <div clas
+            <span class="custom-file-btn" id="fileLabel"><
