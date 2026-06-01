@@ -1,15 +1,10 @@
 
-  <!-- Top Navigation Component -->
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>NexusQR Studio - Premium Free Dynamic QR Code Generator & High-Speed Scanner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <meta name="description" content="Create custom high-resolution dynamic QR codes instantly. Fast vector matrix generator for URL link embedding, image files, photos, and business operations. Includes built-in high-speed image asset scanner utility." />
-  <meta name="keywords" content="qr, qr code, qr generator, image to qr, photo to qr, link to qr, qr maker, create qr, scan qr, business qr, dynamic qr link, vector qr code, pdf to qr, barcode alternative, nexusqr" />
-  <meta name="robots" content="index, follow" />
   
   <script src="https://unpkg.com/html5-qrcode" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
@@ -29,11 +24,7 @@
       --success-green: #10b981;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
@@ -51,510 +42,98 @@
       padding: 1rem;
     }
 
-    /* --- Navigation Bar Component --- */
     .nexus-navbar {
-      width: 100%;
-      max-width: 1050px;
-      background: var(--panel-bg);
-      border: 1px solid var(--border-color);
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02);
+      width: 100%; max-width: 1050px; background: var(--panel-bg); border: 1px solid var(--border-color);
+      padding: 1rem 1.5rem; border-radius: 20px; display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 1.5rem; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02);
       position: relative;
     }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.03em;
-    }
-
-    .nav-brand span {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .menu-wrapper {
-      position: relative;
-    }
-
-    .three-dot-btn {
-      background: none;
-      border: none;
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-
-    .three-dot-btn:hover {
-      background: var(--bg-global);
-      color: var(--text-main);
-    }
-
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.25rem; }
+    .nav-brand span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .menu-wrapper { position: relative; }
+    .three-dot-btn { background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    
     .nav-dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 45px;
-      right: 0;
-      background: var(--panel-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      min-width: 190px;
-      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
-      z-index: 1000;
-      padding: 0.5rem;
-      animation: fadeInSmooth 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      display: none; position: absolute; top: 45px; right: 0; background: var(--panel-bg);
+      border: 1px solid var(--border-color); border-radius: 14px; min-width: 190px;
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1); z-index: 1000; padding: 0.5rem;
     }
+    .nav-dropdown-menu.active { display: block; }
 
-    .nav-dropdown-menu.active {
-      display: block;
-    }
+    .dropdown-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; border-radius: 10px; cursor: pointer; }
+    .dropdown-item:hover { background: var(--bg-global); color: var(--primary); }
 
-    .dropdown-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1rem;
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: background 0.2s ease;
-      cursor: pointer;
-    }
+    .container { width: 100%; max-width: 1050px; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04); }
+    header { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin-bottom: 2rem; text-align: center; }
+    .brand-title { font-size: 2rem; font-weight: 800; color: var(--text-main); }
+    .brand-tagline { font-size: 0.95rem; color: var(--text-muted); }
 
-    .dropdown-item:hover {
-      background: var(--bg-global);
-      color: var(--primary);
-    }
+    .tab-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; margin-bottom: 2rem; }
+    .tab-card { background: #f8fafc; border: 1px solid var(--border-color); padding: 0.75rem 0.5rem; border-radius: 12px; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+    .tab-card i { font-size: 1.1rem; color: var(--text-muted); }
+    .tab-card span { font-size: 0.75rem; font-weight: 700; color: var(--text-main); }
+    .tab-card.active { background: #ffffff; border-color: var(--primary); box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.1); transform: translateY(-2px); }
+    .tab-card.active i { color: var(--primary); }
 
-    /* --- Container Layout --- */
-    .container {
-      width: 100%;
-      max-width: 1050px; 
-      background: var(--panel-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 1.5rem;
-      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04);
-      will-change: transform;
-    }
+    .qr-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; }
+    .qr-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .qr-card h3 { font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+    .field-input { width: 100%; background: var(--input-bg); border: 1px solid #e2e8f0; padding: 1rem; border-radius: 12px; color: var(--text-main); font-size: 0.9rem; font-weight: 500; }
+    .field-input:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08); }
 
-    .brand-title {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--text-main);
-    }
+    .design-matrix-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; align-items: center; background: var(--input-bg); padding: 0.75rem; border-radius: 12px; border: 1px solid var(--border-color); }
+    .color-input-wrapper { display: flex; align-items: center; gap: 0.5rem; }
+    .color-input-wrapper label { font-size: 0.8rem; font-weight: 700; }
+    .native-color-node { -webkit-appearance: none; appearance: none; width: 36px; height: 36px; background-color: transparent; border: none; cursor: pointer; }
+    .native-color-node::-webkit-color-swatch { border-radius: 50%; border: 2px solid #ffffff; box-shadow: 0 0 0 2px var(--border-color); }
 
-    .brand-tagline {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    .action-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #ffffff; border: none; padding: 1rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-align: center; }
+    .input-panel { display: none; flex-direction: column; gap: 1rem; }
+    .input-panel.active { display: flex; }
 
-    /* Tab Switcher Interface Engine */
-    .tab-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
+    .premium-file-dropzone-wrapper { background-color: var(--input-bg); border: 2px dashed #cbd5e1; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; cursor: pointer; }
+    .premium-file-dropzone-wrapper i { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .premium-file-dropzone-wrapper p { font-size: 0.85rem; font-weight: 600; }
+    .premium-file-dropzone-wrapper span { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem; }
 
-    .tab-card {
-      background: #f8fafc;
-      border: 1px solid var(--border-color);
-      padding: 0.75rem 0.5rem;
-      border-radius: 12px;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.35rem;
-    }
+    .live-uploader-thumb-panel { margin-top: 0.75rem; background: #ffffff; border: 1px solid var(--border-color); border-radius: 10px; padding: 0.5rem; align-items: center; gap: 0.5rem; display: none; }
+    .live-uploader-thumb-panel img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; }
+    .thumb-info-block h5 { font-size: 0.8rem; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .thumb-info-block p { font-size: 0.7rem; color: var(--success-green); }
 
-    .tab-card i {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      transition: color 0.3s ease;
-    }
+    #hardwareNativePhotoUploader { display: none; }
+    .canvas-display { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border-radius: 16px; padding: 1.5rem; min-height: 240px; border: 1px solid var(--border-color); }
+    .canvas-placeholder { color: var(--text-muted); font-size: 0.85rem; text-align: center; }
+    canvas { background: white !important; padding: 12px; border-radius: 12px; max-width: 100%; height: auto !important; display: none; }
+    .download-link { display: none; margin-top: 1rem; color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.85rem; align-items: center; gap: 0.4rem; }
 
-    .tab-card span {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
+    .file-wrapper { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+    .file-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; }
+    .custom-file-btn { border: 1px dashed #cbd5e1; color: var(--text-muted); padding: 1.25rem 1rem; border-radius: 12px; text-align: center; background: #f8fafc; font-weight: 600; font-size: 0.9rem; display: block; }
+    
+    #scanResultOverlay { display: none; background: rgba(16, 185, 129, 0.08); border: 1px solid #10b981; color: #065f46; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; word-break: break-all; }
 
-    .tab-card p {
-      display: none; /* Hide descriptions on small layouts for cleanliness */
-    }
-
-    .tab-card.active {
-      background: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .tab-card.active i {
-      color: var(--primary);
-    }
-
-    /* Workplace Grid Separation */
-    .qr-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1.5rem;
-    }
-
-    .qr-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .qr-card h3 { 
-      font-size: 1.15rem; 
-      font-weight: 700;
-      color: var(--text-main); 
-      display: flex; 
-      align-items: center; 
-      gap: 0.5rem; 
-    }
-
-    .field-input {
-      width: 100%;
-      background: var(--input-bg);
-      border: 1px solid #e2e8f0;
-      padding: 1rem;
-      border-radius: 12px;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .field-input:focus {
-      outline: none;
-      background: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
-    }
-
-    /* Design Matrix Row */
-    .design-matrix-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      align-items: center;
-      background: var(--input-bg);
-      padding: 0.75rem;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-    }
-
-    .color-input-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .color-input-wrapper label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .native-color-node {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 36px;
-      height: 36px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    .native-color-node::-webkit-color-swatch {
-      border-radius: 50%;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 0 2px var(--border-color);
-    }
-
-    .action-btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #ffffff;
-      border: none;
-      padding: 1rem;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-
-    .input-panel {
-      display: none;
-      flex-direction: column;
-      gap: 1rem;
-      animation: fadeInSmooth 0.3s ease forwards;
-    }
-
-    .input-panel.active {
-      display: flex;
-    }
-
-    @keyframes fadeInSmooth {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* File Dropzone Box */
-    .premium-file-dropzone-wrapper {
-      background-color: var(--input-bg);
-      border: 2px dashed #cbd5e1;
-      border-radius: 12px;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .premium-file-dropzone-wrapper i {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .premium-file-dropzone-wrapper p {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .premium-file-dropzone-wrapper span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    /* Live Mini Preview */
-    .live-uploader-thumb-panel {
-      margin-top: 0.75rem;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      display: none; 
-    }
-
-    .live-uploader-thumb-panel img {
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .thumb-info-block h5 {
-      font-size: 0.8rem;
-      max-width: 140px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .thumb-info-block p {
-      font-size: 0.7rem;
-      color: var(--success-green);
-    }
-
-    #hardwareNativePhotoUploader {
-      display: none;
-    }
-
-    .canvas-display {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 1.5rem;
-      min-height: 240px;
-      border: 1px solid var(--border-color);
-    }
-
-    .canvas-placeholder {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    canvas {
-      background: white !important;
-      padding: 12px;
-      border-radius: 12px;
-      max-width: 100%;
-      height: auto !important;
-      display: none;
-    }
-
-    .download-link {
-      display: none;
-      margin-top: 1rem;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .file-wrapper {
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-      width: 100%;
-    }
-
-    .file-wrapper input[type=file] {
-      font-size: 100px;
-      position: absolute;
-      left: 0; top: 0; opacity: 0;
-    }
-
-    .custom-file-btn {
-      border: 1px dashed #cbd5e1;
-      color: var(--text-muted);
-      padding: 1.25rem 1rem;
-      border-radius: 12px;
-      text-align: center;
-      background: #f8fafc;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: block;
-    }
-
-    #scanResultOverlay {
-      display: none;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid #10b981;
-      color: #065f46;
-      padding: 0.75rem 1rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      word-break: break-all;
-    }
-
-    .seo-hub-panel {
-      margin-top: 3rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 2rem;
-    }
-
-    .seo-hub-panel h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .seo-hub-panel p {
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-
-    .helper-text {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    /* --- RESPONSIVE MEDIA QUERIES (Mobile Engine Layout Updates) --- */
     @media (max-width: 768px) {
-      body {
-        padding: 0.5rem;
-      }
-      .nexus-navbar {
-        padding: 0.75rem 1rem;
-        margin-bottom: 1rem;
-      }
-      .container {
-        padding: 1.25rem;
-        border-radius: 20px;
-      }
-      .brand-title {
-        font-size: 1.75rem;
-      }
-      .tab-container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.35rem;
-      }
-      .tab-card span {
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-      .tab-card i {
-        font-size: 1.1rem;
-      }
-      .qr-grid {
-        grid-template-columns: 1fr; /* Switch to stack layer on mobile view */
-        gap: 1.25rem;
-      }
-      .qr-card {
-        padding: 1.25rem;
-        border-radius: 16px;
-      }
-      .design-matrix-row {
-        grid-template-columns: 1fr; /* Stack color pickers elements */
-        gap: 0.75rem;
-      }
+      body { padding: 0.5rem; }
+      .nexus-navbar { padding: 0.75rem 1rem; margin-bottom: 1rem; }
+      .container { padding: 1.25rem; border-radius: 20px; }
+      .qr-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .design-matrix-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Component -->
   <nav class="nexus-navbar">
     <div class="nav-brand">
       <i class="fa-solid fa-qrcode" style="color: var(--primary);"></i>
       <div>NexusQR <span>Studio</span></div>
     </div>
     <div class="menu-wrapper">
-      <button class="three-dot-btn" id="dropdownMenuButton" onclick="toggleNavbarDropdown(event)" aria-label="Toggle menu">
+      <button class="three-dot-btn" id="dropdownMenuButton" onclick="toggleNavbarDropdown(event)">
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </button>
       <div class="nav-dropdown-menu" id="nexusDropdown">
@@ -589,66 +168,58 @@
     </div>
 
     <div class="qr-grid">
-      
       <div class="qr-card">
         <h3><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary);"></i> Configuration</h3>
         
         <div id="urlPanel" class="input-panel active">
           <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Target Web Address URL</label>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Target Web Address URL</label>
             <input type="url" id="urlInput" class="field-input" placeholder="https://example.com/your-destination" />
           </div>
-          <small class="helper-text">Generates an instant dynamic vector link layout for redirecting web users.</small>
         </div>
 
         <div id="imagePanel" class="input-panel">
           <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Select Photo / Image from Device Gallery</label>
-            
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Select Photo / Image</label>
             <div class="premium-file-dropzone-wrapper" onclick="openHardwareSystemPhotoBrowser()">
               <i class="fa-solid fa-images"></i>
-              <p>Click to select image file</p>
-              <span>Supports PNG, JPG up to 5MB directly</span>
+              <p id="uploadStatusText">Click to select image file</p>
+              <span>Supports PNG, JPG up to 5MB</span>
               
               <div class="live-uploader-thumb-panel" id="previewInlineFileThumbnailBar" onclick="event.stopPropagation();">
                 <img id="livePreviewImgElement" src="" alt="Live Uploaded Stream Target">
                 <div class="thumb-info-block">
                   <h5 id="livePreviewFileMetaName">selected_photo.jpg</h5>
-                  <p>✓ Loaded</p>
+                  <p id="streamStatusText">✓ Ready to Cloud Upload</p>
                 </div>
               </div>
             </div>
-            
-            <input type="file" id="hardwareNativePhotoUploader" accept="image/*" onchange="convertTargetPhotoIntoBase64Stream(event)" />
+            <input type="file" id="hardwareNativePhotoUploader" accept="image/*" onchange="handlePhotoSelection(event)" />
           </div>
-          <small class="helper-text">Converts raw local photo assets instantly into secure responsive vector matrices codes.</small>
         </div>
 
         <div id="restPanel" class="input-panel">
           <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Raw Text Block</label>
-            <textarea id="restInput" class="field-input" rows="3" placeholder="Enter plaintext sentences, descriptions..."></textarea>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Raw Text Block</label>
+            <textarea id="restInput" class="field-input" rows="3" placeholder="Enter plaintext sentences..."></textarea>
           </div>
-          <small class="helper-text">Encodes offline alphanumeric variables directly inside the static matrix code nodes.</small>
         </div>
 
-        <!-- Custom Styling Node Selector -->
         <div class="design-matrix-row">
           <div class="color-input-wrapper">
-            <input type="color" id="matrixForegroundNodeColor" class="native-color-node" value="#0f172a" title="Choose Foreground Color">
-            <label for="matrixForegroundNodeColor">QR Nodes Color</label>
+            <input type="color" id="matrixForegroundNodeColor" class="native-color-node" value="#0f172a">
+            <label for="matrixForegroundNodeColor">QR Nodes</label>
           </div>
           <div class="color-input-wrapper">
-            <input type="color" id="matrixBackgroundNodeColor" class="native-color-node" value="#ffffff" title="Choose Background Color">
+            <input type="color" id="matrixBackgroundNodeColor" class="native-color-node" value="#ffffff">
             <label for="matrixBackgroundNodeColor">BG Color</label>
           </div>
         </div>
 
-        <button class="action-btn" onclick="processSelectedFormQR()">Generate Custom QR Code</button>
+        <button class="action-btn" id="generateBtn" onclick="processSelectedFormQR()">Generate Custom QR Code</button>
       </div>
 
       <div class="qr-card" style="justify-content: space-between;">
-        
         <div class="canvas-display">
           <div id="placeholderText" class="canvas-placeholder">
             <i class="fa-solid fa-qrcode" style="font-size: 2rem; color: #cbd5e1; display: block; margin-bottom: 0.5rem;"></i>
@@ -660,29 +231,21 @@
 
         <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
           <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed Scanner</h3>
-          
           <div id="scanResultOverlay"></div>
-
           <div class="file-wrapper">
             <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR to Scan</span>
             <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
           </div>
         </div>
-
       </div>
     </div>
-
-    <div class="seo-hub-panel">
-      <h2>Advanced Free Enterprise Matrix Engine: The All-in-One QR Code Framework</h2>
-      <p>
-        In today's global logistics ecosystem, a <strong>free dynamic qr code generator</strong> is mandatory for digital scaling. Our multi-utility framework features comprehensive <strong>image to qr</strong> data pathways, <strong>photo to qr code</strong> asset mapping, and high-density <strong>link to qr maker</strong> configurations. Optimize search layouts seamlessly with maximum authority.
-      </p>
-    </div>
-
   </div>
 
-    <script>
-    let globallyStoredBase64PhotoAssetString = ""; 
+  <script>
+    // --- Tumhari ImgBB API Key yahan successfully embedded hai ---
+    const IMGBB_API_KEY = "01917854beac01d9a49c045a9bde435c"; 
+    
+    let rawSelectedFileObject = null;
 
     function toggleNavbarDropdown(event) {
       event.stopPropagation();
@@ -691,15 +254,12 @@
 
     window.addEventListener('click', function() {
       const dropdown = document.getElementById('nexusDropdown');
-      if (dropdown.classList.contains('active')) {
-        dropdown.classList.remove('active');
-      }
+      if (dropdown.classList.contains('active')) dropdown.classList.remove('active');
     });
 
     function switchQRTab(panelId, tabElement) {
       document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
       document.querySelectorAll('.tab-card').forEach(tab => tab.classList.remove('active'));
-      
       document.getElementById(panelId).classList.add('active');
       tabElement.classList.add('active');
     }
@@ -708,23 +268,50 @@
       document.getElementById('hardwareNativePhotoUploader').click();
     }
 
-    function convertTargetPhotoIntoBase64Stream(event) {
-      const activeUploadedFileObject = event.target.files[0];
-      if (!activeUploadedFileObject) return;
-
-      const continuousStreamReader = new FileReader();
-      continuousStreamReader.onload = function(e) {
-        globallyStoredBase64PhotoAssetString = e.target.result; 
-        
-        document.getElementById('livePreviewImgElement').src = globallyStoredBase64PhotoAssetString;
-        document.getElementById('livePreviewFileMetaName').textContent = activeUploadedFileObject.name;
+    function handlePhotoSelection(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      rawSelectedFileObject = file;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('livePreviewImgElement').src = e.target.result;
+        document.getElementById('livePreviewFileMetaName').textContent = file.name;
+        document.getElementById('streamStatusText').textContent = "✓ Ready to Cloud Upload";
+        document.getElementById('streamStatusText').style.color = "var(--primary)";
         document.getElementById('previewInlineFileThumbnailBar').style.display = 'flex';
       };
-      continuousStreamReader.readAsDataURL(activeUploadedFileObject);
+      reader.readAsDataURL(file);
     }
 
-    function processSelectedFormQR() {
+    async function uploadImageToCloud() {
+      if (!rawSelectedFileObject) return null;
+
+      const formData = new FormData();
+      formData.append("image", rawSelectedFileObject);
+
+      try {
+        const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+          method: "POST",
+          body: formData
+        });
+        const resData = await response.json();
+        if (resData.success) {
+          return resData.data.url; 
+        } else {
+          throw new Error("Upload unsuccessful");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Cloud Server Error: Photo upload failed. Please try again.");
+        return null;
+      }
+    }
+
+    async function processSelectedFormQR() {
       let finalPayload = "";
+      const generateBtn = document.getElementById("generateBtn");
       
       if (document.getElementById('urlPanel').classList.contains('active')) {
         finalPayload = document.getElementById('urlInput').value.trim();
@@ -732,10 +319,26 @@
           return alert("Link Validation Error: URL must start with http:// or https://");
         }
       } else if (document.getElementById('imagePanel').classList.contains('active')) {
-        if (globallyStoredBase64PhotoAssetString) {
-          finalPayload = globallyStoredBase64PhotoAssetString;
+        if (!rawSelectedFileObject) {
+          return alert("Uploader Empty: Kindly browse or upload a photo first.");
+        }
+        
+        generateBtn.disabled = true;
+        generateBtn.textContent = "Uploading Image to Cloud...";
+        document.getElementById('streamStatusText').textContent = "⚡ Uploading to your ImgBB account...";
+        document.getElementById('streamStatusText').style.color = "orange";
+        
+        const cloudUrl = await uploadImageToCloud();
+        
+        generateBtn.disabled = false;
+        generateBtn.textContent = "Generate Custom QR Code";
+        
+        if (cloudUrl) {
+          finalPayload = cloudUrl;
+          document.getElementById('streamStatusText').textContent = "✓ Uploaded and Saved to ImgBB!";
+          document.getElementById('streamStatusText').style.color = "var(--success-green)";
         } else {
-          return alert("Uploader Empty: Kindly browse or upload a valid photo file first.");
+          return; 
         }
       } else {
         finalPayload = document.getElementById('restInput').value.trim();
@@ -745,7 +348,6 @@
 
       const targetCanvas = document.getElementById("vectorCanvas");
       const placeholder = document.getElementById("placeholderText");
-      
       const darkColorHex = document.getElementById("matrixForegroundNodeColor").value;
       const lightColorHex = document.getElementById("matrixBackgroundNodeColor").value;
       
@@ -757,7 +359,6 @@
           color: { dark: darkColorHex, light: lightColorHex } 
         }, err => {
           if (err) return alert("Engine Compilation Error.");
-          
           placeholder.style.display = "none";
           targetCanvas.style.display = "block";
           document.getElementById("exportAction").style.display = "inline-flex";
@@ -784,7 +385,7 @@
       try {
         const matrixScannerInstance = new Html5Qrcode("mediaUpload");
         const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
-        resultOverlay.textContent = `Scanned QR Content Array: ${parsedResult}`;
+        resultOverlay.textContent = `Scanned QR Content: ${parsedResult}`;
         resultOverlay.style.background = "rgba(16, 185, 129, 0.08)";
         resultOverlay.style.borderColor = "#10b981"; resultOverlay.style.color = "#065f46";
         resultOverlay.style.display = "block";
@@ -794,7 +395,7 @@
         resultOverlay.style.borderColor = "#ef4444"; resultOverlay.style.color = "#991b1b";
         resultOverlay.style.display = "block";
       } finally {
-        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset`;
+        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR to Scan`;
       }
     }
   </script>
