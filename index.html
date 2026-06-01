@@ -1,403 +1,440 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <title>NexusQR Studio - Premium Free Dynamic QR Code Generator & High-Speed Scanner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <script src="https://unpkg.com/html5-qrcode" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-global: #f8fafc;        
-      --panel-bg: #ffffff;         
-      --border-color: #e2e8f0;     
-      --text-main: #0f172a;        
-      --text-muted: #64748b;       
-      --primary: #2563eb;          
-      --secondary: #4f46e5;        
-      --input-bg: #f8fafc;         
-      --success-green: #10b981;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      background-color: var(--bg-global);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-x: hidden;
-      padding: 1rem;
-    }
-
-    .nexus-navbar {
-      width: 100%; max-width: 1050px; background: var(--panel-bg); border: 1px solid var(--border-color);
-      padding: 1rem 1.5rem; border-radius: 20px; display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 1.5rem; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02);
-      position: relative;
-    }
-
-    .nav-brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.25rem; }
-    .nav-brand span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DealShop.in - Amazon & Flipkart Affiliate Hub</title>
     
-    .menu-wrapper { position: relative; }
-    .three-dot-btn { background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-    
-    .nav-dropdown-menu {
-      display: none; position: absolute; top: 45px; right: 0; background: var(--panel-bg);
-      border: 1px solid var(--border-color); border-radius: 14px; min-width: 190px;
-      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1); z-index: 1000; padding: 0.5rem;
-    }
-    .nav-dropdown-menu.active { display: block; }
+    <!-- CSS Code (Design ke liye) -->
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .dropdown-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; border-radius: 10px; cursor: pointer; }
-    .dropdown-item:hover { background: var(--bg-global); color: var(--primary); }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .container { width: 100%; max-width: 1050px; background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04); }
-    header { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin-bottom: 2rem; text-align: center; }
-    .brand-title { font-size: 2rem; font-weight: 800; color: var(--text-main); }
-    .brand-tagline { font-size: 0.95rem; color: var(--text-muted); }
+        /* Header Navigation */
+        header {
+            background-color: #232f3e; /* Amazon Dark Blue */
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
 
-    .tab-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; margin-bottom: 2rem; }
-    .tab-card { background: #f8fafc; border: 1px solid var(--border-color); padding: 0.75rem 0.5rem; border-radius: 12px; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
-    .tab-card i { font-size: 1.1rem; color: var(--text-muted); }
-    .tab-card span { font-size: 0.75rem; font-weight: 700; color: var(--text-main); }
-    .tab-card.active { background: #ffffff; border-color: var(--primary); box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.1); transform: translateY(-2px); }
-    .tab-card.active i { color: var(--primary); }
+        .logo h2 {
+            cursor: pointer;
+        }
 
-    .qr-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; }
-    .qr-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    .qr-card h3 { font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .logo span {
+            color: #ff9900; /* Amazon Orange */
+        }
 
-    .field-input { width: 100%; background: var(--input-bg); border: 1px solid #e2e8f0; padding: 1rem; border-radius: 12px; color: var(--text-main); font-size: 0.9rem; font-weight: 500; }
-    .field-input:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08); }
+        .logo .flip {
+            color: #2874f0; /* Flipkart Blue */
+        }
 
-    .design-matrix-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; align-items: center; background: var(--input-bg); padding: 0.75rem; border-radius: 12px; border: 1px solid var(--border-color); }
-    .color-input-wrapper { display: flex; align-items: center; gap: 0.5rem; }
-    .color-input-wrapper label { font-size: 0.8rem; font-weight: 700; }
-    .native-color-node { -webkit-appearance: none; appearance: none; width: 36px; height: 36px; background-color: transparent; border: none; cursor: pointer; }
-    .native-color-node::-webkit-color-swatch { border-radius: 50%; border: 2px solid #ffffff; box-shadow: 0 0 0 2px var(--border-color); }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
 
-    .action-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #ffffff; border: none; padding: 1rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-align: center; }
-    .input-panel { display: none; flex-direction: column; gap: 1rem; }
-    .input-panel.active { display: flex; }
+        nav ul li {
+            margin-left: 20px;
+        }
 
-    .premium-file-dropzone-wrapper { background-color: var(--input-bg); border: 2px dashed #cbd5e1; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; cursor: pointer; }
-    .premium-file-dropzone-wrapper i { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem; }
-    .premium-file-dropzone-wrapper p { font-size: 0.85rem; font-weight: 600; }
-    .premium-file-dropzone-wrapper span { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem; }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 5px 10px;
+        }
 
-    .live-uploader-thumb-panel { margin-top: 0.75rem; background: #ffffff; border: 1px solid var(--border-color); border-radius: 10px; padding: 0.5rem; align-items: center; gap: 0.5rem; display: none; }
-    .live-uploader-thumb-panel img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; }
-    .thumb-info-block h5 { font-size: 0.8rem; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .thumb-info-block p { font-size: 0.7rem; color: var(--success-green); }
+        nav ul li a:hover, nav ul li a.active {
+            color: #ff9900;
+        }
 
-    #hardwareNativePhotoUploader { display: none; }
-    .canvas-display { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border-radius: 16px; padding: 1.5rem; min-height: 240px; border: 1px solid var(--border-color); }
-    .canvas-placeholder { color: var(--text-muted); font-size: 0.85rem; text-align: center; }
-    canvas { background: white !important; padding: 12px; border-radius: 12px; max-width: 100%; height: auto !important; display: none; }
-    .download-link { display: none; margin-top: 1rem; color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.85rem; align-items: center; gap: 0.4rem; }
+        /* Dynamic Pages (Hide/Show) */
+        .page {
+            display: none;
+            flex-grow: 1;
+        }
 
-    .file-wrapper { position: relative; overflow: hidden; display: inline-block; width: 100%; }
-    .file-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; }
-    .custom-file-btn { border: 1px dashed #cbd5e1; color: var(--text-muted); padding: 1.25rem 1rem; border-radius: 12px; text-align: center; background: #f8fafc; font-weight: 600; font-size: 0.9rem; display: block; }
-    
-    #scanResultOverlay { display: none; background: rgba(16, 185, 129, 0.08); border: 1px solid #10b981; color: #065f46; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; word-break: break-all; }
+        .page.active-page {
+            display: block;
+        }
 
-    @media (max-width: 768px) {
-      body { padding: 0.5rem; }
-      .nexus-navbar { padding: 0.75rem 1rem; margin-bottom: 1rem; }
-      .container { padding: 1.25rem; border-radius: 20px; }
-      .qr-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-      .design-matrix-row { grid-template-columns: 1fr; }
-    }
-  </style>
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #ff9900;
+            margin: 10px auto 0;
+        }
+
+        /* Product Grid & Cards */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f9f9f9;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            color: #b12704;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Affiliate Buttons */
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-amazon {
+            background-color: #ffd814;
+            color: #111;
+            border: 1px solid #fcd200;
+        }
+
+        .btn-flipkart {
+            background-color: #2874f0;
+            color: white;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-color: #232f3e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #19222d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #232f3e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <nav class="nexus-navbar">
-    <div class="nav-brand">
-      <i class="fa-solid fa-qrcode" style="color: var(--primary);"></i>
-      <div>NexusQR <span>Studio</span></div>
-    </div>
-    <div class="menu-wrapper">
-      <button class="three-dot-btn" id="dropdownMenuButton" onclick="toggleNavbarDropdown(event)">
-        <i class="fa-solid fa-ellipsis-vertical"></i>
-      </button>
-      <div class="nav-dropdown-menu" id="nexusDropdown">
-        <a class="dropdown-item"><i class="fa-solid fa-chart-pie"></i> Dynamic Dashboard</a>
-        <a class="dropdown-item"><i class="fa-solid fa-clock-rotate-left"></i> History Log</a>
-        <a class="dropdown-item"><i class="fa-solid fa-sliders"></i> Matrix Config</a>
-        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 0.4rem 0;">
-        <a class="dropdown-item" style="color: #ef4444;"><i class="fa-solid fa-circle-info"></i> Support Portal</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container" id="generator">
+    <!-- Header Area -->
     <header>
-      <h1 class="brand-title">NexusQR Studio</h1>
-      <p class="brand-tagline">Advanced Multi-Format Enterprise QR Code Engine</p>
+        <div class="logo" onclick="switchPage('home')">
+            <h2>Deal<span>Shop</span><span class="flip">.in</span></h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="nav-home" onclick="switchPage('home')" class="active">Home</a></li>
+                <li><a id="nav-laptops" onclick="switchPage('laptops')">Laptops</a></li>
+                <li><a id="nav-contact" onclick="switchPage('contact')">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="tab-container">
-      <div class="tab-card active" onclick="switchQRTab('urlPanel', this)">
-        <i class="fa-solid fa-link"></i>
-        <span>URL / Link</span>
-      </div>
-      <div class="tab-card" onclick="switchQRTab('imagePanel', this)">
-        <i class="fa-solid fa-image"></i>
-        <span>Image Upload</span>
-      </div>
-      <div class="tab-card" onclick="switchQRTab('restPanel', this)">
-        <i class="fa-solid fa-font"></i>
-        <span>Raw Text</span>
-      </div>
-    </div>
+    <!-- PAGE 1: HOME PAGE -->
+    <div id="page-home" class="page active-page">
+        <section class="hero">
+            <h1>Amazon & Flipkart Ki Loot Deals</h1>
+            <p>Hum rozana aapke liye dhundte hain sabse saste aur best rating wale products!</p>
+        </section>
 
-    <div class="qr-grid">
-      <div class="qr-card">
-        <h3><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary);"></i> Configuration</h3>
-        
-        <div id="urlPanel" class="input-panel active">
-          <div>
-            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Target Web Address URL</label>
-            <input type="url" id="urlInput" class="field-input" placeholder="https://example.com/your-destination" />
-          </div>
-        </div>
-
-        <div id="imagePanel" class="input-panel">
-          <div>
-            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Select Photo / Image</label>
-            <div class="premium-file-dropzone-wrapper" onclick="openHardwareSystemPhotoBrowser()">
-              <i class="fa-solid fa-images"></i>
-              <p id="uploadStatusText">Click to select image file</p>
-              <span>Supports PNG, JPG up to 5MB</span>
-              
-              <div class="live-uploader-thumb-panel" id="previewInlineFileThumbnailBar" onclick="event.stopPropagation();">
-                <img id="livePreviewImgElement" src="" alt="Live Uploaded Stream Target">
-                <div class="thumb-info-block">
-                  <h5 id="livePreviewFileMetaName">selected_photo.jpg</h5>
-                  <p id="streamStatusText">✓ Ready to Cloud Upload</p>
+        <main class="container">
+            <h2 class="section-title">Aaj Ki Top Offers</h2>
+            <div class="product-grid">
+                
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Bluetooth Smart Watch</h3>
+                        <p class="product-desc">AMOLED display, Fitness tracking aur 7 dino ka battery backup.</p>
+                        <div class="price-tag">₹2,499</div>
+                        <div class="buttons-group">
+                            <a href="APNA_AMAZON_LINK_YAHAN_DALEIN" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
+                            <a href="APNA_FLIPKART_LINK_YAHAN_DALEIN" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Headphones" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Over-Ear Headphones</h3>
+                        <p class="product-desc">Super noise cancellation aur heavy bass music lovers ke liye.</p>
+                        <div class="price-tag">₹1,299</div>
+                        <div class="buttons-group">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <input type="file" id="hardwareNativePhotoUploader" accept="image/*" onchange="handlePhotoSelection(event)" />
-          </div>
-        </div>
-
-        <div id="restPanel" class="input-panel">
-          <div>
-            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.4rem;">Raw Text Block</label>
-            <textarea id="restInput" class="field-input" rows="3" placeholder="Enter plaintext sentences..."></textarea>
-          </div>
-        </div>
-
-        <div class="design-matrix-row">
-          <div class="color-input-wrapper">
-            <input type="color" id="matrixForegroundNodeColor" class="native-color-node" value="#0f172a">
-            <label for="matrixForegroundNodeColor">QR Nodes</label>
-          </div>
-          <div class="color-input-wrapper">
-            <input type="color" id="matrixBackgroundNodeColor" class="native-color-node" value="#ffffff">
-            <label for="matrixBackgroundNodeColor">BG Color</label>
-          </div>
-        </div>
-
-        <button class="action-btn" id="generateBtn" onclick="processSelectedFormQR()">Generate Custom QR Code</button>
-      </div>
-
-      <div class="qr-card" style="justify-content: space-between;">
-        <div class="canvas-display">
-          <div id="placeholderText" class="canvas-placeholder">
-            <i class="fa-solid fa-qrcode" style="font-size: 2rem; color: #cbd5e1; display: block; margin-bottom: 0.5rem;"></i>
-            Your custom asset matrix will compile here.
-          </div>
-          <canvas id="vectorCanvas"></canvas>
-          <a id="exportAction" class="download-link" onclick="triggerCanvasDownload()"><i class="fa-solid fa-arrow-down-to-line"></i> Download PNG</a>
-        </div>
-
-        <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed Scanner</h3>
-          <div id="scanResultOverlay"></div>
-          <div class="file-wrapper">
-            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR to Scan</span>
-            <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
-          </div>
-        </div>
-      </div>
+        </main>
     </div>
-  </div>
 
-  <script>
-    // --- Tumhari ImgBB API Key yahan successfully embedded hai ---
-    const IMGBB_API_KEY = "01917854beac01d9a49c045a9bde435c"; 
-    
-    let rawSelectedFileObject = null;
+    <!-- PAGE 2: LAPTOPS CATEGORY -->
+    <div id="page-laptops" class="page">
+        <main class="container">
+            <h2 class="section-title">Best Laptops (Amazon & Flipkart Deals)</h2>
+            <div class="product-grid">
+                
+                <!-- Laptop 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="HP Laptop" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">HP Laptop 15s</h3>
+                        <p class="product-desc">AMD Ryzen 3, 8GB RAM, 512GB SSD. Student aur daily office work ke liye best.</p>
+                        <div class="price-tag">₹32,990</div>
+                        <div class="buttons-group">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
+                        </div>
+                    </div>
+                </div>
 
-    function toggleNavbarDropdown(event) {
-      event.stopPropagation();
-      document.getElementById('nexusDropdown').classList.toggle('active');
-    }
+                <!-- Laptop 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Lenovo Laptop" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Lenovo IdeaPad Slim 3</h3>
+                        <p class="product-desc">Intel Core i3 12th Gen, Thin & Light design, long battery backup.</p>
+                        <div class="price-tag">₹35,490</div>
+                        <div class="buttons-group">
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
+                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
+                        </div>
+                    </div>
+                </div>
 
-    window.addEventListener('click', function() {
-      const dropdown = document.getElementById('nexusDropdown');
-      if (dropdown.classList.contains('active')) dropdown.classList.remove('active');
-    });
+            </div>
+        </main>
+    </div>
 
-    function switchQRTab(panelId, tabElement) {
-      document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
-      document.querySelectorAll('.tab-card').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(panelId).classList.add('active');
-      tabElement.classList.add('active');
-    }
+    <!-- PAGE 3: CONTACT PAGE -->
+    <div id="page-contact" class="page">
+        <main class="container">
+            <h2 class="section-title">Hamein Message Karein</h2>
+            <div class="contact-form">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>Aapka Naam</label>
+                        <input type="text" id="name" placeholder="Naam darj karein" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <input type="email" id="email" placeholder="Email darj karein" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Aapka Sawal / Kis product ki deal chahiye?</label>
+                        <textarea id="message" rows="5" placeholder="Yahan apna message likhein..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Message Bheinjein</button>
+                </form>
+            </div>
+        </main>
+    </div>
 
-    function openHardwareSystemPhotoBrowser() {
-      document.getElementById('hardwareNativePhotoUploader').click();
-    }
+    <!-- Footer Area -->
+    <footer>
+        <p>&copy; 2026 DealShop.in | Amazon & Flipkart Affiliate Program Partner</p>
+    </footer>
 
-    function handlePhotoSelection(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      
-      rawSelectedFileObject = file;
-      
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('livePreviewImgElement').src = e.target.result;
-        document.getElementById('livePreviewFileMetaName').textContent = file.name;
-        document.getElementById('streamStatusText').textContent = "✓ Ready to Cloud Upload";
-        document.getElementById('streamStatusText').style.color = "var(--primary)";
-        document.getElementById('previewInlineFileThumbnailBar').style.display = 'flex';
-      };
-      reader.readAsDataURL(file);
-    }
+    <!-- JavaScript Code (Pages switch karne ke liye) -->
+    <script>
+        function switchPage(pageName) {
+            // Sabhi pages ko pehle hide karo
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
 
-    async function uploadImageToCloud() {
-      if (!rawSelectedFileObject) return null;
+            // Sabhi navigation links se active class hatao
+            document.querySelectorAll('nav a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
 
-      const formData = new FormData();
-      formData.append("image", rawSelectedFileObject);
-
-      try {
-        const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-          method: "POST",
-          body: formData
-        });
-        const resData = await response.json();
-        if (resData.success) {
-          return resData.data.url; 
-        } else {
-          throw new Error("Upload unsuccessful");
+            // Target page ko dikhao aur nav link ko active karo
+            document.getElementById('page-' + pageName).classList.add('active-page');
+            document.getElementById('nav-' + pageName).classList.add('active');
+            
+            // Page switch hone par screen automatic top par chali jaye
+            window.scrollTo(0, 0);
         }
-      } catch (err) {
-        console.error(err);
-        alert("Cloud Server Error: Photo upload failed. Please try again.");
-        return null;
-      }
-    }
 
-    async function processSelectedFormQR() {
-      let finalPayload = "";
-      const generateBtn = document.getElementById("generateBtn");
-      
-      if (document.getElementById('urlPanel').classList.contains('active')) {
-        finalPayload = document.getElementById('urlInput').value.trim();
-        if(finalPayload && !finalPayload.startsWith('http')) {
-          return alert("Link Validation Error: URL must start with http:// or https://");
+        // Contact Form handle karne ke liye simple alert script
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert('Shukriya ' + name + '! Aapka message hamein mil gaya hai. Hum jald hi aapse contact karenge.');
+            document.getElementById('contactForm').reset();
         }
-      } else if (document.getElementById('imagePanel').classList.contains('active')) {
-        if (!rawSelectedFileObject) {
-          return alert("Uploader Empty: Kindly browse or upload a photo first.");
-        }
-        
-        generateBtn.disabled = true;
-        generateBtn.textContent = "Uploading Image to Cloud...";
-        document.getElementById('streamStatusText').textContent = "⚡ Uploading to your ImgBB account...";
-        document.getElementById('streamStatusText').style.color = "orange";
-        
-        const cloudUrl = await uploadImageToCloud();
-        
-        generateBtn.disabled = false;
-        generateBtn.textContent = "Generate Custom QR Code";
-        
-        if (cloudUrl) {
-          finalPayload = cloudUrl;
-          document.getElementById('streamStatusText').textContent = "✓ Uploaded and Saved to ImgBB!";
-          document.getElementById('streamStatusText').style.color = "var(--success-green)";
-        } else {
-          return; 
-        }
-      } else {
-        finalPayload = document.getElementById('restInput').value.trim();
-      }
+    </script>
 
-      if (!finalPayload) return alert("System Halt: Please enter data before generating.");
-
-      const targetCanvas = document.getElementById("vectorCanvas");
-      const placeholder = document.getElementById("placeholderText");
-      const darkColorHex = document.getElementById("matrixForegroundNodeColor").value;
-      const lightColorHex = document.getElementById("matrixBackgroundNodeColor").value;
-      
-      targetCanvas.style.display = "none";
-
-      setTimeout(() => {
-        QRCode.toCanvas(targetCanvas, finalPayload, { 
-          width: 220, margin: 1,
-          color: { dark: darkColorHex, light: lightColorHex } 
-        }, err => {
-          if (err) return alert("Engine Compilation Error.");
-          placeholder.style.display = "none";
-          targetCanvas.style.display = "block";
-          document.getElementById("exportAction").style.display = "inline-flex";
-        });
-      }, 50); 
-    }
-
-    function triggerCanvasDownload() {
-      const finalCanvas = document.getElementById("vectorCanvas");
-      const triggerLink = document.getElementById("exportAction");
-      triggerLink.href = finalCanvas.toDataURL("image/png");
-      triggerLink.download = "nexus_qr_matrix.png";
-    }
-
-    async function processImportedQR(e) {
-      const binaryFile = e.target.files[0];
-      if (!binaryFile) return;
-      const fileLabel = document.getElementById('fileLabel');
-      const resultOverlay = document.getElementById('scanResultOverlay');
-      
-      fileLabel.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Decoding Matrix Asset...`;
-      resultOverlay.style.display = "none";
-      
-      try {
-        const matrixScannerInstance = new Html5Qrcode("mediaUpload");
-        const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
-        resultOverlay.textContent = `Scanned QR Content: ${parsedResult}`;
-        resultOverlay.style.background = "rgba(16, 185, 129, 0.08)";
-        resultOverlay.style.borderColor = "#10b981"; resultOverlay.style.color = "#065f46";
-        resultOverlay.style.display = "block";
-      } catch (err) {
-        resultOverlay.textContent = "Failed parsing image configuration asset.";
-        resultOverlay.style.background = "rgba(239, 68, 68, 0.08)";
-        resultOverlay.style.borderColor = "#ef4444"; resultOverlay.style.color = "#991b1b";
-        resultOverlay.style.display = "block";
-      } finally {
-        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR to Scan`;
-      }
-    }
-  </script>
 </body>
 </html>
+
