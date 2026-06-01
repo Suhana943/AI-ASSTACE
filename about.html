@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us & Contact | KamBudgetDeals</title>
+    
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation Header */
+        .main-header {
+            background-color: #0f172a; 
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo {
+            font-size: 1.25rem; 
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-logo span.deal { color: #f59e0b; }
+        .brand-logo span.in { color: #3b82f6; }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        .nav-links a.active {
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 2px;
+        }
+
+        /* Sleek Dark Hero Section */
+        .hero-blackout {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 55px 20px; 
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .hero-blackout h1 {
+            font-size: 2rem; 
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 14px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-blackout p {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Content Hub Intro */
+        .content-hub {
+            padding: 40px 20px 10px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Pill Buttons Navigation */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background-color: #e2e8f0;
+            color: #334155;
+            text-decoration: none;
+            padding: 8px 18px; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px; 
+            transition: all 0.2s ease;
+        }
+
+        /* Professional Content Layout */
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+        }
+
+        .about-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-card h2 {
+            font-size: 1.4rem;
+            color: #0f172a;
+            margin-bottom: 15px;
+            border-left: 4px solid #f59e0b;
+            padding-left: 12px;
+        }
+
+        .about-card p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        /* Contact Details List */
+        .contact-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .contact-list li {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-list li strong {
+            color: #0f172a;
+            min-width: 100px;
+            display: inline-block;
+        }
+
+        .contact-list a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            border-top: 1px solid #e2e8f0;
+            padding: 35px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #ffffff;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="brand-logo">KamBudget<span class="deal">Deals</span><span class="in">.in</span></div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About/Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-blackout">
+        <h1>About Us & Contact</h1>
+        <p>Janiye hamare baare me aur kisi bhi sawal ya suggestion ke liye humse seedhe sampark karein.</p>
+    </section>
+
+    <!-- Navigation Hub Tabs -->
+    <section class="content-hub">
+        <div class="filter-container">
+            <a href="index.html" class="filter-btn">Sabhi Deals</a>
+            <a href="intel.html" class="filter-btn">Intel i5 Laptops</a>
+            <a href="ryzen.html" class="filter-btn">Ryzen 5 Laptops</a>
+            <a href="advice.html" class="filter-btn">Buying Guide</a>
+        </div>
+    </section>
+
+    <!-- Professional Content Container -->
+    <main class="about-container">
+
+        <!-- Section 1: Our Mission -->
+        <div class="about-card">
+            <h2>Hamara Mission (Our Mission)</h2>
+            <p><strong>KamBudgetDeals.in</strong> ka ek hi maksad hai — Bharat ke har student, coder aur working professional ko unke budget ke mutabik sabse best aur high-performance laptop dhoodhne me madad karna. ₹50,000 ke under market me dheron options hain, jisme se galat specs chunna aasan hai. Hum research karke sirf wahi laptops shortlist karte hain jo aapke paison ki sahi value dein.</p>
+            <p>Hum kisi bhi laptop brand se commission lekar biased review nahi karte. Hamara pura focus transparent aur honest specs comparison par hota hai taaki aapka decision sahi ho.</p>
+        </div>
+
+        <!-- Section 2: Why Trust Us -->
+        <div class="about-card">
+            <h2>Hum Par Bharosa Kyun Karein?</h2>
+            <p>Market me roz naye laptop models launch hote hain jahan aksar purane processors ko naye naam ke sath becha jata hai. Hum deep analysis karte hain jaise clock speed, thermal management, upgradeability, aur user feedback. Hum keval wahi deals share karte hain jo Amazon aur Flipkart dono par high ratings aur sahi pricing ke sath available hon.</p>
+        </div>
+
+        <!-- Section 3: Contact Info -->
+        <div class="about-card">
+            <h2>Humse Sampark Karein (Contact Us)</h2>
+            <p>Agar aapko koi confusion hai, aap apne budget ke hisab se kisi laptop par advice chahte hain, ya business/collaboration ke silsile me baat karna chahte hain, toh aap hume neeche diye gaye detail par contact kar sakte hain:</p>
+            
+            <ul class="contact-list">
+                <li><strong>Email:</strong> <a href="mailto:contact@kambudgetdeals.in">contact@kambudgetdeals.in</a></li>
+                <li><strong>Website:</strong> <a href="https://kambudgetdeals.in" target="_blank">www.kambudgetdeals.in</a></li>
+                <li><strong>Response Time:</strong> <span>Hum 24 se 48 ghanton ke andar aapke email ka jawab dene ki poori koshish karte hain.</span></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 KamBudgetDeals.in | Trusted Laptop Recommendations.</p>
+    </footer>
+
+</body>
+  </html>
+  
