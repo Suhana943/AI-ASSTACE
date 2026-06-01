@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+  <!-- Top Navigation Component -->
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -46,7 +48,7 @@
       align-items: center;
       justify-content: flex-start;
       overflow-x: hidden;
-      padding: 1.5rem 1rem;
+      padding: 1rem;
     }
 
     /* --- Navigation Bar Component --- */
@@ -55,12 +57,12 @@
       max-width: 1050px;
       background: var(--panel-bg);
       border: 1px solid var(--border-color);
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 1.5rem;
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02);
       position: relative;
     }
@@ -68,9 +70,9 @@
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       font-weight: 800;
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       letter-spacing: -0.03em;
     }
 
@@ -87,13 +89,13 @@
     .three-dot-btn {
       background: none;
       border: none;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: var(--text-muted);
       cursor: pointer;
       padding: 0.5rem;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -108,7 +110,7 @@
     .nav-dropdown-menu {
       display: none;
       position: absolute;
-      top: 50px;
+      top: 45px;
       right: 0;
       background: var(--panel-bg);
       border: 1px solid var(--border-color);
@@ -149,8 +151,8 @@
       max-width: 1050px; 
       background: var(--panel-bg);
       border: 1px solid var(--border-color);
-      border-radius: 32px;
-      padding: 3.5rem;
+      border-radius: 24px;
+      padding: 1.5rem;
       box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.04);
       will-change: transform;
     }
@@ -159,72 +161,67 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 3rem;
+      gap: 0.25rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
     .brand-title {
-      font-size: 2.8rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.04em;
       color: var(--text-main);
     }
 
     .brand-tagline {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       font-weight: 500;
     }
 
-    /* Tab Switcher Interface Transitions Engine */
+    /* Tab Switcher Interface Engine */
     .tab-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    @media (max-width: 640px) {
-      .tab-container { grid-template-columns: 1fr; }
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
 
     .tab-card {
       background: #f8fafc;
       border: 1px solid var(--border-color);
-      padding: 1.25rem;
-      border-radius: 16px;
+      padding: 0.75rem 0.5rem;
+      border-radius: 12px;
       cursor: pointer;
       text-align: center;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.35rem;
     }
 
     .tab-card i {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
       transition: color 0.3s ease;
     }
 
     .tab-card span {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .tab-card p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      display: none; /* Hide descriptions on small layouts for cleanliness */
     }
 
     .tab-card.active {
       background: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.12);
-      transform: translateY(-4px);
+      box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.1);
+      transform: translateY(-2px);
     }
 
     .tab-card.active i {
@@ -235,42 +232,38 @@
     .qr-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
-    }
-
-    @media (max-width: 768px) { 
-      .qr-grid { grid-template-columns: 1fr; gap: 2rem; } 
+      gap: 1.5rem;
     }
 
     .qr-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 2.5rem;
+      border-radius: 20px;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .qr-card h3 { 
-      font-size: 1.3rem; 
+      font-size: 1.15rem; 
       font-weight: 700;
       color: var(--text-main); 
       display: flex; 
       align-items: center; 
-      gap: 0.7rem; 
+      gap: 0.5rem; 
     }
 
     .field-input {
       width: 100%;
       background: var(--input-bg);
       border: 1px solid #e2e8f0;
-      padding: 1.1rem 1.4rem;
-      border-radius: 14px;
+      padding: 1rem;
+      border-radius: 12px;
       color: var(--text-main);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
     }
 
     .field-input:focus {
@@ -280,36 +273,35 @@
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
     }
 
-    /* Color Selection Module */
+    /* Design Matrix Row */
     .design-matrix-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
       align-items: center;
       background: var(--input-bg);
-      padding: 1rem;
-      border-radius: 14px;
+      padding: 0.75rem;
+      border-radius: 12px;
       border: 1px solid var(--border-color);
     }
 
     .color-input-wrapper {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .color-input-wrapper label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .native-color-node {
       -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       background-color: transparent;
       border: none;
       cursor: pointer;
@@ -321,35 +313,24 @@
       box-shadow: 0 0 0 2px var(--border-color);
     }
 
-    .native-color-node::-moz-color-swatch {
-      border-radius: 50%;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 0 2px var(--border-color);
-    }
-
     .action-btn {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #ffffff;
       border: none;
-      padding: 1.1rem 1.75rem;
-      border-radius: 14px;
+      padding: 1rem;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.2s ease;
       text-align: center;
     }
 
-    .action-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
-    }
-
     .input-panel {
       display: none;
       flex-direction: column;
-      gap: 1.2rem;
-      animation: fadeInSmooth 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      gap: 1rem;
+      animation: fadeInSmooth 0.3s ease forwards;
     }
 
     .input-panel.active {
@@ -357,82 +338,70 @@
     }
 
     @keyframes fadeInSmooth {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Custom UI Direct Image Upload Dropzone Field Box */
+    /* File Dropzone Box */
     .premium-file-dropzone-wrapper {
       background-color: var(--input-bg);
       border: 2px dashed #cbd5e1;
-      border-radius: 14px;
-      padding: 2.2rem 1rem;
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
       text-align: center;
       cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .premium-file-dropzone-wrapper:hover {
-      border-color: var(--primary);
-      background-color: rgba(37, 99, 235, 0.01);
     }
 
     .premium-file-dropzone-wrapper i {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       color: var(--primary);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .premium-file-dropzone-wrapper p {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-main);
     }
 
     .premium-file-dropzone-wrapper span {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       display: block;
       margin-top: 0.25rem;
     }
 
-    /* Live Mini Preview Overlay Box Row */
+    /* Live Mini Preview */
     .live-uploader-thumb-panel {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.75rem;
+      border-radius: 10px;
+      padding: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      text-align: left;
+      gap: 0.5rem;
       display: none; 
-      animation: fadeInSmooth 0.25s ease-out;
     }
 
     .live-uploader-thumb-panel img {
-      width: 46px;
-      height: 46px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
       object-fit: cover;
-      border: 1px solid var(--border-color);
     }
 
     .thumb-info-block h5 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-main);
-      max-width: 200px;
+      font-size: 0.8rem;
+      max-width: 140px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     .thumb-info-block p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--success-green);
-      font-weight: 600;
     }
 
     #hardwareNativePhotoUploader {
@@ -445,43 +414,36 @@
       align-items: center;
       justify-content: center;
       background: #f8fafc;
-      border-radius: 20px;
-      padding: 2rem;
-      min-height: 270px;
+      border-radius: 16px;
+      padding: 1.5rem;
+      min-height: 240px;
       border: 1px solid var(--border-color);
     }
 
     .canvas-placeholder {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.85rem;
       text-align: center;
     }
 
     canvas {
       background: white !important;
-      padding: 16px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 12px;
+      border-radius: 12px;
+      max-width: 100%;
+      height: auto !important;
       display: none;
-      animation: scaleUpQRCode 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes scaleUpQRCode {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .download-link {
       display: none;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       color: var(--primary);
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
+      gap: 0.4rem;
     }
 
     .file-wrapper {
@@ -495,26 +457,18 @@
       font-size: 100px;
       position: absolute;
       left: 0; top: 0; opacity: 0;
-      cursor: pointer;
     }
 
     .custom-file-btn {
-      border: 2px dashed #cbd5e1;
+      border: 1px dashed #cbd5e1;
       color: var(--text-muted);
-      padding: 2rem 1rem;
-      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      border-radius: 12px;
       text-align: center;
       background: #f8fafc;
-      cursor: pointer;
       font-weight: 600;
+      font-size: 0.9rem;
       display: block;
-      transition: all 0.2s ease;
-    }
-
-    .custom-file-btn:hover {
-      border-color: var(--primary);
-      background: rgba(37, 99, 235, 0.01);
-      color: var(--primary);
     }
 
     #scanResultOverlay {
@@ -522,32 +476,72 @@
       background: rgba(16, 185, 129, 0.08);
       border: 1px solid #10b981;
       color: #065f46;
-      padding: 1rem 1.25rem;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
       word-break: break-all;
     }
 
-    /* SEO Block Architecture */
     .seo-hub-panel {
-      margin-top: 4.5rem;
+      margin-top: 3rem;
       border-top: 1px solid var(--border-color);
-      padding-top: 3.5rem;
+      padding-top: 2rem;
     }
 
     .seo-hub-panel h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
     }
 
     .seo-hub-panel p {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .helper-text {
+      font-size: 0.75rem;
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES (Mobile Engine Layout Updates) --- */
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
+      }
+      .nexus-navbar {
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+      }
+      .container {
+        padding: 1.25rem;
+        border-radius: 20px;
+      }
+      .brand-title {
+        font-size: 1.75rem;
+      }
+      .tab-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.35rem;
+      }
+      .tab-card span {
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .tab-card i {
+        font-size: 1.1rem;
+      }
+      .qr-grid {
+        grid-template-columns: 1fr; /* Switch to stack layer on mobile view */
+        gap: 1.25rem;
+      }
+      .qr-card {
+        padding: 1.25rem;
+        border-radius: 16px;
+      }
+      .design-matrix-row {
+        grid-template-columns: 1fr; /* Stack color pickers elements */
+        gap: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -582,18 +576,15 @@
     <div class="tab-container">
       <div class="tab-card active" onclick="switchQRTab('urlPanel', this)">
         <i class="fa-solid fa-link"></i>
-        <span>URL / Link to QR</span>
-        <p>Websites, Socials & Portals</p>
+        <span>URL / Link</span>
       </div>
       <div class="tab-card" onclick="switchQRTab('imagePanel', this)">
         <i class="fa-solid fa-image"></i>
-        <span>Image / Photo to QR</span>
-        <p>Direct Local File Upload</p>
+        <span>Image Upload</span>
       </div>
       <div class="tab-card" onclick="switchQRTab('restPanel', this)">
         <i class="fa-solid fa-font"></i>
-        <span>Text / Rest Data</span>
-        <p>Raw Text & Custom Content</p>
+        <span>Raw Text</span>
       </div>
     </div>
 
@@ -604,7 +595,7 @@
         
         <div id="urlPanel" class="input-panel active">
           <div>
-            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.5rem;">Target Web Address URL</label>
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Target Web Address URL</label>
             <input type="url" id="urlInput" class="field-input" placeholder="https://example.com/your-destination" />
           </div>
           <small class="helper-text">Generates an instant dynamic vector link layout for redirecting web users.</small>
@@ -612,18 +603,18 @@
 
         <div id="imagePanel" class="input-panel">
           <div>
-            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.5rem;">Select Photo / Image from Device Gallery</label>
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Select Photo / Image from Device Gallery</label>
             
             <div class="premium-file-dropzone-wrapper" onclick="openHardwareSystemPhotoBrowser()">
               <i class="fa-solid fa-images"></i>
               <p>Click to select image file</p>
-              <span>Supports PNG, JPG, JPEG files up to 5MB directly</span>
+              <span>Supports PNG, JPG up to 5MB directly</span>
               
               <div class="live-uploader-thumb-panel" id="previewInlineFileThumbnailBar" onclick="event.stopPropagation();">
                 <img id="livePreviewImgElement" src="" alt="Live Uploaded Stream Target">
                 <div class="thumb-info-block">
                   <h5 id="livePreviewFileMetaName">selected_photo.jpg</h5>
-                  <p>✓ Photo Asset Stream Loaded</p>
+                  <p>✓ Loaded</p>
                 </div>
               </div>
             </div>
@@ -635,8 +626,8 @@
 
         <div id="restPanel" class="input-panel">
           <div>
-            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.5rem;">Raw Text / Rest Data Block</label>
-            <textarea id="restInput" class="field-input" rows="3" placeholder="Enter plaintext sentences, descriptions, or custom structural variables..."></textarea>
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">Raw Text Block</label>
+            <textarea id="restInput" class="field-input" rows="3" placeholder="Enter plaintext sentences, descriptions..."></textarea>
           </div>
           <small class="helper-text">Encodes offline alphanumeric variables directly inside the static matrix code nodes.</small>
         </div>
@@ -649,7 +640,7 @@
           </div>
           <div class="color-input-wrapper">
             <input type="color" id="matrixBackgroundNodeColor" class="native-color-node" value="#ffffff" title="Choose Background Color">
-            <label for="matrixBackgroundNodeColor">Background Color</label>
+            <label for="matrixBackgroundNodeColor">BG Color</label>
           </div>
         </div>
 
@@ -660,20 +651,20 @@
         
         <div class="canvas-display">
           <div id="placeholderText" class="canvas-placeholder">
-            <i class="fa-solid fa-qrcode" style="font-size: 2.5rem; color: #cbd5e1; display: block; margin-bottom: 0.5rem;"></i>
+            <i class="fa-solid fa-qrcode" style="font-size: 2rem; color: #cbd5e1; display: block; margin-bottom: 0.5rem;"></i>
             Your custom asset matrix will compile here.
           </div>
           <canvas id="vectorCanvas"></canvas>
-          <a id="exportAction" class="download-link" onclick="triggerCanvasDownload()"><i class="fa-solid fa-arrow-down-to-line"></i> Download High-Res PNG Asset</a>
+          <a id="exportAction" class="download-link" onclick="triggerCanvasDownload()"><i class="fa-solid fa-arrow-down-to-line"></i> Download PNG</a>
         </div>
 
-        <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-          <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed QR Scanner Engine</h3>
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <h3><i class="fa-solid fa-crop-simple" style="color: var(--secondary);"></i> High-Speed Scanner</h3>
           
           <div id="scanResultOverlay"></div>
 
           <div class="file-wrapper">
-            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset</span>
+            <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR to Scan</span>
             <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
           </div>
         </div>
@@ -690,7 +681,7 @@
 
   </div>
 
-  <script>
+    <script>
     let globallyStoredBase64PhotoAssetString = ""; 
 
     function toggleNavbarDropdown(event) {
@@ -698,7 +689,6 @@
       document.getElementById('nexusDropdown').classList.toggle('active');
     }
 
-    // Close navigation menu when clicking anywhere outside
     window.addEventListener('click', function() {
       const dropdown = document.getElementById('nexusDropdown');
       if (dropdown.classList.contains('active')) {
@@ -756,7 +746,6 @@
       const targetCanvas = document.getElementById("vectorCanvas");
       const placeholder = document.getElementById("placeholderText");
       
-      // Get custom matrix values from color pickers
       const darkColorHex = document.getElementById("matrixForegroundNodeColor").value;
       const lightColorHex = document.getElementById("matrixBackgroundNodeColor").value;
       
@@ -811,5 +800,3 @@
   </script>
 </body>
 </html>
-  <!-- Top Navigation Component -->
-          
