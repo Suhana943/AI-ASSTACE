@@ -1,16 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Meta Tags with your Target Keywords -->
-    <title>Best Kam Budget Laptop 2026 | Smart Deals under 5444lptopl</title>
-    <meta name="description" content="Dhund rahe hain sabse sasta aur kam budget laptop? Yahan dekhein top rated laptops under 5444lptopl deals Amazon aur Flipkart par.">
-    <meta name="keywords" content="kam budget laptop, under 5444lptopl, sasta laptop, best budget laptops 2026, amazon affiliate laptop">
     
-    <!-- CSS Code (Design ke liye) -->
+    <title>Best Laptop Under 50000 | Kam Budget Laptop & Electronics Deals 2026</title>
+    <meta name="description" content="Kya aap sabse accha aur kam budget laptop dhoodh rahe hain? Yahan dekhein best laptop under 50000 in amazon aur flipkart ki sasti deals aur electronic devices.">
+    <meta name="keywords" content="best laptop under 50000, kam budget laptop, laptop under 50000 in amazon, best electronics devices, sasta laptop, flipkart laptop deals 2026">
+    <meta name="robots" content="index, follow">
+    
     <style>
-        /* Reset & Base Styles */
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -19,16 +20,13 @@
         }
 
         body {
-            background-color: #f4f6f9;
+            background-color: #f7f9fc;
             color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
-        /* Header Navigation */
+        /* Header / Navbar */
         header {
-            background-color: #232f3e; /* Amazon Dark Blue */
+            background-color: #131921; /* Amazon Dark Theme */
             color: white;
             padding: 15px 5%;
             display: flex;
@@ -37,28 +35,25 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .logo h2 {
+            font-size: 1.5rem;
             cursor: pointer;
         }
 
-        .logo span {
-            color: #ff9900; /* Amazon Orange */
+        .logo h2 span {
+            color: #ff9900;
         }
 
         .logo .flip {
-            color: #2874f0; /* Flipkart Blue */
+            color: #2874f0;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px;
+            gap: 20px;
         }
 
         nav ul li a {
@@ -66,28 +61,17 @@
             text-decoration: none;
             font-weight: 600;
             cursor: pointer;
-            transition: color 0.3s;
-            padding: 5px 10px;
+            transition: color 0.2s;
         }
 
-        nav ul li a:hover, nav ul li a.active {
+        nav ul li a:hover {
             color: #ff9900;
-        }
-
-        /* Dynamic Pages (Hide/Show) */
-        .page {
-            display: none;
-            flex-grow: 1;
-        }
-
-        .page.active-page {
-            display: block;
         }
 
         /* Hero Banner */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,11 +82,11 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
-        /* Layout Container */
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -111,46 +95,66 @@
 
         .section-title {
             text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* Tabs Navigation for Categories */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 30px;
-            font-size: 2rem;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #ff9900;
-            margin: 10px auto 0;
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ddd;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        /* Product Grid & Cards */
+        .tab-btn.active-tab {
+            background-color: #ff9900;
+            color: white;
+        }
+
+        /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
+        /* Product Card */
         .product-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            background-color: #f9f9f9;
         }
 
         .product-info {
@@ -161,27 +165,27 @@
         }
 
         .product-title {
-            font-size: 1.15rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .product-desc {
             font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
+            color: #555;
             line-height: 1.4;
+            margin-bottom: 15px;
         }
 
-        .price-tag {
-            font-size: 1.3rem;
+        .price-badge {
+            font-size: 1.4rem;
             color: #b12704;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        /* Affiliate Buttons */
-        .buttons-group {
+        /* Affiliate Link Buttons */
+        .btn-group {
             display: flex;
             gap: 10px;
             margin-top: auto;
@@ -190,16 +194,11 @@
         .btn {
             flex: 1;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            transition: transform 0.1s, opacity 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
+            border-radius: 5px;
+            font-size: 0.9rem;
         }
 
         .btn-amazon {
@@ -213,228 +212,134 @@
             color: white;
         }
 
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .btn-submit {
-            background-color: #232f3e;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .btn-submit:hover {
-            background-color: #19222d;
-        }
-
         /* Footer */
         footer {
-            background-color: #232f3e;
+            background-color: #131921;
             color: white;
             text-align: center;
             padding: 20px;
-            margin-top: auto;
+            margin-top: 40px;
             font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
-            nav ul li {
-                margin: 0 10px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
+            .tabs-container {
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Area -->
     <header>
-        <div class="logo" onclick="switchPage('home')">
-            <h2>Deal<span>Shop</span><span class="flip">.in</span></h2>
+        <div class="logo">
+            <h2>KamBudget<span>Deals</span><span class="flip">.in</span></h2>
         </div>
         <nav>
             <ul>
-                <li><a id="nav-home" onclick="switchPage('home')" class="active">Home</a></li>
-                <li><a id="nav-laptops" onclick="switchPage('laptops')">Laptops</a></li>
-                <li><a id="nav-contact" onclick="switchPage('contact')">Contact Us</a></li>
+                <li><a class="active">Home</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- PAGE 1: HOME PAGE -->
-    <div id="page-home" class="page active-page">
-        <section class="hero">
-            <h1>Amazon & Flipkart Ki Loot Deals</h1>
-            <p>Hum rozana aapke liye dhundte hain sabse saste aur best rating wale products!</p>
-        </section>
+    <section class="hero">
+        <h1>Best Laptop Under 50000 & Top Electronics Devices</h1>
+        <p>Ghar baithe khareedein sabse dhasu aur premium deals kam keemat me!</p>
+    </section>
 
-        <main class="container">
-            <h2 class="section-title">Aaj Ki Top Offers</h2>
-            <div class="product-grid">
+    <main class="container">
+        <h1 class="section-title">Best Laptop Under 50000 in Amazon & Flipkart</h1>
+        <p class="section-subtitle">Agar aap 2026 me ek naya <strong>kam budget laptop</strong> dhoodh rahe hain, to niche di gayi list aapke liye sabse best hai.</p>
+
+        <div class="tabs-container">
+            <button class="tab-btn active-tab" onclick="filterCategory('all')">Sabhi Products</button>
+            <button class="tab-btn" onclick="filterCategory('laptops')">Laptops Under 50k</button>
+            <button class="tab-btn" onclick="filterCategory('electronics')">Best Electronics Devices</button>
+        </div>
+
+        <div id="products-container" class="product-grid">
                 
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="Smart Watch" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Premium Bluetooth Smart Watch</h3>
-                        <p class="product-desc">AMOLED display, Fitness tracking aur 7 dino ka battery backup.</p>
-                        <div class="price-tag">₹2,499</div>
-                        <div class="buttons-group">
-                            <a href="APNA_AMAZON_LINK_YAHAN_DALEIN" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
-                            <a href="APNA_FLIPKART_LINK_YAHAN_DALEIN" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
-                        </div>
+            <div class="product-card" data-category="laptops">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Best laptop under 50000 in amazon" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">HP Laptop 15s (Intel Core i5)</h3>
+                    <p class="product-desc">16GB RAM aur 512GB SSD ke sath aane wala ye model coding aur office ke liye sabse best hai. Amazon sale me ye ek perfect <strong>kam budget laptop</strong> sabit hota hai.</p>
+                    <div class="price-badge">Best Offer Price</div>
+                    <div class="btn-group">
+                        <a href="APNA_AMAZON_LINK" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon Deal</a>
+                        <a href="APNA_FLIPKART_LINK" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart Deal</a>
                     </div>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Headphones" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Wireless Over-Ear Headphones</h3>
-                        <p class="product-desc">Super noise cancellation aur heavy bass music lovers ke liye.</p>
-                        <div class="price-tag">₹1,299</div>
-                        <div class="buttons-group">
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </main>
-    </div>
 
-    <!-- PAGE 2: LAPTOPS CATEGORY -->
-    <div id="page-laptops" class="page">
-        <main class="container">
-            <h2 class="section-title">Best Laptops (Amazon & Flipkart Deals)</h2>
-            <div class="product-grid">
-                
-                <!-- Laptop 1 -->
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="HP Laptop" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">HP Laptop 15s</h3>
-                        <p class="product-desc">AMD Ryzen 3, 8GB RAM, 512GB SSD. Student aur daily office work ke liye best.</p>
-                        <div class="price-tag">₹32,990</div>
-                        <div class="buttons-group">
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
-                        </div>
+            <div class="product-card" data-category="laptops">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Kam budget laptop deals flipkart" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ASUS Vivobook 16X (AMD Ryzen 5)</h3>
+                    <p class="product-desc">Bada display aur thin design wala laptop. Agar aapka search query <strong>best laptop under 50000</strong> hai, to Flipkart aur Amazon par chal rahi is deal ko bilkul miss mat karein.</p>
+                    <div class="price-badge">Special Discount Price</div>
+                    <div class="btn-group">
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon Deal</a>
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart Deal</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Laptop 2 -->
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="Lenovo Laptop" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Lenovo IdeaPad Slim 3</h3>
-                        <p class="product-desc">Intel Core i3 12th Gen, Thin & Light design, long battery backup.</p>
-                        <div class="price-tag">₹35,490</div>
-                        <div class="buttons-group">
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon</a>
-                            <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart</a>
-                        </div>
+            <div class="product-card" data-category="electronics">
+                <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=500&q=80" alt="Best electronics devices smart headphones" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Sony Wireless Noise Cancelling Headphones</h3>
+                    <p class="product-desc">Online classes aur laptop video editing ke liye ye sabse top rated <strong>best electronics devices</strong> me se ek hai. Crystal clear sound quality milti hai.</p>
+                    <div class="price-badge">Top Rating Gadget</div>
+                    <div class="btn-group">
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon Deal</a>
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart Deal</a>
                     </div>
                 </div>
-
             </div>
-        </main>
-    </div>
 
-    <!-- PAGE 3: CONTACT PAGE -->
-    <div id="page-contact" class="page">
-        <main class="container">
-            <h2 class="section-title">Hamein Message Karein</h2>
-            <div class="contact-form">
-                <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-group">
-                        <label>Aapka Naam</label>
-                        <input type="text" id="name" placeholder="Naam darj karein" required>
+            <div class="product-card" data-category="electronics">
+                <img src="https://images.unsplash.com/photo-1507646227500-4d389b0012be?auto=format&fit=crop&w=500&q=80" alt="Sasta and best electronic device bluetooth speaker" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Boat Portable Waterproof Bluetooth Speaker</h3>
+                    <p class="product-desc">Kam keemat me dhasu bass aur lambi battery life wala sound system. Apne laptop ya mobile se connect karke music enjoy karein.</p>
+                    <div class="price-badge">Loot Deal Price</div>
+                    <div class="btn-group">
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-amazon">Amazon Deal</a>
+                        <a href="#" target="_blank" rel="nofollow noopener" class="btn btn-flipkart">Flipkart Deal</a>
                     </div>
-                    <div class="form-group">
-                        <label>Email ID</label>
-                        <input type="email" id="email" placeholder="Email darj karein" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Aapka Sawal / Kis product ki deal chahiye?</label>
-                        <textarea id="message" rows="5" placeholder="Yahan apna message likhein..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Message Bheinjein</button>
-                </form>
+                </div>
             </div>
-        </main>
-    </div>
 
-    <!-- Footer Area -->
+        </div>
+    </main>
+
     <footer>
-        <p>&copy; 2026 DealShop.in | Amazon & Flipkart Affiliate Program Partner</p>
+        <p>&copy; 2026 KamBudgetDeals.in | Best Laptop Under 50000 Affiliate Site</p>
     </footer>
 
-    <!-- JavaScript Code (Pages switch karne ke liye) -->
     <script>
-        function switchPage(pageName) {
-            // Sabhi pages ko pehle hide karo
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active-page');
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active-tab'));
+            event.target.classList.add('active-tab');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    if (card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
             });
-
-            // Sabhi navigation links se active class hatao
-            document.querySelectorAll('nav a').forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-
-            // Target page ko dikhao aur nav link ko active karo
-            document.getElementById('page-' + pageName).classList.add('active-page');
-            document.getElementById('nav-' + pageName).classList.add('active');
-            
-            // Page switch hone par screen automatic top par chali jaye
-            window.scrollTo(0, 0);
-        }
-
-        // Contact Form handle karne ke liye simple alert script
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            alert('Shukriya ' + name + '! Aapka message hamein mil gaya hai. Hum jald hi aapse contact karenge.');
-            document.getElementById('contactForm').reset();
         }
     </script>
 
