@@ -1,0 +1,52 @@
+<!-- Iska header aur style upar wale page jaisa same rahega, bas grid badlega -->
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel i5 Laptops Under 50000 | KamBudgetDeals</title>
+    <!-- CSS is EXACTLY SAME as index.html to save space, copy from above style tags -->
+    <link rel="stylesheet" href="style.css"> <!-- Ya upar wala pure style tag paste karein -->
+</head>
+<body>
+    <header class="main-header">
+        <div class="brand-logo">KamBudget<span class="deal">Deals</span><span class="in">.in</span></div>
+        <nav class="nav-links"><a href="index.html">Home</a><a href="about.html">About/Contact</a></nav>
+    </header>
+
+    <section class="hero-blackout">
+        <h1>Best Intel i5 Laptops (2026)</h1>
+        <p>Intel processing power aur multi-tasking ke liye best reliability deals niche listed hain.</p>
+    </section>
+
+    <section class="content-hub">
+        <div class="filter-container">
+            <a href="index.html" class="filter-btn">Sabhi Deals</a>
+            <a href="intel.html" class="filter-btn active">Intel i5 Laptops</a>
+            <a href="ryzen.html" class="filter-btn">Ryzen 5 Laptops</a>
+        </div>
+    </section>
+
+    <div class="grid-container">
+        <!-- Only Intel Card Here -->
+        <div class="laptop-item-card">
+            <span class="badge-deal">Intel Pick</span>
+            <div class="img-holder"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Laptop"></div>
+            <div>
+                <div class="item-brand">HP</div>
+                <div class="item-name">HP 15s Intel Core i5 (16GB/512GB)</div>
+                <ul class="item-specs">
+                    <li>12th Gen Intel Core i5 CPU</li>
+                    <li>16GB RAM / 512GB NVMe SSD</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container"><span class="price-tag-row">₹48,990</span></div>
+                <div class="multi-link-box">
+                    <a href="#" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
