@@ -1,17 +1,280 @@
-<!-- Iska header aur style upar wale page jaisa same rahega, bas grid badlega -->
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intel i5 Laptops Under 50000 | KamBudgetDeals</title>
-    <!-- CSS is EXACTLY SAME as index.html to save space, copy from above style tags -->
-    <link rel="stylesheet" href="style.css"> <!-- Ya upar wala pure style tag paste karein -->
+    
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation Header */
+        .main-header {
+            background-color: #0f172a; 
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo {
+            font-size: 1.25rem; 
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-logo span.deal { color: #f59e0b; }
+        .brand-logo span.in { color: #3b82f6; }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        .nav-links a.active {
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 2px;
+        }
+
+        /* Sleek Dark Hero Section */
+        .hero-blackout {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 55px 20px; 
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .hero-blackout h1 {
+            font-size: 2rem; 
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 14px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-blackout p {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Content Hub Intro */
+        .content-hub {
+            padding: 40px 20px 25px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Pill Buttons Navigation */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background-color: #e2e8f0;
+            color: #334155;
+            text-decoration: none;
+            padding: 8px 18px; 
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px; 
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+
+        /* Responsive Grid System */
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .laptop-item-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .laptop-item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .badge-deal {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .img-holder {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0 10px 0;
+        }
+
+        .img-holder img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .item-brand {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .item-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            min-height: 44px;
+            line-height: 1.4;
+        }
+
+        .item-specs {
+            list-style: none;
+            margin-bottom: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        .item-specs li {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .item-specs li::before {
+            content: "•";
+            color: #3b82f6;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 12px 0 8px 0;
+        }
+
+        .price-tag-row {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        /* Multi-Link UI */
+        .multi-link-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .store-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-amazon { background-color: #ff9900; color: #000000; }
+        .btn-amazon:hover { background-color: #e68a00; }
+
+        .btn-flipkart { background-color: #2874f0; color: #ffffff; }
+        .btn-flipkart:hover { background-color: #145ec7; }
+
+        footer {
+            border-top: 1px solid #e2e8f0;
+            padding: 35px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #ffffff;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
+
     <header class="main-header">
         <div class="brand-logo">KamBudget<span class="deal">Deals</span><span class="in">.in</span></div>
-        <nav class="nav-links"><a href="index.html">Home</a><a href="about.html">About/Contact</a></nav>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About/Contact</a>
+        </nav>
     </header>
 
     <section class="hero-blackout">
@@ -28,25 +291,272 @@
     </section>
 
     <div class="grid-container">
-        <!-- Only Intel Card Here -->
+        
         <div class="laptop-item-card">
             <span class="badge-deal">Intel Pick</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Laptop"></div>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Laptop">
+            </div>
             <div>
                 <div class="item-brand">HP</div>
-                <div class="item-name">HP 15s Intel Core i5 (16GB/512GB)</div>
+                <div class="item-name">HP 15s Intel Core i5 (16GB RAM / 512GB SSD)</div>
                 <ul class="item-specs">
                     <li>12th Gen Intel Core i5 CPU</li>
-                    <li>16GB RAM / 512GB NVMe SSD</li>
+                    <li>16GB DDR4 RAM / 512GB NVMe SSD</li>
+                    <li>15.6-inch FHD Anti-Glare Display</li>
                 </ul>
             </div>
             <div>
-                <div class="price-container"><span class="price-tag-row">₹48,990</span></div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹48,990</span>
+                    <span class="original-price">₹56,200</span>
+                </div>
                 <div class="multi-link-box">
-                    <a href="#" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL1_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL1_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
                 </div>
             </div>
         </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Battery King</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=300&q=80" alt="Acer Swift">
+            </div>
+            <div>
+                <div class="item-brand">Acer</div>
+                <div class="item-name">Acer One 14 Intel Core i5 (16GB / 512GB SSD)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 11th Gen Efficient Processor</li>
+                    <li>Lightweight Sleek Design (1.49 kg)</li>
+                    <li>Up to 8 Hours Long Battery Backup</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹42,999</span>
+                    <span class="original-price">₹49,999</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL2_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL2_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Top Choice</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=300&q=80" alt="Lenovo IdeaPad">
+            </div>
+            <div>
+                <div class="item-brand">Lenovo</div>
+                <div class="item-name">Lenovo IdeaPad Slim 3 Intel i5 (16GB RAM)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 12th Gen High-Speed Setup</li>
+                    <li>Backlit Keyboard & Crisp Audio System</li>
+                    <li>Privacy Shutter Webcam for Safety</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹49,490</span>
+                    <span class="original-price">₹58,000</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL3_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL3_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Premium Display</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="Dell Inspiron">
+            </div>
+            <div>
+                <div class="item-brand">Dell</div>
+                <div class="item-name">Dell Inspiron 3520 Intel Core i5 (8GB / 512GB)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5-1235U Powerful Engine</li>
+                    <li>120Hz Ultra Smooth Refresh Rate Screen</li>
+                    <li>Dell ComfortView Low Blue Light Panel</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹47,990</span>
+                    <span class="original-price">₹53,500</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL4_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL4_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Value Bomb</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1496181130204-7552cc1524e2?auto=format&fit=crop&w=300&q=80" alt="Infinix InBook">
+            </div>
+            <div>
+                <div class="item-brand">Infinix</div>
+                <div class="item-name">Infinix INBook Y4 Max Intel i5 (16GB RAM)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 13th Gen Advanced CPU</li>
+                    <li>Premium Aluminium Alloy Metallic Chassis</li>
+                    <li>65W Type-C Fast Power Charging Support</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹39,990</span>
+                    <span class="original-price">₹49,990</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL5_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL5_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Office Pack</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Acer Extensa">
+            </div>
+            <div>
+                <div class="item-brand">Acer</div>
+                <div class="item-name">Acer Extensa 15 Intel Core i5 (16GB RAM)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 12th Gen Multitasking Beast</li>
+                    <li>Ergonomic Elevation Hinge System</li>
+                    <li>Dual AI Noise Reduction Microphones</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹43,490</span>
+                    <span class="original-price">₹51,000</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL6_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL6_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Slim Choice</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="ASUS Vivobook">
+            </div>
+            <div>
+                <div class="item-brand">ASUS</div>
+                <div class="item-name">ASUS Vivobook 15 Intel i5 (16GB / 512GB)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 12th Gen Crisp Engine</li>
+                    <li>Fingerprint Scanner Fast Touch Login</li>
+                    <li>Military-Grade 810H Heavy Toughness</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹46,990</span>
+                    <span class="original-price">₹55,000</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL7_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL7_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Student Special</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=300&q=80" alt="Lenovo V15">
+            </div>
+            <div>
+                <div class="item-brand">Lenovo</div>
+                <div class="item-name">Lenovo V15 Intel Core i5 (16GB RAM)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 11th Gen Reliable Core</li>
+                    <li>Spill-Resistant Dynamic Typing Keyboard</li>
+                    <li>Dolby Audio Enhanced Clear Sound Output</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹41,490</span>
+                    <span class="original-price">₹47,990</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL8_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL8_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Travel Friendly</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="HP 14s">
+            </div>
+            <div>
+                <div class="item-brand">HP</div>
+                <div class="item-name">HP 14s Intel Core i5 (16GB RAM / 512GB)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 12th Gen Fast Processing</li>
+                    <li>14-inch Highly Portable Micro-Edge Display</li>
+                    <li>HP True Vision HD Camera + Dual Array Mic</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹49,990</span>
+                    <span class="original-price">₹57,500</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL9_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL9_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="laptop-item-card">
+            <span class="badge-deal">Creator Deal</span>
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=300&q=80" alt="MSI Modern">
+            </div>
+            <div>
+                <div class="item-brand">MSI</div>
+                <div class="item-name">MSI Modern 15 Intel Core i5 (16GB / 512GB)</div>
+                <ul class="item-specs">
+                    <li>Intel Core i5 11th Gen Power Optimizer</li>
+                    <li>Premium Feather-Light Thin Aesthetic Body</li>
+                    <li>Hi-Res Crystal Sound Audio Production Tech</li>
+                </ul>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹44,490</span>
+                    <span class="original-price">₹51,990</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="INTEL10_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
+                    <a href="INTEL10_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <footer>
+        <p>&copy; 2026 KamBudgetDeals.in | Top Selling Intel i5 Hub.</p>
+    </footer>
+
 </body>
 </html>
