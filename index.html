@@ -1,4 +1,3 @@
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,9 +44,103 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow-x: hidden;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
+    }
+
+    /* --- Navigation Bar Component --- */
+    .nexus-navbar {
+      width: 100%;
+      max-width: 1050px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem 2.5rem;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02);
+      position: relative;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-brand span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .menu-wrapper {
+      position: relative;
+    }
+
+    .three-dot-btn {
+      background: none;
+      border: none;
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .three-dot-btn:hover {
+      background: var(--bg-global);
+      color: var(--text-main);
+    }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      min-width: 190px;
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
+      z-index: 1000;
+      padding: 0.5rem;
+      animation: fadeInSmooth 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .nav-dropdown-menu.active {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background: var(--bg-global);
+      color: var(--primary);
     }
 
     /* --- Container Layout --- */
@@ -185,6 +278,53 @@
       background: #ffffff;
       border-color: var(--primary);
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+    }
+
+    /* Color Selection Module */
+    .design-matrix-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: var(--input-bg);
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .color-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .color-input-wrapper label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .native-color-node {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 44px;
+      height: 44px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .native-color-node::-webkit-color-swatch {
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px var(--border-color);
+    }
+
+    .native-color-node::-moz-color-swatch {
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px var(--border-color);
     }
 
     .action-btn {
@@ -413,6 +553,26 @@
 </head>
 <body>
 
+  <!-- Top Navigation Component -->
+  <nav class="nexus-navbar">
+    <div class="nav-brand">
+      <i class="fa-solid fa-qrcode" style="color: var(--primary);"></i>
+      <div>NexusQR <span>Studio</span></div>
+    </div>
+    <div class="menu-wrapper">
+      <button class="three-dot-btn" id="dropdownMenuButton" onclick="toggleNavbarDropdown(event)" aria-label="Toggle menu">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+      <div class="nav-dropdown-menu" id="nexusDropdown">
+        <a class="dropdown-item"><i class="fa-solid fa-chart-pie"></i> Dynamic Dashboard</a>
+        <a class="dropdown-item"><i class="fa-solid fa-clock-rotate-left"></i> History Log</a>
+        <a class="dropdown-item"><i class="fa-solid fa-sliders"></i> Matrix Config</a>
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 0.4rem 0;">
+        <a class="dropdown-item" style="color: #ef4444;"><i class="fa-solid fa-circle-info"></i> Support Portal</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="container" id="generator">
     <header>
       <h1 class="brand-title">NexusQR Studio</h1>
@@ -481,6 +641,18 @@
           <small class="helper-text">Encodes offline alphanumeric variables directly inside the static matrix code nodes.</small>
         </div>
 
+        <!-- Custom Styling Node Selector -->
+        <div class="design-matrix-row">
+          <div class="color-input-wrapper">
+            <input type="color" id="matrixForegroundNodeColor" class="native-color-node" value="#0f172a" title="Choose Foreground Color">
+            <label for="matrixForegroundNodeColor">QR Nodes Color</label>
+          </div>
+          <div class="color-input-wrapper">
+            <input type="color" id="matrixBackgroundNodeColor" class="native-color-node" value="#ffffff" title="Choose Background Color">
+            <label for="matrixBackgroundNodeColor">Background Color</label>
+          </div>
+        </div>
+
         <button class="action-btn" onclick="processSelectedFormQR()">Generate Custom QR Code</button>
       </div>
 
@@ -502,123 +674,4 @@
 
           <div class="file-wrapper">
             <span class="custom-file-btn" id="fileLabel"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset</span>
-            <input type="file" id="mediaUpload" accept="image/*" onchange="processImportedQR(event)">
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="seo-hub-panel">
-      <h2>Advanced Free Enterprise Matrix Engine: The All-in-One QR Code Framework</h2>
-      <p>
-        In today's global logistics ecosystem, a <strong>free dynamic qr code generator</strong> is mandatory for digital scaling. Our multi-utility framework features comprehensive <strong>image to qr</strong> data pathways, <strong>photo to qr code</strong> asset mapping, and high-density <strong>link to qr maker</strong> configurations. Optimize search layouts seamlessly with maximum authority.
-      </p>
-    </div>
-
-  </div>
-
-  <script>
-    let globallyStoredBase64PhotoAssetString = ""; 
-
-    function switchQRTab(panelId, tabElement) {
-      document.querySelectorAll('.input-panel').forEach(panel => panel.classList.remove('active'));
-      document.querySelectorAll('.tab-card').forEach(tab => tab.classList.remove('active'));
-      
-      document.getElementById(panelId).classList.add('active');
-      tabElement.classList.add('active');
-    }
-
-    function openHardwareSystemPhotoBrowser() {
-      document.getElementById('hardwareNativePhotoUploader').click();
-    }
-
-    function convertTargetPhotoIntoBase64Stream(event) {
-      const activeUploadedFileObject = event.target.files[0];
-      if (!activeUploadedFileObject) return;
-
-      const continuousStreamReader = new FileReader();
-      continuousStreamReader.onload = function(e) {
-        globallyStoredBase64PhotoAssetString = e.target.result; 
-        
-        document.getElementById('livePreviewImgElement').src = globallyStoredBase64PhotoAssetString;
-        document.getElementById('livePreviewFileMetaName').textContent = activeUploadedFileObject.name;
-        document.getElementById('previewInlineFileThumbnailBar').style.display = 'flex';
-      };
-      continuousStreamReader.readAsDataURL(activeUploadedFileObject);
-    }
-
-    function processSelectedFormQR() {
-      let finalPayload = "";
-      
-      if (document.getElementById('urlPanel').classList.contains('active')) {
-        finalPayload = document.getElementById('urlInput').value.trim();
-        if(finalPayload && !finalPayload.startsWith('http')) {
-          return alert("Link Validation Error: URL must start with http:// or https://");
-        }
-      } else if (document.getElementById('imagePanel').classList.contains('active')) {
-        if (globallyStoredBase64PhotoAssetString) {
-          finalPayload = globallyStoredBase64PhotoAssetString;
-        } else {
-          return alert("Uploader Empty: Kindly browse or upload a valid photo file first.");
-        }
-      } else {
-        finalPayload = document.getElementById('restInput').value.trim();
-      }
-
-      if (!finalPayload) return alert("System Halt: Please enter data before generating.");
-
-      const targetCanvas = document.getElementById("vectorCanvas");
-      const placeholder = document.getElementById("placeholderText");
-      
-      targetCanvas.style.display = "none";
-
-      setTimeout(() => {
-        QRCode.toCanvas(targetCanvas, finalPayload, { 
-          width: 220, margin: 1,
-          color: { dark: "#0f172a", light: "#ffffff" } 
-        }, err => {
-          if (err) return alert("Engine Compilation Error.");
-          
-          placeholder.style.display = "none";
-          targetCanvas.style.display = "block";
-          document.getElementById("exportAction").style.display = "inline-flex";
-        });
-      }, 50); 
-    }
-
-    function triggerCanvasDownload() {
-      const finalCanvas = document.getElementById("vectorCanvas");
-      const triggerLink = document.getElementById("exportAction");
-      triggerLink.href = finalCanvas.toDataURL("image/png");
-      triggerLink.download = "nexus_qr_matrix.png";
-    }
-
-    async function processImportedQR(e) {
-      const binaryFile = e.target.files[0];
-      if (!binaryFile) return;
-      const fileLabel = document.getElementById('fileLabel');
-      const resultOverlay = document.getElementById('scanResultOverlay');
-      
-      fileLabel.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Decoding Matrix Asset...`;
-      resultOverlay.style.display = "none";
-      
-      try {
-        const matrixScannerInstance = new Html5Qrcode("mediaUpload");
-        const parsedResult = await matrixScannerInstance.scanFile(binaryFile, true);
-        resultOverlay.textContent = `Scanned QR Content Array: ${parsedResult}`;
-        resultOverlay.style.background = "rgba(16, 185, 129, 0.08)";
-        resultOverlay.style.borderColor = "#10b981"; resultOverlay.style.color = "#065f46";
-        resultOverlay.style.display = "block";
-      } catch (err) {
-        resultOverlay.textContent = "Failed parsing image configuration asset.";
-        resultOverlay.style.background = "rgba(239, 68, 68, 0.08)";
-        resultOverlay.style.borderColor = "#ef4444"; resultOverlay.style.color = "#991b1b";
-        resultOverlay.style.display = "block";
-      } finally {
-        fileLabel.innerHTML = `<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload QR Image Asset`;
-      }
-    }
-  </script>
-</body>
-</html>
+            <input type="file" id="mediaUpload" acce
