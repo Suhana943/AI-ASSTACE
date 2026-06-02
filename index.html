@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -21,18 +22,34 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 1. Sleek Compact Navigation Header */
+        /* 1. Header Navigation */
         .main-header {
             background-color: #0f172a; 
             color: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 24px; 
+            padding: 14px 20px; 
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
 
         .brand-logo {
@@ -40,99 +57,93 @@
             font-weight: 700;
             letter-spacing: -0.3px;
         }
-
         .brand-logo span.deal { color: #f59e0b; }
         .brand-logo span.in { color: #3b82f6; }
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 15px;
-        }
-        .nav-links a.active {
-            border-bottom: 2px solid #ffffff;
-            padding-bottom: 2px;
-        }
-
-        /* 2. Sleek Dark Hero Banner Section */
-        .hero-blackout {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 55px 20px; 
-            border-bottom: 1px solid #1e293b;
+        /* 2. Side Nav Bar */
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
         }
 
-        .hero-blackout h1 {
-            font-size: 2rem; 
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 14px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .sidebar-nav.open { left: 0; }
 
-        .hero-blackout p {
-            font-size: 1rem;
-            color: #94a3b8;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        /* 3. Balanced Content Hub Intro */
-        .content-hub {
-            padding: 40px 20px 25px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hub-title {
-            font-size: 1.6rem; 
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 10px;
-        }
-
-        .hub-desc {
-            font-size: 0.95rem;
-            color: #475569;
-            margin-bottom: 25px;
-        }
-
-        /* 4. Multi-Page Pill Buttons */
-        .filter-container {
+        .sidebar-header {
             display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 35px;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .filter-btn {
-            background-color: #e2e8f0;
+        .close-sidebar-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #64748b;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #0f172a; }
+
+        .sidebar-menu-list { list-style: none; padding: 10px 0; }
+
+        .sidebar-menu-list li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
             color: #334155;
             text-decoration: none;
-            padding: 8px 18px; 
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 50px; 
-            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .filter-btn.active {
-            background-color: #0f172a;
-            color: #ffffff;
+        .sidebar-menu-list li a:hover { background-color: #f8fafc; color: #3b82f6; }
+        .nav-item-content { display: flex; align-items: center; gap: 12px; }
+        .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
+        .nav-arrow { color: #cbd5e1; font-size: 0.8rem; }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            display: none;
+        }
+        .sidebar-overlay.show { display: block; }
+
+        /* 3. Content Hub Title Area */
+        .content-hub {
+            background: #ffffff;
+            padding: 24px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* 5. Responsive Grid System */
+        .hub-title { font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .hub-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
+        .results-count { font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 15px; }
+
+        /* 4. Grid & Laptop Cards */
         .grid-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 60px 20px;
+            padding: 20px 20px 40px 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
@@ -141,129 +152,118 @@
         .laptop-item-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 20px;
-            text-align: left;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .laptop-item-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-        }
-
-        .badge-deal {
+        .spec-score {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: #ef4444;
+            top: 15px;
+            left: 15px;
+            background-color: #84cc16;
             color: white;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
+            padding: 4px 6px;
+            border-radius: 4px;
         }
+        .spec-score span { display: block; font-size: 0.6rem; font-weight: 400; }
+
+        .item-name { font-size: 1.1rem; font-weight: 700; color: #0f172a; text-decoration: none; display: block; margin-bottom: 5px; }
+        .item-subtitle { font-size: 0.8rem; color: #64748b; margin-bottom: 10px; }
 
         .img-holder {
-            height: 140px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px 0 10px 0;
+            margin: 15px 0;
+        }
+        .img-holder img { max-height: 100%; max-width: 100%; object-fit: contain; }
+
+        .item-specs { list-style: none; margin-bottom: 15px; padding-top: 10px; border-top: 1px solid #f1f5f9; }
+        .item-specs li { font-size: 0.8rem; color: #475569; margin-bottom: 4px; }
+
+        .price-container { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+        .price-tag-row { font-size: 1.3rem; font-weight: 800; color: #0f172a; }
+        .original-price { font-size: 0.85rem; color: #94a3b8; text-decoration: line-through; }
+
+        .multi-link-box { display: flex; gap: 8px; }
+        .store-btn { flex: 1; text-align: center; padding: 10px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
+        .btn-amazon { background-color: #ff9900; color: #000000; }
+        .btn-flipkart { background-color: #2874f0; color: #ffffff; }
+
+        /* ==========================================
+           5. GOOGLE "PEOPLE ALSO SEARCH FOR" SECTION 
+           (Inspired by 9997.jpg)
+           ========================================== */
+        .search-suggestions-section {
+            max-width: 600px; /* Centered narrow container like mobile google */
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
         }
 
-        .img-holder img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
+        .suggestion-box-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
         }
 
-        .item-brand {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #64748b;
-            font-weight: 700;
-            margin-bottom: 4px;
+        .suggestion-list {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .item-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 10px;
-            min-height: 44px;
-            line-height: 1.4;
-        }
-
-        .item-specs {
-            list-style: none;
-            margin-bottom: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #e2e8f0;
-        }
-
-        .item-specs li {
-            font-size: 0.8rem;
-            color: #475569;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .item-specs li::before {
-            content: "•";
-            color: #3b82f6;
-        }
-
-        .price-container {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin: 12px 0 8px 0;
-        }
-
-        .price-tag-row {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #0f172a;
-        }
-
-        .original-price {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            text-decoration: line-through;
-        }
-
-        /* Multi-Link Buttons */
-        .multi-link-box {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .store-btn {
+        .suggestion-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 14px;
+            padding: 16px 20px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
+            color: #1f2937;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.15s ease;
         }
 
-        .btn-amazon { background-color: #ff9900; color: #000000; }
-        .btn-amazon:hover { background-color: #e68a00; }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
 
-        .btn-flipkart { background-color: #2874f0; color: #ffffff; }
-        .btn-flipkart:hover { background-color: #145ec7; }
+        .suggestion-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .suggestion-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Bold text pattern style like Google */
+        .suggestion-text span.bold-query {
+            font-weight: 700;
+        }
+
+        /* Magnifying glass search icon container */
+        .search-icon-circle {
+            width: 32px;
+            height: 32px;
+            background-color: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
 
         footer {
             border-top: 1px solid #e2e8f0;
@@ -281,274 +281,127 @@
 </head>
 <body>
 
-    <header class="main-header">
-    <div class="brand-logo">Laptop<span class="deal">Tec</span><span class="in">.online</span></div>
-    <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About/Contact</a>
-    </nav>
+<!-- Dark Main Top Header -->
+<header class="main-header">
+    <div class="header-left">
+        <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="brand-logo">Laptop<span class="deal">Tec</span><span class="in">.online</span></div>
+    </div>
 </header>
 
-<!-- Hero Banner Section -->
-<section class="hero-blackout">
-    <h1>Best Laptops Under 50,000 (2026)</h1>
-    <p>Students, Gaming, ya Professional use—aapke liye kam budget mein best aur reliable laptops ki sahi pehchaan.</p>
-</section>
+<!-- Dim Overlay Background -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-<!-- Multi-Page Navigation Hub -->
+<!-- Slide-out Navigation Menu Bar -->
+<nav class="sidebar-nav" id="sidebarMenu">
+    <div class="sidebar-header">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
+        <div class="sidebar-logo">LaptopTec Menu</div>
+    </div>
+    <ul class="sidebar-menu-list">
+        <li><a href="index.html"><div class="nav-item-content"><span class="nav-icon">🏠</span> All 10 Top Deals</div><span class="nav-arrow">❯</span></a></li>
+        <li><a href="intel.html"><div class="nav-item-content"><span class="nav-icon">🔹</span> Intel i5 Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="ryzen.html"><div class="nav-item-content"><span class="nav-icon">🔸</span> Ryzen 5 Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="student.html"><div class="nav-item-content"><span class="nav-icon">🎓</span> Student Laptops</div><span class="nav-arrow">❯</span></a></li>
+        <li><a href="gaming.html"><div class="nav-item-content"><span class="nav-icon">🎮</span> Gaming Laptops</div><span class="nav-arrow">❯</span></a></li>
+        <li><a href="battery.html"><div class="nav-item-content"><span class="nav-icon">🔋</span> Best Battery Laptops</div><span class="nav-arrow">❯</span></a></li>
+    </ul>
+</nav>
+
+<!-- Content Hub Section -->
 <section class="content-hub">
-    <h2 class="hub-title">Top Rated Laptops Hub</h2>
+    <h1 class="hub-title">Business Laptops in India with Price List</h1>
     <p class="hub-desc">Humne curat kiye hain best-selling laptops, jo dete hain kam budget mein premium performance aur poori reliability.</p>
-    
-    <div class="filter-container">
-        <a href="index.html" class="filter-btn active">Sabhi 10 Deals</a>
-        <a href="intel.html" class="filter-btn">Intel i5 Laptops</a>
-        <a href="ryzen.html" class="filter-btn">Ryzen 5 Laptops</a>
-        <a href="student.html" class="filter-btn">Student Laptops</a>
-        <a href="professional.html" class="filter-btn">Professional Laptops</a>
-        <a href="gaming.html" class="filter-btn">Gaming Laptops</a>
-        <a href="battery.html" class="filter-btn">Best Battery</a>
-    </div>
+    <div class="results-count">10 Laptops Found</div>
 </section>
 
-    
-    <!-- Main Showcase Grid with 10 Blogs/Products -->
-    <div class="grid-container">
-        
-        <!-- Blog/Laptop 1 -->
-        <div class="laptop-item-card">
-    <span class="badge-deal">Top Pick</span>
-    <div class="img-holder">
-        <!-- यहाँ इमेज का लिंक अपडेट किया गया है -->
-        <img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook">
-    </div>
-    <div>
-        <div class="item-brand">HP</div>
-        <div class="item-name">HP Chromebook Celeron Quad Core (4 GB/64 GB EMMC) 14a-ca0504TU</div>
-        <ul class="item-specs">
-            <li>Intel Celeron Quad Core Processor</li>
-            <li>4GB RAM | 64GB eMMC Storage</li>
-            <li>14-inch HD Micro-Edge Display</li>
-        </ul>
-    </div>
-    <div>
-        <div class="price-container">
-            <span class="price-tag-row">₹25,500</span>
-            <span class="original-price">₹32,279</span>
+<!-- Main Grid Showcase -->
+<div class="grid-container">
+    <!-- Laptop Card 1 -->
+    <div class="laptop-item-card">
+        <div class="spec-score">77% <span>Spec Score</span></div>
+        <div class="img-holder"><img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook"></div>
+        <div>
+            <a href="#" class="item-name">HP Chromebook Celeron Quad Core</a>
+            <div class="item-subtitle">(4 GB/64 GB EMMC / Chrome OS)</div>
         </div>
-        <div class="multi-link-box">
-            <a href="https://dl.flipkart.com/dl/hp-chromebook-intel-celeron-quad-core-n4120-4-gb-64-gb-emmc-storage-chrome-os-14a-ca0504tu/p/itm786e711f402fa" target="_blank" class="store-btn btn-flipkart">Check on Flipkart →</a>
+        <div>
+            <div class="price-container"><span class="price-tag-row">₹25,500</span></div>
+            <div class="multi-link-box"><a href="#" target="_blank" class="store-btn btn-flipkart">Flipkart</a></div>
+        </div>
+    </div>
+
+    <!-- Laptop Card 2 -->
+    <div class="laptop-item-card">
+        <div class="spec-score">72% <span>Spec Score</span></div>
+        <div class="img-holder"><img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255"></div>
+        <div>
+            <a href="#" class="item-name">HP 255 Notebook</a>
+            <div class="item-subtitle">(AMD Athlon / 8GB RAM / 256GB SSD)</div>
+        </div>
+        <div>
+            <div class="price-container"><span class="price-tag-row">Check Price</span></div>
+            <div class="multi-link-box"><a href="#" target="_blank" class="store-btn btn-amazon">Amazon</a></div>
         </div>
     </div>
 </div>
 
-        <!-- Blog/Laptop 2 -->
-        <div class="laptop-item-card">
-    <span class="badge-deal">Value King</span>
-    <div class="img-holder">
-        <img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255 Notebook">
-    </div>
-    <div>
-        <div class="item-brand">HP</div>
-        <div class="item-name">HP 255 Notebook, AMD Athlon Silver 7120U (8GB RAM / 256GB SSD)</div>
-        <ul class="item-specs">
-            <li>AMD Athlon Silver 7120U Processor</li>
-            <li>8GB DDR4 RAM | 256GB Fast SSD</li>
-            <li>15.6-inch Anti-Glare HD Display</li>
-        </ul>
-    </div>
-    <div>
-        <div class="price-container">
-            <span class="price-tag-row">Check Price</span>
-        </div>
-        <div class="multi-link-box">
-            <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-        </div>
-    </div>
-        </div>
+<!-- ==========================================
+     GOOGLE "PEOPLE ALSO SEARCH FOR" SECTION
+     (Matches design layout of 9997.jpg)
+     ========================================== -->
+<section class="search-suggestions-section">
+    <h2 class="suggestion-box-title">People also search for</h2>
+    <div class="suggestion-list">
         
+        <!-- Suggestion 1 -> Links to intel.html -->
+        <a href="intel.html" class="suggestion-item">
+            <div class="suggestion-text">
+                Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span>
+            </div>
+            <div class="search-icon-circle">🔍</div>
+        </a>
 
-        <!-- Blog/Laptop 3 -->
-        <div class="laptop-item-card">
-    <span class="badge-deal">Battery Life</span>
-    <div class="img-holder">
-        <img src="https://m.media-amazon.com/images/I/61k9j5N1oDL._SL1500_.jpg" alt="Dell 15">
-    </div>
-    <div>
-        <div class="item-brand">Dell</div>
-        <div class="item-name">Dell 15, Intel Core i3 14th Gen-100U (16GB RAM / 512GB SSD)</div>
-        <ul class="item-specs">
-            <li>14th Gen Intel Core i3-100U Processor</li>
-            <li>16GB RAM | 512GB SSD Storage</li>
-            <li>15.6-inch FHD IPS Display (1.63Kg)</li>
-        </ul>
-    </div>
-    <div>
-        <div class="price-container">
-            <span class="price-tag-row">₹49,490</span>
-            <span class="original-price">₹53,074</span>
-        </div>
-        <div class="multi-link-box">
-            <a href="https://amzn.in/d/039v2VVM" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-            <a href="https://dl.flipkart.com/dl/dell-pro-15-backlit-2025-amd-ryzen-5-quad-core-7520u-8-gb-512-gb-ssd-windows-11-home-thin-light-laptop/p/itm379f7a58d0a29" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-        </div>
-    </div>
-        </div>
-        
-        <!-- Blog/Laptop 4 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Budget Gaming</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=300&q=80" alt="Lenovo IdeaPad"></div>
-            <div>
-                <div class="item-brand">Lenovo</div>
-                <div class="item-name">Lenovo IdeaPad Slim 3 Intel i5 (16GB RAM)</div>
-                <ul class="item-specs">
-                    <li>Intel Core i5 12th Gen | 1240P Core</li>
-                    <li>16GB RAM & Backlit Keyboard Support</li>
-                    <li>Privacy Shutter Camera for Security</li>
-                </ul>
+        <!-- Suggestion 2 -> Links to ryzen.html -->
+        <a href="ryzen.html" class="suggestion-item">
+            <div class="suggestion-text">
+                Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span>
             </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹49,490</span><span class="original-price">₹58,000</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                </div>
-            </div>
-        </div>
+            <div class="search-icon-circle">🔍</div>
+        </a>
 
-        <!-- Blog/Laptop 5 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Premium Look</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="Dell Inspiron"></div>
-            <div>
-                <div class="item-brand">Dell</div>
-                <div class="item-name">Dell Inspiron 3520 Intel Core i5 (8GB / 512GB)</div>
-                <ul class="item-specs">
-                    <li>Intel Core i5-1235U | Smooth Flow</li>
-                    <li>120Hz Fluid Refresh Rate Display</li>
-                    <li>Dell ComfortView Low Blue Light Tech</li>
-                </ul>
+        <!-- Suggestion 3 -> Links to gaming.html -->
+        <a href="gaming.html" class="suggestion-item">
+            <div class="suggestion-text">
+                Best <span class="bold-query">Gaming Laptops under 50000</span>
             </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹47,990</span><span class="original-price">₹53,500</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="#" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
-            </div>
-        </div>
+            <div class="search-icon-circle">🔍</div>
+        </a>
 
-        <!-- Blog/Laptop 6 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Heavy Duty</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=300&q=80" alt="MSI Modern"></div>
-            <div>
-                <div class="item-brand">MSI</div>
-                <div class="item-name">MSI Modern 14 AMD Ryzen 5 (16GB / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 7530H Modern Processor</li>
-                    <li>Ultra Thin Military-Grade Durability</li>
-                    <li>Hi-Res Audio Content Creation Support</li>
-                </ul>
+        <!-- Suggestion 4 -> Links to student.html -->
+        <a href="student.html" class="suggestion-item">
+            <div class="suggestion-text">
+                Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span>
             </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹44,990</span><span class="original-price">₹52,000</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Blog/Laptop 7 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Loot Deal</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1496181130204-7552cc1524e2?auto=format&fit=crop&w=300&q=80" alt="Infinix InBook"></div>
-            <div>
-                <div class="item-brand">Infinix</div>
-                <div class="item-name">Infinix INBook Y4 Max Intel i5 (16GB RAM)</div>
-                <ul class="item-specs">
-                    <li>Intel Core i5 13th Gen Powerful Setup</li>
-                    <li>Premium Aluminium Alloy Metal Finish</li>
-                    <li>65W Type-C Fast Multi-Charging Support</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹39,990</span><span class="original-price">₹49,990</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Blog/Laptop 8 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Performance</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Acer Extensa"></div>
-            <div>
-                <div class="item-brand">Acer</div>
-                <div class="item-name">Acer Extensa 15 Intel Core i5 (16GB RAM)</div>
-                <ul class="item-specs">
-                    <li>Intel Core i5 12th Gen High Speed</li>
-                    <li>16GB RAM & Elevation Hinge Keyboard</li>
-                    <li>Dual Microphones with AI Noise Reduction</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹43,490</span><span class="original-price">₹51,000</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Blog/Laptop 9 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Student Pick</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="Lenovo V15"></div>
-            <div>
-                <div class="item-brand">Lenovo</div>
-                <div class="item-name">Lenovo V15 AMD Ryzen 5 (16GB / 512GB SSD)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 5500U Power Saver CPU</li>
-                    <li>Spill-Resistant Ergonomic Keyboard</li>
-                    <li>Dolby Audio Crystal Clear Sound Output</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container"><span class="price-tag-row">₹41,990</span><span class="original-price">₹48,990</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="#" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Blog/Laptop 10 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Sleek Design</span>
-            <div class="img-holder"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="HP 14"></div>
-            <div>
-                <div class="item-brand">HP</div>
-                <div class="item-name">HP Laptop 14 AMD Ryzen 5 (16GB RAM / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 5625U 6-Core Processor</li>
-                    <li>14-inch Compact High-Brilliance Display</li>
-                    <li>HP True Vision HD Camera with Dual Mics</li>
-                </ul>
-            </div>
-            <div class="price-container"><span class="price-tag-row">₹45,990</span><span class="original-price">₹52,300</span></div>
-                <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                </div>
-            </div>
-        </div>
+            <div class="search-icon-circle">🔍</div>
+        </a>
 
     </div>
+</section>
 
-    <!-- Clean Comprehensive Footer -->
-    <footer>
-        <p>&copy; 2026 KamBudgetDeals.in | Verified Laptop Portals.</p>
-    </footer>
+<footer>
+    <p>&copy; 2026 KamBudgetDeals.in | Google Search Interface Added.</p>
+</footer>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebarMenu');
+    const overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+}
+</script>
 
 </body>
-</html>
+                </html>
+                
