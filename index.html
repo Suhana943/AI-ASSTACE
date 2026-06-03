@@ -1,5 +1,4 @@
 
-                
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -14,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -23,7 +23,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 1. Header Navigation */
+        /* Header Navigation */
         .main-header {
             background-color: #0f172a; 
             color: #ffffff;
@@ -61,7 +61,7 @@
         .brand-logo span.deal { color: #f59e0b; }
         .brand-logo span.in { color: #3b82f6; }
 
-        /* 2. Side Nav Bar */
+        /* Side Nav Bar */
         .sidebar-nav {
             position: fixed;
             top: 0;
@@ -95,9 +95,7 @@
         }
 
         .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #0f172a; }
-
         .sidebar-menu-list { list-style: none; padding: 10px 0; }
-
         .sidebar-menu-list li a {
             display: flex;
             align-items: center;
@@ -109,7 +107,6 @@
             font-weight: 500;
             border-bottom: 1px solid #f1f5f9;
         }
-
         .sidebar-menu-list li a:hover { background-color: #f8fafc; color: #3b82f6; }
         .nav-item-content { display: flex; align-items: center; gap: 12px; }
         .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
@@ -127,65 +124,92 @@
         }
         .sidebar-overlay.show { display: block; }
 
-        /* 3. Hero Section Area */
+        /* Hero Section Area */
         .hero-section {
-            background: #ffffff;
-            padding: 40px 20px;
+            background: radial-gradient(circle at top right, #fff 60%, #f0fdf4 100%);
+            padding: 60px 20px;
             border-bottom: 1px solid #e2e8f0;
             text-align: center;
-            max-width: 100%;
         }
 
         .main-title { 
-            font-size: 1.8rem; 
-            font-weight: 700; 
+            font-size: 2.2rem; 
+            font-weight: 900; 
             color: #0f172a; 
-            margin-bottom: 12px; 
+            margin-bottom: 16px; 
+            letter-spacing: -0.5px;
+        }
+        
+        .main-title span.highlight {
+            color: #2563eb;
+            background: linear-gradient(120deg, #dbeafe 0%, #dbeafe 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 80%;
         }
 
         .sub-headline { 
-            font-size: 1rem; 
-            color: #64748b; 
-            max-width: 700px;
-            margin: 0 auto 24px auto; 
+            font-size: 1.1rem; 
+            color: #475569; 
+            max-width: 750px;
+            margin: 0 auto 32px auto; 
+            font-weight: 500;
         }
 
         .cta-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 6px;
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: background 0.2s;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .btn-primary:hover { background-color: #1e293b; }
+
+        .btn-primary {
+            background-color: #dc2626; /* Eye-catching Red for deals */
+            color: #ffffff;
+            border: none;
+        }
+        .btn-primary:hover { background-color: #b91c1c; transform: translateY(-2px); }
 
         .btn-secondary {
-            border: 2px solid #000000;
-            color: #000000;
-            padding: 10px 26px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: background 0.2s;
+            border: 2px solid #0f172a;
+            color: #0f172a;
+            background: #ffffff;
         }
-        .btn-secondary:hover { background-color: #f1f5f9; }
+        .btn-secondary:hover { background-color: #f1f5f9; transform: translateY(-2px); }
 
-        /* 4. Grid & Laptop Cards */
+        /* Grid & Laptop Cards */
+        .section-heading {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 50px 20px 10px 20px;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-subheading {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
         .grid-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
@@ -200,24 +224,29 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .laptop-item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
 
         .spec-score {
             position: absolute;
             top: 15px;
             left: 15px;
-            background-color: #84cc16;
+            background-color: #16a34a;
             color: white;
             font-size: 0.75rem;
             font-weight: 700;
-            padding: 4px 6px;
+            padding: 4px 8px;
             border-radius: 4px;
         }
         .spec-score span { display: block; font-size: 0.6rem; font-weight: 400; }
 
         .item-name { font-size: 1.1rem; font-weight: 700; color: #0f172a; text-decoration: none; display: block; margin-bottom: 5px; }
-        .item-name:hover { color: #3b82f6; }
+        .item-name:hover { color: #2563eb; }
         .item-subtitle { font-size: 0.8rem; color: #64748b; margin-bottom: 10px; }
 
         .img-holder {
@@ -229,65 +258,83 @@
         }
         .img-holder img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        .price-container { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-        .price-tag-row { font-size: 1.3rem; font-weight: 800; color: #0f172a; }
-        .original-price { font-size: 0.85rem; color: #94a3b8; text-decoration: line-through; }
+        .price-container { display: flex; align-items: baseline; gap: 8px; margin-bottom: 15px; }
+        .price-tag-row { font-size: 1.4rem; font-weight: 800; color: #16a34a; }
+        .original-price { font-size: 0.9rem; color: #94a3b8; text-decoration: line-through; }
 
         .multi-link-box { display: flex; gap: 8px; }
-        .store-btn { flex: 1; text-align: center; padding: 10px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
+        .store-btn { flex: 1; text-align: center; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.9rem; transition: opacity 0.2s; }
+        .store-btn:hover { opacity: 0.9; }
         .btn-amazon { background-color: #ff9900; color: #000000; }
         .btn-flipkart { background-color: #2874f0; color: #ffffff; }
 
-        /* 5. Google Suggestions Section */
+        /* Affiliate Disclaimer styling */
+        .affiliate-note {
+            max-width: 700px;
+            margin: 20px auto 0 auto;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            padding: 0 20px;
+        }
+
+        /* Comparison Table Section */
+        .comparison-section {
+            max-width: 1200px;
+            margin: 20px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .table-wrapper {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+            min-width: 800px;
+        }
+
+        .comp-table th, .comp-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comp-table th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .comp-table tr:hover { background-color: #f8fafc; }
+        .comp-table td.feature-title { font-weight: 700; color: #475569; background-color: #f1f5f9; width: 15%; }
+        .comp-table td.laptop-col { width: 28%; }
+
+        .comp-img { height: 60px; object-fit: contain; display: block; margin-bottom: 8px; }
+        .comp-brand-title { font-weight: 700; font-size: 0.95rem; }
+        .comp-price { font-weight: 800; color: #16a34a; font-size: 1.1rem; }
+        .badge-score { background: #16a34a; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+
+        /* Google Suggestions Section */
         .search-suggestions-section {
             max-width: 600px;
             margin: 0 auto 50px auto;
             padding: 0 20px;
         }
 
-        .suggestion-box-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 16px;
-        }
-
-        .suggestion-list {
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .suggestion-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: #1f2937;
-            border-bottom: 1px solid #f3f4f6;
-            transition: background-color 0.15s ease;
-        }
-
+        .suggestion-box-title { font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 16px; }
+        .suggestion-list { background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .suggestion-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; text-decoration: none; color: #1f2937; border-bottom: 1px solid #f3f4f6; transition: background-color 0.15s ease; }
         .suggestion-item:last-child { border-bottom: none; }
         .suggestion-item:hover { background-color: #f9fafb; }
-
         .suggestion-text { font-size: 0.95rem; font-weight: 500; line-height: 1.4; }
         .suggestion-text span.bold-query { font-weight: 700; }
-
-        .search-icon-circle {
-            width: 32px;
-            height: 32px;
-            background-color: #f3f4f6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #4b5563;
-            font-size: 0.9rem;
-        }
+        .search-icon-circle { width: 32px; height: 32px; background-color: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4b5563; font-size: 0.9rem; }
             
         footer {
             border-top: 1px solid #e2e8f0;
@@ -300,12 +347,13 @@
 
         @media (max-width: 600px) {
             .grid-container { grid-template-columns: 1fr; }
-            .main-title { font-size: 1.5rem; }
+            .main-title { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
 
+<!-- Dark Main Top Header -->
 <header class="main-header">
     <div class="header-left">
         <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
@@ -313,8 +361,10 @@
     </div>
 </header>
 
+<!-- Dim Overlay Background -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
+<!-- Slide-out Navigation Menu Bar -->
 <nav class="sidebar-nav" id="sidebarMenu">
     <div class="sidebar-header">
         <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
@@ -331,22 +381,29 @@
 </nav>
 
 <main>
+    <!-- Dynamic & High-Conversion Hero Section -->
     <section class="hero-section">
-        <h1 class="main-title">Business & Gaming Performance, Curated.</h1>
-        <p class="sub-headline">Stop searching and start choosing. We've hand-picked the top laptops in India that deliver unbeatable value for professionals and gamers.</p>
+        <h1 class="main-title">गलत लैपटॉप खरीदकर <span class="highlight">पैसे बर्बाद मत करो!</span></h1>
+        <p class="sub-headline">हमने हफ़्तों की रिसर्च के बाद 2026 की सबसे बेहतरीन Flipkart और Amazon डील्स को एक जगह इकट्ठा किया है। सीधे बेस्ट ऑफर लिंक पर क्लिक करें और भारी डिस्काउंट पाएं!</p>
         
         <div class="cta-container">
-            <a href="#laptops" class="btn-primary">View Top Picks</a>
-            <a href="#compare" class="btn-secondary">Compare Specs</a>
+            <a href="#laptops-showcase" class="btn-primary">🔥 लाइव डील्स देखें</a>
+            <a href="#compare-specs" class="btn-secondary">📊 स्पेक्स कंपेयर करें</a>
         </div>
+        <p class="affiliate-note">*जब आप हमारे लिंक्स के ज़रिये खरीदारी करते हैं, तो स्टोर्स से हमें एक छोटा कमीशन मिलता है, जिससे यह साइट चलती है। आपके लिए कीमत बिल्कुल नहीं बदलती!</p>
     </section>
 
-    <div class="grid-container" id="laptops">
-        <div class="laptop-item-card" data-category="student">
+    <!-- 1. VIEW TOP PICKS SECTION -->
+    <h2 class="section-heading" id="laptops-showcase">आज की सबसे बड़ी छूट वाली डील्स (Flipkart & Amazon)</h2>
+    <p class="section-subheading">कीमतें स्टॉक खत्म होने के साथ बदल सकती हैं, अपनी पसंद का लैपटॉप तुरंत चेक करें।</p>
+    
+    <div class="grid-container">
+        <!-- Laptop Card 1 -->
+        <div class="laptop-item-card">
             <div class="spec-score">65% <span>Spec Score</span></div>
             <div class="img-holder"><img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook"></div>
             <div>
-                <a href="#" class="item-name">HP Chromebook Celeron Quad Core 14a-ca0504TU</a>
+                <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="item-name">HP Chromebook Celeron 14a</a>
                 <div class="item-subtitle">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
             </div>
             <div>
@@ -355,29 +412,31 @@
                     <span class="original-price">₹32,279</span>
                 </div>
                 <div class="multi-link-box">
-                    <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
+                    <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="store-btn btn-flipkart">Flipkart पर खरीदें</a>
                 </div>
             </div>
         </div>
 
-        <div class="laptop-item-card" data-category="student">
+        <!-- Laptop Card 2 -->
+        <div class="laptop-item-card">
             <div class="spec-score">68% <span>Spec Score</span></div>
             <div class="img-holder"><img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255"></div>
             <div>
-                <a href="#" class="item-name">HP 255 Notebook</a>
+                <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="item-name">HP 255 Notebook</a>
                 <div class="item-subtitle">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
             </div>
             <div>
                 <div class="price-container">
-                    <span class="price-tag-row">Check Price</span>
+                    <span class="price-tag-row">प्राइस चेक करें</span>
                 </div>
                 <div class="multi-link-box">
-                    <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="store-btn btn-amazon">Amazon</a>
+                    <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="store-btn btn-amazon">Amazon पर देखें</a>
                 </div>
             </div>
         </div>
 
-        <div class="laptop-item-card" data-category="intel">
+        <!-- Laptop Card 3 -->
+        <div class="laptop-item-card">
             <div class="spec-score">75% <span>Spec Score</span></div>
             <div class="img-holder"><img src="https://m.media-amazon.com/images/I/61k9j5N1oDL._SL1500_.jpg" alt="Dell 15"></div>
             <div>
@@ -390,42 +449,105 @@
                     <span class="original-price">₹53,074</span>
                 </div>
                 <div class="multi-link-box">
-                    <a href="#" target="_blank" class="store-btn btn-amazon">Amazon</a>
-                    <a href="#" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
+                    <a href="#" target="_blank" class="store-btn btn-amazon">Amazon Deal</a>
+                    <a href="#" target="_blank" class="store-btn btn-flipkart">Flipkart Deal</a>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!-- 2. SERIOUS SPEC COMPARISON SECTION -->
+    <h2 class="section-heading" id="compare-specs">दूध का दूध, पानी का पानी: आमने-सामने तुलना</h2>
+    <p class="section-subheading">कौन सा लैपटॉप आपके बजट के लिए सही रहेगा? यहाँ सीधे फीचर्स मिलाएँ।</p>
+    
+    <section class="comparison-section">
+        <div class="table-wrapper">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Specifications</th>
+                        <th>HP Chromebook 14a</th>
+                        <th>HP 255 Notebook</th>
+                        <th>Dell 15 Laptop</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-title">Preview</td>
+                        <td class="laptop-col">
+                            <img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" class="comp-img" alt="HP Chromebook">
+                            <div class="comp-brand-title">HP Chromebook 14a</div>
+                        </td>
+                        <td class="laptop-col">
+                            <img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" class="comp-img" alt="HP 255">
+                            <div class="comp-brand-title">HP 255 Notebook</div>
+                        </td>
+                        <td class="laptop-col">
+                            <img src="https://m.media-amazon.com/images/I/61k9j5N1oDL._SL1500_.jpg" class="comp-img" alt="Dell 15">
+                            <div class="comp-brand-title">Dell 15 Laptop</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="feature-title">Processor</td>
+                        <td>Intel Celeron Quad Core</td>
+                        <td>AMD Athlon Silver 7120U</td>
+                        <td>Intel Core i3 (14th Gen)</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-title">RAM</td>
+                        <td>4 GB DDR4</td>
+                        <td>8 GB DDR4</td>
+                        <td>16 GB DDR4</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-title">Storage</td>
+                        <td>64 GB eMMC</td>
+                        <td>256 GB NVMe SSD</td>
+                        <td>512 GB NVMe SSD</td>
+                    </tr>
+                      <tr>
+                        <td class="feature-title">OS</td>
+                        <td>Chrome OS</td>
+                        <td>Windows 11 Home</td>
+                        <td>Windows 11 Home</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-title">Value Score</td>
+                        <td><span class="badge-score">65%</span></td>
+                        <td><span class="badge-score">68%</span></td>
+                        <td><span class="badge-score">75%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-title">Best Price</td>
+                        <td class="comp-price">₹25,500</td>
+                        <td class="comp-price" style="color:#64748b; font-size:0.95rem;">Check Online</td>
+                        <td class="comp-price">₹49,490</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- Google "People Also Search For" Section -->
     <section class="search-suggestions-section">
         <h2 class="suggestion-box-title">People also search for</h2>
         <div class="suggestion-list">
-            
             <a href="intel.html" class="suggestion-item">
-                <div class="suggestion-text">
-                    Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span>
-                </div>
+                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
-
             <a href="ryzen.html" class="suggestion-item">
-                <div class="suggestion-text">
-                    Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span>
-                </div>
+                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
-
             <a href="gaming.html" class="suggestion-item">
-                <div class="suggestion-text">
-                    Best <span class="bold-query">Gaming Laptops under 50000</span>
-                </div>
+                <div class="suggestion-text">Best <span class="bold-query">Gaming Laptops under 50000</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
-
             <a href="student.html" class="suggestion-item">
-                <div class="suggestion-text">
-                    Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span>
-                </div>
+                <div class="suggestion-text">Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
         </div>
@@ -433,7 +555,7 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 KamBudgetDeals.in | Google Search Interface Added.</p>
+    <p>&copy; 2026 KamBudgetDeals.in | Affiliate Price Aggregator Portal.</p>
 </footer>
 
 <script>
