@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryzen 5 Laptops Under 50000 | KamBudgetDeals</title>
+    <title>Laptops Deals | laptoptec.online</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* Global Reset */
         * {
@@ -15,430 +17,408 @@
         }
 
         body {
-            background-color: #f8fafc;
+            background-color: #ffffff;
             color: #0f172a;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.4;
+            padding-bottom: 60px; /* बॉटम बार के लिए स्पेस */
         }
 
-        /* Navigation Header */
+        /* 1. White Header Layout (As per photo) */
         .main-header {
-            background-color: #0f172a; 
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 24px; 
+            padding: 12px 16px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-left i, .header-right i {
+            font-size: 1.3rem;
+            color: #1e293b;
+            cursor: pointer;
         }
 
         .brand-logo {
-            font-size: 1.25rem; 
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .brand-logo span.deal { color: #f59e0b; }
-        .brand-logo span.in { color: #3b82f6; }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 15px;
-        }
-        .nav-links a.active {
-            border-bottom: 2px solid #ffffff;
-            padding-bottom: 2px;
-        }
-
-        /* Sleek Dark Hero Section */
-        .hero-blackout {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 55px 20px; 
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .hero-blackout h1 {
-            font-size: 2rem; 
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 14px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-blackout p {
-            font-size: 1rem;
-            color: #94a3b8;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        /* Content Hub Intro */
-        .content-hub {
-            padding: 40px 20px 25px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Pill Buttons Navigation */
-        .filter-container {
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #002c54;
             display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 35px;
+            flex-direction: column;
+            line-height: 1;
         }
 
-        .filter-btn {
-            background-color: #e2e8f0;
-            color: #334155;
-            text-decoration: none;
-            padding: 8px 18px; 
-            font-size: 0.85rem;
+        .brand-logo span.sub-text {
+            font-size: 0.55rem;
             font-weight: 600;
-            border-radius: 50px; 
+            color: #64748b;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+
+        /* 2. Content Hub Intro Section */
+        .content-intro {
+            padding: 20px 16px;
+        }
+
+        .content-intro h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .content-intro p {
+            font-size: 0.95rem;
+            color: #475569;
+            display: inline;
+        }
+
+        .read-more-link {
+            color: #05668d;
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-left: 4px;
+            cursor: pointer;
+        }
+
+        /* 3. Horizontal Pill Filters */
+        .filter-scroll-wrapper {
+            padding: 10px 16px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox के लिए */
+        }
+
+        .filter-scroll-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome/Safari के लिए */
+        }
+
+        .pill-btn {
+            background-color: #ffffff;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
             transition: all 0.2s ease;
         }
 
-        .filter-btn.active {
-            background-color: #0f172a;
-            color: #ffffff;
+        .pill-btn.active {
+            border-color: #0f172a;
+            color: #0f172a;
+            background-color: #f8fafc;
         }
 
-        /* Responsive Grid System */
+        /* 4. Product Total Counter */
+        .product-counter {
+            padding: 15px 16px 5px 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* 5. Main Grid Container */
         .grid-container {
-            max-width: 1200px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 600px; /* मोबाइल फ्रेंडली मैक्स विड्थ */
             margin: 0 auto;
-            padding: 0 20px 60px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
         }
 
+        /* HT Tech/Amazon Style Horizontal Card */
         .laptop-item-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
+            border-radius: 12px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .laptop-item-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-        }
-
-        .badge-deal {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: #ef4444;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
+        /* ऊपरी मुख्य हिस्सा (Image + Details side by side) */
+        .card-main-body {
+            display: flex;
+            padding: 16px;
+            gap: 15px;
         }
 
         .img-holder {
-            height: 140px;
+            width: 35%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px 0 10px 0;
         }
 
         .img-holder img {
-            max-height: 100%;
             max-width: 100%;
+            max-height: 110px;
             object-fit: contain;
         }
 
-        .item-brand {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #64748b;
-            font-weight: 700;
-            margin-bottom: 4px;
+        .details-holder {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .item-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 10px;
-            min-height: 44px;
-            line-height: 1.4;
-        }
-
-        .item-specs {
-            list-style: none;
-            margin-bottom: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #e2e8f0;
-        }
-
-        .item-specs li {
-            font-size: 0.8rem;
-            color: #475569;
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: #334155;
+            line-height: 1.3;
             margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        .item-specs li::before {
-            content: "•";
-            color: #3b82f6;
+        .badge-discount {
+            color: #1e824c;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .price-container {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             gap: 8px;
-            margin: 12px 0 8px 0;
+            margin-top: 2px;
         }
 
-        .price-tag-row {
-            font-size: 1.4rem;
-            font-weight: 800;
+        .price-current {
+            font-size: 1.35rem;
+            font-weight: 700;
             color: #0f172a;
         }
 
-        .original-price {
-            font-size: 0.9rem;
+        .price-original {
+            font-size: 0.85rem;
             color: #94a3b8;
             text-decoration: line-through;
         }
 
-        /* Multi-Link UI */
-        .multi-link-box {
+        .compare-checkbox-row {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .store-btn {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 10px 14px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
+            gap: 6px;
             font-size: 0.85rem;
-            transition: all 0.2s ease;
+            color: #475569;
+            margin-top: 6px;
         }
 
-        .btn-amazon { background-color: #ff9900; color: #000000; }
-        .btn-amazon:hover { background-color: #e68a00; }
+        .compare-checkbox-row input {
+            width: 15px;
+            height: 15px;
+            accent-color: #0056b3;
+        }
 
-        .btn-flipkart { background-color: #2874f0; color: #ffffff; }
-        .btn-flipkart:hover { background-color: #145ec7; }
+        .brand-affiliate-logo {
+            margin-top: 8px;
+            height: 15px;
+            align-self: flex-start;
+        }
 
+        /* निचली बटन पट्टी (Action Row) */
+        .card-actions-row {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-learn {
+            background-color: #ffffff;
+            color: #0056b3;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .btn-buy {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
+
+        .btn-buy:hover {
+            background-color: #004085;
+        }
+
+        /* 6. Bottom Sticky Sort/Filter Navigation Bar */
+        .bottom-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            display: flex;
+            border-top: 1px solid #cbd5e1;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 2000;
+        }
+
+        .sticky-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .sticky-tab:first-child {
+            border-right: 1px solid #cbd5e1;
+        }
+
+        /* Footer */
         footer {
             border-top: 1px solid #e2e8f0;
-            padding: 35px 20px;
+            padding: 25px 16px;
             text-align: center;
-            font-size: 0.85rem;
-            color: #64748b;
-            background-color: #ffffff;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 600px) {
-            .grid-container { grid-template-columns: 1fr; }
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background-color: #f8fafc;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header class="main-header">
-        <div class="brand-logo">KamBudget<span class="deal">Deals</span><span class="in">.in</span></div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About/Contact</a>
-        </nav>
+        <div class="header-left">
+            <i class="fa-solid fa-bars"></i>
+            <div class="brand-logo">
+                LAPTOPTEC
+                <span class="sub-text">ONLINE</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-regular fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
     </header>
 
-    <!-- Hero Banner Section -->
-    <section class="hero-blackout">
-        <h1>Best AMD Ryzen 5 Laptops (2026)</h1>
-        <p>Gaming aur Heavy graphics work ke liye sasti AMD Ryzen 5 processor deals niche dekhein.</p>
+    <section class="content-intro">
+        <h1>Laptops</h1>
+        <p>Discover Your Ideal Laptop with laptoptec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a</p>
+        <span class="read-more-link">Read more</span>
     </section>
 
-    <!-- Filter/Page Switcher Tabs -->
-    <section class="content-hub">
-        <div class="filter-container">
-            <a href="index.html" class="filter-btn">Sabhi Deals</a>
-            <a href="intel.html" class="filter-btn">Intel i5 Laptops</a>
-            <a href="ryzen.html" class="filter-btn active">Ryzen 5 Laptops</a>
-     <a href="advice.html" class="filter-btn">top deals for Laptops</a>
-        <a href="battery.html" class="filter-btn">best deals for battery</a>
-            <a href="gaming.html" class="filter-btn">gaming Laptops</a>        </div>
-    </section>    
-    <!-- Product Grid System (5 Top Ryzen 5 Blocks) -->
+    <div class="filter-scroll-wrapper">
+        <a href="#" class="pill-btn active">Latest Laptops</a>
+        <a href="#" class="pill-btn">HP Laptops</a>
+        <a href="#" class="pill-btn">Laptops under ₹30,000</a>
+        <a href="#" class="pill-btn">Dell Laptops</a>
+        <a href="#" class="pill-btn">Gaming Laptops</a>
+    </div>
+
+    <div class="product-counter">
+        1003 Laptops
+    </div>
+
     <div class="grid-container">
         
-        <!-- Block 1: ASUS Vivobook -->
         <div class="laptop-item-card">
-            <span class="badge-deal">Ryzen King</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="ASUS Vivobook">
-            </div>
-            <div>
-                <div class="item-brand">ASUS</div>
-                <div class="item-name">ASUS Vivobook 16X AMD Ryzen 5 (16GB / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 5600H High-Speed CPU</li>
-                    <li>16GB RAM & Superfast 512GB SSD</li>
-                    <li>Sleek 16-inch Thin-Bezel Screen</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹46,490</span>
-                    <span class="original-price">₹54,990</span>
+            <div class="card-main-body">
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Acer Laptop">
                 </div>
-                <div class="multi-link-box">
-                    <a href="RYZEN1_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="RYZEN1_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                <div class="details-holder">
+                    <div class="item-name">Acer Professional 14 AMD</div>
+                    <div class="badge-discount">35% OFF</div>
+                    
+                    <div class="price-container">
+                        <span class="price-current">₹39,990</span>
+                        <span class="price-original">₹61,750</span>
+                    </div>
+
+                    <div class="compare-checkbox-row">
+                        <input type="checkbox" id="comp1">
+                        <label for="comp1">Add to compare</label>
+                    </div>
+
+                    <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
                 </div>
+            </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="#" class="action-btn btn-buy">Buy Now</a>
             </div>
         </div>
 
-        <!-- Block 2: MSI Modern 14 -->
         <div class="laptop-item-card">
-            <span class="badge-deal">Heavy Duty</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=300&q=80" alt="MSI Modern">
-            </div>
-            <div>
-                <div class="item-brand">MSI</div>
-                <div class="item-name">MSI Modern 14 AMD Ryzen 5 (16GB / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 7530U Modern Processor</li>
-                    <li>Ultra Thin Military-Grade Durability</li>
-                    <li>Hi-Res Audio Content Creation Support</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹44,990</span>
-                    <span class="original-price">₹52,000</span>
+            <div class="card-main-body">
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="ASUS Laptop">
                 </div>
-                <div class="multi-link-box">
-                    <a href="RYZEN2_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="RYZEN2_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
-            </div>
-        </div>
+                <div class="details-holder">
+                    <div class="item-name">ASUS Vivobook 16X Thin & Light</div>
+                    <div class="badge-discount">28% OFF</div>
+                    
+                    <div class="price-container">
+                        <span class="price-current">₹46,490</span>
+                        <span class="price-original">₹64,990</span>
+                    </div>
 
-        <!-- Block 3: Lenovo V15 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Student Pick</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="Lenovo V15">
-            </div>
-            <div>
-                <div class="item-brand">Lenovo</div>
-                <div class="item-name">Lenovo V15 AMD Ryzen 5 (16GB / 512GB SSD)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 5500U Power Saver CPU</li>
-                    <li>Spill-Resistant Ergonomic Keyboard</li>
-                    <li>Dolby Audio Crystal Clear Sound Output</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹41,990</span>
-                    <span class="original-price">₹48,990</span>
-                </div>
-                <div class="multi-link-box">
-                    <a href="RYZEN3_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="RYZEN3_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                    <div class="compare-checkbox-row">
+                        <input type="checkbox" id="comp2">
+                        <label for="comp2">Add to compare</label>
+                    </div>
+                    <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
                 </div>
             </div>
-        </div>
-
-        <!-- Block 4: HP Laptop 14 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Sleek Design</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="HP 14">
-            </div>
-            <div>
-                <div class="item-brand">HP</div>
-                <div class="item-name">HP Laptop 14 AMD Ryzen 5 (16GB RAM / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 5625U 6-Core Processor</li>
-                    <li>14-inch Compact High-Brilliance Display</li>
-                    <li>HP True Vision HD Camera with Dual Mics</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹45,990</span>
-                    <span class="original-price">₹52,300</span>
-                </div>
-                <div class="multi-link-box">
-                    <a href="RYZEN4_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="RYZEN4_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Block 5: Acer Aspire 3 -->
-        <div class="laptop-item-card">
-            <span class="badge-deal">Value Deal</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Acer Aspire">
-            </div>
-            <div>
-                <div class="item-brand">Acer</div>
-                <div class="item-name">Acer Aspire 3 AMD Ryzen 5 (16GB / 512GB)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 7000-Series Latest CPU</li>
-                    <li>Upgraded Thermal System & Silent Fan</li>
-                    <li>Narrow Bezel Premium Screen Finish</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹43,790</span>
-                    <span class="original-price">₹49,999</span>
-                </div>
-                <div class="multi-link-box">
-                    <a href="RYZEN5_AMAZON_LINK" target="_blank" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="RYZEN5_FLIPKART_LINK" target="_blank" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
-                </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="#" class="action-btn btn-buy">Buy Now</a>
             </div>
         </div>
 
     </div>
 
-    <!-- Footer -->
+    <div class="bottom-sticky-bar">
+        <div class="sticky-tab">
+            <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
+        </div>
+        <div class="sticky-tab">
+            <i class="fa-solid fa-filter"></i> Filter
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 KamBudgetDeals.in | Top Selling Ryzen Hub.</p>
+        <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
     </footer>
 
 </body>
-</html>
+                        </html>
+
 
