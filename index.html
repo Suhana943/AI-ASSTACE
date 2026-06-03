@@ -1,5 +1,3 @@
-
-                    
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -162,22 +160,24 @@
             margin-bottom: 25px;
         }
 
+        /* Fixed Button Grid to keep elements in 1 single row always */
         .cta-container {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .btn-primary, .btn-secondary {
-            padding: 12px 24px;
+            padding: 12px 10px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.88rem; 
             transition: all 0.2s ease;
             cursor: pointer;
             text-align: center;
+            white-space: nowrap; 
         }
 
         .btn-primary { background-color: #e11d48; color: #ffffff; border: none; }
@@ -186,11 +186,74 @@
         .btn-secondary { border: 1px solid #d1d5db; color: #374151; background: #f9fafb; }
         .btn-secondary:hover { background-color: #f3f4f6; }
 
-        .affiliate-note {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            line-height: 1.4;
-            margin-top: 10px;
+        /* Search and Filter Control Box */
+        .filter-control-box {
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: #e11d48;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1);
+        }
+
+        .search-icon-placeholder {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .sort-dropdown {
+            width: 100%;
+            padding: 12px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            background-color: #ffffff;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        .sort-dropdown:focus {
+            border-color: #e11d48;
+        }
+
+        @media (min-width: 600px) {
+            .filter-control-box {
+                flex-direction: row;
+                align-items: center;
+            }
+            .search-wrapper {
+                flex: 2;
+            }
+            .sort-dropdown {
+                flex: 1;
+            }
         }
 
         /* Product Showcase Grid & Blocks */
@@ -340,7 +403,7 @@
         .master-table th { background: #f3f4f6; color: #111827; }
         .master-table td.title-col { font-weight: 700; color: #4b5563; background: #f9fafb; }
 
-        /* Google "People also search for" Interface - MATCHING 9999.jpg EXACTLY */
+        /* Google "People also search for" Interface Layout from 9999.jpg */
         .search-suggestions-section {
             max-width: 500px;
             margin: 40px auto 60px auto;
@@ -398,13 +461,41 @@
             font-size: 0.9rem; 
         }
             
+        /* Detailed About Us Footer Styling */
         footer {
-            border-top: 1px solid #e5e7eb;
-            padding: 35px 20px;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            background-color: #f8fafc;
+            color: #475569;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer-about-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            border-left: 3px solid #e11d48;
+            padding-left: 10px;
+        }
+
+        .footer-about-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom-bar {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
             text-align: center;
-            font-size: 0.85rem;
-            color: #6b7280;
-            background-color: #f9fafb;
+            font-size: 0.8rem;
+            color: #94a3b8;
         }
     </style>
 </head>
@@ -443,23 +534,35 @@
             By <span class="author">LaptopTec Staff</span> | Prices last updated on 03 June 2026
         </div>
 
-        <p class="sub-headline">अगर आप ₹50,000 के अंदर बेस्ट परफॉर्मेंस वाले लैपटॉप की तलाश में हैं, तो यह लिस्ट आपके लिए है। हमने मार्केट की टॉप डील्स को शॉर्टलिस्ट किया है ताकि आपका एक भी पैसा गलत जगह बर्बाद न हो।</p>
+        <p class="sub-headline">अगर आप ₹50,000 के अंदर बेस्ट परफॉर्मेंस वाले लैपटॉप की तलाश में हैं, तो यह लिस्ट आपके लिए है। हमने मार्केट की TOP डील्स को शॉर्टलिस्ट किया है ताकि आपका एक भी पैसा गलत जगह बर्बाद न हो।</p>
         
         <div class="cta-container">
             <a href="#deals-catalog" class="btn-primary">🔥 लाइव डील्स देखें</a>
             <a href="#specs-comparison" class="btn-secondary">📊 साइड-बाय-साइड तुलना</a>
         </div>
-        
-        <p class="affiliate-note">*डिस्क्लेमर: हम खुद कोई प्रोडक्ट नहीं बेचते हैं। जब आप हमारे दिए गए Flipkart या Amazon लिंक्स पर क्लिक करके कुछ खरीदते हैं, तो हमें एक छोटा एफिलिएट कमीशन मिलता है, जिससे यह प्लेटफॉर्म आपके लिए फ्री काम करता है।</p>
     </section>
+
+    <!-- NEW: Search and Filter Section -->
+    <div class="filter-control-box">
+        <div class="search-wrapper">
+            <span class="search-icon-placeholder">🔍</span>
+            <input type="text" id="laptopSearch" class="search-input" placeholder="लैपटॉप का नाम या प्रोसेसर सर्च करें..." onkeyup="filterLaptops()">
+        </div>
+        <select id="priceSort" class="sort-dropdown" onchange="sortLaptops()">
+            <option value="default">सॉर्ट करें (डिफ़ॉल्ट)</option>
+            <option value="lowToHigh">कीमत: कम से ज़्यादा</option>
+            <option value="highToLow">कीमत: ज़्यादा से कम</option>
+        </select>
+    </div>
 
     <!-- PRODUCT CATALOG LIST -->
     <h2 class="section-heading" id="deals-catalog">बेस्ट बजट लैपटॉप डील्स</h2>
     
-    <div class="catalog-container">
+    <!-- Added id="laptopList" to container for js manipulation -->
+    <div class="catalog-container" id="laptopList">
         
         <!-- Laptop Item 1 -->
-        <div class="product-item-block">
+        <div class="product-item-block" data-price="25500" data-name="hp chromebook celeron quad core 14a intel celeron">
             <div class="item-number-badge">1</div>
             <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="item-title-link">HP Chromebook Celeron Quad Core 14a</a>
             <div class="item-subtitle-specs">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
@@ -484,7 +587,7 @@
         </div>
 
         <!-- Laptop Item 2 -->
-        <div class="product-item-block">
+        <div class="product-item-block" data-price="49490" data-name="hp 255 g9 notebook amd athlon silver">
             <div class="item-number-badge">2</div>
             <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="item-title-link">HP 255 G9 Notebook</a>
             <div class="item-subtitle-specs">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
@@ -532,7 +635,7 @@
         </div>
     </section>
 
-    <!-- Google "People also search for" Interface Layout from 9999.jpg -->
+    <!-- Google "People also search for" Interface Layout -->
     <section class="search-suggestions-section">
         <h2 class="suggestion-box-title">People also search for</h2>
         <div class="suggestion-list">
@@ -556,19 +659,67 @@
     </section>
 </main>
 
+<!-- Detailed About Us Footer Section -->
 <footer>
-    <p>&copy; 2026 LaptopTec.online | Curated Affiliate Price Aggregator.</p>
+    <div class="footer-content">
+        <h3 class="footer-about-title">About LaptopTec</h3>
+        <p class="footer-about-text">
+            <strong>LaptopTec</strong> एक स्वतंत्र लैपटॉप गाइड और टेक रिव्यू प्लेटफॉर्म है। हमारा मुख्य उद्देश्य भारतीय यूज़र्स को उनके बजट और ज़रूरतों के हिसाब से सबसे बेहतरीन और वैल्यू-फॉर-मनी लैपटॉप चुनने में मदद करना है। चाहे आप कोडिंग के लिए लैपटॉप ढूंढ रहे हों, कॉलेज प्रोजेक्ट्स के लिए या फिर हाई-एंड गेमिंग के लिए, हमारी एक्सपर्ट टीम मार्केट को खंगालकर केवल टॉप-रेटेड और सबसे भरोसेमंद गैजेट्स ही आपके सामने पेश करती है। हम बिना किसी पक्षपात के सीधा और सही रिव्यू देने में विश्वास रखते हैं।
+        </p>
+    </div>
+    <div class="footer-bottom-bar">
+        &copy; 2026 LaptopTec. All Rights Reserved.
+    </div>
 </footer>
 
 <script>
+// Sidebar Toggle Function
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebarMenu');
     const overlay = document.getElementById('sidebarOverlay');
     sidebar.classList.toggle('open');
     overlay.classList.toggle('show');
 }
+
+// Live Search Function
+function filterLaptops() {
+    const searchInput = document.getElementById('laptopSearch').value.toLowerCase();
+    const laptopBlocks = document.getElementsByClassName('product-item-block');
+
+    for (let i = 0; i < laptopBlocks.length; i++) {
+        const laptopName = laptopBlocks[i].getAttribute('data-name');
+        if (laptopName.includes(searchInput)) {
+            laptopBlocks[i].style.display = "block";
+        } else {
+            laptopBlocks[i].style.display = "none";
+        }
+    }
+}
+
+// Sort Filter Function
+function sortLaptops() {
+    const container = document.getElementById('laptopList');
+    const blocks = Array.from(container.getElementsByClassName('product-item-block'));
+    const sortValue = document.getElementById('priceSort').value;
+
+    if (sortValue === 'default') return;
+
+    blocks.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price'));
+        const priceB = parseInt(b.getAttribute('data-price'));
+
+        if (sortValue === 'lowToHigh') {
+            return priceA - priceB;
+        } else if (sortValue === 'highToLow') {
+            return priceB - priceA;
+        }
+    });
+
+    // Remove old order and append sorted elements
+    container.innerHTML = "";
+    blocks.forEach(block => container.appendChild(block));
+}
 </script>
 
 </body>
-                    </html>
-                    
+</html>
