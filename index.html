@@ -311,15 +311,23 @@
             margin-bottom: 15px;
         }
 
-        .center-img-frame {
-            background: #ffffff;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .center-img-frame img { max-height: 200px; max-width: 100%; object-fit: contain; }
+.center-img-frame {
+    background: #ffffff;
+    padding: 0; /* padding को 0 कर दिया ताकि इमेज किनारों को छू सके */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%; /* बॉक्स की पूरी चौड़ाई */
+    height: 250px; /* आप अपने हिसाब से बॉक्स की हाइट तय कर सकते हैं */
+    overflow: hidden; /* अगर इमेज बड़ी हो तो बॉक्स से बाहर न निकले */
+}
+
+.center-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* यह इमेज को बिना स्ट्रेच (खिंचे) किए पूरे बॉक्स में फिट कर देगा */
+}
 
         .display-price-row {
             text-align: center;
