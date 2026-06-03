@@ -1,9 +1,11 @@
+
+                    
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Laptop Under 50000 (2026) | KamBudgetDeals</title>
+    <title>Best Laptop Under 50000 (2026) | LaptopTec</title>
     
     <style>
         /* Global Reset */
@@ -16,15 +18,15 @@
         }
 
         body {
-            background-color: #121212; /* Dark Mode Theme inspired by Gadgets 360 screenshots */
-            color: #e2e8f0;
+            background-color: #ffffff; /* Clean White Background inspired by 9985.jpg */
+            color: #1f2937;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
         /* Header Navigation */
         .main-header {
-            background-color: #1e1e1e; 
+            background-color: #0f172a; 
             color: #ffffff;
             display: flex;
             justify-content: space-between;
@@ -33,8 +35,7 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            border-bottom: 2px solid #dc2626;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-left {
@@ -54,12 +55,13 @@
         }
 
         .brand-logo {
-            font-size: 1.4rem; 
-            font-weight: 800;
+            font-size: 1.35rem; 
+            font-weight: 700;
             letter-spacing: -0.3px;
+            color: #ffffff;
         }
-        .brand-logo span.deal { color: #dc2626; }
-        .brand-logo span.in { color: #ffffff; font-weight: 400; }
+        .brand-logo span.deal { color: #f59e0b; }
+        .brand-logo span.in { color: #3b82f6; font-weight: 400; }
 
         /* Side Nav Bar */
         .sidebar-nav {
@@ -68,8 +70,8 @@
             left: -280px;
             width: 280px;
             height: 100%;
-            background-color: #1e1e1e;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+            background-color: #ffffff;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
             z-index: 1000;
             transition: left 0.3s ease;
             overflow-y: auto;
@@ -81,36 +83,36 @@
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .close-sidebar-btn {
             background: none;
             border: none;
             font-size: 1.2rem;
-            color: #94a3b8;
+            color: #6b7280;
             cursor: pointer;
             margin-right: 15px;
             font-weight: bold;
         }
 
-        .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #ffffff; }
+        .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #0f172a; }
         .sidebar-menu-list { list-style: none; padding: 10px 0; }
         .sidebar-menu-list li a {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 14px 20px;
-            color: #cbd5e1;
+            color: #374151;
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #f3f4f6;
         }
-        .sidebar-menu-list li a:hover { background-color: #334155; color: #3b82f6; }
+        .sidebar-menu-list li a:hover { background-color: #f9fafb; color: #2563eb; }
         .nav-item-content { display: flex; align-items: center; gap: 12px; }
         .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
-        .nav-arrow { color: #475569; font-size: 0.8rem; }
+        .nav-arrow { color: #d1d5db; font-size: 0.8rem; }
 
         .sidebar-overlay {
             position: fixed;
@@ -118,81 +120,57 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 999;
             display: none;
         }
         .sidebar-overlay.show { display: block; }
 
-        /* Premium Content Hub (Gadgets 360 Style) */
+        /* Content Header Section (91mobiles Light Style) */
         .hero-section {
-            background: #1e1e1e;
-            padding: 40px 20px;
-            border-bottom: 1px solid #334155;
+            background: #ffffff;
+            padding: 30px 20px;
+            border-bottom: 1px solid #e5e7eb;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .breadcrumb {
             font-size: 0.8rem;
-            color: #94a3b8;
-            margin-bottom: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
         }
 
         .main-title { 
-            font-size: 2.2rem; 
+            font-size: 2rem; 
             font-weight: 800; 
-            color: #ffffff; 
-            margin-bottom: 12px; 
+            color: #111827; 
+            margin-bottom: 10px; 
             line-height: 1.2;
         }
 
         .meta-info {
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #6b7280;
             margin-bottom: 20px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 12px;
         }
-        .meta-info span.author { color: #dc2626; font-weight: 600; }
-
-        /* Social Share Icons */
-        .share-container {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-        .share-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-        .sh-wa { background-color: #25d366; }
-        .sh-fb { background-color: #1877f2; }
-        .sh-tw { background-color: #000000; border: 1px solid #334155; }
+        .meta-info span.author { color: #e11d48; font-weight: 600; }
 
         .sub-headline { 
-            font-size: 1.05rem; 
-            color: #cbd5e1; 
-            margin-bottom: 30px;
+            font-size: 1rem; 
+            color: #4b5563; 
+            margin-bottom: 25px;
         }
 
         .cta-container {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
 
         .btn-primary, .btn-secondary {
-            padding: 12px 28px;
+            padding: 12px 24px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
@@ -202,148 +180,152 @@
             text-align: center;
         }
 
-        .btn-primary { background-color: #dc2626; color: #ffffff; border: none; }
-        .btn-primary:hover { background-color: #b91c1c; }
+        .btn-primary { background-color: #e11d48; color: #ffffff; border: none; }
+        .btn-primary:hover { background-color: #be123c; }
 
-        .btn-secondary { border: 1px solid #475569; color: #ffffff; background: #262626; }
-        .btn-secondary:hover { background-color: #334155; }
+        .btn-secondary { border: 1px solid #d1d5db; color: #374151; background: #f9fafb; }
+        .btn-secondary:hover { background-color: #f3f4f6; }
 
         .affiliate-note {
             font-size: 0.8rem;
-            color: #64748b;
+            color: #9ca3af;
             line-height: 1.4;
+            margin-top: 10px;
         }
 
-        /* Product Catalog Showcase */
+        /* Product Showcase Grid & Blocks */
         .section-heading {
             max-width: 800px;
             margin: 40px auto 20px auto;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #111827;
             padding: 0 20px;
         }
 
         .catalog-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px 40px 20px;
+            padding: 0 20px 20px 20px;
         }
 
         .product-item-block {
-            background: #1e1e1e;
-            border: 1px solid #334155;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .item-number-badge {
-            background-color: #dc2626;
+            background-color: #e11d48;
             color: #ffffff;
-            padding: 4px 10px;
+            padding: 3px 9px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            border-radius: 4px;
         }
 
         .item-title-link {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #ff4a4a;
+            color: #111827;
             text-decoration: none;
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
+            border-bottom: 2px solid #e11d48;
+            padding-bottom: 4px;
         }
-        .item-title-link:hover { text-decoration: underline; }
+        .item-title-link:hover { color: #e11d48; }
 
-        .product-desc-text {
-            font-size: 0.95rem;
-            color: #cbd5e1;
-            margin-bottom: 20px;
+        .item-subtitle-specs {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 15px;
         }
 
         .center-img-frame {
-            background: #262626;
-            padding: 20px;
+            background: #ffffff;
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid #334155;
             margin-bottom: 15px;
         }
-        .center-img-frame img { max-height: 220px; max-width: 100%; object-fit: contain; }
+        .center-img-frame img { max-height: 200px; max-width: 100%; object-fit: contain; }
 
         .display-price-row {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
-            color: #ffffff;
-            background: #262626;
+            color: #111827;
             padding: 10px;
-            border-top: 1px solid #334155;
-            border-bottom: 1px solid #334155;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        /* Gadgets 360 Inline Specification Table */
+        /* Specification Sheet Design */
         .specs-table-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            background: #121212;
+            background: #f9fafb;
             padding: 8px 12px;
-            border: 1px solid #334155;
+            border: 1px solid #e5e7eb;
             border-bottom: none;
-            color: #ffffff;
+            color: #374151;
         }
 
         .inline-specs-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.85rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .inline-specs-table td {
             padding: 10px 12px;
-            border: 1px solid #334155;
+            border: 1px solid #e5e7eb;
         }
         .inline-specs-table td.spec-lbl {
-            color: #94a3b8;
+            color: #4b5563;
             width: 40%;
-            background: #1a1a1a;
+            background: #f9fafb;
         }
         .inline-specs-table td.spec-val {
-            color: #ffffff;
+            color: #111827;
             font-weight: 500;
         }
 
+        /* Affiliate Buttons Matching 9999.jpg Style */
         .action-box {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         .action-btn {
             flex: 1;
             text-align: center;
             padding: 12px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 700;
             font-size: 0.95rem;
+            transition: opacity 0.15s ease;
         }
-        .btn-fk-orange { background-color: #2874f0; color: #ffffff; }
+        .action-btn:hover { opacity: 0.9; }
         .btn-az-yellow { background-color: #ff9900; color: #000000; }
+        .btn-fk-orange { background-color: #2874f0; color: #ffffff; }
 
         /* Master Comparison Section */
         .master-comparison-area {
             max-width: 800px;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 40px auto;
             padding: 0 20px;
         }
         .scroll-table-container {
-            background: #1e1e1e;
-            border: 1px solid #334155;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
             border-radius: 8px;
             overflow-x: auto;
         }
@@ -354,52 +336,95 @@
             min-width: 600px;
             text-align: left;
         }
-        .master-table th, .master-table td { padding: 14px; border-bottom: 1px solid #334155; }
-        .master-table th { background: #262626; color: #ffffff; }
-        .master-table td.title-col { font-weight: 700; color: #94a3b8; background: #1a1a1a; }
+        .master-table th, .master-table td { padding: 14px; border-bottom: 1px solid #e5e7eb; }
+        .master-table th { background: #f3f4f6; color: #111827; }
+        .master-table td.title-col { font-weight: 700; color: #4b5563; background: #f9fafb; }
 
-        /* Google Suggestions Section */
+        /* Google "People also search for" Interface - MATCHING 9999.jpg EXACTLY */
         .search-suggestions-section {
-            max-width: 600px;
+            max-width: 500px;
             margin: 40px auto 60px auto;
             padding: 0 20px;
         }
 
-        .suggestion-box-title { font-size: 1.15rem; font-weight: 600; color: #ffffff; margin-bottom: 16px; }
-        .suggestion-list { background-color: #1e1e1e; border: 1px solid #334155; border-radius: 8px; overflow: hidden; }
-        .suggestion-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; text-decoration: none; color: #cbd5e1; border-bottom: 1px solid #334155; }
+        .suggestion-box-title { 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: #1e293b; 
+            margin-bottom: 20px; 
+        }
+        
+        .suggestion-list { 
+            background-color: #ffffff; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 8px 0;
+        }
+        
+        .suggestion-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 16px 24px; 
+            text-decoration: none; 
+            color: #334155; 
+            border-bottom: 1px solid #f1f5f9; 
+            transition: background-color 0.15s ease; 
+        }
+        
         .suggestion-item:last-child { border-bottom: none; }
-        .suggestion-item:hover { background-color: #262626; }
-        .suggestion-text span.bold-query { font-weight: 700; color: #ffffff; }
-        .search-icon-circle { color: #94a3b8; font-size: 0.9rem; }
+        .suggestion-item:hover { background-color: #f8fafc; }
+        
+        .suggestion-text { 
+            font-size: 0.95rem; 
+            font-weight: 500; 
+            line-height: 1.4; 
+            color: #1e293b;
+        }
+        
+        .suggestion-text span.bold-query { font-weight: 700; }
+        
+        .search-icon-circle { 
+            width: 34px; 
+            height: 34px; 
+            background-color: #f1f5f9; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #64748b; 
+            font-size: 0.9rem; 
+        }
             
         footer {
-            border-top: 1px solid #334155;
+            border-top: 1px solid #e5e7eb;
             padding: 35px 20px;
             text-align: center;
             font-size: 0.85rem;
-            color: #64748b;
-            background-color: #1e1e1e;
+            color: #6b7280;
+            background-color: #f9fafb;
         }
     </style>
 </head>
 <body>
 
-<!-- Main Top Header -->
+<!-- Main Header Wrapper -->
 <header class="main-header">
     <div class="header-left">
         <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
-        <div class="brand-logo">KamBudget<span>Deals</span><span class="in">.in</span></div>
+        <div class="brand-logo">Laptop<span class="deal">Tec</span><span class="in">.online</span></div>
     </div>
 </header>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-<!-- Navigation Drawer -->
+<!-- Drawer Menu Panel -->
 <nav class="sidebar-nav" id="sidebarMenu">
     <div class="sidebar-header">
         <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
-        <div class="sidebar-logo">Browse Categories</div>
+        <div class="sidebar-logo">LaptopTec Navigation</div>
     </div>
     <ul class="sidebar-menu-list">
         <li><a href="index.html"><div class="nav-item-content"><span class="nav-icon">🏠</span> Top Recommendations</div><span class="nav-arrow">❯</span></a></li>
@@ -409,19 +434,13 @@
 </nav>
 
 <main>
-    <!-- Gadgets 360 Style Hub Content Info Header -->
+    <!-- Content Intro Frame -->
     <section class="hero-section">
         <div class="breadcrumb">Home > Laptops > Laptop Finder > Laptops Under 50000 In India</div>
         <h1 class="main-title">Laptops Under 50000 in India</h1>
         
         <div class="meta-info">
-            By <span class="author">KamBudgetDeals Staff</span> | Prices last updated on 03 June 2026
-        </div>
-
-        <div class="share-container">
-            <a href="#" class="share-btn sh-wa">⚡</a>
-            <a href="#" class="share-btn sh-fb">f</a>
-            <a href="#" class="share-btn sh-tw">X</a>
+            By <span class="author">LaptopTec Staff</span> | Prices last updated on 03 June 2026
         </div>
 
         <p class="sub-headline">अगर आप ₹50,000 के अंदर बेस्ट परफॉर्मेंस वाले लैपटॉप की तलाश में हैं, तो यह लिस्ट आपके लिए है। हमने मार्केट की टॉप डील्स को शॉर्टलिस्ट किया है ताकि आपका एक भी पैसा गलत जगह बर्बाद न हो।</p>
@@ -443,7 +462,7 @@
         <div class="product-item-block">
             <div class="item-number-badge">1</div>
             <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="item-title-link">HP Chromebook Celeron Quad Core 14a</a>
-            <p class="product-desc-text">यह उन छात्रों के लिए एक शानदार विकल्प है जो मुख्य रूप से ऑनलाइन क्लास, ब्राउज़िंग और डॉक्यूमेंट एडिटिंग जैसे रोजमर्रा के काम करना चाहते हैं। लाइटवेट डिज़ाइन के कारण इसे ले जाना बेहद आसान है।</p>
+            <div class="item-subtitle-specs">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
             
             <div class="center-img-frame">
                 <img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook 14a">
@@ -451,7 +470,7 @@
             
             <div class="display-price-row">₹25,500</div>
             
-            <div class="specs-table-title">HP Chromebook 14a Specifications</div>
+            <div class="specs-table-title">Key Specs</div>
             <table class="inline-specs-table">
                 <tr><td class="spec-lbl">Display size</td><td class="spec-val">14.00-inch</td></tr>
                 <tr><td class="spec-lbl">Processor</td><td class="spec-val">Intel Celeron</td></tr>
@@ -460,7 +479,7 @@
             </table>
 
             <div class="action-box">
-                <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="action-btn btn-fk-orange">Flipkart पर डील देखें</a>
+                <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="action-btn btn-fk-orange">Flipkart</a>
             </div>
         </div>
 
@@ -468,15 +487,15 @@
         <div class="product-item-block">
             <div class="item-number-badge">2</div>
             <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="item-title-link">HP 255 G9 Notebook</a>
-            <p class="product-desc-text">यह लैपटॉप ऑफिस के काम और मल्टीटास्किंग के लिए एक भरोसेमंद डिवाइस है। इसमें तेज़ SSD स्टोरेज और पर्याप्त रैम दी गई है जो स्मूथ परफॉर्मेंस सुनिश्चित करती है।</p>
+            <div class="item-subtitle-specs">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
             
             <div class="center-img-frame">
                 <img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255 G9">
             </div>
             
-            <div class="display-price-row">Check Store</div>
+            <div class="display-price-row">₹49,490</div>
             
-            <div class="specs-table-title">HP 255 Notebook Specifications</div>
+            <div class="specs-table-title">Key Specs</div>
             <table class="inline-specs-table">
                 <tr><td class="spec-lbl">Display size</td><td class="spec-val">15.60-inch</td></tr>
                 <tr><td class="spec-lbl">Processor</td><td class="spec-val">AMD Athlon Silver</td></tr>
@@ -485,7 +504,7 @@
             </table>
 
             <div class="action-box">
-                <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="action-btn btn-az-yellow">Amazon पर कीमत देखें</a>
+                <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="action-btn btn-az-yellow">Amazon</a>
             </div>
         </div>
 
@@ -507,22 +526,30 @@
                     <tr><td class="title-col">Processor</td><td>Intel Celeron</td><td>AMD Athlon Silver</td></tr>
                     <tr><td class="title-col">RAM</td><td>4GB</td><td>8GB</td></tr>
                     <tr><td class="title-col">Storage</td><td>64GB eMMC</td><td>256GB SSD</td></tr>
-                    <tr><td class="title-col">Price</td><td>₹25,500</td><td>Check Link</td></tr>
+                    <tr><td class="title-col">Price</td><td>₹25,500</td><td>₹49,490</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Google Search Queries UI Element -->
+    <!-- Google "People also search for" Interface Layout from 9999.jpg -->
     <section class="search-suggestions-section">
         <h2 class="suggestion-box-title">People also search for</h2>
         <div class="suggestion-list">
             <a href="intel.html" class="suggestion-item">
-                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with i5 Processor</span></div>
+                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
             <a href="ryzen.html" class="suggestion-item">
-                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with Ryzen 5</span></div>
+                <div class="suggestion-text">Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span></div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+            <a href="gaming.html" class="suggestion-item">
+                <div class="suggestion-text">Best <span class="bold-query">Gaming Laptops under 50000</span></div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+            <a href="student.html" class="suggestion-item">
+                <div class="suggestion-text">Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span></div>
                 <div class="search-icon-circle">🔍</div>
             </a>
         </div>
@@ -530,7 +557,7 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 KamBudgetDeals.in | Curated Affiliate Price Aggregator.</p>
+    <p>&copy; 2026 LaptopTec.online | Curated Affiliate Price Aggregator.</p>
 </footer>
 
 <script>
