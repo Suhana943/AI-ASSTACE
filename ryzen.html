@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laptops Deals | laptoptec.online</title>
     
+    <!-- Icons के लिए FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -20,10 +21,11 @@
             background-color: #ffffff;
             color: #0f172a;
             line-height: 1.4;
-            padding-bottom: 60px; /* बॉटम बार के लिए स्पेस */
+            padding-bottom: 60px;
+            overflow-x: hidden;
         }
 
-        /* 1. White Header Layout (As per photo) */
+        /* 1. Perfect Header Layout */
         .main-header {
             background-color: #ffffff;
             color: #000000;
@@ -40,84 +42,237 @@
         .header-left, .header-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .header-left i, .header-right i {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: #1e293b;
             cursor: pointer;
+            padding: 4px;
         }
 
+        /* सुधरा हुआ ब्रांड नेम स्टाइल */
         .brand-logo {
-            font-size: 1.35rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            color: #002c54;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #0f172a;
             display: flex;
             flex-direction: column;
-            line-height: 1;
+            line-height: 1.1;
+        }
+
+        /* Tec का कलर थोड़ा अलग या बोल्ड दिखाने के लिए */
+        .brand-logo span.tec-highlight {
+            color: #0284c7; /* प्रीमियम ब्लू शेड */
+            font-weight: 800;
         }
 
         .brand-logo span.sub-text {
             font-size: 0.55rem;
             font-weight: 600;
             color: #64748b;
-            letter-spacing: 2px;
-            margin-top: 2px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 1px;
         }
 
-        /* 2. Content Hub Intro Section */
+        /* 2. Searching Bar Section */
+        .search-container {
+            padding: 12px 16px 4px 16px;
+            background-color: #ffffff;
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 8px 14px;
+            gap: 10px;
+        }
+
+        .search-box-wrapper i {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .search-box-wrapper input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 0.95rem;
+            color: #0f172a;
+        }
+
+        .search-box-wrapper input::placeholder {
+            color: #94a3b8;
+        }
+
+        /* 3. Sliding Navigation Drawer (As per screenshot) */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.4);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 2001;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-menu.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 18px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            gap: 12px;
+        }
+
+        .sidebar-header i {
+            font-size: 1.1rem;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            padding-top: 8px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .item-left-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-left-content span.icon-emoji {
+            font-size: 1.1rem;
+        }
+
+        .item-left-content span.bullet-blue {
+            color: #3b82f6;
+            font-size: 0.6rem;
+        }
+
+        .item-left-content span.bullet-orange {
+            color: #f59e0b;
+            font-size: 0.6rem;
+        }
+
+        .sidebar-item i.arrow-gray {
+            color: #cbd5e1;
+            font-size: 0.8rem;
+        }
+
+        .sidebar-item i.folder-yellow {
+            color: #fcd34d;
+            font-size: 0.95rem;
+        }
+
+        /* Active Link Text Design (Ryzen 5) */
+        .sidebar-item.active-link {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* 4. Intro Text Area */
         .content-intro {
-            padding: 20px 16px;
+            padding: 16px 16px 8px 16px;
         }
 
         .content-intro h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .content-intro p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #475569;
             display: inline;
         }
 
         .read-more-link {
-            color: #05668d;
+            color: #0284c7;
             text-decoration: underline;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-left: 4px;
             cursor: pointer;
         }
 
-        /* 3. Horizontal Pill Filters */
+        /* 5. Horizontal Filter Tags */
         .filter-scroll-wrapper {
             padding: 10px 16px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
             white-space: nowrap;
-            scrollbar-width: none; /* Firefox के लिए */
+            scrollbar-width: none;
         }
 
         .filter-scroll-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome/Safari के लिए */
+            display: none;
         }
 
         .pill-btn {
             background-color: #ffffff;
             color: #475569;
             border: 1px solid #cbd5e1;
-            padding: 8px 16px;
-            font-size: 0.9rem;
+            padding: 6px 14px;
+            font-size: 0.85rem;
             font-weight: 500;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
-            transition: all 0.2s ease;
         }
 
         .pill-btn.active {
@@ -126,25 +281,24 @@
             background-color: #f8fafc;
         }
 
-        /* 4. Product Total Counter */
+        /* 6. Counter Text */
         .product-counter {
-            padding: 15px 16px 5px 16px;
-            font-size: 1.25rem;
+            padding: 12px 16px 4px 16px;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #0f172a;
         }
 
-        /* 5. Main Grid Container */
+        /* 7. Product Cards Grid System */
         .grid-container {
             padding: 12px 16px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            max-width: 600px; /* मोबाइल फ्रेंडली मैक्स विड्थ */
+            gap: 14px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        /* HT Tech/Amazon Style Horizontal Card */
         .laptop-item-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -154,11 +308,10 @@
             flex-direction: column;
         }
 
-        /* ऊपरी मुख्य हिस्सा (Image + Details side by side) */
         .card-main-body {
             display: flex;
-            padding: 16px;
-            gap: 15px;
+            padding: 14px;
+            gap: 12px;
         }
 
         .img-holder {
@@ -170,7 +323,7 @@
 
         .img-holder img {
             max-width: 100%;
-            max-height: 110px;
+            max-height: 100px;
             object-fit: contain;
         }
 
@@ -178,33 +331,31 @@
             width: 65%;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .item-name {
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #334155;
             line-height: 1.3;
-            margin-bottom: 4px;
         }
 
         .badge-discount {
-            color: #1e824c;
-            font-size: 0.9rem;
+            color: #16a34a;
+            font-size: 0.85rem;
             font-weight: 700;
-            text-transform: uppercase;
+            margin-top: 2px;
         }
 
         .price-container {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 2px;
+            gap: 6px;
         }
 
         .price-current {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #0f172a;
         }
@@ -219,24 +370,17 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
-            color: #475569;
-            margin-top: 6px;
-        }
-
-        .compare-checkbox-row input {
-            width: 15px;
-            height: 15px;
-            accent-color: #0056b3;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
         }
 
         .brand-affiliate-logo {
-            margin-top: 8px;
-            height: 15px;
+            margin-top: 6px;
+            height: 14px;
             align-self: flex-start;
         }
 
-        /* निचली बटन पट्टी (Action Row) */
         .card-actions-row {
             display: flex;
             border-top: 1px solid #e2e8f0;
@@ -245,29 +389,24 @@
         .action-btn {
             flex: 1;
             text-align: center;
-            padding: 12px;
+            padding: 10px;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: background-color 0.2s;
         }
 
         .btn-learn {
             background-color: #ffffff;
-            color: #0056b3;
+            color: #0284c7;
             border-right: 1px solid #e2e8f0;
         }
 
         .btn-buy {
-            background-color: #0056b3;
+            background-color: #0284c7;
             color: #ffffff;
         }
 
-        .btn-buy:hover {
-            background-color: #004085;
-        }
-
-        /* 6. Bottom Sticky Sort/Filter Navigation Bar */
+        /* 8. Bottom Sticky Bar */
         .bottom-sticky-bar {
             position: fixed;
             bottom: 0;
@@ -276,49 +415,46 @@
             background-color: #ffffff;
             display: flex;
             border-top: 1px solid #cbd5e1;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 2000;
+            z-index: 1500;
         }
 
         .sticky-tab {
             flex: 1;
             text-align: center;
-            padding: 14px;
-            font-size: 0.95rem;
+            padding: 12px;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #334155;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            text-decoration: none;
-            cursor: pointer;
+            gap: 6px;
         }
 
         .sticky-tab:first-child {
             border-right: 1px solid #cbd5e1;
         }
 
-        /* Footer */
         footer {
             border-top: 1px solid #e2e8f0;
-            padding: 25px 16px;
+            padding: 20px 16px;
             text-align: center;
             font-size: 0.8rem;
             color: #94a3b8;
             background-color: #f8fafc;
-            margin-top: 30px;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. Improved Navigation Header -->
     <header class="main-header">
         <div class="header-left">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
             <div class="brand-logo">
-                LAPTOPTEC
-                <span class="sub-text">ONLINE</span>
+                <div>Laptop<span class="tec-highlight">Tec</span></div>
+                <span class="sub-text">laptoptec.online</span>
             </div>
         </div>
         <div class="header-right">
@@ -328,30 +464,74 @@
         </div>
     </header>
 
+    <!-- 2. Screen Accurate Sliding Sidebar Menu -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-chevron-left" onclick="toggleSidebar()"></i>
+            <h2>LaptopTec Navigation</h2>
+        </div>
+        <div class="sidebar-links">
+            <a href="#" class="sidebar-item">
+                <div class="item-left-content">
+                    <span class="icon-emoji">🏠</span>
+                    <span>Top Recommendations</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-gray"></i>
+            </a>
+            <a href="#" class="sidebar-item">
+                <div class="item-left-content">
+                    <span class="bullet-blue">◆</span>
+                    <span>Intel i5 Models</span>
+                </div>
+                <i class="fa-solid fa-folder folder-yellow"></i>
+            </a>
+            <a href="#" class="sidebar-item active-link">
+                <div class="item-left-content">
+                    <span class="bullet-orange">◆</span>
+                    <span>Ryzen 5 Models</span>
+                </div>
+                <i class="fa-solid fa-folder folder-yellow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. Clean Searching Bar Box -->
+    <section class="search-container">
+        <div class="search-box-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search laptops here (e.g., HP, Acer, Asus)...">
+        </div>
+    </section>
+
+    <!-- 4. Intro Text Area -->
     <section class="content-intro">
         <h1>Laptops</h1>
-        <p>Discover Your Ideal Laptop with laptoptec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a</p>
+        <p>Discover Your Ideal Laptop with LaptopTec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a</p>
         <span class="read-more-link">Read more</span>
     </section>
 
+    <!-- 5. Pill Navigation Tags -->
     <div class="filter-scroll-wrapper">
         <a href="#" class="pill-btn active">Latest Laptops</a>
         <a href="#" class="pill-btn">HP Laptops</a>
         <a href="#" class="pill-btn">Laptops under ₹30,000</a>
         <a href="#" class="pill-btn">Dell Laptops</a>
-        <a href="#" class="pill-btn">Gaming Laptops</a>
     </div>
 
+    <!-- 6. Item Count Display -->
     <div class="product-counter">
         1003 Laptops
     </div>
 
+    <!-- 7. Product Results List Layout -->
     <div class="grid-container">
         
+        <!-- Product Card Block -->
         <div class="laptop-item-card">
             <div class="card-main-body">
                 <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Acer Laptop">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Laptop Preview">
                 </div>
                 <div class="details-holder">
                     <div class="item-name">Acer Professional 14 AMD</div>
@@ -366,34 +546,6 @@
                         <input type="checkbox" id="comp1">
                         <label for="comp1">Add to compare</label>
                     </div>
-
-                    <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-                </div>
-            </div>
-            <div class="card-actions-row">
-                <a href="#" class="action-btn btn-learn">Learn More</a>
-                <a href="#" class="action-btn btn-buy">Buy Now</a>
-            </div>
-        </div>
-
-        <div class="laptop-item-card">
-            <div class="card-main-body">
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80" alt="ASUS Laptop">
-                </div>
-                <div class="details-holder">
-                    <div class="item-name">ASUS Vivobook 16X Thin & Light</div>
-                    <div class="badge-discount">28% OFF</div>
-                    
-                    <div class="price-container">
-                        <span class="price-current">₹46,490</span>
-                        <span class="price-original">₹64,990</span>
-                    </div>
-
-                    <div class="compare-checkbox-row">
-                        <input type="checkbox" id="comp2">
-                        <label for="comp2">Add to compare</label>
-                    </div>
                     <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
                 </div>
             </div>
@@ -405,6 +557,7 @@
 
     </div>
 
+    <!-- 8. Sticky Action Footbar (Sort & Filter) -->
     <div class="bottom-sticky-bar">
         <div class="sticky-tab">
             <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
@@ -414,11 +567,22 @@
         </div>
     </div>
 
+    <!-- Footer Content -->
     <footer>
         <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
     </footer>
 
+    <!-- Side Menu Toggle Engine script -->
+    <script>
+        function toggleSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            const menu = document.getElementById('sidebarMenu');
+            
+            overlay.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+
 </body>
-                        </html>
-
-
+    </html>
+    
