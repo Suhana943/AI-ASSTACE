@@ -1,4 +1,5 @@
 
+                
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -126,24 +127,65 @@
         }
         .sidebar-overlay.show { display: block; }
 
-        /* 3. Content Hub Title Area */
-        .content-hub {
+        /* 3. Hero Section Area */
+        .hero-section {
             background: #ffffff;
-            padding: 24px 20px;
+            padding: 40px 20px;
             border-bottom: 1px solid #e2e8f0;
-            max-width: 1200px;
-            margin: 0 auto;
+            text-align: center;
+            max-width: 100%;
         }
 
-        .hub-title { font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-        .hub-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
-        .results-count { font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 15px; }
+        .main-title { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: #0f172a; 
+            margin-bottom: 12px; 
+        }
+
+        .sub-headline { 
+            font-size: 1rem; 
+            color: #64748b; 
+            max-width: 700px;
+            margin: 0 auto 24px auto; 
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background-color: #1e293b; }
+
+        .btn-secondary {
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 10px 26px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover { background-color: #f1f5f9; }
 
         /* 4. Grid & Laptop Cards */
         .grid-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 20px 40px 20px;
+            padding: 40px 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
@@ -158,6 +200,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
         .spec-score {
@@ -174,6 +217,7 @@
         .spec-score span { display: block; font-size: 0.6rem; font-weight: 400; }
 
         .item-name { font-size: 1.1rem; font-weight: 700; color: #0f172a; text-decoration: none; display: block; margin-bottom: 5px; }
+        .item-name:hover { color: #3b82f6; }
         .item-subtitle { font-size: 0.8rem; color: #64748b; margin-bottom: 10px; }
 
         .img-holder {
@@ -185,9 +229,6 @@
         }
         .img-holder img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        .item-specs { list-style: none; margin-bottom: 15px; padding-top: 10px; border-top: 1px solid #f1f5f9; }
-        .item-specs li { font-size: 0.8rem; color: #475569; margin-bottom: 4px; }
-
         .price-container { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
         .price-tag-row { font-size: 1.3rem; font-weight: 800; color: #0f172a; }
         .original-price { font-size: 0.85rem; color: #94a3b8; text-decoration: line-through; }
@@ -197,12 +238,9 @@
         .btn-amazon { background-color: #ff9900; color: #000000; }
         .btn-flipkart { background-color: #2874f0; color: #ffffff; }
 
-        /* ==========================================
-           5. GOOGLE "PEOPLE ALSO SEARCH FOR" SECTION 
-           (Inspired by 9997.jpg)
-           ========================================== */
+        /* 5. Google Suggestions Section */
         .search-suggestions-section {
-            max-width: 600px; /* Centered narrow container like mobile google */
+            max-width: 600px;
             margin: 0 auto 50px auto;
             padding: 0 20px;
         }
@@ -233,26 +271,12 @@
             transition: background-color 0.15s ease;
         }
 
-        .suggestion-item:last-child {
-            border-bottom: none;
-        }
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background-color: #f9fafb; }
 
-        .suggestion-item:hover {
-            background-color: #f9fafb;
-        }
+        .suggestion-text { font-size: 0.95rem; font-weight: 500; line-height: 1.4; }
+        .suggestion-text span.bold-query { font-weight: 700; }
 
-        .suggestion-text {
-            font-size: 0.95rem;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* Bold text pattern style like Google */
-        .suggestion-text span.bold-query {
-            font-weight: 700;
-        }
-
-        /* Magnifying glass search icon container */
         .search-icon-circle {
             width: 32px;
             height: 32px;
@@ -264,23 +288,6 @@
             color: #4b5563;
             font-size: 0.9rem;
         }
-.btn-primary {
-    background-color: #000; /* Professional Black */
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btn-secondary {
-    border: 2px solid #000;
-    padding: 13px 28px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 10px;
-}
             
         footer {
             border-top: 1px solid #e2e8f0;
@@ -293,12 +300,12 @@
 
         @media (max-width: 600px) {
             .grid-container { grid-template-columns: 1fr; }
+            .main-title { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Dark Main Top Header -->
 <header class="main-header">
     <div class="header-left">
         <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
@@ -306,10 +313,8 @@
     </div>
 </header>
 
-<!-- Dim Overlay Background -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-<!-- Slide-out Navigation Menu Bar -->
 <nav class="sidebar-nav" id="sidebarMenu">
     <div class="sidebar-header">
         <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
@@ -325,120 +330,107 @@
     </ul>
 </nav>
 
-<!-- Content Hub Section -->
-<section class="hero-section">
-    <h1 class="main-title">Business & Gaming Performance, Curated.</h1>
-    <p class="sub-headline">Stop searching and start choosing. We've hand-picked the top 10 laptops in India that deliver unbeatable value for professionals and gamers.</p>
-    
-    <div class="cta-container">
-        <a href="#laptops" class="btn-primary">View Top Picks</a>
-        <a href="#compare" class="btn-secondary">Compare Specs</a>
-    </div>
-</section>
-
-
-<!-- Main Grid Showcase -->
-<div class="grid-container">
-    <!-- Laptop Card 1 -->
-    <div class="laptop-item-card" data-category="student">
-        <div class="spec-score">65% <span>Spec Score</span></div>
-        <div class="img-holder"><img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook"></div>
-        <div>
-            <a href="#" class="item-name">HP Chromebook Celeron Quad Core 14a-ca0504TU</a>
-            <div class="item-subtitle">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
-        </div>
-        <div>
-            <div class="price-container">
-                <span class="price-tag-row">₹25,500</span>
-                <span class="original-price">₹32,279</span>
-            </div>
-            <div class="multi-link-box">
-                <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Laptop Card 2 -->
-    <div class="laptop-item-card" data-category="student">
-        <div class="spec-score">68% <span>Spec Score</span></div>
-        <div class="img-holder"><img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255"></div>
-        <div>
-            <a href="#" class="item-name">HP 255 Notebook</a>
-            <div class="item-subtitle">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
-        </div>
-        <div>
-            <div class="price-container">
-                <span class="price-tag-row">Check Price</span>
-            </div>
-            <div class="multi-link-box">
-                <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="store-btn btn-amazon">Amazon</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Laptop Card 3 -->
-    <div class="laptop-item-card" data-category="intel">
-        <div class="spec-score">75% <span>Spec Score</span></div>
-        <div class="img-holder"><img src="https://m.media-amazon.com/images/I/61k9j5N1oDL._SL1500_.jpg" alt="Dell 15"></div>
-        <div>
-            <a href="#" class="item-name">Dell 15 Laptop</a>
-            <div class="item-subtitle">(Intel Core i3 14th Gen / 16GB RAM / 512GB SSD)</div>
-        </div>
-        <div>
-            <div class="price-container">
-                <span class="price-tag-row">₹49,490</span>
-                <span class="original-price">₹53,074</span>
-            </div>
-            <div class="multi-link-box">
-                <a href="#" target="_blank" class="store-btn btn-amazon">Amazon</a>
-                <a href="#" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
-            </div>
-        </div>
-    </div>
-    
-
-<!-- ==========================================
-     GOOGLE "PEOPLE ALSO SEARCH FOR" SECTION
-     (Matches design layout of 9997.jpg)
-     ========================================== -->
-<section class="search-suggestions-section">
-    <h2 class="suggestion-box-title">People also search for</h2>
-    <div class="suggestion-list">
+<main>
+    <section class="hero-section">
+        <h1 class="main-title">Business & Gaming Performance, Curated.</h1>
+        <p class="sub-headline">Stop searching and start choosing. We've hand-picked the top laptops in India that deliver unbeatable value for professionals and gamers.</p>
         
-        <!-- Suggestion 1 -> Links to intel.html -->
-        <a href="intel.html" class="suggestion-item">
-            <div class="suggestion-text">
-                Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span>
-            </div>
-            <div class="search-icon-circle">🔍</div>
-        </a>
+        <div class="cta-container">
+            <a href="#laptops" class="btn-primary">View Top Picks</a>
+            <a href="#compare" class="btn-secondary">Compare Specs</a>
+        </div>
+    </section>
 
-        <!-- Suggestion 2 -> Links to ryzen.html -->
-        <a href="ryzen.html" class="suggestion-item">
-            <div class="suggestion-text">
-                Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span>
+    <div class="grid-container" id="laptops">
+        <div class="laptop-item-card" data-category="student">
+            <div class="spec-score">65% <span>Spec Score</span></div>
+            <div class="img-holder"><img src="https://photos.app.goo.gl/rsjPdrmjcmwkwSaw9" alt="HP Chromebook"></div>
+            <div>
+                <a href="#" class="item-name">HP Chromebook Celeron Quad Core 14a-ca0504TU</a>
+                <div class="item-subtitle">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
             </div>
-            <div class="search-icon-circle">🔍</div>
-        </a>
-
-        <!-- Suggestion 3 -> Links to gaming.html -->
-        <a href="gaming.html" class="suggestion-item">
-            <div class="suggestion-text">
-                Best <span class="bold-query">Gaming Laptops under 50000</span>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹25,500</span>
+                    <span class="original-price">₹32,279</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="https://dl.flipkart.com/dl/hp-chromebook" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
+                </div>
             </div>
-            <div class="search-icon-circle">🔍</div>
-        </a>
+        </div>
 
-        <!-- Suggestion 4 -> Links to student.html -->
-        <a href="student.html" class="suggestion-item">
-            <div class="suggestion-text">
-                Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span>
+        <div class="laptop-item-card" data-category="student">
+            <div class="spec-score">68% <span>Spec Score</span></div>
+            <div class="img-holder"><img src="https://m.media-amazon.com/images/I/71Yv893O91L._AC_SL1500_.jpg" alt="HP 255"></div>
+            <div>
+                <a href="#" class="item-name">HP 255 Notebook</a>
+                <div class="item-subtitle">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
             </div>
-            <div class="search-icon-circle">🔍</div>
-        </a>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">Check Price</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="store-btn btn-amazon">Amazon</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="laptop-item-card" data-category="intel">
+            <div class="spec-score">75% <span>Spec Score</span></div>
+            <div class="img-holder"><img src="https://m.media-amazon.com/images/I/61k9j5N1oDL._SL1500_.jpg" alt="Dell 15"></div>
+            <div>
+                <a href="#" class="item-name">Dell 15 Laptop</a>
+                <div class="item-subtitle">(Intel Core i3 14th Gen / 16GB RAM / 512GB SSD)</div>
+            </div>
+            <div>
+                <div class="price-container">
+                    <span class="price-tag-row">₹49,490</span>
+                    <span class="original-price">₹53,074</span>
+                </div>
+                <div class="multi-link-box">
+                    <a href="#" target="_blank" class="store-btn btn-amazon">Amazon</a>
+                    <a href="#" target="_blank" class="store-btn btn-flipkart">Flipkart</a>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+
+    <section class="search-suggestions-section">
+        <h2 class="suggestion-box-title">People also search for</h2>
+        <div class="suggestion-list">
+            
+            <a href="intel.html" class="suggestion-item">
+                <div class="suggestion-text">
+                    Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span>
+                </div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+
+            <a href="ryzen.html" class="suggestion-item">
+                <div class="suggestion-text">
+                    Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span>
+                </div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+
+            <a href="gaming.html" class="suggestion-item">
+                <div class="suggestion-text">
+                    Best <span class="bold-query">Gaming Laptops under 50000</span>
+                </div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+
+            <a href="student.html" class="suggestion-item">
+                <div class="suggestion-text">
+                    Top Rated <span class="bold-query">Student Laptops with Long Battery Life</span>
+                </div>
+                <div class="search-icon-circle">🔍</div>
+            </a>
+        </div>
+    </section>
+</main>
 
 <footer>
     <p>&copy; 2026 KamBudgetDeals.in | Google Search Interface Added.</p>
@@ -454,5 +446,4 @@ function toggleSidebar() {
 </script>
 
 </body>
-                </html>
-                
+</html>
