@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Laptops | LaptopTec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- [पुराना स्टाइल CSS यहाँ पेस्ट करें] -->
+    <style> * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; } body { background: #fff; padding-bottom: 60px; } .main-header { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; } .brand-logo { font-size: 1.3rem; font-weight: 700; color: #0f172a; } .tec-highlight { color: #0284c7; font-weight: 800; } .sub-text { font-size: 0.55rem; color: #64748b; display: block; } .search-container { padding: 12px 16px; } .search-box-wrapper { display: flex; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 14px; gap: 10px; } .search-box-wrapper input { border: none; background: transparent; width: 100%; outline: none; } .filter-scroll-wrapper { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; } .pill-btn { background: #fff; color: #475569; border: 1px solid #cbd5e1; padding: 6px 14px; font-size: 0.85rem; border-radius: 6px; text-decoration: none; white-space: nowrap; } .pill-btn.active { border-color: #0f172a; color: #0f172a; background: #f8fafc; font-weight: 600; } .product-counter { padding: 12px 16px; font-size: 1.15rem; font-weight: 700; } .grid-container { padding: 12px 16px; display: flex; flex-direction: column; gap: 14px; } .laptop-item-card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; } .card-main-body { display: flex; padding: 14px; gap: 12px; } .img-holder img { max-width: 100px; object-fit: contain; } .details-holder { display: flex; flex-direction: column; gap: 2px; } .badge-discount { color: #16a34a; font-size: 0.85rem; font-weight: 700; } .price-current { font-size: 1.25rem; font-weight: 700; } .card-actions-row { display: flex; border-top: 1px solid #e2e8f0; } .action-btn { flex: 1; text-align: center; padding: 10px; text-decoration: none; font-size: 0.9rem; font-weight: 600; } .btn-learn { color: #0284c7; border-right: 1px solid #e2e8f0; } .btn-buy { background: #0284c7; color: #fff; }</style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div style="display:flex; align-items:center; gap:15px;">
+            <i class="fa-solid fa-bars"></i>
+            <div class="brand-logo"><div>Laptop<span class="tec-highlight">Tec</span></div><span class="sub-text">laptoptec.online</span></div>
+        </div>
+    </header>
+
+    <section class="search-container">
+        <div class="search-box-wrapper"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search Dell Laptops..."></div>
+    </section>
+
+    <!-- Navigation Links -->
+    <div class="filter-scroll-wrapper">
+        <a href="index.html" class="pill-btn">Latest Laptops</a>
+        <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
+        <a href="under-30k.html" class="pill-btn">Laptops under ₹30,000</a>
+        <a href="dell-laptops.html" class="pill-btn active">Dell Laptops</a>
+    </div>
+
+    <div class="product-counter">Dell Core Models (1 Laptop)</div>
+
+    <div class="grid-container">
+        <!-- Dell Laptop Item -->
+        <div class="laptop-item-card">
+            <div class="card-main-body">
+                <div class="img-holder"><img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=300" alt="Dell"></div>
+                <div class="details-holder">
+                    <div style="font-weight:600;">Dell Inspiron 15 Core i3</div>
+                    <div class="badge-discount">10% OFF</div>
+                    <div class="price-current">₹38,490</div>
+                </div>
+            </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="#" class="action-btn btn-buy">Buy Now</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
