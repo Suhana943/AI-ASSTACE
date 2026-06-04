@@ -314,23 +314,25 @@
             margin-bottom: 15px;
         }
 
+                /* इमेज फ्रेम और साइज को परफेक्ट करने के लिए अपडेटेड CSS */
         .center-img-frame {
             background: #ffffff;
-            padding: 0; 
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
             width: 100%; 
-            height: 250px; 
+            height: 200px; /* हाइट थोड़ी कम की ताकि लेआउट सही रहे */
             overflow: hidden; 
         }
 
         .center-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
+            width: auto;      /* विड्थ को ऑटो किया */
+            max-width: 100%;  /* फ्रेम से बाहर न जाए */
+            height: 100%;     /* फ्रेम की पूरी हाइट कवर करे */
+            object-fit: cover; /* इमेज को बिना स्ट्रेच किए बड़ा और साफ़ दिखाएगा */
         }
+
 
         .display-price-row {
             text-align: center;
