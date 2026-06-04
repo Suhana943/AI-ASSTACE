@@ -4,109 +4,681 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaptopTec - Best Laptop Guide 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Intel i5 Laptops Under 50000 | LaptopTec</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --bg-body: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #1e293b;
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); margin: 0; color: var(--text-dark); }
-
-        /* Main Container for Fixed Width */
-        .page-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        header { background-color: #1e293b; padding: 1.5rem 0; color: white; }
-        
-        .controls { display: flex; gap: 15px; margin: 30px 0; }
-        .search-box, .sort-box { padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; }
-        .search-box { flex: 2; }
-        .sort-box { flex: 1; }
-
-        /* Grid Setup - Prevent Repetition/Overlap */
-        .laptop-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-            margin-bottom: 50px;
+        body {
+            background-color: #f4f6f9;
+            color: #1e293b;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            padding-bottom: 60px; /* Space for bottom sticky bar */
         }
 
-        .product-card { 
-            background: var(--card-bg); 
-            border-radius: 12px; 
-            padding: 20px; 
-            border: 1px solid #e2e8f0; 
-            display: flex; 
+        /* Header Navigation - LaptopTec Layout */
+        .main-header {
+            background-color: #ffffff;
+            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-left .fa-bars {
+            font-size: 20px;
+            cursor: pointer;
+            color: #334155;
+            padding: 4px;
+        }
+
+        .brand-logo {
+            display: flex;
             flex-direction: column;
+        }
+
+        .brand-logo div {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .brand-logo .tec-highlight {
+            color: #0284c7;
+        }
+
+        .brand-logo .sub-text {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: -2px;
+            text-transform: lowercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 18px;
+            color: #475569;
+        }
+
+        /* Search Bar Box Wrapper */
+        .search-container-box {
+            background-color: #ffffff;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1e293b;
+            outline: none;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* Slide-out Sidebar Drawer Menu */
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            left: -285px; 
+            width: 280px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 10000;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-drawer.open {
+            left: 0 !important;
+        }
+
+        .drawer-header {
+            padding: 20px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .drawer-brand {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .drawer-brand span {
+            color: #0284c7;
+        }
+
+        .drawer-close-btn {
+            font-size: 20px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .drawer-menu-list {
+            list-style: none;
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+
+        .drawer-menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            color: #334155;
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+
+        .drawer-menu-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .drawer-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .drawer-item-left i {
+            font-size: 16px;
+            color: #64748b;
+            width: 20px;
             text-align: center;
         }
 
-        .product-img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
-        .price { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 10px 0; }
-        .btn { background: var(--primary-color); color: white; padding: 10px; border-radius: 6px; text-decoration: none; margin-top: auto; }
-        
-        footer { background: #0f172a; color: #94a3b8; padding: 20px; text-align: center; }
+        .fa-chevron-down {
+            font-size: 12px;
+            color: #94a3b8;
+            transition: transform 0.2s ease;
+        }
+
+        .accordion-trigger.active .fa-chevron-down {
+            transform: rotate(180deg);
+            color: #0284c7;
+        }
+
+        .submenu-content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #f8fafc;
+            transition: max-height 0.25s ease-out;
+        }
+
+        .submenu-content a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px 12px 52px;
+            color: #475569;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.5);
+            z-index: 9999;
+            display: none;
+            backdrop-filter: blur(2px);
+        }
+
+        .drawer-overlay.show {
+            display: block !important;
+        }
+
+        /* Hero Info Header */
+        .content-intro {
+            padding: 16px;
+            background-color: #ffffff;
+        }
+
+        .content-intro h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .content-intro p {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .read-more-link {
+            color: #0284c7;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Horizontal Scrolling Filter System */
+        .filter-scroll-wrapper {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+        }
+
+        .filter-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pill-btn {
+            white-space: nowrap;
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .pill-btn.active {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #0f172a;
+        }
+
+        /* Product Layout & Counter Header */
+        .product-counter {
+            padding: 16px 16px 4px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .grid-container {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .laptop-item-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-main-body {
+            display: flex;
+            padding: 14px;
+            gap: 14px;
+            position: relative;
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e11d48;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .img-holder {
+            width: 95px;
+            height: 95px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .img-holder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .details-holder {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.4;
+        }
+
+        .compare-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #475569;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .amazon-link-logo {
+            height: 14px;
+            margin-top: 4px;
+            align-self: flex-start;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        .badge-discount {
+            color: #16a34a;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .price-current {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .price-original {
+            font-size: 12px;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        /* Button Framework */
+        .card-actions-row {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .btn-learn {
+            color: #0284c7;
+            background-color: #ffffff;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .btn-buy {
+            color: #ffffff;
+            background-color: #0284c7;
+        }
+
+        /* Google "People also search for" Widget */
+        .pasf-container {
+            background-color: #ffffff;
+            margin: 20px 16px;
+            padding: 20px 16px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            max-width: 800px;
+        }
+
+        .pasf-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .pasf-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pasf-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #1e293b;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .pasf-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .pasf-icon-box {
+            width: 28px;
+            height: 28px;
+            background-color: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* Bottom Navigation Sticky Tab Bar */
+        .bottom-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            border-top: 1px solid #cbd5e1;
+            display: flex;
+            z-index: 998;
+        }
+
+        .sticky-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .sticky-tab:first-child {
+            border-right: 1px solid #e2e8f0;
+        }
+
+        footer {
+            background-color: #ffffff;
+            padding: 24px 16px 80px 16px; /* Extra bottom padding for sticky bar */
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 25px;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="page-wrapper"><strong>LaptopTec.online</strong></div>
-</header>
+    <!-- Drawer Dark Backdrop Overlay -->
+    <div class="drawer-overlay" id="menuOverlay"></div>
 
-<main class="page-wrapper">
-    <div class="controls">
-        <input type="text" id="searchInput" class="search-box" placeholder="लैपटॉप सर्च करें..." onkeyup="filterLaptops()">
-        <select id="sortSelect" class="sort-box" onchange="sortLaptops()">
-            <option value="default">कीमत क्रम</option>
-            <option value="asc">कम से ज्यादा</option>
-            <option value="desc">ज्यादा से कम</option>
-        </select>
+    <!-- Slide-out Sidebar Drawer Menu Component -->
+    <nav class="sidebar-drawer" id="sidebarMenu">
+        <div class="drawer-header">
+            <div class="drawer-brand">Laptop<span>Tec</span></div>
+            <i class="fa-solid fa-xmark drawer-close-btn" id="closeMenuBtn"></i>
+        </div>
+        
+        <div class="drawer-menu-list">
+            <a href="index.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-house"></i> Latest Laptops</div>
+            </a>
+
+            <!-- Dropdown 1: Laptops by Brand -->
+            <div class="accordion-item">
+                <button class="drawer-menu-item accordion-trigger">
+                    <div class="drawer-item-left"><i class="fa-solid fa-laptop"></i> Laptops by Brand</div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="hp-laptops.html">HP Laptops</a>
+                    <a href="dell-laptops.html">Dell Laptops</a>
+                </div>
+            </div>
+
+            <!-- Dropdown 2: Laptops by Price/Budget -->
+            <div class="accordion-item">
+                <button class="drawer-menu-item accordion-trigger">
+                    <div class="drawer-item-left"><i class="fa-solid fa-tags"></i> Laptops by Budget</div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="under-30k.html">Laptops under ₹30,000</a>
+                </div>
+            </div>
+
+            <!-- Dropdown 3: Laptops by Feature -->
+            <div class="accordion-item">
+                <button class="drawer-menu-item accordion-trigger">
+                    <div class="drawer-item-left"><i class="fa-solid fa-microchip"></i> Laptops by Feature</div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="intel.html" style="color: #0284c7; background-color: #e0f2fe;">Intel i5 Laptops</a>
+                    <a href="ryzen.html">Ryzen 5 Laptops</a>
+                    <a href="battery.html">Best Battery Life</a>
+                    <a href="gaming.html">Gaming Laptops</a>
+                </div>
+            </div>
+
+            <a href="advice.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-lightbulb"></i> Buying Advice</div>
+            </a>
+            
+            <a href="about.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-address-card"></i> About / Contact</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Global Header Layer -->
+    <header class="main-header">
+        <div class="header-left">
+            <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+            <div class="brand-logo">
+                <div>Laptop<span class="tec-highlight">Tec</span></div>
+                <span class="sub-text">laptoptec.online</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-regular fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </header>
+
+    <!-- Search Dynamic Bar Component -->
+    <div class="search-container-box">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search laptops here (e.g., HP, Acer, Asus)">
+        </div>
     </div>
 
-    <div id="laptopGrid" class="laptop-grid">
-        <div class="product-card" data-price="25500">
-            <h3>HP Chromebook</h3>
-            <img src="https://uploads.onecompiler.io/44r7prtu8/44r7prvxz/9976.jpg" class="product-img">
-            <div class="price">₹25,500</div>
-            <a href="#" class="btn">अभी देखें</a>
-        </div>
-        <div class="product-card" data-price="41190">
-            <h3>HP 255 G10</h3>
-            <img src="https://uploads.onecompiler.io/44r7prtu8/44r7sqvve/10043.jpg" class="product-img">
-            <div class="price">₹41,190</div>
-            <a href="#" class="btn">अभी देखें</a>
-        </div>
+    <!-- Intro Headline Section -->
+    <section class="content-intro">
+        <h1>Intel i5 Laptops</h1>
+        <p>Discover Your Ideal Laptop with LaptopTec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a <span class="read-more-link">Read more</span></p>
+    </section>
+
+    <!-- Scrolling Horizontal Filters Navigation List -->
+    <div class="filter-scroll-wrapper">
+        <a href="index.html" class="pill-btn">Latest Laptops</a>
+        <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
+        <a href="under-30k.html" class="pill-btn">Laptops under ₹30,000</a>
+        <a href="intel.html" class="pill-btn active">Intel i5 Laptops</a>
+        <a href="ryzen.html" class="pill-btn">Ryzen 5 Laptops</a>
     </div>
-</main>
 
-<script>
-    function filterLaptops() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        document.querySelectorAll('.product-card').forEach(card => {
-            let name = card.querySelector('h3').innerText.toLowerCase();
-            card.style.display = name.includes(input) ? "flex" : "none";
-        });
-    }
+    <!-- Listings Total Metric Header -->
+    <div class="product-counter">1003 Laptops</div>
 
-    function sortLaptops() {
-        let grid = document.getElementById('laptopGrid');
-        let cards = Array.from(grid.getElementsByClassName('product-card'));
-        let order = document.getElementById('sortSelect').value;
-        if(order === 'default') return;
-
-        cards.sort((a, b) => {
-            let pA = parseInt(a.getAttribute('data-price'));
-            let pB = parseInt(b.getAttribute('data-price'));
-            return order === 'asc' ? pA - pB : pB - pA;
-        });
-        cards.forEach(card => grid.appendChild(card));
-    }
-</script>
-
-<footer>&copy; 2026 LaptopTec.online</footer>
-</body>
-</html>
+    <!-- Products Container -->
+    <div class="grid-container">
+        
+        <!-- Laptop Item Card 1: HP 15s -->
+        <div class="laptop-item-card">
+            <div class="card-main-body">
+                <span class="badge-tag">Intel Pick</span>
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Laptop">
+                </div>
+                <div class="details-holder">
+                    <div class="item-name">HP 15s Intel Core i5 (16GB RAM / 512GB SSD)</div>
+                    <div class="price-container">
+                        <span class="badge-discount">13% OFF</span>
+                        <span class="price-current">₹48,990</span>
+                        <span class="price-original">₹56,200</span>
+                    </div>
+                    <label class="compare-checkbox-label">
+                        <input type="checkbox"> Add to compare
+                    </label>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-link-logo">
+                </div>
+            </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="INTEL1_AMAZON_LINK" target="_blank" class="action-btn btn-buy">Buy Now</a>
+            </div>
+        </div>
+    </div></body>
+        
