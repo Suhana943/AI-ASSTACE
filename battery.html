@@ -78,9 +78,82 @@
             margin: 0 auto;
         }
 
+        /* NEW: Battery Guide & FAQ Box */
+        .battery-guide-section {
+            max-width: 800px;
+            margin: 30px auto 10px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .guide-container-box {
+            background-color: #ffffff;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #10b981;
+        }
+
+        .guide-container-box h2 {
+            font-size: 1.2rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-container-box p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .guide-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .guide-column h3 {
+            font-size: 0.95rem;
+            color: #0f172a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .guide-column ul {
+            list-style: none;
+        }
+
+        .guide-column ul li {
+            font-size: 0.85rem;
+            color: #334155;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .guide-column.tips ul li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        .guide-column.questions ul li::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
         /* Content Hub Intro */
         .content-hub {
-            padding: 40px 20px 25px 20px;
+            padding: 20px 20px 25px 20px;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
@@ -259,6 +332,7 @@
         }
 
         @media (max-width: 600px) {
+            .guide-split { grid-template-columns: 1fr; gap: 15px; }
             .grid-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -280,13 +354,43 @@
         <p>Students aur Travelers ke liye power-efficient setups jo bina charger ke pure din chalein.</p>
     </section>
 
+    <!-- NEW SECTION: Battery Optimization Tips & Questions -->
+    <section class="battery-guide-section">
+        <div class="guide-container-box">
+            <h2>🔋 Laptop Battery Optimization & Buying Guide</h2>
+            <p>Bina charger ke lambe samay tak kaam karne ke liye sahi processor aur sahi settings ka hona zaroori hai. Niche diye gaye parameters ko zaroor check karein:</p>
+            
+            <div class="guide-split">
+                <!-- Tips Column -->
+                <div class="guide-column tips">
+                    <h3>How to extend battery life?</h3>
+                    <ul>
+                        <li><strong>Lower the Refresh Rate:</strong> Screen refresh rate ko 144Hz se hatakar 60Hz par set karein taaki battery kam consume ho.</li>
+                        <li><strong>Use Battery Saver Mode:</strong> Windows settings mein jaakar auto-battery saver ko 20% ya 30% par turn-on rakhein.</li>
+                        <li><strong>Close Background Apps:</strong> Heavy background programs aur unused browser tabs ko hamesha close kar dein.</li>
+                    </ul>
+                </div>
+                
+                <!-- Questions Column -->
+                <div class="guide-column questions">
+                    <h3>Questions to ask before buying:</h3>
+                    <ul>
+                        <li>What is the total Watt-hour (Whr) capacity of the laptop's battery? (Prefer 45Whr to 60Whr inside this budget)</li>
+                        <li>Does it support Type-C Fast Charging for quick emergency top-ups?</li>
+                        <li>Is the processor U-series or Vostro energy-saving architecture?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Navigation Hub Tabs -->
     <section class="content-hub">
         <div class="filter-container">
             <a href="index.html" class="filter-btn">Sabhi 10 Deals</a>
             <a href="intel.html" class="filter-btn">Intel i5 Laptops</a>
             <a href="ryzen.html" class="filter-btn">Ryzen 5 Laptops</a>
-                    <a href="advice.html" class="filter-btn"> details for top Laptops</a>
+            <a href="advice.html" class="filter-btn">details for top Laptops</a>
             <a href="gaming.html" class="filter-btn">Best for Gaming</a>
             <a href="battery.html" class="filter-btn active">Best Battery Life</a>
         </div>
