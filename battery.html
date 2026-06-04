@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -22,9 +21,11 @@
             background-color: #f4f6f9;
             color: #1e293b;
             padding-bottom: 60px; /* Space for Bottom Sticky Sort/Filter bar */
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* 1. Header Navigation - Screen Accurate to 10105.jpg */
+        /* 1. Header Navigation - Screen Accurate */
         .main-header {
             background-color: #ffffff;
             color: #0f172a;
@@ -49,6 +50,7 @@
             font-size: 20px;
             cursor: pointer;
             color: #334155;
+            padding: 4px;
         }
 
         .brand-logo {
@@ -79,6 +81,111 @@
             gap: 18px;
             font-size: 18px;
             color: #475569;
+        }
+
+        /* NEW: Collapsible Hamburger Sidebar / Drawer Menu (Inspired by 10104_5.jpg) */
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            left: -280px; /* Hidden by default */
+            width: 280px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 10000;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-drawer.open {
+            left: 0;
+        }
+
+        /* Drawer Brand Branding Header */
+        .drawer-header {
+            padding: 20px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+        }
+
+        .drawer-brand {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .drawer-brand span {
+            color: #0284c7;
+        }
+
+        .drawer-close-btn {
+            font-size: 20px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* Drawer Links List */
+        .drawer-menu-list {
+            list-style: none;
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+
+        .drawer-menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            color: #334155;
+            text-decoration: none;
+            font-size: 14.5px;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.2s;
+        }
+
+        .drawer-menu-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .drawer-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .drawer-item-left i {
+            font-size: 16px;
+            color: #64748b;
+            width: 20px;
+            text-align: center;
+        }
+
+        .drawer-menu-item .fa-chevron-down {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* Dark Overlay when sidebar is open */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.4);
+            z-index: 9999;
+            display: none;
+            backdrop-filter: blur(2px);
+        }
+
+        .drawer-overlay.show {
+            display: block;
         }
 
         /* 2. Search Bar Box */
@@ -130,7 +237,7 @@
             line-height: 1.6;
         }
 
-        /* 4. Battery Optimization & Question Guide Block */
+        /* 4. Battery Optimization Guide Block */
         .battery-guide-box {
             background-color: #f8fafc;
             border-left: 4px solid #10b981;
@@ -184,7 +291,7 @@
             text-decoration: underline;
         }
 
-        /* 5. Horizontal Scrolling Filter System - Exact match to pills */
+        /* 5. Horizontal Scrolling Filter System */
         .filter-scroll-wrapper {
             display: flex;
             gap: 8px;
@@ -375,7 +482,7 @@
             background-color: #0284c7;
         }
 
-        /* 8. Bottom Sticky Footer Bars - Screen Accurate to 10105.jpg */
+        /* 8. Bottom Sticky Footer Bars */
         .bottom-sticky-bar {
             position: fixed;
             bottom: 0;
@@ -418,10 +525,55 @@
 </head>
 <body>
 
-    <!-- 1. Header Navigation Component (LaptopTec) -->
+    <!-- Drawer Dark Backdrop Overlay -->
+    <div class="drawer-overlay" id="menuOverlay"></div>
+
+    <!-- Collapsible Sidebar Navigation Drawer (Matches 10104_5.jpg Structure & Repository Files) -->
+    <nav class="sidebar-drawer" id="sidebarMenu">
+        <div class="drawer-header">
+            <div class="drawer-brand">Laptop<span>Tec</span></div>
+            <i class="fa-solid fa-xmark drawer-close-btn" id="closeMenuBtn"></i>
+        </div>
+        
+        <div class="drawer-menu-list">
+            <a href="index.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-house"></i> Latest Laptops</div>
+            </a>
+            <a href="hp-laptops.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-laptop"></i> HP Laptops</div>
+            </a>
+            <a href="dell-laptops.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-laptop"></i> Dell Laptops</div>
+            </a>
+            <a href="under-30k.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-tags"></i> Laptops under ₹30,000</div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <a href="gaming.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-gamepad"></i> Best for Gaming</div>
+            </a>
+            <a href="battery.html" class="drawer-menu-item" style="background-color: #f0fdf4; color: #16a34a;">
+                <div class="drawer-item-left"><i class="fa-solid fa-battery-full" style="color: #16a34a;"></i> Battery Life</div>
+            </nav>
+            <a href="intel.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-microchip"></i> Intel i5 Laptops</div>
+            </a>
+            <a href="ryzen.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-microchip"></i> Ryzen 5 Laptops</div>
+            </a>
+            <a href="advice.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-lightbulb"></i> Buying Advice</div>
+            </a>
+            <a href="about.html" class="drawer-menu-item">
+                <div class="drawer-item-left"><i class="fa-solid fa-address-card"></i> About/Contact</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 1. Main Header Component -->
     <header class="main-header">
         <div class="header-left">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
             <div class="brand-logo">
                 <div>Laptop<span class="tec-highlight">Tec</span></div>
                 <span class="sub-text">laptoptec.online</span>
@@ -472,7 +624,7 @@
         <span class="read-more-link">Read more</span>
     </section>
 
-    <!-- 4. Horizontal Pill Filter Bar System (Links connected dynamically) -->
+    <!-- 4. Horizontal Pill Filter Bar System -->
     <div class="filter-scroll-wrapper">
         <a href="index.html" class="pill-btn">Latest Laptops</a>
         <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
@@ -511,38 +663,7 @@
                         <span class="price-current">₹44,990</span>
                         <span class="price-original">₹52,000</span>
                     </div>
-                    <div class="compare-checkbox-row">
-                        <input type="checkbox" id="c1">
-                        <label for="c1">Add to compare</label>
-                    </div>
-                    <div class="brand-affiliate-logo">amazon<span>.in</span></div>
-                </div>
-            </div>
-            <div class="card-actions-row">
-                <a href="#" class="action-btn btn-learn">Learn More</a>
-                <a href="#" class="action-btn btn-buy">Buy Now</a>
-            </div>
-        </div>
-
-        <!-- Product Card Entry 2 -->
-        <div class="laptop-item-card">
-            <div class="card-main-body">
-                <span class="badge-tag">ExpressCharge</span>
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="Dell Ultra Saver">
-                </div>
-                <div class="details-holder">
-                    <div class="item-name">Dell Inspiron 3520 Intel Thin Setup</div>
-                    <ul class="item-spec-list">
-                        <li>• Intel Core i5 Energy Efficient Model</li>
-                        <li>• Anti-Glare ComfortView low emission screen</li>
-                    </ul>
-                    <div class="price-container">
-                        <span class="badge-discount">12% OFF</span>
-                        <span class="price-current">₹48,990</span>
-                        <span class="price-original">₹56,500</span>
-                    </div>
-                    <div class="compare-checkbox-row">
+                       <div class="compare-checkbox-row">
                         <input type="checkbox" id="c2">
                         <label for="c2">Add to compare</label>
                     </div>
@@ -557,7 +678,7 @@
 
     </div>
 
-    <!-- 7. Screen Bottom Action Sticky Bars (Sort / Filter UI) -->
+    <!-- 7. Screen Bottom Action Sticky Bars -->
     <div class="bottom-sticky-bar">
         <div class="sticky-tab">
             <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
@@ -572,6 +693,28 @@
         <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
     </footer>
 
+    <!-- 8. Interactive JS Menu Controller Script -->
+    <script>
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        // Toggle Sidebar Open
+        hamburgerIcon.addEventListener('click', () => {
+            sidebarMenu.classList.add('open');
+            menuOverlay.classList.add('show');
+        });
+
+        // Function to Close Sidebar
+        const closeDrawer = () => {
+            sidebarMenu.classList.remove('open');
+            menuOverlay.classList.remove('show');
+        };
+
+        closeMenuBtn.addEventListener('click', closeDrawer);
+        menuOverlay.addEventListener('click', closeDrawer);
+    </script>
+
 </body>
-            </html>
-            
+</html>
