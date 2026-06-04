@@ -1,723 +1,6 @@
-
-    
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Laptop Under 50000 (2026) | LaptopTec</title>
-    
-    <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #ffffff; /* Clean White Background inspired by 9985.jpg */
-            color: #1f2937;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Header Navigation */
-        .main-header {
-            background-color: #0f172a; 
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px; 
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .menu-toggle-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 1.4rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .brand-logo {
-            font-size: 1.35rem; 
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            color: #ffffff;
-        }
-        .brand-logo span.deal { color: #f59e0b; }
-        .brand-logo span.in { color: #3b82f6; font-weight: 400; }
-
-        /* Side Nav Bar */
-        .sidebar-nav {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 280px;
-            height: 100%;
-            background-color: #ffffff;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .sidebar-nav.open { left: 0; }
-
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .close-sidebar-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: #6b7280;
-            cursor: pointer;
-            margin-right: 15px;
-            font-weight: bold;
-        }
-
-        .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #0f172a; }
-        .sidebar-menu-list { list-style: none; padding: 10px 0; }
-        .sidebar-menu-list li a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 20px;
-            color: #374151;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-bottom: 1px solid #f3f4f6;
-        }
-        .sidebar-menu-list li a:hover { background-color: #f9fafb; color: #2563eb; }
-        .nav-item-content { display: flex; align-items: center; gap: 12px; }
-        .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
-        .nav-arrow { color: #d1d5db; font-size: 0.8rem; }
-
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 999;
-            display: none;
-        }
-        .sidebar-overlay.show { display: block; }
-
-        /* Content Header Section (91mobiles Light Style) */
-        .hero-section {
-            background: #ffffff;
-            padding: 30px 20px;
-            border-bottom: 1px solid #e5e7eb;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .breadcrumb {
-            font-size: 0.8rem;
-            color: #6b7280;
-            margin-bottom: 12px;
-        }
-
-        .main-title { 
-            font-size: 2rem; 
-            font-weight: 800; 
-            color: #111827; 
-            margin-bottom: 10px; 
-            line-height: 1.2;
-        }
-
-        .meta-info {
-            font-size: 0.85rem;
-            color: #6b7280;
-            margin-bottom: 20px;
-        }
-        .meta-info span.author { color: #e11d48; font-weight: 600; }
-
-        .sub-headline { 
-            font-size: 1rem; 
-            color: #4b5563; 
-            margin-bottom: 25px;
-        }
-
-        /* Fixed Button Grid to keep elements in 1 single row always */
-        .cta-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 12px 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem; 
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-align: center;
-            white-space: nowrap; 
-        }
-
-        .btn-primary { background-color: #e11d48; color: #ffffff; border: none; }
-        .btn-primary:hover { background-color: #be123c; }
-
-        .btn-secondary { border: 1px solid #d1d5db; color: #374151; background: #f9fafb; }
-        .btn-secondary:hover { background-color: #f3f4f6; }
-
-        /* Search and Filter Control Box */
-        .filter-control-box {
-            max-width: 800px;
-            margin: 20px auto 0 auto;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .search-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 16px 12px 40px;
-            font-size: 0.95rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            outline: none;
-            background-color: #f8fafc;
-            transition: all 0.2s ease;
-        }
-
-        .search-input:focus {
-            border-color: #e11d48;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1);
-        }
-
-        .search-icon-placeholder {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        .sort-dropdown {
-            width: 100%;
-            padding: 12px;
-            font-size: 0.95rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            outline: none;
-            background-color: #ffffff;
-            color: #334155;
-            cursor: pointer;
-        }
-
-        .sort-dropdown:focus {
-            border-color: #e11d48;
-        }
-
-        @media (min-width: 600px) {
-            .filter-control-box {
-                flex-direction: row;
-                align-items: center;
-            }
-            .search-wrapper {
-                flex: 2;
-            }
-            .sort-dropdown {
-                flex: 1;
-            }
-        }
-
-        /* Product Showcase Grid & Blocks */
-        .section-heading {
-            max-width: 800px;
-            margin: 40px auto 20px auto;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #111827;
-            padding: 0 20px;
-        }
-
-        .catalog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px 20px 20px;
-        }
-
-        .product-item-block {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .item-number-badge {
-            background-color: #e11d48;
-            color: #ffffff;
-            padding: 3px 9px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 12px;
-            border-radius: 4px;
-        }
-
-        .item-title-link {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #111827;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 4px;
-            border-bottom: 2px solid #e11d48;
-            padding-bottom: 4px;
-        }
-        .item-title-link:hover { color: #e11d48; }
-
-        .item-subtitle-specs {
-            font-size: 0.85rem;
-            color: #6b7280;
-            margin-bottom: 15px;
-        }
-
-.center-img-frame {
-    background: #ffffff;
-    padding: 0; /* padding को 0 कर दिया ताकि इमेज किनारों को छू सके */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-    width: 100%; /* बॉक्स की पूरी चौड़ाई */
-    height: 250px; /* आप अपने हिसाब से बॉक्स की हाइट तय कर सकते हैं */
-    overflow: hidden; /* अगर इमेज बड़ी हो तो बॉक्स से बाहर न निकले */
-}
-
-.center-img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* यह इमेज को बिना स्ट्रेच (खिंचे) किए पूरे बॉक्स में फिट कर देगा */
-}
-
-        .display-price-row {
-            text-align: center;
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #111827;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* Specification Sheet Design */
-        .specs-table-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            background: #f9fafb;
-            padding: 8px 12px;
-            border: 1px solid #e5e7eb;
-            border-bottom: none;
-            color: #374151;
-        }
-
-        .inline-specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
-        .inline-specs-table td {
-            padding: 10px 12px;
-            border: 1px solid #e5e7eb;
-        }
-        .inline-specs-table td.spec-lbl {
-            color: #4b5563;
-            width: 40%;
-            background: #f9fafb;
-        }
-        .inline-specs-table td.spec-val {
-            color: #111827;
-            font-weight: 500;
-        }
-
-        /* Affiliate Buttons Matching 9999.jpg Style */
-        .action-box {
-            display: flex;
-            gap: 12px;
-        }
-        .action-btn {
-            flex: 1;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: opacity 0.15s ease;
-        }
-        .action-btn:hover { opacity: 0.9; }
-        .btn-az-yellow { background-color: #ff9900; color: #000000; }
-        .btn-fk-orange { background-color: #2874f0; color: #ffffff; }
-
-        /* Master Comparison Section */
-        .master-comparison-area {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-        .scroll-table-container {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            overflow-x: auto;
-        }
-        .master-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            min-width: 600px;
-            text-align: left;
-        }
-        .master-table th, .master-table td { padding: 14px; border-bottom: 1px solid #e5e7eb; }
-        .master-table th { background: #f3f4f6; color: #111827; }
-        .master-table td.title-col { font-weight: 700; color: #4b5563; background: #f9fafb; }
-
-        /* Google "People also search for" Interface Layout from 9999.jpg */
-        .search-suggestions-section {
-            max-width: 500px;
-            margin: 40px auto 60px auto;
-            padding: 0 20px;
-        }
-
-        .suggestion-box-title { 
-            font-size: 1.4rem; 
-            font-weight: 700; 
-            color: #1e293b; 
-            margin-bottom: 20px; 
-        }
-        
-        .suggestion-list { 
-            background-color: #ffffff; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 16px; 
-            overflow: hidden; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            padding: 8px 0;
-        }
-        
-        .suggestion-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 16px 24px; 
-            text-decoration: none; 
-            color: #334155; 
-            border-bottom: 1px solid #f1f5f9; 
-            transition: background-color 0.15s ease; 
-        }
-        
-        .suggestion-item:last-child { border-bottom: none; }
-        .suggestion-item:hover { background-color: #f8fafc; }
-        
-        .suggestion-text { 
-            font-size: 0.95rem; 
-            font-weight: 500; 
-            line-height: 1.4; 
-            color: #1e293b;
-        }
-        
-        .suggestion-text span.bold-query { font-weight: 700; }
-        
-        .search-icon-circle { 
-            width: 34px; 
-            height: 34px; 
-            background-color: #f1f5f9; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #64748b; 
-            font-size: 0.9rem; 
-        }
-            
-        /* Detailed About Us Footer Styling */
-        footer {
-            border-top: 1px solid #e2e8f0;
-            padding: 40px 20px;
-            background-color: #f8fafc;
-            color: #475569;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .footer-about-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 12px;
-            border-left: 3px solid #e11d48;
-            padding-left: 10px;
-        }
-
-        .footer-about-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .footer-bottom-bar {
-            border-top: 1px solid #e2e8f0;
-            padding-top: 15px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-    </style>
-</head>
-<body>
-
-<!-- Main Header Wrapper -->
-<header class="main-header">
-    <div class="header-left">
-        <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
-        <div class="brand-logo">Laptop<span class="deal">Tec</span><span class="in">.online</span></div>
-    </div>
-</header>
-
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-<!-- Drawer Menu Panel -->
-<nav class="sidebar-nav" id="sidebarMenu">
-    <div class="sidebar-header">
-        <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
-        <div class="sidebar-logo">LaptopTec Navigation</div>
-    </div>
-    <ul class="sidebar-menu-list">
-    <!-- Existing Links -->
-    <li><a href="index.html"><div class="nav-item-content"><span class="nav-icon">🏠</span> Top Recommendations</div><span class="nav-arrow">❯</span></a></li>
-    <li><a href="intel.html"><div class="nav-item-content"><span class="nav-icon">🔹</span> Intel i5 Models</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="ryzen.html"><div class="nav-item-content"><span class="nav-icon">🔸</span> Ryzen 5 Models</div><span class="nav-arrow">📂</span></a></li>
-    
-    <!-- New Added Links from 10104.jpg -->
-    <li><a href="dell-laptops.html"><div class="nav-item-content"><span class="nav-icon">💻</span> Dell Laptops</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="hp-laptops.html"><div class="nav-item-content"><span class="nav-icon">💻</span> HP Laptops</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="gaming.html"><div class="nav-item-content"><span class="nav-icon">🎮</span> Gaming Laptops</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="under-30k.html"><div class="nav-item-content"><span class="nav-icon">💰</span> Laptops Under 30k</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="battery.html"><div class="nav-item-content"><span class="nav-icon">🔋</span> Best Battery Laptops</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="advice.html"><div class="nav-item-content"><span class="nav-icon">💡</span> Buying Advice</div><span class="nav-arrow">📂</span></a></li>
-    <li><a href="about.html"><div class="nav-item-content"><span class="nav-icon">ℹ️</span> About Us</div><span class="nav-arrow">📂</span></a></li>
-</ul>
-
-</nav>
-
-<main>
-    <!-- Content Intro Frame -->
-    <section class="hero-section">
-        <div class="breadcrumb">Home > Laptops > Laptop Finder > Laptops Under 50000 In India</div>
-        <h1 class="main-title">Laptops Under 50000 in India</h1>
-        
-        <div class="meta-info">
-            By <span class="author">LaptopTec Staff</span> | Prices last updated on 03 June 2026
-        </div>
-
-        <p class="sub-headline">अगर आप ₹50,000 के अंदर बेस्ट परफॉर्मेंस वाले लैपटॉप की तलाश में हैं, तो यह लिस्ट आपके लिए है। हमने मार्केट की TOP डील्स को शॉर्टलिस्ट किया है ताकि आपका एक भी पैसा गलत जगह बर्बाद न हो।</p>
-        
-        <div class="cta-container">
-            <a href="#deals-catalog" class="btn-primary">🔥 लाइव डील्स देखें</a>
-            <a href="#specs-comparison" class="btn-secondary">📊 साइड-बाय-साइड तुलना</a>
-        </div>
-    </section>
-
-    <!-- NEW: Search and Filter Section -->
-    <div class="filter-control-box">
-        <div class="search-wrapper">
-            <span class="search-icon-placeholder">🔍</span>
-            <input type="text" id="laptopSearch" class="search-input" placeholder="लैपटॉप का नाम या प्रोसेसर सर्च करें..." onkeyup="filterLaptops()">
-        </div>
-        <select id="priceSort" class="sort-dropdown" onchange="sortLaptops()">
-            <option value="default">सॉर्ट करें (डिफ़ॉल्ट)</option>
-            <option value="lowToHigh">कीमत: कम से ज़्यादा</option>
-            <option value="highToLow">कीमत: ज़्यादा से कम</option>
-        </select>
-    </div>
-
-    <!-- PRODUCT CATALOG LIST -->
-    <h2 class="section-heading" id="deals-catalog">बेस्ट बजट लैपटॉप डील्स</h2>
-    
-    <!-- Added id="laptopList" to container for js manipulation -->
-    <div class="catalog-container" id="laptopList">
-        
-        <!-- Laptop Item 1 -->
-        <div class="product-item-block" data-price="25500" data-name="hp chromebook celeron quad core 14a intel celeron">
-    <div class="item-number-badge">1</div>
-    
-    <!-- मुख्य लिंक -->
-    <a href="https://dl.flipkart.com/dl/hi/hp-chromebook-intel-celeron-quad-core-n4120-4-gb-64-gb-emmc-storage-chrome-os-14a-ca0504tu/p/itm786e711f402fa?pid=COMGBHKF9E65BFZP&lid=LSTCOMGBHKF9E65BFZP5UAU9E&marketplace=FLIPKART&_refId=&_appId=CL" target="_blank" class="item-title-link">
-        HP Chromebook Celeron Quad Core 14a-ca0504TU
-    </a>
-    
-    <div class="item-subtitle-specs">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
-    
-    <!-- लैपटॉप इमेज फ्रेम -->
-    <div class="center-img-frame">
-        <!-- यहाँ मैंने एक वर्किंग इमेज URL डाल दिया है ताकि फोटो दिखाई दे -->
-        <img src="https://uploads.onecompiler.io/44r7prtu8/44r7prvxz/9976.jpg" alt="HP Chromebook 14a" style="max-width:100%; height:auto;">
-    </div>
-    <!-- स्पेसिफिकेशन्स टेबल -->
-    <div class="specs-table-title">Key Specs</div>
-    <table class="inline-specs-table" style="width: 100%; border-collapse: collapse;">
-        <tr><td class="spec-lbl" style="padding: 5px 0; color: #666;">Display size</td><td class="spec-val" style="font-weight: bold;">14.00-inch</td></tr>
-        <tr><td class="spec-lbl" style="padding: 5px 0; color: #666;">Processor</td><td class="spec-val" style="font-weight: bold;">Intel Celeron Quad Core</td></tr>
-        <tr><td class="spec-lbl" style="padding: 5px 0; color: #666;">RAM</td><td class="spec-val" style="font-weight: bold;">4GB</td></tr>
-        <tr><td class="spec-lbl" style="padding: 5px 0; color: #666;">OS</td><td class="spec-val" style="font-weight: bold;">Chrome OS</td></tr>
-    </table>
-
-    <!-- फ्लिपकार्ट बटन -->
-    <div class="action-box" style="margin-top: 15px;">
-        <a href="https://dl.flipkart.com/dl/hi/hp-chromebook-intel-celeron-quad-core-n4120-4-gb-64-gb-emmc-storage-chrome-os-14a-ca0504tu/p/itm786e711f402fa?pid=COMGBHKF9E65BFZP&lid=LSTCOMGBHKF9E65BFZP5UAU9E&marketplace=FLIPKART&_refId=&_appId=CL" target="_blank" class="action-btn btn-fk-orange" style="display: inline-block; background-color: #ff9f00; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
-            Flipkart पर देखें
-        </a>
-    </div>
-        </div>
-        
-<div class="product-item-block" data-price="41190" data-name="hp 255 g10 athlon dual core 8gb 256gb ssd">
-    <div class="item-number-badge">1</div>
-    
-    <!-- फ्लिपकार्ट प्रोडक्ट लिंक (टाइटल) -->
-    <a href="https://dl.flipkart.com/dl/hi/hp-255-g10-amd-athlon-dual-core-7120u-8-gb-256-gb-ssd-windows-11-home-thin-light-laptop/p/itm0994d96e22416?pid=COMHBCNY8DX2T7HY" target="_blank" class="item-title-link">
-        HP 255 G10 Athlon Dual Core (255 G10)
-    </a>
-    
-    <div class="item-subtitle-specs">(AMD Athlon 7120U / 8 GB / 256 GB SSD / Windows 11 Home / 15.6 Inch / Ash Silver / 1.35 kg)</div>
-    
-    <!-- इमेज बॉक्स - (आपकी नई इमेज लिंक के साथ जो पूरे बॉक्स में फिट आएगी) -->
-    <div class="center-img-frame">
-              
-        <img src="https://uploads.onecompiler.io/44r7prtu8/44r7sqvve/10046.jpg" alt="HP 255 G10" style="width: 100%">
-    </div>
-    
-    <!-- कीमत और रेटिंग -->
-    <div class="display-price-row" style="font-size: 22px; font-weight: bold; color: #111; margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-        <span class="price" style="font-size: 24px;">₹41,190</span> 
-        <span style="font-size: 14px; text-decoration: line-through; color: #878787;">₹41,500</span>
-        <span style="font-size: 14px; color: #388e3c; font-weight: bold;">(1% Off)</span>
-        <span style="background-color: #388e3c; color: white; padding: 2px 6px; font-size: 12px; border-radius: 4px; font-weight: bold; margin-left: auto;">4 ★ (421)</span>
-    </div>
-    
-    <!-- बैंक ऑफर और EMI प्रोमो बॉक्स -->
-    <div class="promo-box" style="background-color: #f0f5ff; color: #1c4ed8; padding: 10px; font-size: 13px; border-radius: 6px; margin: 12px 0; font-weight: 500; border-left: 4px solid #1c4ed8;">
-        🔥 <strong>Lowest Price For You: ₹39,130</strong> with Flipkart Axis Bank Card! <br>
-        💳 Or pay easy EMI of <strong>₹3,347 x 12 months</strong>.
-    </div>
-    
-    <!-- स्पेसिफिकेशन्स टेबल -->
-    <div class="specs-table-title" style="margin-top: 15px; font-weight: bold; color: #333; font-size: 15px; border-bottom: 2px solid #ddd; padding-bottom: 5px;">Key Specs</div>
-    <table class="inline-specs-table" style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px;">
-        <tr style="border-bottom: 1px solid #f0f0f0;"><td class="spec-lbl" style="padding: 6px 0; color: #666;">Display size</td><td class="spec-val" style="font-weight: bold; text-align: right; color: #222;">15.6-inch</td></tr>
-        <tr style="border-bottom: 1px solid #f0f0f0;"><td class="spec-lbl" style="padding: 6px 0; color: #666;">Processor</td><td class="spec-val" style="font-weight: bold; text-align: right; color: #222;">Athlon Dual Core 7120U</td></tr>
-        <tr style="border-bottom: 1px solid #f0f0f0;"><td class="spec-lbl" style="padding: 6px 0; color: #666;">RAM / Storage</td><td class="spec-val" style="font-weight: bold; text-align: right; color: #222;">8 GB / 256 GB SSD</td></tr>
-        <tr style="border-bottom: 1px solid #f0f0f0;"><td class="spec-lbl" style="padding: 6px 0; color: #666;">OS</td><td class="spec-val" style="font-weight: bold; text-align: right; color: #222;">Windows 11 Home</td></tr>
-        <tr style="border-bottom: 1px solid #f0f0f0;"><td class="spec-lbl" style="padding: 6px 0; color: #666;">Weight</td><td class="spec-val" style="font-weight: bold; text-align: right; color: #222;">1.35 kg (Lightweight)</td></tr>
-    </table>
-
-    <!-- फ्लिपकार्ट बटन -->
-    <div class="action-box" style="margin-top: 18px; text-align: center;">
-        <a href="https://dl.flipkart.com/dl/hi/hp-255-g10-amd-athlon-dual-core-7120u-8-gb-256-gb-ssd-windows-11-home-thin-light-laptop/p/itm0994d96e22416?pid=COMHBCNY8DX2T7HY" target="_blank" class="action-btn btn-fk-orange" style="display: block; background: linear-gradient(135deg, #ff9f00 0%, #f15e12 100%); color: white; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; box-shadow: 0 3px 10px rgba(241, 94, 18, 0.2);">
-            Buy on Flipkart
-        </a>
-    </div>
-</div>
-
-        <!-- Laptop Item 2 -->
-        <div class="product-item-block" data-price="49490" data-name="hp 255 g9 notebook amd athlon silver">
-            <div class="item-number-badge">2</div>
-            <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="item-title-link">HP 255 G9 Notebook</a>
-            <div class="item-subtitle-specs">(AMD Athlon Silver 7120U / 8GB RAM / 256GB SSD)</div>
-            
-            <div class="center-img-frame">
-                <img src="https://uploads.onecompiler.io/44r7prtu8/44r7quqkc/10043.jpg" alt="HP 255 G9">
-            </div>
-            
-            <div class="display-price-row">₹49,490</div>
-            
-            <div class="specs-table-title">Key Specs</div>
-            <table class="inline-specs-table">
-                <tr><td class="spec-lbl">Display size</td><td class="spec-val">15.60-inch</td></tr>
-                <tr><td class="spec-lbl">Processor</td><td class="spec-val">AMD Athlon Silver</td></tr>
-                <tr><td class="spec-lbl">RAM</td><td class="spec-val">8GB</td></tr>
-                <tr><td class="spec-lbl">SSD</td><td class="spec-val">256GB</td></tr>
-            </table>
-
-            <div class="action-box">
-                <a href="https://amzn.in/d/0cHchPx6" target="_blank" class="action-btn btn-az-yellow">Amazon</a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- MASTER COMPARISON SECTION -->
-    <h2 class="section-heading" id="specs-comparison">मुख्य स्पेसिफिकेशन की तुलना</h2>
-    <section class="master-comparison-area">
-        <div class="scroll-table-container">
-            <table class="master-table">
-                <thead>
-                    <tr>
-                        <th>Features</th>
-                        <th>HP Chromebook 14a</th>
-                        <th>HP 255 Notebook</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td class="title-col">Processor</td><td>Intel Celeron</td><td>AMD Athlon Silver</td></tr>
-                    <tr><td class="title-col">RAM</td><td>4GB</td><td>8GB</td></tr>
-                    <tr><td class="title-col">Storage</td><td>64GB eMMC</td><td>256GB SSD</td></tr>
-                    <tr><td class="title-col">Price</td><td>₹25,500</td><td>₹49,490</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Google "People also search for" Interface Layout -->
-    <section class="search-suggestions-section">
-        <h2 class="suggestion-box-title">People also search for</h2>
-        <div class="suggestion-list">
-            <a href="intel.html" class="suggestion-item">
+ <!-- फ्लिपकार्ट प्रोडक्ट लिंक (टाlass="suggestion-item">
                 <div class="suggestion-text">Laptops under <span class="bold-query">50000 with i5 Processor and 16GB RAM</span></div>
-                <div class="search-icon-circle">🔍</div>
+             <div class="search-icon-circle">🔍</div>
             </a>
             <a href="ryzen.html" class="suggestion-item">
                 <div class="suggestion-text">Laptops under <span class="bold-query">50000 with Ryzen 5 and 512GB SSD</span></div>
@@ -733,68 +16,672 @@
             </a>
         </div>
     </section>
+</
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Laptop Under 50000 (2026) | LaptopTec</title>
+    
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff; 
+            color: #1f2937;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header Navigation */
+        .main-header {
+            background-color: #0f172a; 
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px; 
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.35rem; 
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .brand-logo span.deal { color: #f59e0b; }
+        .brand-logo span.in { color: #3b82f6; font-weight: 400; }
+
+        /* Side Nav Bar */
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-nav.open { left: 0; }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .close-sidebar-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #6b7280;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar-logo { font-size: 1.15rem; font-weight: 700; color: #0f172a; }
+        .sidebar-menu-list { list-style: none; padding: 10px 0; }
+        .sidebar-menu-list li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .sidebar-menu-list li a:hover { background-color: #f9fafb; color: #2563eb; }
+        .nav-item-content { display: flex; align-items: center; gap: 12px; }
+        .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
+        .nav-arrow { color: #d1d5db; font-size: 0.8rem; }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            display: none;
+        }
+        .sidebar-overlay.show { display: block; }
+
+        /* Content Header Section */
+        .hero-section {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .main-title { 
+            font-size: 2rem; 
+            font-weight: 800; 
+            color: #111827; 
+            margin-bottom: 10px; 
+            line-height: 1.2;
+        }
+
+        .meta-info {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        .meta-info span.author { color: #e11d48; font-weight: 600; }
+
+        .sub-headline { 
+            font-size: 1rem; 
+            color: #4b5563; 
+            margin-bottom: 25px;
+        }
+
+        /* Fixed Button Grid */
+        .cta-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem; 
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap; 
+        }
+
+        .btn-primary { background-color: #e11d48; color: #ffffff; border: none; }
+        .btn-primary:hover { background-color: #be123c; }
+
+        .btn-secondary { border: 1px solid #d1d5db; color: #374151; background: #f9fafb; }
+        .btn-secondary:hover { background-color: #f3f4f6; }
+
+        /* Search and Filter Control Box */
+        .filter-control-box {
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: #e11d48;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1);
+        }
+
+        .search-icon-placeholder {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .sort-dropdown {
+            width: 100%;
+            padding: 12px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            background-color: #ffffff;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        .sort-dropdown:focus {
+            border-color: #e11d48;
+        }
+
+        @media (min-width: 600px) {
+            .filter-control-box {
+                flex-direction: row;
+                align-items: center;
+            }
+            .search-wrapper {
+                flex: 2;
+            }
+            .sort-dropdown {
+                flex: 1;
+            }
+        }
+
+        /* Product Showcase Grid & Blocks */
+        .section-heading {
+            max-width: 800px;
+            margin: 40px auto 20px auto;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111827;
+            padding: 0 20px;
+        }
+
+        .catalog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 20px 20px;
+        }
+
+        .product-item-block {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .item-number-badge {
+            background-color: #e11d48;
+            color: #ffffff;
+            padding: 3px 9px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+
+        .item-title-link {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 4px;
+            border-bottom: 2px solid #e11d48;
+            padding-bottom: 4px;
+        }
+        .item-title-link:hover { color: #e11d48; }
+
+        .item-subtitle-specs {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        .center-img-frame {
+            background: #ffffff;
+            padding: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%; 
+            height: 250px; 
+            overflow: hidden; 
+        }
+
+        .center-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        .display-price-row {
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #111827;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Specification Sheet Design */
+        .specs-table-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: #f9fafb;
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-bottom: none;
+            color: #374151;
+        }
+
+        .inline-specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .inline-specs-table td {
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+        }
+        .inline-specs-table td.spec-lbl {
+            color: #4b5563;
+            width: 40%;
+            background: #f9fafb;
+        }
+        .inline-specs-table td.spec-val {
+            color: #111827;
+            font-weight: 500;
+        }
+
+        /* Affiliate Buttons */
+        .action-box {
+            display: flex;
+            gap: 12px;
+        }
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: opacity 0.15s ease;
+        }
+        .action-btn:hover { opacity: 0.9; }
+        .btn-az-yellow { background-color: #ff9900; color: #000000; }
+        .btn-fk-orange { background-color: #2874f0; color: #ffffff; }
+
+        /* Master Comparison Section */
+        .master-comparison-area {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .scroll-table-container {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .master-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 600px;
+            text-align: left;
+        }
+        .master-table th, .master-table td { padding: 14px; border-bottom: 1px solid #e5e7eb; }
+        .master-table th { background: #f3f4f6; color: #111827; }
+        .master-table td.title-col { font-weight: 700; color: #4b5563; background: #f9fafb; }
+
+        /* Footer Styling */
+        footer {
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            background-color: #f8fafc;
+            color: #475569;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer-about-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            border-left: 3px solid #e11d48;
+            padding-left: 10px;
+        }
+
+        .footer-about-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom-bar {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Main Header Wrapper -->
+<header class="main-header">
+    <div class="header-left">
+        <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
+        <a href="index.html" class="brand-logo">Laptop<span class="deal">Tec</span><span class="in">.online</span></a>
+    </div>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- Drawer Menu Panel -->
+<nav class="sidebar-nav" id="sidebarMenu">
+    <div class="sidebar-header">
+        <button class="close-sidebar-btn" onclick="toggleSidebar()">❮</button>
+        <div class="sidebar-logo">LaptopTec Navigation</div>
+    </div>
+    <ul class="sidebar-menu-list">
+        <li><a href="index.html"><div class="nav-item-content"><span class="nav-icon">🏠</span> Top Recommendations</div><span class="nav-arrow">❯</span></a></li>
+        <li><a href="intel.html"><div class="nav-item-content"><span class="nav-icon">🔹</span> Intel i5 Models</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="ryzen.html"><div class="nav-item-content"><span class="nav-icon">🔸</span> Ryzen 5 Models</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="dell-laptops.html"><div class="nav-item-content"><span class="nav-icon">💻</span> Dell Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="hp-laptops.html"><div class="nav-item-content"><span class="nav-icon">💻</span> HP Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="gaming.html"><div class="nav-item-content"><span class="nav-icon">🎮</span> Gaming Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="under-30k.html"><div class="nav-item-content"><span class="nav-icon">💰</span> Laptops Under 30k</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="battery.html"><div class="nav-item-content"><span class="nav-icon">🔋</span> Best Battery Laptops</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="advice.html"><div class="nav-item-content"><span class="nav-icon">💡</span> Buying Advice</div><span class="nav-arrow">📂</span></a></li>
+        <li><a href="about.html"><div class="nav-item-content"><span class="nav-icon">ℹ️</span> About Us</div><span class="nav-arrow">📂</span></a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Content Intro Frame -->
+    <section class="hero-section">
+        <div class="breadcrumb">Home > Laptops > Laptop Finder > Laptops Under 50000 In India</div>
+        <h1 class="main-title">Laptops Under 50000 in India</h1>
+        
+        <div class="meta-info">
+            By <span class="author">LaptopTec Staff</span> | Prices last updated on 03 June 2026
+        </div>
+
+        <p class="sub-headline">अगर आप ₹50,000 के अंदर बेस्ट परफॉर्मेंस वाले लैपटॉप की तलाश में हैं, तो यह लिस्ट आपके लिए है। हमने मार्केट की TOP डील्स को शॉर्टलिस्ट किया है ताकि आपका एक भी पैसा गलत जगह बर्बाद न हो।</p>
+        
+        <div class="cta-container">
+            <a href="#deals-catalog" class="btn-primary">🔥 लाइव डील्स देखें</a>
+            <a href="#specs-comparison" class="btn-secondary">📊 साइड-बाय-साइड तुलना</a>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <div class="filter-control-box">
+        <div class="search-wrapper">
+            <span class="search-icon-placeholder">🔍</span>
+            <input type="text" id="laptopSearch" class="search-input" placeholder="लैपटॉप का नाम या प्रोसेसर सर्च करें..." onkeyup="filterLaptops()">
+        </div>
+        <select id="priceSort" class="sort-dropdown" onchange="sortLaptops()">
+            <option value="default">सॉर्ट करें (डिफ़ॉल्ट)</option>
+            <option value="lowToHigh">कीमत: कम से ज़्यादा</option>
+            <option value="highToLow">कीमत: ज़्यादा से कम</option>
+        </select>
+    </div>
+
+    <!-- PRODUCT CATALOG LIST -->
+    <h2 class="section-heading" id="deals-catalog">बेस्ट बजट लैपटॉप डील्स</h2>
+    
+    <div class="catalog-container" id="laptopList">
+        
+        <!-- Laptop Item 1 -->
+        <div class="product-item-block" data-price="25500" data-name="hp chromebook celeron quad core 14a intel celeron">
+            <div class="item-number-badge">1</div>
+            
+            <a href="https://dl.flipkart.com/dl/hi/hp-chromebook-intel-celeron-quad-core-n4120-4-gb-64-gb-emmc-storage-chrome-os-14a-ca0504tu/p/itm786e711f402fa?pid=COMGBHKF9E65BFZP" target="_blank" class="item-title-link">
+                HP Chromebook Celeron Quad Core 14a-ca0504TU
+            </a>
+            
+            <div class="item-subtitle-specs">(Intel Celeron / 4 GB / 64 GB eMMC / Chrome OS)</div>
+            
+            <div class="center-img-frame">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r7prvxz/9976.jpg" alt="HP Chromebook 14a">
+            </div>
+
+            <div class="display-price-row">₹25,500</div>
+
+            <div class="specs-table-title">Key Specs</div>
+            <table class="inline-specs-table">
+                <tr><td class="spec-lbl">Display size</td><td class="spec-val">14.00-inch</td></tr>
+                <tr><td class="spec-lbl">Processor</td><td class="spec-val">Intel Celeron Quad Core</td></tr>
+                <tr><td class="spec-lbl">RAM</td><td class="spec-val">4 GB</td></tr>
+                <tr><td class="spec-lbl">Storage</td><td class="spec-val">64 GB eMMC</td></tr>
+            </table>
+
+            <div class="action-box">
+                <a href="#" class="action-btn btn-az-yellow">Amazon</a>
+                <a href="https://dl.flipkart.com/dl/hi/hp-chromebook-intel-celeron-quad-core-n4120-4-gb-64-gb-emmc-storage-chrome-os-14a-ca0504tu/p/itm786e711f402fa?pid=COMGBHKF9E65BFZP" target="_blank" class="action-btn btn-fk-orange">Flipkart</a>
+            </div>
+        </div>
+
+        <!-- Laptop Item 2 (Demo Item for Sorting Check) -->
+        <div class="product-item-block" data-price="45990" data-name="asus vivobook 15 intel core i3 12th gen">
+            <div class="item-number-badge">2</div>
+            <a href="#" class="item-title-link">ASUS Vivobook 15 X1502ZA</a>
+            <div class="item-subtitle-specs">(Core i3 12th Gen / 8 GB / 512 GB SSD / Windows 11)</div>
+            <div class="center-img-frame">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r7prvxz/9976.jpg" alt="ASUS Vivobook 15">
+            </div>
+            <div class="display-price-row">₹45,990</div>
+            <div class="specs-table-title">Key Specs</div>
+            <table class="inline-specs-table">
+                <tr><td class="spec-lbl">Display size</td><td class="spec-val">15.6-inch</td></tr>
+                <tr><td class="spec-lbl">Processor</td><td class="spec-val">Intel Core i3 12th Gen</td></tr>
+                <tr><td class="spec-lbl">RAM</td><td class="spec-val">8 GB</td></tr>
+                <tr><td class="spec-lbl">Storage</td><td class="spec-val">512 GB SSD</td></tr>
+            </table>
+            <div class="action-box">
+                <a href="#" class="action-btn btn-az-yellow">Amazon</a>
+                <a href="#" class="action-btn btn-fk-orange">Flipkart</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Master Comparison Area -->
+    <!-- Master Comparison Area -->
+    <h2 class="section-heading" id="specs-comparison">📊 क्विक स्पेसिफिकेशन्स कम्पेरिजन</h2>
+    <section class="master-comparison-area">
+        <div class="scroll-table-container">
+            <table class="master-table">
+                <thead>
+                    <tr>
+                        <th>Laptop Name</th>
+                        <th>Price</th>
+                        <th>Processor</th>
+                        <th>RAM / Storage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="title-col">HP Chromebook 14a</td>
+                        <td>₹25,500</td>
+                        <td>Intel Celeron</td>
+                        <td>4GB / 64GB eMMC</td>
+                    </tr>
+                    <tr>
+                        <td class="title-col">ASUS Vivobook 15</td>
+                        <td>₹45,990</td>
+                        <td>Core i3 12th Gen</td>
+                        <td>8GB / 512GB SSD</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </main>
 
-<!-- Detailed About Us Footer Section -->
 <footer>
-    <div class="footer-content">
-        <h3 class="footer-about-title">About LaptopTec</h3>
-        <p class="footer-about-text">
-            <strong>LaptopTec</strong> एक स्वतंत्र लैपटॉप गाइड और टेक रिव्यू प्लेटफॉर्म है। हमारा मुख्य उद्देश्य भारतीय यूज़र्स को उनके बजट और ज़रूरतों के हिसाब से सबसे बेहतरीन और वैल्यू-फॉर-मनी लैपटॉप चुनने में मदद करना है। चाहे आप कोडिंग के लिए लैपटॉप ढूंढ रहे हों, कॉलेज प्रोजेक्ट्स के लिए या फिर हाई-एंड गेमिंग के लिए, हमारी एक्सपर्ट टीम मार्केट को खंगालकर केवल टॉप-रेटेड और सबसे भरोसेमंद गैजेट्स ही आपके सामने पेश करती है। हम बिना किसी पक्षपात के सीधा और सही रिव्यू देने में विश्वास रखते हैं।
-        </p>
-    </div>
-    <div class="footer-bottom-bar">
-        &copy; 2026 LaptopTec. All Rights Reserved.
-    </div>
+    <div class="footer-content">
+        <div class="footer-about-title">About LaptopTec</div>
+        <p class="footer-about-text">LaptopTec पर हमारा उद्देश्य आपको सबसे सही और लेटेस्ट टेक और लैपटॉप डील्स की जानकारी देना है। हम अलग-अलग ई-कॉमर्स प्लेटफॉर्म्स से बेस्ट ऑफर्स को चुनकर लाते हैं ताकि आपकी चॉइस आसान हो सके।</p>
+    </div>
+    <div class="footer-bottom-bar">
+        &copy; 2026 LaptopTec. All rights reserved.
+    </div>
 </footer>
 
+<!-- Full Functional JavaScript Logic -->
 <script>
-// Sidebar Toggle Function
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebarMenu');
-    const overlay = document.getElementById('sidebarOverlay');
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('show');
-}
+    // Sidebar Drawer Menu Logic
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebarMenu');
+        const overlay = document.getElementById('sidebarOverlay');
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
+    }
 
-// Live Search Function
-function filterLaptops() {
-    const searchInput = document.getElementById('laptopSearch').value.toLowerCase();
-    const laptopBlocks = document.getElementsByClassName('product-item-block');
+    // Live Search Filter Logic
+    function filterLaptops() {
+        const searchInput = document.getElementById('laptopSearch').value.toLowerCase();
+        const laptopItems = document.getElementsByClassName('product-item-block');
 
-    for (let i = 0; i < laptopBlocks.length; i++) {
-        const laptopName = laptopBlocks[i].getAttribute('data-name');
-        if (laptopName.includes(searchInput)) {
-            laptopBlocks[i].style.display = "block";
-        } else {
-            laptopBlocks[i].style.display = "none";
-        }
-    }
-}
+        for (let i = 0; i < laptopItems.length; i++) {
+            const laptopName = laptopItems[i].getAttribute('data-name');
+            if (laptopName.includes(searchInput)) {
+                laptopItems[i].style.display = "block";
+            } else {
+                laptopItems[i].style.display = "none";
+            }
+        }
+    }
 
-// Sort Filter Function
-function sortLaptops() {
-    const container = document.getElementById('laptopList');
-    const blocks = Array.from(container.getElementsByClassName('product-item-block'));
-    const sortValue = document.getElementById('priceSort').value;
+    // Price Sorting Logic (Low to High / High to Low)
+    function sortLaptops() {
+        const sortValue = document.getElementById('priceSort').value;
+        const listContainer = document.getElementById('laptopList');
+        const laptopItems = Array.from(listContainer.getElementsByClassName('product-item-block'));
 
-    if (sortValue === 'default') return;
+        if (sortValue === 'default') return;
 
-    blocks.sort((a, b) => {
-        const priceA = parseInt(a.getAttribute('data-price'));
-        const priceB = parseInt(b.getAttribute('data-price'));
+        laptopItems.sort((a, b) => {
+            const priceA = parseInt(a.getAttribute('data-price'));
+            const priceB = parseInt(b.getAttribute('data-price'));
 
-        if (sortValue === 'lowToHigh') {
-            return priceA - priceB;
-        } else if (sortValue === 'highToLow') {
-            return priceB - priceA;
-        }
-    });
+            if (sortValue === 'lowToHigh') {
+                return priceA - priceB;
+            } else if (sortValue === 'highToLow') {
+                return priceB - priceA;
+            }
+        });
 
-    // Remove old order and append sorted elements
-    container.innerHTML = "";
-    blocks.forEach(block => container.appendChild(block));
-}
+        // Clear existing list and append sorted list
+        listContainer.innerHTML = "";
+        laptopItems.forEach(item => listContainer.appendChild(item));
+    }
 </script>
 
 </body>
