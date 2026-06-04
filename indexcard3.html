@@ -3,33 +3,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mera Professional Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Apple MacBook Neo 13 Review | LaptopTec</title>
     <style>
-        /* CSS Styling */
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        header { background: #333; color: #fff; padding: 20px; text-align: center; }
-        .container { padding: 20px; text-align: center; }
-        .btn { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        .btn:hover { background: #0056b3; }
-        footer { background: #333; color: white; text-align: center; padding: 10px; position: fixed; width: 100%; bottom: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; background-color: #f4f7f6; padding-bottom: 20px; }
+        
+        .navbar { background-color: #2c3e50; padding: 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 999; }
+        
+        .sidebar { height: 100%; width: 260px; position: fixed; top: 0; left: -260px; background: #fff; z-index: 1001; transition: 0.3s; padding-top: 60px; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
+        .sidebar a { padding: 18px 20px; text-decoration: none; display: block; color: #333; font-weight: 500; border-bottom: 1px solid #eee; }
+        .sidebar a:hover { background-color: #f8f9fa; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
+
+        .card-view { padding: 15px; max-width: 800px; margin: auto; }
+        .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        img { width: 100%; border-radius: 8px; }
+        
+        .search-box { background: #2c3e50; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .search-box input { width: 100%; padding: 10px; border-radius: 4px; border: none; }
+        
+        .buy-btn { display: block; text-align: center; padding: 15px; background: #ff9900; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        
+        .mobile-list { list-style: none; padding: 0; margin-top: 10px; }
+        .mobile-list li { padding: 12px; border-bottom: 1px solid #eee; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
+<div class="navbar">
+    <span onclick="openNav()" style="cursor:pointer;">LaptopTec Navigation</span>
+</div>
 
-    <div class="container">
-        <h2>Laptop & Technology News</h2>
-        <p>Yahan aapko rozana nayi tech update milegi.</p>
-        <button class="btn" onclick="alert('Welcome!')">Click Me</button>
+<div id="mySidebar" class="sidebar">
+    <span class="close-btn" onclick="closeNav()">&times;</span>
+    <a href="index.html">Top Recommendations</a>
+    <a href="intel.html">Intel i5 Models</a>
+    <a href="ryzen.html">Ryzen 5 Models</a>
+    <a href="gaming.html">Gaming Laptops</a>
+    <a href="dell-laptops.html">Dell Laptops</a>
+    <a href="hp-laptops.html">HP Laptops</a>
+    <a href="under-30k.html">Under 30k Laptops</a>
+    <a href="battery.html">Battery Tips</a>
+    <a href="advice.html">Buying Advice</a>
+    <a href="about.html">About Us</a>
+</div>
+
+<div class="card-view">
+    <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pzj5q/10070.jpg" alt="Apple MacBook Neo 13">
+    <h1>Apple MacBook Neo 13: Professional Review</h1>
+    
+    <div class="section">
+        <h2>Performance Analysis</h2>
+        <p>Laptop ki performance uske processor aur RAM par depend karti hai.</p>
+        <ul>
+            <li>Processor: Heavy creative tasks ke liye Apple A18 Pro ya i7/Ryzen 7 best hai.</li>
+            <li>RAM: Multitasking ke liye 16GB RAM recommended hai.</li>
+        </ul>
     </div>
 
-    <footer>
-        <p>&copy; 2026 LaptopTec.online</p>
-    </footer>
+    <a href="https://amzn.in/d/06HMKySy" target="_blank" class="buy-btn">Buy Now on Amazon</a>
+
+    <div class="section">
+        <h3>Comparison</h3>
+        <table>
+            <tr><th>Feature</th><th>MacBook Neo 13</th><th>Windows Laptop</th></tr>
+            <tr><td>Performance</td><td>Optimized</td><td>Versatile</td></tr>
+            <tr><td>Software</td><td>macOS</td><td>Windows</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>Laptop ki aur jankari khojein</h3>
+        <div class="search-box">
+            <input type="text" placeholder="Search laptops...">
+        </div>
+        
+        <h4 style="margin-top: 15px;">Aap inhe bhi search kar sakte hain:</h4>
+        <ul class="mobile-list">
+            <li>Laptops under 35000 with i5 and 8GB RAM</li>
+            <li>Laptops under 35000 with i7 and 8GB RAM</li>
+            <li>Best gaming laptops under 50000</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function openNav() { document.getElementById("mySidebar").style.left = "0"; }
+    function closeNav() { document.getElementById("mySidebar").style.left = "-260px"; }
+</script>
 
 </body>
 </html>
