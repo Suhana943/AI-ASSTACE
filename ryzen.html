@@ -447,302 +447,284 @@
     </style>
 </head>
 <body>
+<!-- 1. Improved Navigation Header -->
+<header class="main-header">
+    <div class="header-left">
+        <i class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
+        <div class="brand-logo">
+            <div>Laptop<span class="tec-highlight">Tec</span></div>
+            <span class="sub-text">laptoptec.online</span>
+        </div>
+    </div>
+    <div class="header-right">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-regular fa-user"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+</header>
 
-    <!-- 1. Improved Navigation Header -->
-    <header class="main-header">
-        <div class="header-left">
-            <i class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
-            <div class="brand-logo">
-                <div>Laptop<span class="tec-highlight">Tec</span></div>
-                <span class="sub-text">laptoptec.online</span>
+<!-- 2. Screen Accurate Sliding Sidebar Menu -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar-menu" id="sidebarMenu">
+    <div class="sidebar-header">
+        <i class="fa-solid fa-chevron-left" onclick="toggleSidebar()"></i>
+        <h2>LaptopTec Navigation</h2>
+    </div>
+    <div class="sidebar-links">
+        <!-- Top Recommendations / Home -->
+        <a href="index.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="icon-emoji">🏠</span>
+                <span>Top Recommendations</span>
             </div>
-        </div>
-        <div class="header-right">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-solid fa-regular fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-    </header>
+            <i class="fa-solid fa-chevron-right arrow-gray"></i>
+        </a>
 
-    <!-- 2. Screen Accurate Sliding Sidebar Menu -->
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-    <div class="sidebar-menu" id="sidebarMenu">
-        <div class="sidebar-header">
-            <i class="fa-solid fa-chevron-left" onclick="toggleSidebar()"></i>
-            <h2>LaptopTec Navigation</h2>
-        </div>
-        <div class="sidebar-links">
-    <!-- Top Recommendations / Home -->
-    <a href="index.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="icon-emoji">🏠</span>
-            <span>Top Recommendations</span>
-        </div>
-        <i class="fa-solid fa-chevron-right arrow-gray"></i>
-    </a>
+        <!-- Intel i5 Models -->
+        <a href="intel.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="bullet-blue">◆</span>
+                <span>Intel i5 Models</span>
+            </div>
+            <i class="fa-solid fa-folder folder-yellow"></i>
+        </a>
 
-    <!-- Intel i5 Models -->
-    <a href="intel.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="bullet-blue">◆</span>
-            <span>Intel i5 Models</span>
-        </div>
-        <i class="fa-solid fa-folder folder-yellow"></i>
-    </a>
+        <!-- Ryzen 5 Models (Active) -->
+        <a href="ryzen.html" class="sidebar-item active-link">
+            <div class="item-left-content">
+                <span class="bullet-orange">◆</span>
+                <span>Ryzen 5 Models</span>
+            </div>
+            <i class="fa-solid fa-folder folder-yellow"></i>
+        </a>
 
-    <!-- Ryzen 5 Models (Active) -->
-    <a href="ryzen.html" class="sidebar-item active-link">
-        <div class="item-left-content">
-            <span class="bullet-orange">◆</span>
-            <span>Ryzen 5 Models</span>
-        </div>
-        <i class="fa-solid fa-folder folder-yellow"></i>
-    </a>
+        <!-- Gaming Laptops -->
+        <a href="gaming.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="bullet-blue">◆</span>
+                <span>Gaming Laptops</span>
+            </div>
+            <i class="fa-solid fa-folder folder-yellow"></i>
+        </a>
 
-    <!-- Gaming Laptops -->
-    <a href="gaming.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="bullet-blue">◆</span>
-            <span>Gaming Laptops</span>
-        </div>
-        <i class="fa-solid fa-folder folder-yellow"></i>
-    </a>
+        <!-- Dell Laptops -->
+        <a href="dell-laptops.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="bullet-blue">◆</span>
+                <span>Dell Laptops</span>
+            </div>
+            <i class="fa-solid fa-folder folder-yellow"></i>
+        </a>
 
-    <!-- Dell Laptops -->
-    <a href="dell-laptops.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="bullet-blue">◆</span>
-            <span>Dell Laptops</span>
-        </div>
-        <i class="fa-solid fa-folder folder-yellow"></i>
-    </a>
+        <!-- HP Laptops -->
+        <a href="hp-laptops.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="bullet-blue">◆</span>
+                <span>HP Laptops</span>
+            </div>
+            <i class="fa-solid fa-folder folder-yellow"></i>
+        </a>
 
-    <!-- HP Laptops -->
-    <a href="hp-laptops.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="bullet-blue">◆</span>
-            <span>HP Laptops</span>
-        </div>
-        <i class="fa-solid fa-folder folder-yellow"></i>
-    </a>
+        <!-- Under 30k Budget -->
+        <a href="under-30k.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="icon-emoji">💰</span>
+                <span>Under 30k Laptops</span>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-gray"></i>
+        </a>
 
-    <!-- Under 30k Budget -->
-    <a href="under-30k.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="icon-emoji">💰</span>
-            <span>Under 30k Laptops</span>
-        </div>
-        <i class="fa-solid fa-chevron-right arrow-gray"></i>
-    </a>
+        <!-- Battery Guide -->
+        <a href="battery.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="icon-emoji">🔋</span>
+                <span>Battery Tips</span>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-gray"></i>
+        </a>
 
-    <!-- Battery Guide -->
-    <a href="battery.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="icon-emoji">🔋</span>
-            <span>Battery Tips</span>
-        </div>
-        <i class="fa-solid fa-chevron-right arrow-gray"></i>
-    </a>
+        <!-- Buying Advice -->
+        <a href="advice.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="icon-emoji">💡</span>
+                <span>Buying Advice</span>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-gray"></i>
+        </a>
 
-    <!-- Buying Advice -->
-    <a href="advice.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="icon-emoji">💡</span>
-            <span>Buying Advice</span>
-        </div>
-        <i class="fa-solid fa-chevron-right arrow-gray"></i>
-    </a>
-
-    <!-- About Us -->
-    <a href="about.html" class="sidebar-item">
-        <div class="item-left-content">
-            <span class="icon-emoji">ℹ️</span>
-            <span>About Us</span>
-        </div>
-        <i class="fa-solid fa-chevron-right arrow-gray"></i>
-    </a>
+        <!-- About Us -->
+        <a href="about.html" class="sidebar-item">
+            <div class="item-left-content">
+                <span class="icon-emoji">ℹ️</span>
+                <span>About Us</span>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-gray"></i>
+        </a>
+    </div>
 </div>
 
-    <!-- 3. Clean Searching Bar Box -->
-    <section class="search-container">
-        <div class="search-box-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search laptops here (e.g., HP, Acer, Asus)...">
-        </div>
-    </section>
+<!-- 3. Clean Searching Bar Box -->
+<section class="search-container">
+    <div class="search-box-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search laptops here (e.g., HP, Acer, Asus)...">
+    </div>
+</section>
 
-    <!-- 4. Intro Text Area -->
-    <section class="content-intro">
-        <h1>Laptops</h1>
-        <p>Discover Your Ideal Laptop with LaptopTec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a</p>
-        <span class="read-more-link">Read more</span>
-    </section>
+<!-- 4. Intro Text Area -->
+<section class="content-intro">
+    <h1>Laptops</h1>
+    <p>Discover Your Ideal Laptop with LaptopTec's Laptop Finder. Finding the right laptop can be a daunting task with so many models and features to choose from. Whether you're a</p>
+    <span class="read-more-link">Read more</span>
+</section>
 
-    <!-- 5. Pill Navigation Tags -->
+<!-- 5. Pill Navigation Tags -->
 <div class="filter-scroll-wrapper">
-        <a href="index.html" class="pill-btn active">Latest Laptops</a>
-        <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
-        <a href="under-30k.html" class="pill-btn">Laptops under ₹30,000</a>
-        <a href="dell-laptops.html" class="pill-btn">Dell Laptops</a>
+    <a href="index.html" class="pill-btn active">Latest Laptops</a>
+    <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
+    <a href="under-30k.html" class="pill-btn">Laptops under ₹30,000</a>
+    <a href="dell-laptops.html" class="pill-btn">Dell Laptops</a>
+</div>
+
+<!-- 6. Item Count Display -->
+<div class="product-counter">
+    1003 Laptops
+</div>
+
+<!-- 7. Product Results List Layout -->
+<div class="grid-container">
+    <!-- Card 1 -->
+    <div class="laptop-item-card">
+        <div class="card-main-body">
+            <div class="img-holder">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pfv2v/10067.jpg" alt="HP Victus Gaming Laptop">
+            </div>
+            <div class="details-holder">
+                <div class="item-name">HP Victus AMD Ryzen 7 7445HS (6GB RTX 4050)</div>
+                <div class="badge-discount">6% OFF</div>
+                <div class="price-container">
+                    <span class="price-current">₹89,990</span>
+                    <span class="price-original">₹95,746</span>
+                </div>
+                <div class="compare-checkbox-row">
+                    <input type="checkbox" id="comp1">
+                    <label for="comp1">Add to compare</label>
+                </div>
+                <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+        </div>
+        <div class="card-actions-row">
+            <a href="#" class="action-btn btn-learn">Learn More</a>
+            <a href="https://amzn.in/d/0081FI89" target="_blank" class="action-btn btn-buy">Buy Now</a>
+        </div>
     </div>
 
-    <!-- 6. Item Count Display -->
-    <div class="product-counter">
-        1003 Laptops
+    <!-- Card 2 -->
+    <div class="laptop-item-card">
+        <div class="card-main-body">
+            <div class="img-holder">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pzj5q/10070.jpg" alt="Apple MacBook Neo 13">
+            </div>
+            <div class="details-holder">
+                <div class="item-name">Apple 2026 MacBook Neo 13" (A18 Pro, 256GB SSD, Indigo)</div>
+                <div class="badge-discount">7% OFF</div>
+                <div class="price-container">
+                    <span class="price-current">₹65,000</span>
+                    <span class="price-original">₹69,900</span>
+                </div>
+                <div class="compare-checkbox-row">
+                    <input type="checkbox" id="comp2">
+                    <label for="comp2">Add to compare</label>
+                </div>
+                <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+        </div>
+        <div class="card-actions-row">
+            <a href="#" class="action-btn btn-learn">Learn More</a>
+            <a href="https://amzn.in/d/06HMKySy" target="_blank" class="action-btn btn-buy">Buy Now</a>
+        </div>
     </div>
 
-    <!-- 7. Product Results List Layout -->
-    <div class="grid-container">
-        <div class="laptop-item-card">
-    <div class="card-main-body">
-        <div class="img-holder">
-            <!-- स्क्रीनशॉट 10065.jpg के अनुसार HP Victus गेमिंग लैपटॉप की इमेज -->
-            <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pfv2v/10067.jpg" alt="HP Victus Gaming Laptop">
-        </div>
-        <div class="details-holder">
-            <!-- स्क्रीनशॉट 10065.jpg के अनुसार सही नाम -->
-            <div class="item-name">HP Victus AMD Ryzen 7 7445HS (6GB RTX 4050)</div>
-            <!-- स्क्रीनशॉट 10064.jpg के अनुसार 6% का डिस्काउंट -->
-            <div class="badge-discount">6% OFF</div>
-            
-            <div class="price-container">
-                <!-- स्क्रीनशॉट 10064.jpg के अनुसार वर्तमान और वास्तविक कीमत -->
-                <span class="price-current">₹89,990</span>
-                <span class="price-original">₹95,746</span>
+    <!-- Card 3 -->
+    <div class="laptop-item-card">
+        <div class="card-main-body">
+            <div class="img-holder">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r8qd7hq/10074.jpg" alt="ASUS Vivobook S14">
             </div>
+            <div class="details-holder">
+                <div class="item-name">ASUS Vivobook S14 (AMD Ryzen AI 7 350, 16GB, 1TB SSD, OLED)</div>
+                <div class="badge-discount">30% OFF</div>
+                <div class="price-container">
+                    <span class="price-current">₹75,990</span>
+                    <span class="price-original">₹1,08,990</span>
+                </div>
+                <div class="compare-checkbox-row">
+                    <input type="checkbox" id="comp3">
+                    <label for="comp3">Add to compare</label>
+                </div>
+                <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+        </div>
+        <div class="card-actions-row">
+            <a href="#" class="action-btn btn-learn">Learn More</a>
+            <a href="https://amzn.in/d/075kfEKt" target="_blank" class="action-btn btn-buy">Buy Now</a>
+        </div>
+    </div>
+    
+    <!-- Card 4 -->
+    <div class="laptop-item-card">
+        <div class="card-main-body">
+            <div class="img-holder">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Laptop Preview">
+            </div>
+            <div class="details-holder">
+                <div class="item-name">Acer Professional 14 AMD</div>
+                <div class="badge-discount">35% OFF</div>
+                <div class="price-container">
+                    <span class="price-current">₹39,990</span>
+                    <span class="price-original">₹61,750</span>
+                </div>
+                <div class="compare-checkbox-row">
+                    <input type="checkbox" id="comp4">
+                    <label for="comp4">Add to compare</label>
+                </div>
+                <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+        </div>
+        <div class="card-actions-row">
+            <a href="#" class="action-btn btn-learn">Learn More</a>
+            <a href="#" class="action-btn btn-buy">Buy Now</a>
+        </div>
+    </div>
+</div>
 
-            <div class="compare-checkbox-row">
-                <input type="checkbox" id="comp1">
-                <label for="comp1">Add to compare</label>
-            </div>
-            <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-        </div>
+<!-- 8. Sticky Action Footbar (Sort & Filter) -->
+<div class="bottom-sticky-bar">
+    <div class="sticky-tab">
+        <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
     </div>
-    <div class="card-actions-row">
-        <a href="#" class="action-btn btn-learn">Learn More</a>
-        <!-- यहाँ आपका अमेज़न एफ़िलिएट लिंक जोड़ दिया गया है जो नए टैब में खुलेगा -->
-        <a href="https://amzn.in/d/0081FI89" target="_blank" class="action-btn btn-buy">Buy Now</a>
+    <div class="sticky-tab">
+        <i class="fa-solid fa-filter"></i> Filter
     </div>
-        </div>
-        <div class="laptop-item-card">
-    <div class="card-main-body">
-        <div class="img-holder">
-            <!-- यहाँ आपकी दी हुई नई इमेज लिंक जोड़ दी गई है -->
-            <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pzj5q/10070.jpg" alt="Apple MacBook Neo 13">
-        </div>
-        <div class="details-holder">
-            <!-- स्क्रीनशॉट 10069.jpg के अनुसार सही नाम और स्पेसिफिकेशन -->
-            <div class="item-name">Apple 2026 MacBook Neo 13" (A18 Pro, 256GB SSD, Indigo)</div>
-            <!-- स्क्रीनशॉट 10068.jpg के अनुसार 7% का डिस्काउंट -->
-            <div class="badge-discount">7% OFF</div>
-            
-            <div class="price-container">
-                <!-- स्क्रीनशॉट 10068.jpg के अनुसार वर्तमान और M.R.P. कीमत -->
-                <span class="price-current">₹65,000</span>
-                <span class="price-original">₹69,900</span>
-            </div>
+</div>
 
-            <div class="compare-checkbox-row">
-                <input type="checkbox" id="comp2">
-                <label for="comp2">Add to compare</label>
-            </div>
-            <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-        </div>
-    </div>
-    <div class="card-actions-row">
-        <a href="#" class="action-btn btn-learn">Learn More</a>
-        <!-- आपका अमेज़न लिंक -->
-        <a href="https://amzn.in/d/06HMKySy" target="_blank" class="action-btn btn-buy">Buy Now</a>
-    </div>
-        </div>
-        <div class="laptop-item-card">
-    <div class="card-main-body">
-        <div class="img-holder">
-            <!-- आपकी दी हुई नई इमेज लिंक -->
-            <img src="https://uploads.onecompiler.io/44r7prtu8/44r8qd7hq/10074.jpg" alt="ASUS Vivobook S14">
-        </div>
-        <div class="details-holder">
-            <!-- स्क्रीनशॉट 10071.jpg के अनुसार सही नाम और मुख्य स्पेक्स -->
-            <div class="item-name">ASUS Vivobook S14 (AMD Ryzen AI 7 350, 16GB, 1TB SSD, OLED)</div>
-            <!-- स्क्रीनशॉट 10072.jpg के अनुसार 30% का डिस्काउंट -->
-            <div class="badge-discount">30% OFF</div>
-            
-            <div class="price-container">
-                <!-- स्क्रीनशॉट 10072.jpg के अनुसार करंट प्राइस और M.R.P. -->
-                <span class="price-current">₹75,990</span>
-                <span class="price-original">₹1,08,990</span>
-            </div>
+<!-- Footer Content -->
+<footer>
+    <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
+</footer>
 
-            <div class="compare-checkbox-row">
-                <input type="checkbox" id="comp3">
-                <label for="comp3">Add to compare</label>
-            </div>
-            <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-        </div>
-    </div>
-    <div class="card-actions-row">
-        <a href="#" class="action-btn btn-learn">Learn More</a>
-        <!-- यहाँ आपका नया अमेज़न लिंक अपडेट कर दिया गया है -->
-        <a href="https://amzn.in/d/075kfEKt" target="_blank" class="action-btn btn-buy">Buy Now</a>
-    </div>
-        </div>
+<!-- Side Menu Toggle Engine script -->
+<script>
+    function toggleSidebar() {
+        const overlay = document.getElementById('sidebarOverlay');
+        const menu = document.getElementById('sidebarMenu');
         
-        <!-- Product Card Block -->
-        <div class="laptop-item-card">
-            <div class="card-main-body">
-                <div class="img-holder">
-                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="Laptop Preview">
-                </div>
-                <div class="details-holder">
-                    <div class="item-name">Acer Professional 14 AMD</div>
-                    <div class="badge-discount">35% OFF</div>
-                    
-                    <div class="price-container">
-                        <span class="price-current">₹39,990</span>
-                        <span class="price-original">₹61,750</span>
-                    </div>
-
-                    <div class="compare-checkbox-row">
-                        <input type="checkbox" id="comp1">
-                        <label for="comp1">Add to compare</label>
-                    </div>
-                    <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-                </div>
-            </div>
-            <div class="card-actions-row">
-                <a href="#" class="action-btn btn-learn">Learn More</a>
-                <a href="#" class="action-btn btn-buy">Buy Now</a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- 8. Sticky Action Footbar (Sort & Filter) -->
-    <div class="bottom-sticky-bar">
-        <div class="sticky-tab">
-            <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
-        </div>
-        <div class="sticky-tab">
-            <i class="fa-solid fa-filter"></i> Filter
-        </div>
-    </div>
-
-    <!-- Footer Content -->
-    <footer>
-        <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
-    </footer>
-
-    <!-- Side Menu Toggle Engine script -->
-    <script>
-        function toggleSidebar() {
-            const overlay = document.getElementById('sidebarOverlay');
-            const menu = document.getElementById('sidebarMenu');
-            
-            overlay.classList.toggle('active');
-            menu.classList.toggle('active');
-        }
-    </script>
-
+        overlay.classList.toggle('active');
+        menu.classList.toggle('active');
+    }
+</script>
+    
+                                
 </body>
     </html>
     
