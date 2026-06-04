@@ -1,12 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Battery Life Laptops Under 50000 | KamBudgetDeals</title>
+    <title>Best Battery Life Laptops | LaptopTec</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Global Reset */
+        /* Global Reset & Core Styling */
         * {
             margin: 0;
             padding: 0;
@@ -15,449 +19,559 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: #0f172a;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            background-color: #f4f6f9;
+            color: #1e293b;
+            padding-bottom: 60px; /* Space for Bottom Sticky Sort/Filter bar */
         }
 
-        /* Navigation Header */
+        /* 1. Header Navigation - Screen Accurate to 10105.jpg */
         .main-header {
-            background-color: #0f172a; 
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #0f172a;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 24px; 
+            padding: 12px 16px;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-left .fa-bars {
+            font-size: 20px;
+            cursor: pointer;
+            color: #334155;
         }
 
         .brand-logo {
-            font-size: 1.25rem; 
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .brand-logo span.deal { color: #f59e0b; }
-        .brand-logo span.in { color: #3b82f6; }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 15px;
-        }
-
-        /* Sleek Dark Hero Section */
-        .hero-blackout {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 55px 20px; 
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .hero-blackout h1 {
-            font-size: 2rem; 
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 14px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-blackout p {
-            font-size: 1rem;
-            color: #94a3b8;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        /* NEW: Battery Guide & FAQ Box */
-        .battery-guide-section {
-            max-width: 800px;
-            margin: 30px auto 10px auto;
-            padding: 0 20px;
-            text-align: left;
-        }
-
-        .guide-container-box {
-            background-color: #ffffff;
-            border-left: 4px solid #10b981;
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #10b981;
-        }
-
-        .guide-container-box h2 {
-            font-size: 1.2rem;
-            color: #0f172a;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .guide-container-box p {
-            font-size: 0.9rem;
-            color: #475569;
-            margin-bottom: 15px;
-        }
-
-        .guide-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .guide-column h3 {
-            font-size: 0.95rem;
-            color: #0f172a;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .guide-column ul {
-            list-style: none;
-        }
-
-        .guide-column ul li {
-            font-size: 0.85rem;
-            color: #334155;
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 18px;
-        }
-
-        .guide-column.tips ul li::before {
-            content: "⚡";
-            position: absolute;
-            left: 0;
-            font-size: 0.8rem;
-        }
-
-        .guide-column.questions ul li::before {
-            content: "❓";
-            position: absolute;
-            left: 0;
-            font-size: 0.8rem;
-        }
-
-        /* Content Hub Intro */
-        .content-hub {
-            padding: 20px 20px 25px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Pill Buttons Navigation */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 35px;
-        }
-
-        .filter-btn {
-            background-color: #e2e8f0;
-            color: #334155;
-            text-decoration: none;
-            padding: 8px 18px; 
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 50px; 
-            transition: all 0.2s ease;
-        }
-
-        .filter-btn.active {
-            background-color: #10b981;
-            color: #ffffff;
-        }
-
-        /* Responsive Grid System */
-        .grid-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 60px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .laptop-item-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .laptop-item-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-        }
-
-        .badge-deal {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: #10b981;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .img-holder {
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0 10px 0;
-        }
-
-        .img-holder img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
-
-        .item-brand {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #64748b;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .item-name {
-            font-size: 1rem;
+        .brand-logo div {
+            font-size: 18px;
             font-weight: 700;
             color: #0f172a;
+        }
+
+        .brand-logo .tec-highlight {
+            color: #0284c7;
+        }
+
+        .brand-logo .sub-text {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: -2px;
+            text-transform: lowercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 18px;
+            color: #475569;
+        }
+
+        /* 2. Search Bar Box */
+        .search-container {
+            padding: 12px 16px;
+            background-color: #ffffff;
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 10px 14px;
+            gap: 10px;
+        }
+
+        .search-box-wrapper i {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .search-box-wrapper input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        /* 3. Intro Text Header Area */
+        .content-intro {
+            padding: 16px;
+            background-color: #ffffff;
+        }
+
+        .content-intro h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .content-intro p {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* 4. Battery Optimization & Question Guide Block */
+        .battery-guide-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #10b981;
+            padding: 14px;
+            margin-top: 14px;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #10b981;
+        }
+
+        .battery-guide-box h3 {
+            font-size: 14.5px;
+            color: #0f172a;
             margin-bottom: 10px;
-            min-height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .guide-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .guide-section h4 {
+            font-size: 13px;
+            color: #1e293b;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .battery-guide-box ul {
+            margin-left: 14px;
+            color: #475569;
+            font-size: 12.5px;
+        }
+
+        .battery-guide-box li {
+            margin-bottom: 4px;
             line-height: 1.4;
         }
 
-        .item-specs {
-            list-style: none;
-            margin-bottom: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #e2e8f0;
+        .read-more-link {
+            color: #0284c7;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 8px;
+            text-decoration: underline;
         }
 
-        .item-specs li {
-            font-size: 0.8rem;
-            color: #475569;
-            margin-bottom: 4px;
+        /* 5. Horizontal Scrolling Filter System - Exact match to pills */
+        .filter-scroll-wrapper {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .filter-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pill-btn {
+            white-space: nowrap;
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .pill-btn.active {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #0f172a;
+        }
+
+        /* 6. Product Counter */
+        .product-counter {
+            padding: 16px 16px 4px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* 7. Product List Grid Layout */
+        .grid-container {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .laptop-item-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-main-body {
+            display: flex;
+            padding: 14px;
+            gap: 14px;
+            position: relative;
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e11d48;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .img-holder {
+            width: 95px;
+            height: 95px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            margin-top: 15px;
         }
 
-        .item-specs li::before {
-            content: "🔋";
-            font-size: 0.75rem;
+        .img-holder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .details-holder {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.4;
+        }
+
+        .item-spec-list {
+            list-style: none;
+            font-size: 11px;
+            color: #64748b;
+            margin: 4px 0;
+        }
+
+        .item-spec-list li {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .price-container {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             gap: 8px;
-            margin: 12px 0 8px 0;
+            margin-top: 2px;
         }
 
-        .price-tag-row {
-            font-size: 1.4rem;
-            font-weight: 800;
+        .badge-discount {
+            color: #16a34a;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .price-current {
+            font-size: 16px;
+            font-weight: 700;
             color: #0f172a;
         }
 
-        .original-price {
-            font-size: 0.9rem;
+        .price-original {
+            font-size: 12px;
             color: #94a3b8;
             text-decoration: line-through;
         }
 
-        /* Multi-Link UI */
-        .multi-link-box {
+        .compare-checkbox-row {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .store-btn {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 10px 14px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
+            gap: 6px;
+            font-size: 13px;
+            color: #475569;
+            margin-top: 4px;
         }
 
-        .btn-amazon { background-color: #ff9900; color: #000000; }
-        .btn-amazon:hover { background-color: #e68a00; }
+        .brand-affiliate-logo {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111111;
+            margin-top: 4px;
+        }
 
-        .btn-flipkart { background-color: #2874f0; color: #ffffff; }
-        .btn-flipkart:hover { background-color: #145ec7; }
+        .brand-affiliate-logo span {
+            color: #ff9900;
+        }
+
+        .card-actions-row {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .btn-learn {
+            color: #0284c7;
+            background-color: #ffffff;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .btn-buy {
+            color: #ffffff;
+            background-color: #0284c7;
+        }
+
+        /* 8. Bottom Sticky Footer Bars - Screen Accurate to 10105.jpg */
+        .bottom-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            border-top: 1px solid #cbd5e1;
+            display: flex;
+            z-index: 998;
+        }
+
+        .sticky-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .sticky-tab:first-child {
+            border-right: 1px solid #e2e8f0;
+        }
 
         footer {
-            border-top: 1px solid #e2e8f0;
-            padding: 35px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #64748b;
             background-color: #ffffff;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 600px) {
-            .guide-split { grid-template-columns: 1fr; gap: 15px; }
-            .grid-container { grid-template-columns: 1fr; }
+            padding: 24px 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- 1. Header Navigation Component (LaptopTec) -->
     <header class="main-header">
-        <div class="brand-logo">KamBudget<span class="deal">Deals</span><span class="in">.in</span></div>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About/Contact</a>
-        </nav>
+        <div class="header-left">
+            <i class="fa-solid fa-bars"></i>
+            <div class="brand-logo">
+                <div>Laptop<span class="tec-highlight">Tec</span></div>
+                <span class="sub-text">laptoptec.online</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-regular fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
     </header>
 
-    <!-- Hero Banner Section -->
-    <section class="hero-blackout">
-        <h1>Long Battery Life Laptops (2026)</h1>
-        <p>Students aur Travelers ke liye power-efficient setups jo bina charger ke pure din chalein.</p>
+    <!-- 2. Search Box Block -->
+    <section class="search-container">
+        <div class="search-box-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search laptops here (e.g., HP, Acer, Asus)...">
+        </div>
     </section>
 
-    <!-- NEW SECTION: Battery Optimization Tips & Questions -->
-    <section class="battery-guide-section">
-        <div class="guide-container-box">
-            <h2>🔋 Laptop Battery Optimization & Buying Guide</h2>
-            <p>Bina charger ke lambe samay tak kaam karne ke liye sahi processor aur sahi settings ka hona zaroori hai. Niche diye gaye parameters ko zaroor check karein:</p>
-            
-            <div class="guide-split">
-                <!-- Tips Column -->
-                <div class="guide-column tips">
-                    <h3>How to extend battery life?</h3>
+    <!-- 3. Intro Content Text Header Area -->
+    <section class="content-intro">
+        <h1>Long Battery Life Laptops</h1>
+        <p>Discover Your Ideal Laptop with LaptopTec's Laptop Finder. Finding a long-lasting machine is easy when you filter right. Whether you're a student, professional, or high-performance gamer needing optimal battery optimization.</p>
+        
+        <!-- Battery Advice Insert Engine -->
+        <div class="battery-guide-box">
+            <h3>🔋 Battery Optimization & Buying Guide</h3>
+            <div class="guide-grid">
+                <div class="guide-section">
+                    <h4>How to extend battery life?</h4>
                     <ul>
-                        <li><strong>Lower the Refresh Rate:</strong> Screen refresh rate ko 144Hz se hatakar 60Hz par set karein taaki battery kam consume ho.</li>
-                        <li><strong>Use Battery Saver Mode:</strong> Windows settings mein jaakar auto-battery saver ko 20% ya 30% par turn-on rakhein.</li>
-                        <li><strong>Close Background Apps:</strong> Heavy background programs aur unused browser tabs ko hamesha close kar dein.</li>
+                        <li>Lower the Refresh Rate from 144Hz to 60Hz inside display properties.</li>
+                        <li>Turn on Windows auto-battery saver mode at 30% dynamically.</li>
+                        <li>Close background processing applications to prevent power drain.</li>
                     </ul>
                 </div>
-                
-                <!-- Questions Column -->
-                <div class="guide-column questions">
-                    <h3>Questions to ask before buying:</h3>
+                <div class="guide-section">
+                    <h4>Questions to ask before buying:</h4>
                     <ul>
-                        <li>What is the total Watt-hour (Whr) capacity of the laptop's battery? (Prefer 45Whr to 60Whr inside this budget)</li>
-                        <li>Does it support Type-C Fast Charging for quick emergency top-ups?</li>
-                        <li>Is the processor U-series or Vostro energy-saving architecture?</li>
+                        <li>What is the exact Watt-hour (Whr) capacity? Look for 45Whr to 60Whr.</li>
+                        <li>Does it support Type-C Fast Charging standard protocol?</li>
+                        <li>Is the processor optimized on an energy-saving architecture?</li>
                     </ul>
                 </div>
             </div>
         </div>
+        <span class="read-more-link">Read more</span>
     </section>
 
-    <!-- Navigation Hub Tabs -->
-    <section class="content-hub">
-        <div class="filter-container">
-            <a href="index.html" class="filter-btn">Sabhi 10 Deals</a>
-            <a href="intel.html" class="filter-btn">Intel i5 Laptops</a>
-            <a href="ryzen.html" class="filter-btn">Ryzen 5 Laptops</a>
-            <a href="advice.html" class="filter-btn">details for top Laptops</a>
-            <a href="gaming.html" class="filter-btn">Best for Gaming</a>
-            <a href="battery.html" class="filter-btn active">Best Battery Life</a>
-        </div>
-    </section>
+    <!-- 4. Horizontal Pill Filter Bar System (Links connected dynamically) -->
+    <div class="filter-scroll-wrapper">
+        <a href="index.html" class="pill-btn">Latest Laptops</a>
+        <a href="hp-laptops.html" class="pill-btn">HP Laptops</a>
+        <a href="under-30k.html" class="pill-btn">Laptops under ₹30,000</a>
+        <a href="gaming.html" class="pill-btn">Best for Gaming</a>
+        <a href="intel.html" class="pill-btn">Intel i5 Laptops</a>
+        <a href="ryzen.html" class="pill-btn">Ryzen 5 Laptops</a>
+        <a href="dell-laptops.html" class="pill-btn">Dell Laptops</a>
+        <a href="battery.html" class="pill-btn active">Battery Life</a>
+        <a href="advice.html" class="pill-btn">Buying Advice</a>
+    </div>
 
-    <!-- Product Grid System -->
+    <!-- 5. Product Counter -->
+    <div class="product-counter">
+        1003 Laptops
+    </div>
+
+    <!-- 6. Product Cards Grid Section -->
     <div class="grid-container">
         
-        <!-- Block 1 -->
+        <!-- Product Card Entry 1 -->
         <div class="laptop-item-card">
-            <span class="badge-deal">Upto 9 Hours</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Laptop">
-            </div>
-            <div>
-                <div class="item-brand">HP</div>
-                <div class="item-name">HP Laptop 15s AMD Ryzen 5 (16GB RAM)</div>
-                <ul class="item-specs">
-                    <li>AMD Ryzen 5 Efficient Series Architecture</li>
-                    <li>Massive Battery life with Fast Charge Support (50% in 45 mins)</li>
-                    <li>Sleek Build Style & Lightweight Comfort (1.69 kg)</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹44,990</span>
-                    <span class="original-price">₹52,000</span>
+            <div class="card-main-body">
+                <span class="badge-tag">9 Hours Backup</span>
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=300&q=80" alt="HP Efficient Laptop">
                 </div>
-                <div class="multi-link-box">
-                    <a href="#" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="#" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                <div class="details-holder">
+                    <div class="item-name">HP Laptop 15s AMD Ryzen 5 (16GB RAM)</div>
+                    <ul class="item-spec-list">
+                        <li>• AMD Ryzen 5 Power Saver Architecture</li>
+                        <li>• Fast Charge support (50% in 45 min)</li>
+                    </ul>
+                    <div class="price-container">
+                        <span class="badge-discount">13% OFF</span>
+                        <span class="price-current">₹44,990</span>
+                        <span class="price-original">₹52,000</span>
+                    </div>
+                    <div class="compare-checkbox-row">
+                        <input type="checkbox" id="c1">
+                        <label for="c1">Add to compare</label>
+                    </div>
+                    <div class="brand-affiliate-logo">amazon<span>.in</span></div>
                 </div>
+            </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="#" class="action-btn btn-buy">Buy Now</a>
             </div>
         </div>
 
-        <!-- Block 2 -->
+        <!-- Product Card Entry 2 -->
         <div class="laptop-item-card">
-            <span class="badge-deal">Premium Power</span>
-            <div class="img-holder">
-                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="Dell Vostro">
-            </div>
-            <div>
-                <div class="item-brand">Dell</div>
-                <div class="item-name">Dell Inspiron 3520 Intel Thin Setup</div>
-                <ul class="item-specs">
-                    <li>Intel Core i5 Ultra Energy Saver Processor</li>
-                    <li>ExpressCharge Feature to power up backup quickly</li>
-                    <li>Anti-Glare ComfortView TUV certified low emission display</li>
-                </ul>
-            </div>
-            <div>
-                <div class="price-container">
-                    <span class="price-tag-row">₹48,990</span>
-                    <span class="original-price">₹56,500</span>
+            <div class="card-main-body">
+                <span class="badge-tag">ExpressCharge</span>
+                <div class="img-holder">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80" alt="Dell Ultra Saver">
                 </div>
-                <div class="multi-link-box">
-                    <a href="#" class="store-btn btn-amazon">Buy from Amazon <span>→</span></a>
-                    <a href="#" class="store-btn btn-flipkart">Check on Flipkart <span>→</span></a>
+                <div class="details-holder">
+                    <div class="item-name">Dell Inspiron 3520 Intel Thin Setup</div>
+                    <ul class="item-spec-list">
+                        <li>• Intel Core i5 Energy Efficient Model</li>
+                        <li>• Anti-Glare ComfortView low emission screen</li>
+                    </ul>
+                    <div class="price-container">
+                        <span class="badge-discount">12% OFF</span>
+                        <span class="price-current">₹48,990</span>
+                        <span class="price-original">₹56,500</span>
+                    </div>
+                    <div class="compare-checkbox-row">
+                        <input type="checkbox" id="c2">
+                        <label for="c2">Add to compare</label>
+                    </div>
+                    <div class="brand-affiliate-logo">amazon<span>.in</span></div>
                 </div>
+            </div>
+            <div class="card-actions-row">
+                <a href="#" class="action-btn btn-learn">Learn More</a>
+                <a href="#" class="action-btn btn-buy">Buy Now</a>
             </div>
         </div>
 
     </div>
 
+    <!-- 7. Screen Bottom Action Sticky Bars (Sort / Filter UI) -->
+    <div class="bottom-sticky-bar">
+        <div class="sticky-tab">
+            <i class="fa-solid fa-arrow-down-short-wide"></i> Sort
+        </div>
+        <div class="sticky-tab">
+            <i class="fa-solid fa-filter"></i> Filter
+        </div>
+    </div>
+
+    <!-- Footer Block -->
     <footer>
-        <p>&copy; 2026 KamBudgetDeals.in | Long Battery Optimizations.</p>
+        <p>&copy; 2026 laptoptec.online | All Rights Reserved.</p>
     </footer>
 
 </body>
-</html>
+            </html>
+            
