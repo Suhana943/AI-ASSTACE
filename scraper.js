@@ -8,55 +8,41 @@ async function scrapeLaptops() {
     });
 
     const page = await browser.newPage();
-    let allLaptops = [];
+    // Bot detection se bachne ke liye User Agent set karein
+    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
 
-    // 1. AMAZON SCRAPING (HP Laptops)
+    // AMAZON SCRAPING (HP Laptops)
     console.log("Amazon se data nikal rahe hain...");
     await page.goto('https://www.amazon.in/s?k=hp+laptops', { waitUntil: 'networkidle2' });
+    
     const amazonLaptops = await page.evaluate(() => {
         const items = document.querySelectorAll('.s-result-item');
         let results = [];
         items.forEach(item => {
             const title = item.querySelector('h2')?.innerText;
-            if (title && title.toLowerCase().includes('hp')) {
+            const price = item.querySelector('.a-price-whole')?.innerText?.replace(/,/g, '');
+            const oldPrice = item.querySelector('.a-text-price .a-offscreen')?.innerText?.replace('₹', '')?.replace(/,/g, '') || price;
+            const image = item.querySelector('.s-image')?.src;
+            const link = item.querySelector('a.a-link-normal')?.href;
+
+            if (title && title.toLowerCase().includes('hp') && price) {
                 results.push({
-                    title: title,
-                    price: item.querySelector('.a-price-whole')?.innerText || "0",
-                    image: item.querySelector('.s-image')?.src,
-                    amazonLink: item.querySelector('a')?.href,
-                    source: 'Amazon'
+                    title: title.trim(),
+                    price: price.trim(),
+                    oldPrice: oldPrice.trim(),
+                    image: image,
+                    amazonLink: link,
+                    discount: Math.round(((oldPrice - price) / oldPrice) * 100) + "% OFF"
                 });
             }
         });
         return results;
     });
 
-    // 2. FLIPKART SCRAPING (HP Laptops)
-    console.log("Flipkart se data nikal rahe hain...");
-    await page.goto('https://www.flipkart.com/search?q=hp+laptops', { waitUntil: 'networkidle2' });
-    const flipkartLaptops = await page.evaluate(() => {
-        const items = document.querySelectorAll('._1AtVbE'); // Flipkart ka common class
-        let results = [];
-        items.forEach(item => {
-            const title = item.querySelector('._4rR01T')?.innerText || item.querySelector('.s1Q9rs')?.innerText;
-            if (title && title.toLowerCase().includes('hp')) {
-                results.push({
-                    title: title,
-                    price: item.querySelector('._30jeq3')?.innerText.replace('₹', ''),
-                    image: item.querySelector('._396cs4')?.src,
-                    amazonLink: item.querySelector('a')?.href, // Link yahan store hoga
-                    source: 'Flipkart'
-                });
-            }
-        });
-        return results;
-    });
-
-    // Combine aur Save
-    allLaptops = [...amazonLaptops, ...flipkartLaptops];
-    fs.writeFileSync('hp-laptops.json', JSON.stringify(allLaptops, null, 2));
+    // Save Data to hp-laptops.json
+    fs.writeFileSync('hp-laptops.json', JSON.stringify(amazonLaptops, null, 2));
     
-    console.log(`Done! Total ${allLaptops.length} HP laptops saved in hp-laptops.json`);
+    console.log(`Done! Total ${amazonLaptops.length} HP laptops saved in hp-laptops.json`);
     await browser.close();
 }
 
