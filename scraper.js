@@ -4,37 +4,39 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 
 async function scrape() {
-    const url = 'https://www.flipkart.com/search?q=intel+laptop';
-    console.log("Scraping start...");
+    // Amazon/Flipkart ka URL jahan se aap data utha rahe hain
+    const url = 'YOUR_TARGET_URL_HERE'; 
 
     try {
-        const response = await axios.get(url, {
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' },
-            timeout: 100000
+        const { data } = await axios.get(url, {
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' }
         });
 
-        const $ = cheerio.load(response.data);
-        let results = [];
+        const $ = cheerio.load(data);
+        let laptops = [];
 
-        // Generic selector: Flipkart ke item container
-        $('div.tUxRFH').each((i, el) => {
-            const title = $(el).find('div.KzDlHZ').text();
-            if (title && title.toLowerCase().includes('intel')) {
-                results.push({
-                    title: title.trim(),
-                    price: $(el).find('div.Nx9bqj').text()
+        // Yahan CSS Selector update karein jo aapke page ke laptop card ko point karta ho
+        $('.s-result-item').each((i, el) => {
+            const title = $(el).find('h2 a').text().trim();
+            const price = $(el).find('.a-price-whole').text().replace(/[,]/g, '');
+            const image = $(el).find('img').attr('src');
+            const link = 'https://www.amazon.in' + $(el).find('h2 a').attr('href');
+
+            if (title && price) {
+                laptops.push({
+                    title,
+                    price,
+                    image,
+                    amazonLink: link,
+                    discount: "12% OFF" // Aap yahan logic laga sakte hain
                 });
             }
         });
 
-        // Agar data nahi mila toh bhi empty array save karo, taaki file exist kare
-        fs.writeFileSync('intel-laptops.json', JSON.stringify(results.length > 0 ? results : [{info: "No laptops found"}], null, 2));
-        console.log(`Success! File saved with ${results.length} items.`);
-
-    } catch (err) {
-        console.error("Error:", err.message);
-        // Crash mat karo, file create kar do taaki Action fail na ho
-        fs.writeFileSync('intel-laptops.json', JSON.stringify([{error: err.message}]));
+        fs.writeFileSync('laptops.json', JSON.stringify(laptops, null, 2));
+        console.log("Scraping successful! laptops.json updated.");
+    } catch (error) {
+        console.error("Scraping Error:", error.message);
     }
 }
 
