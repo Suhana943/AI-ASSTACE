@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 # API Setup
 genai.configure(api_key=os.environ["API_1"])
-model = genai.GenerativeModel('gemini-1.5-flash') # gemini-1.5-flash zyada stable hai
+model = genai.GenerativeModel('gemini-3.5-flash-latest')
 
 # Strict Prompt
 prompt = """
