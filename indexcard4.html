@@ -2,84 +2,109 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laptoptec | Laptop Buying Guide 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ASUS Vivobook S14 | LaptopTec Expert Review</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #e11d48;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.7; color: #374151; margin: 0; background-color: #f8fafc; }
+        
+        /* Navbar */
+        .navbar { background-color: #1e293b; padding: 15px 20px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .nav-text { margin-left: 15px; font-weight: 600; letter-spacing: 0.5px; }
+        
+        /* Sidebar */
+        .sidebar { height: 100%; width: 260px; position: fixed; top: 0; left: -260px; background: #fff; z-index: 1001; transition: 0.4s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); }
+        .sidebar a { padding: 18px 25px; text-decoration: none; display: block; color: #374151; font-weight: 500; border-bottom: 1px solid #f3f4f6; }
+        .sidebar a:hover { background: #eff6ff; color: #2563eb; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
 
-        body { font-family: 'Poppins', sans-serif; line-height: 1.7; background: var(--bg-color); margin: 0; padding: 20px; color: #334155; }
-        .blog-container { max-width: 850px; margin: auto; background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        /* Card Content */
+        .card-view { padding: 20px; max-width: 800px; margin: auto; }
+        img { width: 100%; border-radius: 12px; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         
-        /* Header & Nav */
-        .brand-header { text-align: center; margin-bottom: 30px; }
-        .brand-header h1 { color: var(--primary-color); font-size: 2em; margin: 0; }
+        h1 { margin: 20px 0; color: #111827; }
         
-        h2 { color: #1e293b; border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; margin-top: 40px; display: inline-block; }
+        .buy-btn { display: block; text-align: center; padding: 18px; background: #ea580c; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; margin: 25px 0; font-size: 17px; transition: 0.3s; }
+        .buy-btn:hover { background: #c2410c; }
         
-        /* Key Factor Box */
-        .key-factors { background: #eff6ff; padding: 25px; border-radius: 15px; margin: 20px 0; border-left: 5px solid var(--primary-color); }
-        .key-factors ul { padding-left: 20px; }
+        .section { margin-top: 25px; background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
         
-        table { width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 10px; overflow: hidden; }
-        th, td { border: none; padding: 15px; text-align: left; border-bottom: 1px solid #f1f5f9; }
-        th { background-color: #f1f5f9; }
-
-        .laptop-item-card { border: 1px solid #e2e8f0; padding: 30px; margin-top: 30px; border-radius: 16px; text-align: center; }
-        .action-btn { display: inline-block; padding: 12px 28px; background: var(--secondary-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; margin-top: 15px; }
+        /* Box Styles */
+        .mistake-box { background: #fffbeb; padding: 20px; border-left: 6px solid #f59e0b; border-radius: 10px; margin-top: 25px; }
+        .laptoptec-box { background: #eff6ff; padding: 20px; border-radius: 10px; border: 1px solid #bfdbfe; margin-top: 25px; }
         
-        .search-section { margin-top: 50px; padding: 30px; background: #fffbeb; border-radius: 16px; border: 1px solid #fef3c7; }
-        .search-section a { text-decoration: none; color: #3b82f6; display: block; padding: 8px 0; font-weight: 500; }
-        
-        /* Mobile adjustment */
-        @media (max-width: 600px) { .blog-container { padding: 20px; } }
+        .mobile-list { list-style: none; padding: 0; }
+        .mobile-list li { padding: 14px 0; border-bottom: 1px solid #f3f4f6; font-size: 15px; color: #4b5563; }
     </style>
 </head>
 <body>
 
-<div class="blog-container">
-    <div class="brand-header">
-        <p style="margin:0; font-weight: 600;">Presented by Laptoptec</p>
-        <h1>Sahi Laptop Chunna Hua Aasaan: 2026 Guide</h1>
+<div class="navbar">
+    <span onclick="openNav()" style="cursor:pointer; font-size: 24px;">☰</span>
+    <span class="nav-text">LaptopTec Navigation</span>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <span class="close-btn" onclick="closeNav()">&times;</span>
+    <a href="index.html">Top Recommendations</a>
+    <a href="intel.html">Intel i5 Models</a>
+    <a href="ryzen.html">Ryzen 5 Models</a>
+    <a href="gaming.html">Gaming Laptops</a>
+    <a href="under-30k.html">Under 30k Laptops</a>
+    <a href="battery.html">Battery Tips</a>
+    <a href="about.html">About Us</a>
+</div>
+
+<div class="card-view">
+    <img src="https://uploads.onecompiler.io/44r7prtu8/44r8qd7hq/10074.jpg" alt="ASUS Vivobook S14">
+    <h1>ASUS Vivobook S14</h1>
+    
+    <div class="laptoptec-box">
+        <h3>ASUS Vivobook S14 Specifications</h3>
+        <p><strong>Processor:</strong> AMD Ryzen AI 7 350</p>
+        <p><strong>RAM:</strong> 16GB</p>
+        <p><strong>Storage:</strong> 1TB SSD</p>
+        <p><strong>Display:</strong> OLED Panel</p>
     </div>
 
-    <h2>Key Factors: Laptop Chunne se Pehle</h2>
-    <div class="key-factors">
+    <div class="section">
+        <h3>Expert Verdict: Yeh Laptop Kyun Best Hai?</h3>
         <ul>
-            <li><strong>Processor (CPU):</strong> I5 ya I7, jo aapke multitasking ke liye best ho.</li>
-            <li><strong>RAM & Storage:</strong> Kam se kam 16GB RAM aur 512GB SSD aaj ke liye zaroori hai.</li>
-            <li><strong>Display:</strong> IPS panel aur Full HD resolution screen ka hona zaroori hai.</li>
-            <li><strong>Graphics Card:</strong> Gaming ya video editing ke liye dedicated GPU dekhein.</li>
+            <li><strong>Premium OLED Display:</strong> Color accuracy aur vibrant visuals mein behtareen.</li>
+            <li><strong>Efficient Performance:</strong> Daily multitasking aur productivity ke liye perfect balance.</li>
         </ul>
     </div>
 
-    <h2>Advantages & Disadvantages</h2>
-    <table>
-        <tr><th>Advantages (Fayde)</th><th>Disadvantages (Nuksan)</th></tr>
-        <tr><td>Compact aur portable design</td><td>Upgrade mein limitation</td></tr>
-        <tr><td>Long battery backup</td><td>Heating issues (Heavy load)</td></tr>
-    </table>
-
-    <h2>Top Recommendation by Laptoptec</h2>
-    <div class="laptop-item-card">
-        <h3>HP Victus Core i5 (15-fa2700TX)</h3>
-        <p>Price: <strong>₹88,990</strong></p>
-        <a href="indexcard4.html" class="action-btn">Learn More</a>
+    <div class="mistake-box">
+        <h3>Laptop Lete Waqt Hone Wali Galtiyan</h3>
+        <p>LaptopTec experts ke anusar, aksar log ye common galtiyan karte hain:</p>
+        <ul>
+            <li><strong>Sirf Processor par focus karna:</strong> Asli speed RAM aur SSD ki speed par nirbhar karti hai.</li>
+            <li><strong>Zaroorat se alag laptop chuna:</strong> Office use ke liye heavy gaming laptop avoid karein.</li>
+            <li><strong>Sirf kam price dekhna:</strong> Sasta device lene ke baad performance jaldi degrade hoti hai.</li>
+            <li><strong>Screen quality ko nazar-andaz karna:</strong> Display panel ki quality long-term use ke liye critical hai.</li>
+        </ul>
     </div>
 
-    <div class="search-section">
-        <h3>People also search for</h3>
-        <ul>
-            <li><a href="under-30k.html">➜ Laptops under 35000 with i5 Processor and 8GB RAM</a></li>
-            <li><a href="gaming.html">➜ Laptops under 35000 with i7 Processor and 8GB RAM</a></li>
+    <a href="https://amzn.in/d/075kfEKt" target="_blank" class="buy-btn">Buy Now on Amazon</a>
+
+    <div class="section">
+        <h3>Best Mobiles</h3>
+        <ul class="mobile-list">
+            <li>Best Phones Under 15000</li>
+            <li>Best Phones Under 10000</li>
+            <li>Best Phones Under 20000</li>
         </ul>
     </div>
 </div>
 
+<script>
+    function openNav() { document.getElementById("mySidebar").style.left = "0"; }
+    function closeNav() { document.getElementById("mySidebar").style.left = "-260px"; }
+</script>
+
 </body>
 </html>
+ 
+
