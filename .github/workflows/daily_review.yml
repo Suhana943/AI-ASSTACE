@@ -28,7 +28,7 @@ jobs:
           API_1: ${{ secrets.API_1 }}
         run: python script.py
 
-            - name: Commit and Push changes
+      - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -36,3 +36,4 @@ jobs:
           git commit -m "Update laptops.json with new data" || echo "No changes to commit"
           git push
           
+    
