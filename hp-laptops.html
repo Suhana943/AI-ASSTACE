@@ -114,13 +114,13 @@
         </div>
     </div>
 <script>
-    fetch('laptops.json') // Ye aapki JSON file se data lega
+    fetch('laptops.json') 
         .then(response => response.json())
         .then(data => {
             const container = document.querySelector('.grid-container');
-            container.innerHTML = ''; // Purane cards saaf karein
+            container.innerHTML = ''; 
             
-            // Sirf HP ke laptops filter karein
+            // HP laptops filter
             const hpLaptops = data.filter(laptop => laptop.title.includes('HP'));
             
             hpLaptops.forEach(laptop => {
@@ -134,13 +134,16 @@
                             <div class="price-current">₹${laptop.price}</div>
                         </div>
                     </div>
-                    <div class="card-actions-row">
-                        <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
+                    <div class="card-actions-row" style="display: flex; gap: 10px;">
+                        <!-- Learn More Section Added -->
+                        <a href="${laptop.learnMoreLink}" class="action-btn btn-learn" style="flex: 1; text-align: center;">Learn More</a>
+                        <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy" style="flex: 1; text-align: center;">Buy Now</a>
                     </div>
                 </div>`;
             });
         });
 </script>
+
     
 </body>
 </html>
