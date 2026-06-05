@@ -1,8 +1,11 @@
 name: Auto Laptop Review
 on:
   schedule:
-    - cron: '0 5 * * *' # Har roz subah 5 baje
-  workflow_dispatch: # Manual run ke liye
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Ye line zaruri hai file push karne ke liye
 
 jobs:
   build:
@@ -14,10 +17,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with: 
-          python-version: '3.10' # Error fix karne ke liye update kiya
+          python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -U google-generativeai # Latest version install hoga
+        run: pip install -U google-generativeai
 
       - name: Run AI Script
         env:
@@ -28,7 +31,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          # Sirf tabhi commit karein agar changes hue hain
           if [ -n "$(git status --porcelain)" ]; then
             git add reviews/
             git commit -m "Naya Laptop Review Add Hua"
