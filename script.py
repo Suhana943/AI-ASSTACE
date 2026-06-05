@@ -3,18 +3,18 @@ import os
 import google.generativeai as genai
 from datetime import date
 
-# API key configure karna
+# API Key load karna
 genai.configure(api_key=os.environ["API_1"])
 
-# Model update kiya hai ('gemini-pro' ki jagah 'gemini-1.5-flash')
+# Naya model use karein jo aapke project mein work karega
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-# Prompt (Thoda aur specific banaya hai taaki achha result mile)
-prompt = "Ek latest trending laptop ka professional review likho jisme laptop ka naam, main specifications, pros, cons aur ek final verdict zaroor ho."
+# Prompt
+prompt = "Ek latest trending laptop ka professional review likho jisme laptop ka naam, specs, pros, cons aur final verdict ho."
 review = model.generate_content(prompt)
 
-# Review file save karna
-# Dhyan rahe ki aapki repo mein 'reviews' naam ka folder hona chahiye
+# File saving
 filename = f"reviews/laptop-{date.today()}.md"
 with open(filename, "w") as f:
     f.write(review.text)
+    
