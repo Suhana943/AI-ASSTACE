@@ -3,66 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laptop Review | KamBudgetDeals</title>
+    <title>Laptop Review | laptoptec.online</title>
     <style>
-        body { font-family: sans-serif; margin: 0; color: #333; }
-        
-        /* Header & Navigation */
-        header { background-color: #101820; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.2rem; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9rem; }
-
-        /* Hero Section */
-        .hero { background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
-        .hero h1 { margin: 0 0 15px 0; font-size: 1.8rem; }
-        .hero p { opacity: 0.9; font-size: 1rem; }
-
-        /* Content Card */
-        .container { max-width: 600px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; }
-        #laptop-image { width: 100%; border-radius: 8px; }
-        .btn { display: block; background: #e67e22; color: white; padding: 12px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .product-card { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .product-img { width: 100%; border-radius: 8px; }
+        .price-container { margin: 15px 0; }
+        .current-price { font-size: 24px; font-weight: bold; color: #e67e22; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 16px; margin-right: 10px; }
+        .btn { display: block; background: #27ae60; color: white; padding: 15px; text-align: center; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">KamBudgetDeals<span style="color:#e67e22;">.in</span></div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About/Contact</a>
-        </nav>
-    </header>
-
-    <div class="hero">
-        <h1>Best Laptop Under 50000 (2026)</h1>
-        <p>Agar aapka budget limited hai aur aap ek premium performance wala value for money laptop khoj rahe hain, to aap sahi jagah aaye hain.</p>
-    </div>
-
-    <div class="container">
+    <div class="product-card">
         <img id="laptop-image" src="" alt="Laptop">
-        <h2 id="laptop-title">Loading...</h2>
-        <p>Price: <strong id="laptop-price"></strong></p>
+        <h1 id="laptop-title">Loading...</h1>
+        
+        <div class="price-container">
+            <span class="old-price" id="laptop-old-price"></span>
+            <span class="current-price" id="laptop-price"></span>
+        </div>
+        
         <p id="laptop-review"></p>
         <a id="amazon-link" class="btn" href="#" target="_blank">Flipkart/Amazon par dekhein</a>
     </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+        const index = params.get('id') || 0; // Default to first item (0)
 
         fetch('laptops.json')
             .then(res => res.json())
             .then(data => {
-                const laptop = data[id];
+                const laptop = data[index]; // Accessing array by index
+                
                 if(laptop) {
                     document.getElementById('laptop-title').innerText = laptop.title;
                     document.getElementById('laptop-price').innerText = "₹" + laptop.price;
+                    document.getElementById('laptop-old-price').innerText = "₹" + laptop.oldPrice;
                     document.getElementById('laptop-image').src = laptop.image;
                     document.getElementById('amazon-link').href = laptop.amazonLink;
+                    
                     document.getElementById('laptop-review').innerText = 
-                        `Yeh ${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+                        `${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ₹${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+                } else {
+                    document.getElementById('laptop-title').innerText = "Laptop nahi mila!";
                 }
-            });
+            })
+            .catch(err => console.error("Error:", err));
     </script>
 </body>
 </html>
