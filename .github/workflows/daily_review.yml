@@ -28,12 +28,11 @@ jobs:
           API_1: ${{ secrets.API_1 }}
         run: python script.py
 
-      - name: Commit and Push changes
+            - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add reviews/
-          # Agar koi file change hui hai to commit karega, nahi to wahi ruk jayega
-          git commit -m "Auto Laptop Review Update" || echo "No changes to commit"
+          git add laptops.json
+          git commit -m "Update laptops.json with new data" || echo "No changes to commit"
           git push
           
