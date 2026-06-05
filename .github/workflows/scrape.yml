@@ -1,4 +1,4 @@
-name: Auto Amazon Scraper
+name: Auto Flipkart Intel Scraper
 
 on:
   workflow_dispatch: 
@@ -8,6 +8,8 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -18,20 +20,28 @@ jobs:
         node-version: 18
 
     - name: Install Dependencies
-      run: npm install puppeteer-core # Agar koi aur packages hain toh wo bhi yahan install karein
+      run: npm install puppeteer-core
 
     - name: Run Scraper Script
       env:
         BROWSERLESS_TOKEN: ${{ secrets.BROWSERLESS_TOKEN }}
-      run: node scraper.js # Ensure karein scraper.js mein file output path 'hp-laptops.json' ho
+      run: node scraper.js
 
-    - name: Commit and Push hp-laptops.json
+    - name: Commit and Push intel-laptops.json
       run: |
         git config --global user.name "GitHub Action"
         git config --global user.email "actions@github.com"
-        # Sirf hp-laptops.json ko track karein
-        git add hp-laptops.json
-        # Check karein agar koi badlav hua hai toh hi commit karein
-        git commit -m "Auto-update: HP Laptops data" || echo "No changes to commit"
-        git push
+        
+        # Check karein ki kya file generate hui hai
+        if [ -f "intel-laptops.json" ]; then
+          git add intel-laptops.json
+          # Agar file mein koi badlav nahi hai, toh commit na karein (exit 0)
+          git commit -m "Auto-update: Intel Laptops data from Flipkart" || exit 0
+          git push
+        else
+          echo "Warning: intel-laptops.json file nahi mili. Scraper shayad fail ho gaya."
+          exit 1
+        fi
+        
+        
         
