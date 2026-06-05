@@ -1,75 +1,55 @@
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 
-async function scrapeLaptops() {
-    console.log("Scraping shuru ho raha hai...");
+async function scrapeFlipkartLaptops() {
+    console.log("Flipkart Scraper shuru ho raha hai...");
     const browser = await puppeteer.connect({
         browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_TOKEN}`,
     });
 
     const page = await browser.newPage();
-    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
+    
+    // User Agent zaroori hai taaki Flipkart humein block na kare
+    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
 
-    let allLaptops = [];
+    console.log("Flipkart page load ho raha hai...");
+    // Flipkart search URL
+    await page.goto('https://www.flipkart.com/search?q=hp+laptops', { waitUntil: 'networkidle2', timeout: 60000 });
 
-    // --- 1. AMAZON SCRAPING ---
-    console.log("Amazon se data nikal rahe hain...");
-    await page.goto('https://www.amazon.in/s?k=hp+laptops', { waitUntil: 'networkidle2' });
-    const amazonData = await page.evaluate(() => {
-        const items = document.querySelectorAll('.s-result-item');
-        let results = [];
-        items.forEach(item => {
-            const titleElem = item.querySelector('h2 a span'); // Pura title extract karne ke liye
-            const title = titleElem?.innerText;
-            const price = item.querySelector('.a-price-whole')?.innerText?.replace(/,/g, '');
-            const oldPrice = item.querySelector('.a-text-price .a-offscreen')?.innerText?.replace('₹', '')?.replace(/,/g, '') || price;
-            
-            if (title && title.toLowerCase().includes('hp') && price) {
-                results.push({
-                    title: title.trim(),
-                    price: price.trim(),
-                    oldPrice: oldPrice.trim(),
-                    image: item.querySelector('.s-image')?.src,
-                    amazonLink: item.querySelector('a.a-link-normal')?.href,
-                    discount: Math.round(((oldPrice - price) / oldPrice) * 100) + "% OFF"
-                });
-            }
-        });
-        return results;
-    });
-    allLaptops = [...allLaptops, ...amazonData];
+    // Page ko thoda scroll karein taaki products load ho sakein (Lazy Loading fix)
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
+    await new Promise(r => setTimeout(r, 3000)); // 3 seconds wait
 
-    // --- 2. FLIPKART SCRAPING ---
-    console.log("Flipkart se data nikal rahe hain...");
-    await page.goto('https://www.flipkart.com/search?q=hp+laptops', { waitUntil: 'networkidle2' });
     const flipkartData = await page.evaluate(() => {
-        const items = document.querySelectorAll('._1AtVbE'); 
+        // Flipkart ke latest container selectors
+        const items = document.querySelectorAll('div[data-id]'); 
         let results = [];
+        
         items.forEach(item => {
-            // Flipkart ka title selector
-            const title = item.querySelector('._4rR01T')?.innerText; 
-            const price = item.querySelector('._30jeq3')?.innerText?.replace(/₹|,/g, '');
-            const oldPrice = item.querySelector('._3Ijp_c')?.innerText?.replace(/₹|,/g, '') || price;
-            
+            const title = item.querySelector('div.KzDlHZ')?.innerText || item.querySelector('a.wjcEIp')?.innerText;
+            const price = item.querySelector('div.Nx9bqj')?.innerText?.replace(/₹|,/g, '');
+            const oldPrice = item.querySelector('div.yRaY8j')?.innerText?.replace(/₹|,/g, '') || price;
+            const image = item.querySelector('img.DByuf4')?.src;
+            const linkElement = item.querySelector('a.CGtC6r') || item.querySelector('a.VJA3rP');
+            const link = linkElement ? "https://www.flipkart.com" + linkElement.getAttribute('href') : "#";
+
             if (title && title.toLowerCase().includes('hp') && price) {
                 results.push({
                     title: title.trim(),
                     price: price.trim(),
                     oldPrice: oldPrice.trim(),
-                    image: item.querySelector('._396cs4')?.src,
-                    amazonLink: item.querySelector('a._1fQZEK')?.href, // Product link
+                    image: image,
+                    amazonLink: link,
                     discount: Math.round(((oldPrice - price) / oldPrice) * 100) + "% OFF"
                 });
             }
         });
         return results;
     });
-    allLaptops = [...allLaptops, ...flipkartData];
 
-    // Save Data
-    fs.writeFileSync('hp-laptops.json', JSON.stringify(allLaptops, null, 2));
-    console.log(`Done! Total ${allLaptops.length} HP laptops saved in hp-laptops.json`);
+    fs.writeFileSync('hp-laptops.json', JSON.stringify(flipkartData, null, 2));
+    console.log(`Success! Total ${flipkartData.length} HP laptops saved from Flipkart.`);
     await browser.close();
 }
 
-scrapeLaptops();
+scrapeFlipkartLaptops();
