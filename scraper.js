@@ -1,63 +1,55 @@
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 
-async function scrapeAmazonHP() {
-    console.log("Scraping shuru ho raha hai...");
+async function scrapeIntelLaptops() {
+    console.log("Intel website scrap ho raha hai...");
     const browser = await puppeteer.connect({
         browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_TOKEN}`,
     });
 
     const page = await browser.newPage();
-    
-    // Sabse zaroori: Real browser jaisa dikhne ke liye
-    await page.setExtraHTTPHeaders({
-        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8'
-    });
     await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36");
 
-    console.log("Amazon search page load kar rahe hain...");
-    // Amazon search URL
-    const url = 'https://www.amazon.in/s?k=hp+laptops&ref=nb_sb_noss';
+    // Intel India Laptops Search URL
+    const url = 'https://www.intel.in/content/www/in/in/products/details/processors/core.html';
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 });
 
-    // Page load hone ka wait karein
-    await page.waitForSelector('.s-result-item');
+    // Intel website par data load hone ka wait karein
+    console.log("Data load hone ka wait kar rahe hain...");
+    await page.waitForSelector('.product-item', { timeout: 60000 }).catch(() => console.log("Timeout, shayad selector badal gaya hai."));
 
-    const amazonData = await page.evaluate(() => {
-        const items = document.querySelectorAll('.s-result-item[data-component-type="s-search-result"]');
+    const intelData = await page.evaluate(() => {
+        // Intel ke website structure ke hisaab se selectors (Note: Ye website update hote hi badal sakte hain)
+        const items = document.querySelectorAll('.product-item'); 
         let results = [];
 
         items.forEach(item => {
-            const titleElem = item.querySelector('h2 a');
-            const title = titleElem?.innerText;
-            const price = item.querySelector('.a-price-whole')?.innerText?.replace(/,/g, '');
-            const image = item.querySelector('.s-image')?.src;
-            const link = item.querySelector('a.a-link-normal')?.getAttribute('href');
-
-            if (title && title.toLowerCase().includes('hp') && price) {
+            const title = item.querySelector('.product-title')?.innerText;
+            const link = item.querySelector('a')?.href;
+            
+            if (title) {
                 results.push({
                     title: title.trim(),
-                    price: price.trim(),
-                    image: image || "",
-                    amazonLink: link ? "https://www.amazon.in" + link : "#",
-                    discount: "10% OFF" // Default discount agar na mile
+                    price: "Check Website", // Intel direct price nahi dikhata, wo retailers par bhejta hai
+                    image: item.querySelector('img')?.src || "",
+                    amazonLink: link || "#",
+                    discount: "Official Intel"
                 });
             }
         });
         return results;
     });
 
-    if (amazonData.length > 0) {
-        fs.writeFileSync('hp-laptops.json', JSON.stringify(amazonData, null, 2));
-        console.log(`Success! Total ${amazonData.length} HP laptops saved.`);
+    if (intelData.length > 0) {
+        fs.writeFileSync('intel-laptops.json', JSON.stringify(intelData, null, 2));
+        console.log(`Success! Total ${intelData.length} Intel products saved.`);
     } else {
-        // Screenshot lekar dekhein ki Amazon kya dikha raha hai
-        await page.screenshot({ path: 'amazon_debug.png', fullPage: true });
-        console.log("Warning: Koi data nahi mila.");
+        await page.screenshot({ path: 'intel_debug.png' });
+        console.log("Warning: Intel website se data nahi mila.");
         process.exit(1);
     }
 
     await browser.close();
 }
 
-scrapeAmazonHP();
+scrapeIntelLaptops();
