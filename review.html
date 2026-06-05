@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laptop Review | laptoptec.online</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
-        .product-card { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Navigation Bar */
+        nav { background-color: #101820; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-weight: bold; font-size: 1.3rem; letter-spacing: 1px; }
+        .logo span { color: #e67e22; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+
+        .product-card { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); flex: 1; }
         .product-img { width: 100%; border-radius: 8px; }
         .price-container { margin: 15px 0; }
         .current-price { font-size: 24px; font-weight: bold; color: #e67e22; }
         .old-price { text-decoration: line-through; color: #888; font-size: 16px; margin-right: 10px; }
-        .btn { display: block; background: #27ae60; color: white; padding: 15px; text-align: center; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 20px; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .specs-table td { padding: 10px; border-bottom: 1px solid #eee; }
+        
+        .btn { display: block; background: #27ae60; color: white; padding: 15px; text-align: center; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 25px; transition: 0.3s; }
+        .btn:hover { background: #219150; }
+
+        /* Footer Styling */
+        footer { background-color: #101820; color: #ffffff; text-align: center; padding: 20px; margin-top: auto; font-size: 0.9rem; }
+        footer a { color: #e67e22; text-decoration: none; }
     </style>
 </head>
 <body>
+
+    <nav>
+        <div class="logo">laptoptec<span>.online</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Laptops</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
 
     <div class="product-card">
         <img id="laptop-image" src="" alt="Laptop">
@@ -26,18 +51,27 @@
         </div>
         
         <p id="laptop-review"></p>
+        
+        <h3>Key Specifications</h3>
+        <table class="specs-table" id="specs-list"></table>
+
         <a id="amazon-link" class="btn" href="#" target="_blank">Flipkart/Amazon par dekhein</a>
     </div>
 
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 <strong>laptoptec.online</strong> | Sabhi rights reserved.</p>
+        <p>Best budget laptop deals aur authentic reviews ke liye humein follow karein.</p>
+    </footer>
+
     <script>
         const params = new URLSearchParams(window.location.search);
-        const index = params.get('id') || 0; // Default to first item (0)
+        const index = params.get('id') || 0;
 
         fetch('laptops.json')
             .then(res => res.json())
             .then(data => {
-                const laptop = data[index]; // Accessing array by index
-                
+                const laptop = data[index];
                 if(laptop) {
                     document.getElementById('laptop-title').innerText = laptop.title;
                     document.getElementById('laptop-price').innerText = "₹" + laptop.price;
@@ -47,6 +81,12 @@
                     
                     document.getElementById('laptop-review').innerText = 
                         `${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ₹${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+                    
+                    let specsHtml = "";
+                    for (let key in laptop.specs) {
+                        specsHtml += `<tr><td><strong>${key}</strong></td><td>${laptop.specs[key]}</td></tr>`;
+                    }
+                    document.getElementById('specs-list').innerHTML = specsHtml;
                 } else {
                     document.getElementById('laptop-title').innerText = "Laptop nahi mila!";
                 }
@@ -55,4 +95,3 @@
     </script>
 </body>
 </html>
-
