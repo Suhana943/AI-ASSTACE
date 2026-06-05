@@ -744,19 +744,19 @@
     </footer>
 
     <!-- Interactive Navigation Scripts for Sidebar & Accordion -->
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- PART 1: Sidebar Navigation Engine ---
         const hamburgerIcon = document.getElementById('hamburgerIcon');
         const sidebarMenu = document.getElementById('sidebarMenu');
         const menuOverlay = document.getElementById('menuOverlay');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-        // Opening Sidebar Drawer Engine
-        hamburgerIcon.addEventListener('click', function() {
+        hamburgerIcon?.addEventListener('click', () => {
             sidebarMenu.classList.add('open');
             menuOverlay.classList.add('show');
         });
 
-        // Safe Drawer Hiding Logic
         function safeCloseDrawer() {
             sidebarMenu.classList.remove('open');
             menuOverlay.classList.remove('show');
@@ -766,22 +766,57 @@
             });
         }
 
-        closeMenuBtn.addEventListener('click', safeCloseDrawer);
-        menuOverlay.addEventListener('click', safeCloseDrawer);
+        closeMenuBtn?.addEventListener('click', safeCloseDrawer);
+        menuOverlay?.addEventListener('click', safeCloseDrawer);
 
-        // Nested Menu Trigger Handling Engine
-        const accordions = document.querySelectorAll('.accordion-trigger');
-        accordions.forEach(acc => {
+        // Sidebar Accordion Logic
+        document.querySelectorAll('.accordion-trigger').forEach(acc => {
             acc.addEventListener('click', function() {
                 this.classList.toggle('active');
                 const content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
             });
         });
-    </script>
+
+        // --- PART 2: Dynamic Data Fetching (HP Laptops) ---
+        fetch('hp-laptops.json') 
+            .then(response => response.json())
+            .then(data => {
+                const container = document.querySelector('.grid-container');
+                if (!container) return;
+                
+                container.innerHTML = ''; 
+
+                data.forEach(laptop => {
+                    container.innerHTML += `
+                    <div class="laptop-item-card">
+                        <div class="card-main-body">
+                            <span class="badge-tag">HP Laptop</span>
+                            <div class="img-holder"><img src="${laptop.image}" alt="${laptop.title}"></div>
+                            <div class="details-holder">
+                                <div class="item-name">${laptop.title}</div>
+                                <div class="price-container">
+                                    <span class="badge-discount">${laptop.discount}</span>
+                                    <span class="price-current">₹${laptop.price}</span>
+                                    <span class="price-original">₹${laptop.oldPrice}</span>
+                                </div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-link-logo">
+                            </div>
+                        </div>
+                        <div class="card-actions-row">
+                            <a href="${laptop.learnMoreLink}" class="action-btn btn-learn">Learn More</a>
+                            <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
+                        </div>
+                    </div>`;
+                });
+                
+                // Product count update
+                const counter = document.querySelector('.product-counter');
+                if (counter) counter.innerText = data.length + " Laptops";
+            })
+            .catch(err => console.error("Data load error:", err));
+    });
+</script>
+
 </body>
 </html>
