@@ -68,16 +68,29 @@
     fetch('laptops.json') 
         .then(response => response.json())
         .then(data => {
+            console.log("Total laptops loaded:", data.length); // Check karne ke liye
+            
             const container = document.querySelector('.grid-container');
             container.innerHTML = ''; 
             
-            // 1. Sirf 'Dell' brand aur 30000 se kam price wale laptops filter karein
-            const dellLaptops = data.filter(laptop => 
-                laptop.title.toLowerCase().includes('dell') && 
-                parseInt(laptop.price.replace(/,/g, '')) < 30000
-            );
+            // Filter logic
+            const filteredLaptops = data.filter(laptop => {
+                const isDell = laptop.title.toLowerCase().includes('dell');
+                // Price handle karne ke liye simple logic
+                const price = parseInt(String(laptop.price).replace(/,/g, ''));
+                const isUnderBudget = price < 30000;
+                
+                return isDell && isUnderBudget;
+            });
+
+            console.log("Laptops found after filter:", filteredLaptops.length);
+
+            if (filteredLaptops.length === 0) {
+                container.innerHTML = '<p>Koi laptop nahi mila jo Dell ho aur 30,000 se kam ka ho.</p>';
+                return;
+            }
             
-            dellLaptops.forEach(laptop => {
+            filteredLaptops.forEach(laptop => {
                 container.innerHTML += `
                 <div class="laptop-item-card">
                     <div class="card-main-body">
@@ -94,8 +107,10 @@
                     </div>
                 </div>`;
             });
-        });
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
 </script>
+
     
 </body>
 </html>
