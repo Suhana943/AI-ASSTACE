@@ -1,6 +1,5 @@
 
-
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,6 +7,9 @@
 <title>HP Victus Gaming Laptop | LaptopTec</title>
 
 <style>
+/* =====================
+   RESET & BASE STYLES
+===================== */
 *{
     margin:0;
     padding:0;
@@ -15,7 +17,7 @@
 }
 
 body{
-    font-family:'Segoe UI',sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:#f8fafc;
     color:#334155;
     line-height:1.6;
@@ -24,7 +26,6 @@ body{
 /* =====================
    NAVBAR
 ===================== */
-
 .navbar{
     position:sticky;
     top:0;
@@ -50,7 +51,6 @@ body{
 /* =====================
    SIDEBAR MENU
 ===================== */
-
 .nav-menu{
     position:fixed;
     top:0;
@@ -98,9 +98,8 @@ body{
 }
 
 /* =====================
-   MAIN CONTENT
+   MAIN CONTENT WRAPPER
 ===================== */
-
 .content{
     max-width:700px;
     margin:auto;
@@ -108,55 +107,21 @@ body{
 }
 
 /* =====================
-   GOOGLE-STYLE SEARCH (NEW)
+   BRAND FILTERS SECTION
 ===================== */
-
 .search-section {
     background: #171717;
     color: #fff;
     border-radius: 16px;
-    padding: 20px;
+    padding: 16px;
     margin-bottom: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
-.search-bar-container {
-    background: #303134;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    padding: 10px 18px;
-    margin-bottom: 20px;
-}
-
-.search-icon-left {
-    color: #9aa0a6;
-    margin-right: 12px;
-    font-size: 18px;
-}
-
-.search-input-mock {
-    flex: 1;
-    color: #e8eaed;
-    font-size: 16px;
-}
-
-.search-icons-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.mic-icon { color: #4285f4; font-size: 18px; }
-.cam-icon { color: #4285f4; font-size: 18px; }
 
 .brand-filters {
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #3c4043;
-    margin-bottom: 20px;
 }
 
 .brand-filters::-webkit-scrollbar {
@@ -177,49 +142,26 @@ body{
     border: 1px solid #4d5156;
 }
 
-.people-search-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 15px;
-    color: #e8eaed;
+/* =======================================
+   SEARCH RESULTS PARTITION DIVIDER
+======================================= */
+.results-divider {
+    margin: 25px 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
 }
 
-.search-suggestions-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.suggestion-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    border-top: 1px solid #3c4043;
-    color: #e8eaed;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-.suggestion-item strong {
-    color: #fff;
-}
-
-.search-arrow-icon {
-    background: #303134;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9aa0a6;
-    font-size: 14px;
+.results-title {
+    font-size: 18px;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* =====================
-   CARD & SECTIONS
+   PRODUCT CARD & REVIEW BOX
 ===================== */
-
 .card,
 .review-box{
     background:#fff;
@@ -277,9 +219,8 @@ body{
 }
 
 /* =====================
-   BUTTONS
+   BUTTON ACTION
 ===================== */
-
 .actions{
     display:flex;
     gap:10px;
@@ -308,9 +249,8 @@ body{
 }
 
 /* =====================
-   REVIEW SECTION
+   REVIEW CONTENTS
 ===================== */
-
 .review-box h2,
 .review-box h3{
     color:#0f172a;
@@ -321,29 +261,61 @@ body{
     padding-left:20px;
 }
 
-.related-links{
-    list-style:none;
+/* =====================
+   PROFESSIONAL FOOTER
+===================== */
+.site-footer {
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: 30px 20px;
+    margin-top: 40px;
 }
 
-.related-links li{
-    margin-bottom:10px;
+.footer-container {
+    max-width: 700px;
+    margin: auto;
 }
 
-.related-links a{
-    color:#2563eb;
-    text-decoration:none;
+.footer-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-.related-links a:hover{
-    text-decoration:underline;
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.footer-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: #38bdf8;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    border-top: 1px solid #334155;
+    padding-top: 15px;
 }
 
 /* =====================
    MOBILE RESPONSIVENESS
 ===================== */
-
 @media(max-width:480px){
-
     .card-body{
         flex-direction:column;
         text-align:center;
@@ -361,12 +333,17 @@ body{
     .specs{
         text-align:left;
     }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER NAVBAR -->
 <header class="navbar">
     <span class="menu-icon"
           onclick="document.querySelector('.nav-menu').classList.toggle('active')">
@@ -375,6 +352,7 @@ body{
     <div class="nav-brand">LaptopTec</div>
 </header>
 
+<!-- SIDEBAR NAVIGATION MENU -->
 <nav class="nav-menu">
     <div class="menu-close"
          onclick="document.querySelector('.nav-menu').classList.remove('active')">
@@ -392,58 +370,33 @@ body{
     </ul>
 </nav>
 
+<!-- MAIN APP CONTENT -->
 <main class="content">
 
+    <!-- BRAND FILTERS ONLY -->
     <section class="search-section">
-        <div class="search-bar-container">
-            <span class="search-icon-left">🔍</span>
-            <div class="search-input-mock">laptop under 35000</div>
-            <div class="search-icons-right">
-                <span class="mic-icon">🎙️</span>
-                <span class="cam-icon">📷</span>
-            </div>
-        </div>
-
         <div class="brand-filters">
             <a href="#" class="filter-chip">💻 Dell</a>
             <a href="#" class="filter-chip">💻 HP</a>
             <a href="#" class="filter-chip">💻 ASUS</a>
             <a href="#" class="filter-chip">💻 Lenovo</a>
         </div>
-
-        <h2 class="people-search-title">People also search for</h2>
-        
-        <div class="search-suggestions-list">
-            <a href="#" class="suggestion-item">
-                <span>Laptops under 35000 <strong>with i5 Processor and 8GB RAM</strong></span>
-                <div class="search-arrow-icon">🔍</div>
-            </a>
-            <a href="#" class="suggestion-item">
-                <span>Laptops under 35000 <strong>with i7 Processor and 8GB RAM</strong></span>
-                <div class="search-arrow-icon">🔍</div>
-            </a>
-            <a href="#" class="suggestion-item">
-                <span>Laptops under 35000 <strong>with i5 processor and 16GB RAM</strong></span>
-                <div class="search-arrow-icon">🔍</div>
-            </a>
-            <a href="#" class="suggestion-item">
-                <span>Laptop under 35000 <strong>with i7 Processor</strong></span>
-                <div class="search-arrow-icon">🔍</div>
-            </a>
-        </div>
     </section>
 
+    <!-- CLEAN PARTITION DIVIDER -->
+    <div class="results-divider">
+        <h2 class="results-title">🔍 Search Results</h2>
+    </div>
+
+    <!-- MAIN PRODUCT CARD -->
     <section class="card">
-
         <div class="card-body">
-
             <div class="product-image">
                 <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pfv2v/10067.jpg"
                      alt="HP Victus Gaming Laptop">
             </div>
 
             <div class="product-info">
-
                 <h1 class="product-title">
                     HP Victus Core i5 (15-fa2700TX)
                 </h1>
@@ -458,25 +411,21 @@ body{
                 </ul>
 
                 <span class="price">₹88,990</span>
-
             </div>
-
         </div>
 
         <div class="actions">
             <a href="#" class="btn btn-primary">Buy Now</a>
         </div>
-
     </section>
 
+    <!-- PRODUCT REVIEW BOX -->
     <section class="review-box">
         <h2>HP Victus 15-fa2700TX Review</h2>
-
         <p>
             HP Victus is an excellent choice for gaming,
             content creation, and everyday productivity.
         </p>
-
         <ul>
             <li>Powerful 13th Gen Intel Core i5 processor.</li>
             <li>RTX 3050 GPU for smooth gaming performance.</li>
@@ -485,20 +434,27 @@ body{
         </ul>
     </section>
 
-    <section class="review-box">
-
-        <h3>People Also Search</h3>
-
-        <ul class="related-links">
-            <li><a href="#">Best Gaming Laptops Under ₹1 Lakh</a></li>
-            <li><a href="#">HP Victus vs Lenovo IdeaPad Gaming 3</a></li>
-            <li><a href="#">Is RTX 3050 Good for Video Editing?</a></li>
-        </ul>
-
-    </section>
-
 </main>
+
+<!-- PROFESSIONAL FOOTER SECTION -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <h3 class="footer-title">🔍 People Also Search For</h3>
+        
+        <div class="footer-grid">
+            <a href="#" class="footer-link">🔎 Best Gaming Laptops Under ₹1 Lakh</a>
+            <a href="#" class="footer-link">🔎 HP Victus vs Lenovo IdeaPad</a>
+            <a href="#" class="footer-link">🔎 RTX 3050 Laptops Price</a>
+            <a href="#" class="footer-link">🔎 Top Intel i5 Laptops 2026</a>
+            <a href="#" class="footer-link">🔎 Best Laptops for Video Editing</a>
+            <a href="#" class="footer-link">🔎 HP Student Discount Offers</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LaptopTec. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
-
