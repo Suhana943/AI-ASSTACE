@@ -1,51 +1,49 @@
                     
 
         // Flipkart ke latest HTML container selectors
-        const axios = require('axios');
+        
+const const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
 async function scrape() {
-    console.log("Scraping shuru ho raha hai...");
-    const url = 'https://www.flipkart.com/search?q=intel+laptop&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off';
+    console.log("Scraping shuru...");
+    
+    // Naya URL aur realistic User-Agent
+    const url = 'https://www.flipkart.com/search?q=intel+laptop';
+    const instance = axios.create({
+        timeout: 30000, // 30 second timeout
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Referer': 'https://www.google.com/' // Referer dene se lagta hai ki user Google se aaya hai
+        }
+    });
 
     try {
-        // Flipkart ko lagna chahiye ki ye request browser se aa rahi hai
-        const response = await axios.get(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-                'Connection': 'keep-alive',
-                'Upgrade-Insecure-Requests': '1'
-            }
-        });
-
+        const response = await instance.get(url);
         const $ = cheerio.load(response.data);
         let results = [];
 
-        // Flipkart ke product containers ka generic selector
-        // Hum un divs ko select kar rahe hain jo products hold karte hain
+        // Flipkart ka selector update kiya gaya hai
         $('div.tUxRFH').each((i, el) => {
-            const title = $(el).find('div.KzDlHZ').text() || $(el).find('a.wjcEIp').text();
+            const title = $(el).find('div.KzDlHZ').text();
             const price = $(el).find('div.Nx9bqj').text();
             
             if (title && title.toLowerCase().includes('intel')) {
                 results.push({
                     title: title.trim(),
                     price: price.replace(/[₹,]/g, '').trim(),
-                    timestamp: new Date().toISOString()
+                    scraped_at: new Date().toLocaleString()
                 });
             }
         });
 
         if (results.length > 0) {
             fs.writeFileSync('intel-laptops.json', JSON.stringify(results, null, 2));
-            console.log(`Success! ${results.length} Intel laptops mil gaye.`);
+            console.log(`Success! ${results.length} laptops mil gaye.`);
         } else {
-            console.log("Data nahi mila. HTML structure check karein.");
-            // Log the HTML head to debug
-            console.log("Response sample:", $('title').text());
+            console.log("Page load hua, par selector match nahi hue.");
         }
     } catch (err) {
         console.error("Scraper Error:", err.message);
