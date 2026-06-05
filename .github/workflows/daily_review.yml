@@ -1,39 +1,31 @@
-name: Run AI Laptop Script
-
+name: Laptop Data Update
 on:
   schedule:
-    - cron: '0 0 * * *' # Rozana chalega (ya aap apne hisab se time set karein)
-  workflow_dispatch:      # Manual trigger ke liye (aap button daba kar bhi chala sakte hain)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
-  build:
+  update-data:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Git push karne ke liye zaroori permission
-
+    permissions: contents: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: pip install google-generativeai
-
-      - name: Run Python Script
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with: {python-version: '3.11'}
+      
+      - run: pip install google-generativeai
+      
+      - name: Run Script
         env:
-          API_1: ${{ secrets.API_1 }} # GitHub Secrets mein apni API key save karein
+          API_1: ${{ secrets.API_1 }}
         run: python script.py
-
-      - name: Commit and Push changes
+      
+      - name: Push Changes
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
           git add laptops.json review.html reviews/
-          git commit -m "Auto-update laptop data and reviews" || echo "No changes to commit"
-          git push
+          git commit -m "Auto-update: Laptop data" || echo "No changes"
+          git pull --rebase origin main  # Conflict bachane ke liye
+          git push origin main
           
-    
