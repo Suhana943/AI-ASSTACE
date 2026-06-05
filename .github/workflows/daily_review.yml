@@ -1,0 +1,28 @@
+name: Auto Laptop Review
+on:
+  schedule:
+    - cron: '0 5 * * *' # Har roz subah 5 baje
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: {python-version: '3.9'}
+      - name: Install dependencies
+        run: pip install google-generativeai
+      - name: Run AI Script
+        env:
+          API_1: ${{ secrets.API_1 }}  # Yahan change kiya hai
+        run: python script.py
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add reviews/
+          git commit -m "Naya Laptop Review Add Hua"
+          git push
+          
