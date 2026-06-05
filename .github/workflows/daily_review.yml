@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Ye line zaruri hai file push karne ke liye
+  contents: write
 
 jobs:
   build:
@@ -31,11 +31,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if [ -n "$(git status --porcelain)" ]; then
-            git add reviews/
-            git commit -m "Naya Laptop Review Add Hua"
-            git push
-          else
-            echo "No changes to commit"
-          fi
-          
+          git add .  # Yahan change kiya hai
+          git commit -m "Naya Laptop Review Add Hua" || echo "No changes to commit"
+          git push
