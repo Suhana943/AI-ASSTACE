@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+
+            <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -106,7 +108,116 @@ body{
 }
 
 /* =====================
-   CARD
+   GOOGLE-STYLE SEARCH (NEW)
+===================== */
+
+.search-section {
+    background: #171717;
+    color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.search-bar-container {
+    background: #303134;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+}
+
+.search-icon-left {
+    color: #9aa0a6;
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+.search-input-mock {
+    flex: 1;
+    color: #e8eaed;
+    font-size: 16px;
+}
+
+.search-icons-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.mic-icon { color: #4285f4; font-size: 18px; }
+.cam-icon { color: #4285f4; font-size: 18px; }
+
+.brand-filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #3c4043;
+    margin-bottom: 20px;
+}
+
+.brand-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-chip {
+    background: #303134;
+    color: #e8eaed;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #4d5156;
+}
+
+.people-search-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #e8eaed;
+}
+
+.search-suggestions-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggestion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid #3c4043;
+    color: #e8eaed;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.suggestion-item strong {
+    color: #fff;
+}
+
+.search-arrow-icon {
+    background: #303134;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9aa0a6;
+    font-size: 14px;
+}
+
+/* =====================
+   CARD & SECTIONS
 ===================== */
 
 .card,
@@ -187,11 +298,6 @@ body{
     transition:.3s;
 }
 
-.btn-secondary{
-    background:#f1f5f9;
-    color:#475569;
-}
-
 .btn-primary{
     background:#2563eb;
     color:#fff;
@@ -233,7 +339,7 @@ body{
 }
 
 /* =====================
-   MOBILE
+   MOBILE RESPONSIVENESS
 ===================== */
 
 @media(max-width:480px){
@@ -261,7 +367,6 @@ body{
 
 <body>
 
-<!-- Navbar -->
 <header class="navbar">
     <span class="menu-icon"
           onclick="document.querySelector('.nav-menu').classList.toggle('active')">
@@ -270,7 +375,6 @@ body{
     <div class="nav-brand">LaptopTec</div>
 </header>
 
-<!-- Sidebar Navigation -->
 <nav class="nav-menu">
     <div class="menu-close"
          onclick="document.querySelector('.nav-menu').classList.remove('active')">
@@ -290,7 +394,45 @@ body{
 
 <main class="content">
 
-    <!-- Product Card -->
+    <section class="search-section">
+        <div class="search-bar-container">
+            <span class="search-icon-left">🔍</span>
+            <div class="search-input-mock">laptop under 35000</div>
+            <div class="search-icons-right">
+                <span class="mic-icon">🎙️</span>
+                <span class="cam-icon">📷</span>
+            </div>
+        </div>
+
+        <div class="brand-filters">
+            <a href="#" class="filter-chip">💻 Dell</a>
+            <a href="#" class="filter-chip">💻 HP</a>
+            <a href="#" class="filter-chip">💻 ASUS</a>
+            <a href="#" class="filter-chip">💻 Lenovo</a>
+        </div>
+
+        <h2 class="people-search-title">People also search for</h2>
+        
+        <div class="search-suggestions-list">
+            <a href="#" class="suggestion-item">
+                <span>Laptops under 35000 <strong>with i5 Processor and 8GB RAM</strong></span>
+                <div class="search-arrow-icon">🔍</div>
+            </a>
+            <a href="#" class="suggestion-item">
+                <span>Laptops under 35000 <strong>with i7 Processor and 8GB RAM</strong></span>
+                <div class="search-arrow-icon">🔍</div>
+            </a>
+            <a href="#" class="suggestion-item">
+                <span>Laptops under 35000 <strong>with i5 processor and 16GB RAM</strong></span>
+                <div class="search-arrow-icon">🔍</div>
+            </a>
+            <a href="#" class="suggestion-item">
+                <span>Laptop under 35000 <strong>with i7 Processor</strong></span>
+                <div class="search-arrow-icon">🔍</div>
+            </a>
+        </div>
+    </section>
+
     <section class="card">
 
         <div class="card-body">
@@ -322,13 +464,11 @@ body{
         </div>
 
         <div class="actions">
-            <a href="#" class="btn btn-secondary">Learn More</a>
             <a href="#" class="btn btn-primary">Buy Now</a>
         </div>
 
     </section>
 
-    <!-- Review -->
     <section class="review-box">
         <h2>HP Victus 15-fa2700TX Review</h2>
 
@@ -345,7 +485,6 @@ body{
         </ul>
     </section>
 
-    <!-- Related Searches -->
     <section class="review-box">
 
         <h3>People Also Search</h3>
@@ -363,4 +502,3 @@ body{
 </body>
 </html>
 
-            
