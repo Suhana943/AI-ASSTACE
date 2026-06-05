@@ -2,7 +2,7 @@
 
         // Flipkart ke latest HTML container selectors
         
-const const axios = require('axios');
+const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
