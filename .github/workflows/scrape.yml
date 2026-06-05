@@ -1,28 +1,44 @@
-name: Intel Scraper
+name: Auto Intel Laptop Scraper
+
 on:
   workflow_dispatch: 
   schedule:
     - cron: '0 0 * * *' 
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
+
       - name: Install dependencies
-        run: npm install axios cheerio
-      - name: Run Scraper
+        run: |
+          npm cache clean --force
+          npm install axios cheerio
+
+      - name: Run Scraper Script
         run: node scraper.js
-      - name: Commit and Push
+
+      - name: Commit and Push intel-laptops.json
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "actions@github.com"
-          git add intel-laptops.json
-          git commit -m "Auto-update Intel Laptops" || exit 0
-          git push
+          
+          # Check karein agar file bani hai toh hi push karein
+          if [ -f "intel-laptops.json" ]; then
+            git add intel-laptops.json
+            git commit -m "Auto-update: Intel Laptops data" || exit 0
+            git push
+          else
+            echo "Error: intel-laptops.json file generate nahi hui!"
+            exit 1
+          fi
           
