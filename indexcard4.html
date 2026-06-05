@@ -1,124 +1,364 @@
-
-
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HP Victus Gaming Laptop | LaptopTec</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; padding: 0; margin: 0; }
-        
-        /* Navbar */
-        /* Navbar */
-        .navbar { background-color: #1e293b; padding: 15px 20px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .menu-icon { font-size: 24px; cursor: pointer; }
-        .nav-brand { margin-left: 15px; font-weight: 600; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HP Victus Gaming Laptop | LaptopTec</title>
 
-        /* Navigation Menu (from 10229.jpg) */
-        .nav-menu { position: fixed; top: 0; left: -100%; width: 85%; height: 100%; background: white; transition: 0.3s; z-index: 2000; padding: 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
-        .nav-menu.active { left: 0; }
-        .nav-list { list-style: none; padding-top: 20px; }
-        .nav-item { padding: 15px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; cursor: pointer; color: #333; }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .content { padding: 15px; max-width: 600px; margin: auto; }
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f8fafc;
+    color:#334155;
+    line-height:1.6;
+}
 
-        /* Card Container */
-        .laptop-item-card, .review-container {
-            border: 1px solid #e2e8f0; padding: 15px; margin: 15px 0; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+/* =====================
+   NAVBAR
+===================== */
 
-        .card-main-body { display: flex; gap: 15px; align-items: flex-start; }
-        .img-holder img { width: 120px; height: auto; border-radius: 8px; flex-shrink: 0; }
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px 20px;
+    background:#1e293b;
+    color:#fff;
+}
 
-        .item-name { font-weight: 600; font-size: 1em; color: #1e293b; margin-bottom: 5px; }
-        .specs-list { font-size: 0.85em; color: #475569; margin-bottom: 10px; list-style: none; padding: 0; }
-        .badge-discount { display: inline-block; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-bottom: 8px; }
-        .price-current { font-size: 1.2em; font-weight: 700; color: #e11d48; display: block; margin-bottom: 10px; }
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+}
 
-        .card-actions-row { display: flex; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-        .action-btn { flex: 1; text-align: center; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9em; }
-        .btn-learn { background: #f1f5f9; color: #475569; }
-        .btn-buy { background: #2563eb; color: #ffffff; }
+.nav-brand{
+    font-size:18px;
+    font-weight:600;
+}
 
-        /* Mobile Responsive Tweaks */
-        @media (max-width: 480px) {
-            .card-main-body { flex-direction: column; text-align: center; }
-            .img-holder { width: 100%; display: flex; justify-content: center; }
-            .img-holder img { width: 100%; max-width: 200px; }
-            .specs-list { text-align: left; }
-        }
-    </style>
+/* =====================
+   SIDEBAR MENU
+===================== */
+
+.nav-menu{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:85%;
+    max-width:320px;
+    height:100%;
+    background:#fff;
+    padding:20px;
+    transition:0.3s ease;
+    z-index:2000;
+    box-shadow:2px 0 10px rgba(0,0,0,.15);
+}
+
+.nav-menu.active{
+    left:0;
+}
+
+.menu-close{
+    font-weight:600;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.nav-list{
+    list-style:none;
+}
+
+.nav-item{
+    border-bottom:1px solid #e2e8f0;
+}
+
+.nav-item a{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    color:#334155;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.nav-item a:hover{
+    color:#2563eb;
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+
+.content{
+    max-width:700px;
+    margin:auto;
+    padding:15px;
+}
+
+/* =====================
+   CARD
+===================== */
+
+.card,
+.review-box{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+    box-shadow:0 4px 8px rgba(0,0,0,.05);
+}
+
+.card-body{
+    display:flex;
+    gap:16px;
+}
+
+.product-image img{
+    width:130px;
+    border-radius:10px;
+}
+
+.product-title{
+    font-size:18px;
+    font-weight:600;
+    color:#0f172a;
+    margin-bottom:8px;
+}
+
+.badge{
+    display:inline-block;
+    background:#dcfce7;
+    color:#166534;
+    padding:4px 10px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.specs{
+    list-style:none;
+    font-size:14px;
+    color:#475569;
+}
+
+.specs li{
+    margin-bottom:6px;
+}
+
+.price{
+    display:block;
+    margin-top:12px;
+    font-size:24px;
+    font-weight:700;
+    color:#e11d48;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #e2e8f0;
+}
+
+.btn{
+    flex:1;
+    text-align:center;
+    padding:12px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-secondary{
+    background:#f1f5f9;
+    color:#475569;
+}
+
+.btn-primary{
+    background:#2563eb;
+    color:#fff;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+/* =====================
+   REVIEW SECTION
+===================== */
+
+.review-box h2,
+.review-box h3{
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.review-box ul{
+    padding-left:20px;
+}
+
+.related-links{
+    list-style:none;
+}
+
+.related-links li{
+    margin-bottom:10px;
+}
+
+.related-links a{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+.related-links a:hover{
+    text-decoration:underline;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:480px){
+
+    .card-body{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .product-image{
+        text-align:center;
+    }
+
+    .product-image img{
+        width:100%;
+        max-width:220px;
+    }
+
+    .specs{
+        text-align:left;
+    }
+}
+</style>
 </head>
+
 <body>
+
 <!-- Navbar -->
-<div class="navbar">
-    <span class="menu-icon" onclick="document.querySelector('.nav-menu').classList.toggle('active')">☰</span>
+<header class="navbar">
+    <span class="menu-icon"
+          onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+          ☰
+    </span>
     <div class="nav-brand">LaptopTec</div>
-</div>
+</header>
 
-<!-- Navigation Menu -->
-<div class="nav-menu">
-    <div style="font-weight:bold; cursor:pointer" onclick="document.querySelector('.nav-menu').classList.remove('active')">&lt; LaptopTec Navigation</div>
+<!-- Sidebar Navigation -->
+<nav class="nav-menu">
+    <div class="menu-close"
+         onclick="document.querySelector('.nav-menu').classList.remove('active')">
+        ← LaptopTec Navigation
+    </div>
+
     <ul class="nav-list">
-        <li class="nav-item">Top Recommendations <span>&gt;</span></li>
-        <li class="nav-item"><a href="indexcard1.html">Intel i5 Models</a> <span>📁</span></li>
-        <li class="nav-item"><a href="indexcard2.html">Ryzen 5 Models</a> <span>📁</span></li>
-        <li class="nav-item"><a href="indexcard3.html">Gaming Laptops</a> <span>📁</span></li>
-        <li class="nav-item"><a href="battery.html">Battery Tips</a> <span>&gt;</span></li>
-        <li class="nav-item"><a href="advice.html">Buying Advice</a> <span>&gt;</span></li>
-        <li class="nav-item"><a href="about.html">About Us</a> <span>&gt;</span></li>
+        <li class="nav-item"><a href="#">Top Recommendations <span>›</span></a></li>
+        <li class="nav-item"><a href="indexcard1.html">Intel i5 Models <span>📁</span></a></li>
+        <li class="nav-item"><a href="indexcard2.html">Ryzen 5 Models <span>📁</span></a></li>
+        <li class="nav-item"><a href="indexcard3.html">Gaming Laptops <span>📁</span></a></li>
+        <li class="nav-item"><a href="battery.html">Battery Tips <span>›</span></a></li>
+        <li class="nav-item"><a href="advice.html">Buying Advice <span>›</span></a></li>
+        <li class="nav-item"><a href="about.html">About Us <span>›</span></a></li>
     </ul>
-</div>
-<div class="navbar">
-    <span>☰</span>
-    <div class="nav-brand">LaptopTec</div>
-</div>
+</nav>
 
-<div class="content">
-    <div class="laptop-item-card">
-        <div class="card-main-body">
-            <div class="img-holder">
-                <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pfv2v/10067.jpg" alt="HP Victus Gaming Laptop">
+<main class="content">
+
+    <!-- Product Card -->
+    <section class="card">
+
+        <div class="card-body">
+
+            <div class="product-image">
+                <img src="https://uploads.onecompiler.io/44r7prtu8/44r8pfv2v/10067.jpg"
+                     alt="HP Victus Gaming Laptop">
             </div>
-            <div class="details-holder">
-                <div class="item-name">HP Victus Core i5 (15-fa2700TX)</div>
-                <div class="badge-discount">Discounted</div>
-                <ul class="specs-list">
+
+            <div class="product-info">
+
+                <h1 class="product-title">
+                    HP Victus Core i5 (15-fa2700TX)
+                </h1>
+
+                <span class="badge">Discounted</span>
+
+                <ul class="specs">
                     <li>✔ 13th Gen Intel Core i5</li>
                     <li>✔ 16GB RAM / 512GB SSD</li>
-                    <li>✔ 6GB NVIDIA GeForce RTX 3050 GPU</li>
-                    <li>✔ 15.6" 144Hz IPS Display</li>
+                    <li>✔ NVIDIA GeForce RTX 3050 (6GB)</li>
+                    <li>✔ 15.6-inch FHD IPS 144Hz Display</li>
                 </ul>
-                <span class="price-current">₹88,990</span>
+
+                <span class="price">₹88,990</span>
+
             </div>
-        </div>
-        <div class="card-actions-row">
-            <a href="#" class="action-btn btn-learn">Learn More</a>
-            <a href="#" class="action-btn btn-buy">Buy Now</a>
-        </div>
-    </div>
 
-    <div class="review-container">
+        </div>
+
+        <div class="actions">
+            <a href="#" class="btn btn-secondary">Learn More</a>
+            <a href="#" class="btn btn-primary">Buy Now</a>
+        </div>
+
+    </section>
+
+    <!-- Review -->
+    <section class="review-box">
         <h2>HP Victus 15-fa2700TX Review</h2>
-        <p style="font-size: 0.9em;">HP Victus gaming aur productivity ke liye ek behtareen machine hai.</p>
-        <ul style="font-size: 0.9em;">
-            <li>Powerful 13th Gen Intel Core i5 processor.</li>
-            <li>RTX 3050 graphics for gaming.</li>
-            <li>144Hz fast display.</li>
-        </ul>
-    </div>
 
-    <div class="review-container">
-        <h3>People Also Search</h3>
-        <ul class="specs-list" style="padding-left: 20px;">
-            <li><a href="#" style="color: #2563eb;">Best Gaming Laptops Under 1 Lakh</a></li>
-            <li><a href="#" style="color: #2563eb;">HP Victus vs Lenovo IdeaPad Gaming 3</a></li>
-            <li><a href="#" style="color: #2563eb;">Is RTX 3050 Good for Video Editing?</a></li>
+        <p>
+            HP Victus is an excellent choice for gaming,
+            content creation, and everyday productivity.
+        </p>
+
+        <ul>
+            <li>Powerful 13th Gen Intel Core i5 processor.</li>
+            <li>RTX 3050 GPU for smooth gaming performance.</li>
+            <li>Fast 144Hz refresh-rate display.</li>
+            <li>Modern design with efficient cooling.</li>
         </ul>
-    </div>
-</div>
+    </section>
+
+    <!-- Related Searches -->
+    <section class="review-box">
+
+        <h3>People Also Search</h3>
+
+        <ul class="related-links">
+            <li><a href="#">Best Gaming Laptops Under ₹1 Lakh</a></li>
+            <li><a href="#">HP Victus vs Lenovo IdeaPad Gaming 3</a></li>
+            <li><a href="#">Is RTX 3050 Good for Video Editing?</a></li>
+        </ul>
+
+    </section>
+
+</main>
 
 </body>
 </html>
