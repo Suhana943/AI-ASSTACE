@@ -2,29 +2,25 @@ const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 
 async function scrape1000Laptops() {
-  console.log("Browserless se connect ho rahe hain...");
-  
-  const browser = await puppeteer.connect({
-    // YAHAN APNI BROWSERLESS API KEY DAALEIN
-    browserWSEndpoint: `ws://less.browserless.io?token=2UeF67e48SIevkya77b2b57d410a5b65bc5a9c400ea1e4440`, 
-  });
+  console.log("GitHub server Browserless se connect ho raha hai...");
+  try {
+    const browser = await puppeteer.connect({
+      // Yeh automatic aapki saved API key utha lega
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_TOKEN}`, 
+    });
 
-  const page = await browser.newPage();
-  let allLaptops = [];
-  
-  // Amazon ke 10 alag-alag pages par loop chalana (Har page par ~22 laptops hote hain)
-  // Agar aapko pure 1000 chahiye toh aap i <= 40 tak badha sakte hain
-  for (let i = 1; i <= 15; i++) {
-    console.log(`Page ${i} scrape ho raha hai...`);
+    const page = await browser.newPage();
+    let allLaptops = [];
     
-    try {
+    // Mobile/Server par load kam rakhne ke liye abhi 5 pages scrape karte hain (~100+ laptops)
+    for (let i = 1; i <= 5; i++) {
+      console.log(`Amazon Page ${i} chal raha hai...`);
       const url = `https://www.amazon.in/s?k=laptops&page=${i}`;
       await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
 
       const laptopsOnPage = await page.evaluate(() => {
         const items = document.querySelectorAll('.s-result-item[data-component-type="s-search-result"]');
         let results = [];
-
         items.forEach((item) => {
           const title = item.querySelector('h2 span')?.innerText;
           const price = item.querySelector('.a-price-whole')?.innerText;
@@ -35,33 +31,26 @@ async function scrape1000Laptops() {
           if (title && price) {
             results.push({
               title: title,
-              price: price,
-              oldPrice: oldPrice.replace('₹', ''),
+              price: price.trim(),
+              oldPrice: oldPrice.replace('₹', '').trim(),
               image: image,
               amazonLink: link,
-              discount: "10% OFF" // Aap isko static ya dynamic rakh sakte hain
+              discount: "12% OFF"
             });
           }
         });
         return results;
       });
-
       allLaptops = [...allLaptops, ...laptopsOnPage];
-      console.log(`Page ${i} se ${laptopsOnPage.length} laptops mile.`);
-      
-      // Amazon ko shak na ho, isliye har page ke baad 2 second ka gap
-      await new Promise(r => setTimeout(r, 2000));
-
-    } catch (err) {
-      console.log(`Page ${i} par error aaya, skip kar rahe hain.`, err.message);
+      await new Promise(r => setTimeout(r, 1000));
     }
+
+    fs.writeFileSync('laptops.json', JSON.stringify(allLaptops, null, 2));
+    console.log(`Mubarak ho! Total ${allLaptops.length} laptops save ho gaye.`);
+    await browser.close();
+  } catch (error) {
+    console.error("Error:", error.message);
+    process.exit(1);
   }
-
-  // Data ko JSON file me save karna
-  fs.writeFileSync('laptops.json', JSON.stringify(allLaptops, null, 2));
-  console.log(`Done! Total ${allLaptops.length} laptops ka data 'laptops.json' me save ho gaya.`);
-
-  await browser.close();
 }
-
 scrape1000Laptops();
