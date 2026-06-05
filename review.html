@@ -2,15 +2,48 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Laptop Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Review | KamBudgetDeals</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; color: #333; }
+        
+        /* Header & Navigation */
+        header { background-color: #101820; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 1.2rem; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9rem; }
+
+        /* Hero Section */
+        .hero { background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
+        .hero h1 { margin: 0 0 15px 0; font-size: 1.8rem; }
+        .hero p { opacity: 0.9; font-size: 1rem; }
+
+        /* Content Card */
+        .container { max-width: 600px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; }
+        #laptop-image { width: 100%; border-radius: 8px; }
+        .btn { display: block; background: #e67e22; color: white; padding: 12px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <div id="product-container" style="max-width: 600px; margin: auto; padding: 20px;">
-        <img id="laptop-image" src="" alt="Laptop" style="width: 100%;">
-        <h1 id="laptop-title">Loading...</h1>
+
+    <header>
+        <div class="logo">KamBudgetDeals<span style="color:#e67e22;">.in</span></div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About/Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Best Laptop Under 50000 (2026)</h1>
+        <p>Agar aapka budget limited hai aur aap ek premium performance wala value for money laptop khoj rahe hain, to aap sahi jagah aaye hain.</p>
+    </div>
+
+    <div class="container">
+        <img id="laptop-image" src="" alt="Laptop">
+        <h2 id="laptop-title">Loading...</h2>
         <p>Price: <strong id="laptop-price"></strong></p>
         <p id="laptop-review"></p>
-        <a id="amazon-link" href="#" target="_blank">Flipkart/Amazon par dekhein</a>
+        <a id="amazon-link" class="btn" href="#" target="_blank">Flipkart/Amazon par dekhein</a>
     </div>
 
     <script>
@@ -21,13 +54,16 @@
             .then(res => res.json())
             .then(data => {
                 const laptop = data[id];
-                document.getElementById('laptop-title').innerText = laptop.title;
-                document.getElementById('laptop-price').innerText = "₹" + laptop.price;
-                document.getElementById('laptop-image').src = laptop.image;
-                document.getElementById('amazon-link').href = laptop.amazonLink;
-                document.getElementById('laptop-review').innerText = 
-                    `Yeh ${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+                if(laptop) {
+                    document.getElementById('laptop-title').innerText = laptop.title;
+                    document.getElementById('laptop-price').innerText = "₹" + laptop.price;
+                    document.getElementById('laptop-image').src = laptop.image;
+                    document.getElementById('amazon-link').href = laptop.amazonLink;
+                    document.getElementById('laptop-review').innerText = 
+                        `Yeh ${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+                }
             });
     </script>
 </body>
 </html>
+
