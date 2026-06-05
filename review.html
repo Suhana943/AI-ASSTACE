@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Review</title>
+</head>
+<body>
+    <div id="product-container" style="max-width: 600px; margin: auto; padding: 20px;">
+        <img id="laptop-image" src="" alt="Laptop" style="width: 100%;">
+        <h1 id="laptop-title">Loading...</h1>
+        <p>Price: <strong id="laptop-price"></strong></p>
+        <p id="laptop-review"></p>
+        <a id="amazon-link" href="#" target="_blank">Flipkart/Amazon par dekhein</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        fetch('laptops.json')
+            .then(res => res.json())
+            .then(data => {
+                const laptop = data[id];
+                document.getElementById('laptop-title').innerText = laptop.title;
+                document.getElementById('laptop-price').innerText = "₹" + laptop.price;
+                document.getElementById('laptop-image').src = laptop.image;
+                document.getElementById('amazon-link').href = laptop.amazonLink;
+                document.getElementById('laptop-review').innerText = 
+                    `Yeh ${laptop.title} ek shaandaar choice hai. ${laptop.discount} discount ke saath ye ${laptop.price} mein mil raha hai, jo iski performance ko dekhte hue kaafi value-for-money hai.`;
+            });
+    </script>
+</body>
+</html>
