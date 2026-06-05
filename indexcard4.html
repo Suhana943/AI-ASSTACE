@@ -40,10 +40,39 @@
             .card-main-body { flex-direction: column; }
             .img-holder img { width: 100%; }
         }
+        .navbar { 
+        background-color: #1e293b; 
+        padding: 15px 20px; 
+        color: white; 
+        display: flex; 
+        align-items: center; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    .menu-icon { font-size: 24px; cursor: pointer; }
+    .nav-brand { margin-left: 15px; font-weight: 600; font-size: 1.2em; letter-spacing: 0.5px; }
+    
+    /* Simple Menu Overlay (Optional) */
+    .nav-links { display: flex; gap: 20px; margin-left: auto; }
+    .nav-links a { color: white; text-decoration: none; font-size: 0.9em; }
+
+    @media (max-width: 480px) {
+        .nav-links { display: none; } /* Mobile par links hide ho jayenge */
+    }
     </style>
 </head>
 <body>
-
+<div class="navbar">
+    <div class="menu-icon" onclick="alert('Menu open!')">☰</div>
+    <div class="nav-brand">LaptopTec</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
 <div class="laptop-item-card">
     <div class="card-main-body">
         <div class="img-holder">
