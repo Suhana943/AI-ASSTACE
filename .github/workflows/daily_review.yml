@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      # 1. Sabse pehle latest changes pull karein (Taaki history file update rahe)
+      # 1. Latest changes pull karein
       - name: Configure Git and Pull
         run: |
           git config --global user.name 'GitHub Action'
@@ -28,21 +28,26 @@ jobs:
       - name: Install dependencies
         run: pip install google-generativeai
         
+      # 2. Main review script chalayein
       - name: Run Python Script
         env:
           API_1: ${{ secrets.API_1 }}
         run: python script.py
+
+      # 3. Nayi file banne ke baad JSON sync karein
+      - name: Run JSON Sync Script
+        run: python sync_json.py
           
+      # 4. Commit and Push
       - name: Commit and Push
         run: |
-          # Add the new review files AND the history file
-          git add reviews/ reviewed_laptops.txt
+          # Add review folder, history, aur JSON file
+          git add reviews/ reviewed_laptops.txt laptops.json
           
           # Check if there are any changes to commit
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Auto Update: Added new laptop review and history"
+            git commit -m "Auto Update: Added new laptop review and synced JSON"
             git push
           else
-            echo "No new reviews generated, skipping commit."
+            echo "No new updates found, skipping commit."
           fi
-          
