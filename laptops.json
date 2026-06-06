@@ -1024,5 +1024,14 @@
         "image": "https://via.placeholder.com/800x400?text=Asus+TUF+Gaming+A15+2024",
         "amazonLink": "https://www.amazon.com/dp/B0CRDBZ4SZ",
         "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
+    },
+    {
+        "title": "Framework Laptop 13 (Intel Core Ultra) Review: The Ultimate Modular Ultraportable",
+        "price": "$1,399",
+        "oldPrice": "$1,499",
+        "discount": "7%",
+        "image": "https://via.placeholder.com/800x400?text=Framework+Laptop+13+Intel+Core+Ultra",
+        "amazonLink": "https://www.amazon.com/s?k=Framework+Laptop+13+Intel+Core+Ultra",
+        "review_link": "reviews/Framework_Laptop_13_(Intel_Core_Ultra)_Review:_The_Ultimate_Modular_Ultraportable.html"
     }
 ]
