@@ -4,7 +4,7 @@ import os
 
 def update_laptops_data():
     # API key ko environment variable se lein (GitHub Secrets mein store karein)
-    API_KEY = os.environ.get('BROWSERLESS_TOKEN') 
+    API_KEY = os.environ.get('API_KEY') 
     
     if not API_KEY:
         print("Error: API_KEY set nahi hai!")
