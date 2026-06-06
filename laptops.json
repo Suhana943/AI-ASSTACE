@@ -1014,6 +1014,15 @@
         "discount": "12%",
         "image": "https://via.placeholder.com/800x400?text=ASUS+ROG+Strix+Scar+16+2024",
         "amazonLink": "https://www.amazon.com/ASUS-GeForce-Windows-G634JYR-XS96-Scar/dp/B0CSD8P6P5",
-        "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
+        "review_link": "reviews/ASUS_ROG_Strix_Scar_16_(2024)_Review:_The_Ultimate_High-End_Gaming_Powerhouse.html"
+    },
+    {
+        "title": "Asus TUF Gaming A15 (2024) Review: The Ultimate Mid-Range Gaming Champion",
+        "price": "$1,399.99",
+        "oldPrice": "$1,499.99",
+        "discount": "7%",
+        "image": "https://via.placeholder.com/800x400?text=Asus+TUF+Gaming+A15+2024",
+        "amazonLink": "https://www.amazon.com/dp/B0CRDBZ4SZ",
+        "review_link": "reviews/Asus_TUF_Gaming_A15_(2024)_Review:_The_Ultimate_Mid-Range_Gaming_Champion.html"
     }
 ]
