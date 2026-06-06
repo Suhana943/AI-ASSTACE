@@ -5,21 +5,22 @@ from datetime import datetime
 
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
+# Model name fix kiya (gemini-1.5-flash)
 model = genai.GenerativeModel('gemini-3.5-flash')
 
 HISTORY_FILE = "reviewed_laptops.txt"
 
-# 2. History Load karna
+# 2. History read karna
 def get_history():
     if os.path.exists(HISTORY_FILE):
         with open(HISTORY_FILE, "r") as f:
-            return [line.strip() for line in f.readlines()]
+            return [line.strip().lower() for line in f.readlines()]
     return []
 
 reviewed_list = get_history()
 exclude_string = ", ".join(reviewed_list) if reviewed_list else "None"
 
-# 3. Prompt (Excluded list ke sath)
+# 3. Prompt
 prompt = f"""
 Write a professional review for a popular trending laptop.
 IMPORTANT: Do NOT review any of these laptops: {exclude_string}.
@@ -40,41 +41,24 @@ Structure:
 """
 
 try:
-    # --- Ye History wala function add karo ---
-def check_duplicate(laptop_name):
-    if os.path.exists("reviewed_laptops.txt"):
-        with open("reviewed_laptops.txt", "r") as f:
-            history = f.read().lower()
-            return laptop_name.lower() in history
-    return False
-
-# --- Content generate hone ke baad ye logic lagao ---
-# ... (Jab AI se response aa jaye) ...
-laptop_name = data['title']
-
-if check_duplicate(laptop_name):
-    print(f"Skipping {laptop_name}, already reviewed.")
-else:
-    # --- Yahan apna HTML file save karne wala code daal do ---
-    
-    # Aur end mein history update karo
-    with open("reviewed_laptops.txt", "a") as f:
-        f.write(f"{laptop_name}\n")
-    print("New laptop reviewed and saved!")
-    
+    # 4. Content generation
     response = model.generate_content(prompt)
     json_text = response.text.replace("```json", "").replace("```", "").strip()
     data = json.loads(json_text)
     
     laptop_name = data['title']
 
-    # 4. HTML Components
-    specs_html = "".join([f"<tr><td><strong>{k}</strong></td><td>{v}</td></tr>" for k, v in data['specs'].items()])
-    pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
-    cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
+    # 5. Duplicate Check (Ab ye sahi jagah hai, data milne ke baad)
+    if laptop_name.lower() in reviewed_list:
+        print(f"Skipping {laptop_name}, already reviewed.")
+    else:
+        # HTML Components generate karein
+        specs_html = "".join([f"<tr><td><strong>{k}</strong></td><td>{v}</td></tr>" for k, v in data['specs'].items()])
+        pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
+        cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
 
-    # 5. HTML Template
-    html_content = f"""<!DOCTYPE html>
+        # HTML Template
+        html_content = f"""<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -108,19 +92,20 @@ else:
 </body>
 </html>"""
 
-    # 6. Save File
-    if not os.path.exists('reviews'): os.makedirs('reviews')
-    filename = f"reviews/{laptop_name.replace(' ', '_')}.html"
-    
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write(html_content)
+        # 6. Save File
+        if not os.path.exists('reviews'): os.makedirs('reviews')
+        filename = f"reviews/{laptop_name.replace(' ', '_')}.html"
+        
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html_content)
 
-    # 7. Update History
-    with open(HISTORY_FILE, "a") as f:
-        f.write(f"{laptop_name}\n")
-    
-    print(f"Success! Review saved: {filename}")
-    print(f"Added {laptop_name} to history.")
+        # 7. Update History
+        with open(HISTORY_FILE, "a") as f:
+            f.write(f"{laptop_name}\n")
+        
+        print(f"Success! Review saved: {filename}")
+        print(f"Added {laptop_name} to history.")
 
 except Exception as e:
     print(f"Error: {e}")
+        
