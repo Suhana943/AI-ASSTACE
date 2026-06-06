@@ -873,5 +873,14 @@
         "image": "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
         "amazonLink": "https://www.amazon.com/dp/B0D1898W9G",
         "review_link": "reviews/Microsoft_Surface_Pro_11_Review:_The_Ultimate_Copilot+_2-in-1_Experience.html"
+    },
+    {
+        "title": "LG Gram Pro 16 (2024) Review: The Ultimate Featherweight Productivity Powerhouse",
+        "price": "$1,899.99",
+        "oldPrice": "$2,199.99",
+        "discount": "14%",
+        "image": "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
+        "amazonLink": "https://www.amazon.com/dp/B0CX2YMR6S",
+        "review_link": "reviews/LG_Gram_Pro_16_(2024)_Review:_The_Ultimate_Featherweight_Productivity_Powerhouse.html"
     }
 ]
