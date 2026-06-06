@@ -14,6 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # --- DEBUG STEP: Ye batayega files kahan hain ---
+      - name: List files (Debug)
+        run: ls -R
+
       # 1. Scraping Step
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,16 +44,19 @@ jobs:
         env:
           API_1: ${{ secrets.API_1 }}
 
-      # 3. Final Commit (Laptops.json aur Reviews folder dono save honge)
+      # 3. Final Commit
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "actions@github.com"
           
-          # Add changes (json + reviews folder)
-          git add laptops.json reviews/
+          # Check karein ki files exist karti hain
+          if [ -d "reviews" ]; then
+            git add laptops.json reviews/
+          else
+            git add laptops.json
+          fi
           
-          # Commit only if there are changes
           git commit -m "Auto-update: Scraped laptops and generated new reviews" || echo "No changes to commit"
           git push
           
