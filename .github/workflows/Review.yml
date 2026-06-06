@@ -1,6 +1,49 @@
+name: Laptop Review Workflow
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai
+
       - name: Run Python Script
         env:
           API_1: ${{ secrets.API_1 }}
         run: |
           python Update_json.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+
+          # Check karein ki file modify hui hai ya nahi
+          if [[ -n $(git status --porcelain) ]]; then
+            git add laptops.json
+            git commit -m "Auto Update: Update_json.py ran successfully"
+            git push origin main
+          else
+            echo "Koi changes nahi mili, commit karne ki zaroorat nahi hai."
+          fi
           
