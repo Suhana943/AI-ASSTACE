@@ -855,5 +855,14 @@
         "image": "https://m.media-amazon.com/images/I/718t4K1eFAL._AC_SL1500_.jpg",
         "amazonLink": "https://www.amazon.com/dp/B0CXF1G9W9",
         "review_link": "reviews/HP_Omen_Transcend_14_(2024)_Review:_The_Ultimate_Thin-and-Light_Gaming_Marvel.html"
+    },
+    {
+        "title": "Acer Predator Helios 16 (2024) Review: The Ultimate High-Performance Gaming Beast",
+        "price": "$1,899.99",
+        "oldPrice": "$2,299.99",
+        "discount": "17% off",
+        "image": "https://via.placeholder.com/800x400?text=Acer+Predator+Helios+16+2024",
+        "amazonLink": "https://www.amazon.com/Acer-Predator-Helios-Gaming-Laptop/dp/B0CTD1M196",
+        "review_link": "reviews/Acer_Predator_Helios_16_(2024)_Review:_The_Ultimate_High-Performance_Gaming_Beast.html"
     }
 ]
