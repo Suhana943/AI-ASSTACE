@@ -919,5 +919,14 @@
         "image": "https://via.placeholder.com/800x400?text=Dell+XPS+14+2024+OLED",
         "amazonLink": "https://www.amazon.com/dp/B0D1CY8P2C",
         "review_link": "reviews/Dell_XPS_14_(2024)_Review:_A_Futuristic_Vision_of_Premium_Performance.html"
+    },
+    {
+        "title": "ASUS Zenbook Duo (2024) UX8406 Review: The Dual-Screen Productivity Revolution",
+        "price": "$1,499.99",
+        "oldPrice": "$1,699.99",
+        "discount": "12%",
+        "image": "https://via.placeholder.com/800x400?text=ASUS+Zenbook+Duo+2024+UX8406",
+        "amazonLink": "https://www.amazon.com/ASUS-Zenbook-UX8406-Processor-UX8406MA-DS91T/dp/B0CTD1GG87",
+        "review_link": "reviews/ASUS_Zenbook_Duo_(2024)_UX8406_Review:_The_Dual-Screen_Productivity_Revolution.html"
     }
 ]
