@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 # API Configuration
 genai.configure(api_key=os.environ["API_1"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-3.5-flash')
 
 def generate_review_html(laptop):
     print(f"Generating review for: {laptop['title'][:30]}...")
