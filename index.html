@@ -603,57 +603,48 @@
     }
 
     // 2. Amazon Laptops Dynamic Loader
-    document.addEventListener("DOMContentLoaded", () => {
-        fetch('laptops.json')
-            .then(response => response.json())
-            .then(laptops => {
-                const container = document.getElementById('laptopContainer');
-                if (!container) return; 
-                
-                container.innerHTML = ''; // Purana loading text saaf karne ke liye
+    // Amazon Laptops Dynamic Loader
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('laptops.json')
+        .then(response => response.json())
+        .then(laptops => {
+            const container = document.getElementById('laptopContainer');
+            if (!container) return; 
+            
+            container.innerHTML = ''; 
 
-                laptops.forEach((laptop, index) => {
-                    container.innerHTML += `
-                        <div class="laptop-item-card">
-                            <div class="card-main-body">
-                                <div class="img-holder">
-                                    <img src="${laptop.image}" alt="${laptop.title}">
-                                </div>
-                                <div class="details-holder">
-                                    <div class="item-name">${laptop.title}</div>
-                                    <div class="badge-discount">${laptop.discount || '6% OFF'}</div>
-                                    <div class="price-container">
-                                        <span class="price-current">₹${laptop.price}</span>
-                                        <span class="price-original">₹${laptop.oldPrice || ''}</span>
-                                    </div>
-                                    <div class="compare-checkbox-row">
-                                        <input type="checkbox" id="comp-${index}">
-                                        <label for="comp-${index}">Add to compare</label>
-                                    </div>
-                                    <img class="brand-affiliate-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            laptops.forEach((laptop, index) => {
+                // Agar review_link missing hai toh '#' use karein
+                const reviewUrl = laptop.review_link || '#';
+
+                container.innerHTML += `
+                    <div class="laptop-item-card">
+                        <div class="card-main-body">
+                            <div class="img-holder">
+                                <img src="${laptop.image}" alt="${laptop.title}">
+                            </div>
+                            <div class="details-holder">
+                                <div class="item-name">${laptop.title}</div>
+                                <div class="badge-discount">${laptop.discount || '6% OFF'}</div>
+                                <div class="price-container">
+                                    <span class="price-current">₹${laptop.price}</span>
+                                    <span class="price-original">₹${laptop.oldPrice || ''}</span>
                                 </div>
                             </div>
-                            <div class="card-actions-row">
-
- 
-<a href="${laptop.review_link}" class="action-btn btn-learn">Learn More</a>
-
-
-    <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
-</div>
-
                         </div>
-                    `;
-                });
-            })
-            .catch(err => {
-                console.error("JSON file load nahi ho payi:", err);
-                const container = document.getElementById('laptopContainer');
-                if(container) {
-                    container.innerHTML = '<p style="padding:20px; text-align:center; color:red;">Laptops load karne me dikkat aayi. Kripya thodi der baad refresh karein.</p>';
-                }
+                        <div class="card-actions-row">
+                            <a href="${reviewUrl}" class="action-btn btn-learn">Learn More</a>
+                            <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
+                        </div>
+                    </div>
+                `;
             });
+        })
+        .catch(err => {
+            console.error("Error loading JSON:", err);
         });
+});
+    
 </script>
     
 </body>
