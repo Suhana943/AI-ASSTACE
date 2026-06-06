@@ -1,4 +1,4 @@
-name: Laptop Review Workflow
+name: Laptop Review 
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
         run: |
           python update_json.py
 
-            - name: Commit and Push Changes
+      - name: Commit and Push Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
@@ -43,7 +43,7 @@ jobs:
             git add laptops.json
             git commit -m "Auto Update: Update_json.py ran successfully"
             
-            # Ye line crucial hai: Server ke changes ko local ke saath merge karega
+            # Server ke changes ko local ke saath merge karega
             git pull --rebase origin main
             
             # Ab push karein
