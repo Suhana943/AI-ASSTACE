@@ -69,32 +69,44 @@ try:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{data['title']} - Review</title>
+    <title>{data['title']} - Review | LaptopTec.online</title>
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; margin: 0; padding: 20px; }}
-        .container {{ max-width: 800px; margin: auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }}
-        h1 {{ color: #1a1a1a; font-size: 28px; margin-bottom: 10px; }}
-        .product-img {{ width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid #ddd; }}
-        .buy-btn {{ display: block; background: #ff9f00; color: #fff; text-align: center; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 8px; margin: 20px 0; font-size: 18px; }}
+        body {{ font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; margin: 0; padding: 0; }}
+        
+        /* Branding Header */
+        header {{ background: #1a1a1a; color: #ff9f00; padding: 20px; text-align: center; font-size: 24px; font-weight: bold; border-bottom: 4px solid #ff9f00; }}
+        
+        /* Full Width Container */
+        .container {{ width: 95%; max-width: 1200px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }}
+        
+        h1 {{ color: #1a1a1a; font-size: 32px; margin-bottom: 20px; }}
+        .product-img {{ width: 100%; max-width: 600px; border-radius: 8px; margin: 20px 0; display: block; border: 1px solid #ddd; }}
+        
+        .buy-btn {{ display: inline-block; background: #ff9f00; color: #fff; padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; transition: 0.3s; }}
         .buy-btn:hover {{ background: #e68e00; }}
-        .section-title {{ font-size: 22px; color: #333; margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }}
-        table {{ width: 100%; border-collapse: collapse; margin-top: 15px; }}
-        td {{ padding: 12px; border-bottom: 1px solid #eee; }}
-        .pros {{ background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #4caf50; }}
-        .cons {{ background: #ffebee; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #f44336; }}
+        
+        .section-title {{ font-size: 26px; color: #2c3e50; margin-top: 40px; border-bottom: 2px solid #ff9f00; padding-bottom: 10px; }}
+        table {{ width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }}
+        td {{ padding: 15px; border-bottom: 1px solid #eee; }}
+        
+        .pros, .cons {{ padding: 25px; border-radius: 8px; margin: 20px 0; }}
+        .pros {{ background: #f1f8e9; border-left: 6px solid #4caf50; }}
+        .cons {{ background: #fff5f5; border-left: 6px solid #f44336; }}
+        
         ul {{ padding-left: 20px; }}
-        li {{ margin-bottom: 8px; }}
-        .verdict {{ font-style: italic; color: #555; background: #f9f9f9; padding: 15px; border-radius: 8px; }}
-        .rating {{ font-size: 20px; font-weight: bold; color: #d32f2f; margin-top: 20px; }}
+        li {{ margin-bottom: 10px; font-size: 16px; }}
+        .verdict {{ font-style: italic; color: #444; background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }}
+        .rating {{ font-size: 24px; font-weight: bold; color: #d32f2f; margin-top: 25px; }}
     </style>
 </head>
 <body>
+    <header>laptoptec.online</header>
     <div class="container">
         <h1>{data['title']}</h1>
         <img src="{data['image_url']}" alt="{data['title']}" class="product-img">
         <a href="{data['amazon_link']}" class="buy-btn" target="_blank">🛒 Buy Now on Amazon</a>
         
-        <p>{data['intro']}</p>
+        <p style="font-size: 18px;">{data['intro']}</p>
         
         <h2 class="section-title">📋 Specifications</h2>
         <table>{specs_html}</table>
@@ -112,12 +124,13 @@ try:
         <h2 class="section-title">⚖️ Verdict</h2>
         <div class="verdict"><p>{data['verdict_intro']}</p></div>
         
-        <p><strong>💡 Pro-Tip:</strong> {data['pro_tip']}</p>
-        <p class="rating">Rating: {data['rating']}</p>
+        <p style="margin-top:20px;"><strong>💡 Pro-Tip:</strong> {data['pro_tip']}</p>
+        <p class="rating">Rating: {data['rating']}/10</p>
     </div>
 </body>
 </html>
 """
+    
 
 
         with open(filename, 'w', encoding='utf-8') as f:
