@@ -882,5 +882,14 @@
         "image": "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
         "amazonLink": "https://www.amazon.com/dp/B0CX2YMR6S",
         "review_link": "reviews/LG_Gram_Pro_16_(2024)_Review:_The_Ultimate_Featherweight_Productivity_Powerhouse.html"
+    },
+    {
+        "title": "Dell XPS 16 (2024) Review: The Ultimate Large-Screen Premium Powerhouse",
+        "price": "$2,549.00",
+        "oldPrice": "$2,899.00",
+        "discount": "12%",
+        "image": "https://via.placeholder.com/800x400?text=Dell+XPS+16+2024+Image+Unavailable",
+        "amazonLink": "https://www.amazon.com/dp/B0CX299L3L",
+        "review_link": "reviews/Dell_XPS_16_(2024)_Review:_The_Ultimate_Large-Screen_Premium_Powerhouse.html"
     }
 ]
