@@ -33,15 +33,20 @@ jobs:
         run: |
           python update_json.py
 
-      - name: Commit and Push Changes
+            - name: Commit and Push Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
-          # Check karein ki file modify hui hai ya nahi
+          # Check karein ki file change hui hai ya nahi
           if [[ -n $(git status --porcelain) ]]; then
             git add laptops.json
             git commit -m "Auto Update: Update_json.py ran successfully"
+            
+            # Ye line crucial hai: Server ke changes ko local ke saath merge karega
+            git pull --rebase origin main
+            
+            # Ab push karein
             git push origin main
           else
             echo "Koi changes nahi mili, commit karne ki zaroorat nahi hai."
