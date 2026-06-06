@@ -4,7 +4,8 @@ import google.generativeai as genai
 
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
-model = genai.GenerativeModel('gemini-3.5-flash')
+# Model name fix: 3.5 nahi, 1.5 use karein
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 HISTORY_FILE = "reviewed_laptops.txt"
 JSON_FILE = "laptops.json"
@@ -54,7 +55,7 @@ try:
     if laptop_name.lower() in reviewed_list:
         print(f"Skipping {laptop_name}, already reviewed.")
     else:
-        # A. HTML Generation (Using your nice design)
+        # A. HTML Generation
         if not os.path.exists('reviews'): os.makedirs('reviews')
         filename = f"reviews/{laptop_name.replace(' ', '_')}.html"
         
