@@ -31,7 +31,7 @@ jobs:
         env:
           API_1: ${{ secrets.API_1 }}
         run: |
-          python Update_json.py
+          python update_json.py
 
       - name: Commit and Push Changes
         run: |
