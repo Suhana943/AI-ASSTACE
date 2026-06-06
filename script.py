@@ -33,7 +33,7 @@ Structure:
     "price": "...",
     "oldPrice": "...",
     "discount": "...",
-    "intro": "Write a 3-sentence intro.",
+    "intro": "Write a 9-sentence intro.",
     "specs": {{"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "..."}},
     "pros": ["...", "..."],
     "cons": ["...", "..."],
@@ -63,35 +63,62 @@ try:
         pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
         cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
 
-        html_content = f"""<!DOCTYPE html>
-<html lang="hi">
-<head><meta charset="UTF-8"><title>{data['title']} - Review</title>
-<style>
-    body {{ font-family: sans-serif; background: #f4f4f4; padding: 20px; }}
-    .container {{ max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; }}
-    .product-img {{ width: 100%; max-width: 400px; display: block; margin: 20px auto; border-radius: 10px; }}
-    .buy-btn {{ display: block; width: 220px; margin: 20px auto; padding: 15px; background: #ff9f00; color: white; text-align: center; text-decoration: none; font-weight: bold; border-radius: 8px; }}
-    .spec-table {{ width: 100%; border-collapse: collapse; margin: 20px 0; }}
-    .spec-table td {{ padding: 12px; border-bottom: 1px solid #eee; }}
-    .pros {{ background: #e8f5e9; padding: 20px; margin: 20px 0; }}
-    .cons {{ background: #ffebee; padding: 20px; margin: 20px 0; }}
-</style></head>
+        html_content = f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{data['title']} - Review</title>
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; margin: 0; padding: 20px; }}
+        .container {{ max-width: 800px; margin: auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }}
+        h1 {{ color: #1a1a1a; font-size: 28px; margin-bottom: 10px; }}
+        .product-img {{ width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid #ddd; }}
+        .buy-btn {{ display: block; background: #ff9f00; color: #fff; text-align: center; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 8px; margin: 20px 0; font-size: 18px; }}
+        .buy-btn:hover {{ background: #e68e00; }}
+        .section-title {{ font-size: 22px; color: #333; margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }}
+        table {{ width: 100%; border-collapse: collapse; margin-top: 15px; }}
+        td {{ padding: 12px; border-bottom: 1px solid #eee; }}
+        .pros {{ background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #4caf50; }}
+        .cons {{ background: #ffebee; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #f44336; }}
+        ul {{ padding-left: 20px; }}
+        li {{ margin-bottom: 8px; }}
+        .verdict {{ font-style: italic; color: #555; background: #f9f9f9; padding: 15px; border-radius: 8px; }}
+        .rating {{ font-size: 20px; font-weight: bold; color: #d32f2f; margin-top: 20px; }}
+    </style>
+</head>
 <body>
     <div class="container">
         <h1>{data['title']}</h1>
         <img src="{data['image_url']}" alt="{data['title']}" class="product-img">
         <a href="{data['amazon_link']}" class="buy-btn" target="_blank">🛒 Buy Now on Amazon</a>
+        
         <p>{data['intro']}</p>
-        <h2>📋 Specifications</h2>
-        <table class="spec-table">{specs_html}</table>
-        <div class="pros"><h3>✅ Pros</h3><ul>{pros_html}</ul></div>
-        <div class="cons"><h3>❌ Cons</h3><ul>{cons_html}</ul></div>
-        <h3>⚖️ Verdict</h3>
-        <p>{data['verdict_intro']}</p>
+        
+        <h2 class="section-title">📋 Specifications</h2>
+        <table>{specs_html}</table>
+        
+        <div class="pros">
+            <h3>✅ Pros</h3>
+            <ul>{pros_html}</ul>
+        </div>
+        
+        <div class="cons">
+            <h3>❌ Cons</h3>
+            <ul>{cons_html}</ul>
+        </div>
+        
+        <h2 class="section-title">⚖️ Verdict</h2>
+        <div class="verdict"><p>{data['verdict_intro']}</p></div>
+        
         <p><strong>💡 Pro-Tip:</strong> {data['pro_tip']}</p>
-        <p><strong>Rating: {data['rating']}</strong></p>
+        <p class="rating">Rating: {data['rating']}</p>
     </div>
-</body></html>"""
+</body>
+</html>
+"""
+
 
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(html_content)
