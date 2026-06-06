@@ -5,13 +5,13 @@ from datetime import datetime
 
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.generativeai.GenerativeModel('gemini-1.5-flash')
 
-# 2. AI se Structured JSON mangwane ke liye Prompt
+# 2. Prompt: AI ko strict JSON ke liye instruction
 prompt = """
 Ek naye trending laptop ka professional review likho.
 Output ONLY JSON format, koi extra text nahi.
-Structure:
+Structure (JSON format mein hi dena):
 {
     "title": "String",
     "intro": "String (Short para)",
@@ -27,25 +27,28 @@ Structure:
 """
 
 try:
+    # 3. Content generation
     response = model.generate_content(prompt)
-    json_text = response.text.replace("```json", "").replace("
-```", "").strip()
+    
+    # Error Fix: String ko ek hi line mein rakha gaya hai
+    json_text = response.text.replace("```json", "").replace("```", "").strip()
+    
+    # JSON parsing
     data = json.loads(json_text)
 
-    # 3. Dynamic HTML components generate karna
+    # 4. Dynamic HTML components
     specs_html = "".join([f"<tr><td><strong>{k}</strong></td><td>{v}</td></tr>" for k, v in data['specs'].items()])
     pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
     cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
     audience_html = "".join([f"<li><strong>{a}</strong></li>" for a in data['target_audience']])
 
-    # 4. Aapka Design Template (f-string)
+    # 5. HTML Template
     html_content = f"""<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <title>{data['title']} - Professional Review</title>
     <style>
-        /* CSS Wahi hai jo aapne di thi */
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: sans-serif; line-height: 1.8; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 20px; }}
         .container {{ max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }}
@@ -85,7 +88,7 @@ try:
 </body>
 </html>"""
 
-    # 5. File Save karna
+    # 6. File Save karna
     if not os.path.exists('reviews'): os.makedirs('reviews')
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     filename = f"reviews/laptop-{timestamp}.html"
@@ -97,3 +100,4 @@ try:
 
 except Exception as e:
     print(f"Error: {e}")
+        
