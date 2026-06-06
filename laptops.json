@@ -801,5 +801,14 @@
         "image": "https://m.media-amazon.com/images/I/719f9OitS1L._AC_SL1500_.jpg",
         "amazonLink": "https://www.amazon.com/Razer-Blade-Gaming-Laptop-2024/dp/B0CQD6688W",
         "review_link": "reviews/Razer_Blade_16_(2024)_Review:_The_Ultimate_High-End_Gaming_Beast.html"
+    },
+    {
+        "title": "HP Envy x360 14 (2024) Review: The Smart Premium Convertible for Everyone",
+        "price": "$849.99",
+        "oldPrice": "$1,049.99",
+        "discount": "19%",
+        "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=1000",
+        "amazonLink": "https://www.amazon.com/dp/B0D1YCS963",
+        "review_link": "reviews/HP_Envy_x360_14_(2024)_Review:_The_Smart_Premium_Convertible_for_Everyone.html"
     }
 ]
