@@ -5,7 +5,7 @@ from datetime import datetime
 
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
-model = genai.generativeai.GenerativeModel('gemini-3.5-flash')
+model = genai.generativeai.GenerativeModel('Gemini 3.5 Flash')
 
 # 2. Prompt: AI ko strict JSON ke liye instruction
 prompt = """
