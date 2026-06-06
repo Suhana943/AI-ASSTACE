@@ -28,7 +28,8 @@ Output ONLY JSON format, no extra text.
 Structure:
 {{
     "title": "...",
-    "image_url": "Provide direct link to an image of the laptop",
+    "image_url": "Provide a direct URL to a high-quality image of the laptop. If you cannot find a direct image link, return: https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
+
     "amazon_link": "Provide the direct URL to the product on Amazon",
     "price": "...",
     "oldPrice": "...",
@@ -91,7 +92,7 @@ try:
     
     <div class="container">
         <h1>{data['title']}</h1>
-        <img src="{data['image_url']}" alt="{data['title']}" class="product-img">
+        <img src="{data['image_url']}" alt="{data['title']}" class="product-img" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400?text=Image+Unavailable';">
         <a href="{data['amazon_link']}" class="buy-btn" target="_blank">🛒 Buy Now on Amazon</a>
         <p style="font-size: 18px;">{data['intro']}</p>
         <h2 class="section-title">📋 Specifications</h2>
