@@ -13,10 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      # --- DEBUG STEP: Ye batayega files kahan hain ---
-      - name: List files (Debug)
-        run: ls -R
+        with:
+          fetch-depth: 0 # Git history access ke liye zaroori hai
 
       # 1. Scraping Step
       - name: Setup Node.js
@@ -44,19 +42,23 @@ jobs:
         env:
           API_1: ${{ secrets.API_1 }}
 
-      # 3. Final Commit
+      # 3. Final Commit and Push
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "actions@github.com"
           
-          # Check karein ki files exist karti hain
-          if [ -d "reviews" ]; then
-            git add laptops.json reviews/
-          else
-            git add laptops.json
-          fi
+          # Pull latest changes pehle, taaki conflict na ho
+          git pull --rebase origin main
           
-          git commit -m "Auto-update: Scraped laptops and generated new reviews" || echo "No changes to commit"
-          git push
+          # Add changes
+          git add laptops.json reviews/
+          
+          # Commit only if there are changes
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-update: Laptops and Reviews"
+            git push origin main
+          else
+            echo "No changes to commit, skipping."
+          fi
           
