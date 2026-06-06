@@ -1,28 +1,43 @@
 name: Laptop Scraper
+
 on:
   schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *' # Runs daily at midnight
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Required to push changes back to the repo
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-python@v4
-        with: {python-version: '3.11'}
-      - run: pip install google-generativeai
+        with: 
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install google-generativeai
+        
       - name: Run Python Script
         env:
           API_1: ${{ secrets.API_1 }}
         run: python script.py
+        
       - name: Commit and Push
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
-          git add .
-          git commit -m "Auto Update Laptop Data" || exit 0
-          git push
+          
+          # Add the new review files
+          git add reviews/
+          
+          # Check if there are any changes to commit
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Auto Update: Added new laptop review"
+            git push
+          else
+            echo "No new reviews generated, skipping commit."
+          fi
           
