@@ -5,7 +5,7 @@ from datetime import datetime
 
 # API Setup
 genai.configure(api_key=os.environ["API_1"])
-model = genai.GenerativeModel('gemini-3.5-flash-latest')
+model = genai.GenerativeModel('gemini-3.5-flash')
 
 # Strict Prompt
 prompt = """
