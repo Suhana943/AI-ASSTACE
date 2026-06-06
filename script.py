@@ -5,7 +5,7 @@ import google.generativeai as genai
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
 # Model name fix: 1.5-flash
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-3.5-flash')
 
 HISTORY_FILE = "reviewed_laptops.txt"
 JSON_FILE = "laptops.json"
