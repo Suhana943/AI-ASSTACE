@@ -132,15 +132,14 @@ try:
 </body>
 </html>
 """
-    
+def generate_review():
+    # Poora code 4 spaces andar hona chahiye
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(html_content)
 
-
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-
-        # B. History Update
-        with open(HISTORY_FILE, "a") as f:
-            f.write(f"{laptop_name}\n")
+    # Yeh bhi isi level par hona chahiye
+    with open(HISTORY_FILE, "a") as f:
+        f.write(f"{laptop_name}\n")
         
         # C. JSON Update
         if os.path.exists(JSON_FILE):
