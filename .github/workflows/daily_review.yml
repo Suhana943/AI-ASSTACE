@@ -13,7 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: actions/setup-python@v4
+      # 1. Sabse pehle latest changes pull karein (Taaki history file update rahe)
+      - name: Configure Git and Pull
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git pull origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with: 
           python-version: '3.11'
           
@@ -24,18 +32,15 @@ jobs:
         env:
           API_1: ${{ secrets.API_1 }}
         run: python script.py
-        
+          
       - name: Commit and Push
         run: |
-          git config user.name 'github-actions'
-          git config user.email 'github-actions@github.com'
-          
-          # Add the new review files
-          git add reviews/
+          # Add the new review files AND the history file
+          git add reviews/ reviewed_laptops.txt
           
           # Check if there are any changes to commit
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Auto Update: Added new laptop review"
+            git commit -m "Auto Update: Added new laptop review and history"
             git push
           else
             echo "No new reviews generated, skipping commit."
