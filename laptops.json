@@ -828,5 +828,14 @@
         "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
         "amazonLink": "https://www.amazon.com/dp/B0CM59C246",
         "review_link": "reviews/Apple_MacBook_Pro_14-inch_(M3_Pro,_Late_2023)_Review:_Unmatched_Efficiency_and_Performance_for_Creatives.html"
+    },
+    {
+        "title": "HP OmniBook Ultra 14 (2024) Review: The Ultimate AMD Ryzen AI Powerhouse",
+        "price": "$1,449.99",
+        "oldPrice": "$1,599.99",
+        "discount": "9%",
+        "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302",
+        "amazonLink": "https://www.amazon.com/dp/B0DGDLRNZB",
+        "review_link": "reviews/HP_OmniBook_Ultra_14_(2024)_Review:_The_Ultimate_AMD_Ryzen_AI_Powerhouse.html"
     }
 ]
