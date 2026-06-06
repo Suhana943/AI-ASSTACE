@@ -42,18 +42,15 @@ jobs:
 
       - name: Commit and Push
         run: |
-          # 1. Check karo ki koi badlav hua hai ya nahi
-          if [ -n "$(git status --porcelain)" ]; then
-            git add reviews/ reviewed_laptops.txt laptops.json
-            git commit -m "Auto Update: New Review + JSON Sync"
-            
-            # 2. Push karne se pehle latest changes pull karo (Rebase mode mein)
-            # --rebase se commit history saaf rehti hai
-            git pull --rebase origin main
-            
-            # 3. Ab push karo
-            git push origin main
-          else
-            echo "No changes found, skipping commit."
-          fi
+          # 1. Sabse pehle local changes ko commit karein
+          git add reviews/ reviewed_laptops.txt laptops.json
+          # Agar koi badlav nahi hai toh commit skip karein
+          git commit -m "Auto Update: New Review + JSON Sync" || echo "No changes to commit"
+          
+          # 2. Rebase karte waqt '-X theirs' ka use karein.
+          # Ye conflict hone par script wala data hi rakhega.
+          git pull --rebase -X theirs origin main
+          
+          # 3. Ab push karein
+          git push origin main
           
