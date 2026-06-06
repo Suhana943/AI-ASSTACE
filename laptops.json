@@ -910,5 +910,14 @@
         "image": "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
         "amazonLink": "https://www.amazon.com/dp/B0CX26R3K8",
         "review_link": "reviews/Lenovo_Yoga_7i_2-in-1_(14-inch,_2024)_Review:_The_Ultimate_Mid-Range_Convertible_Champion.html"
+    },
+    {
+        "title": "Dell XPS 14 (2024) Review: A Futuristic Vision of Premium Performance",
+        "price": "$1,699.00",
+        "oldPrice": "$1,999.00",
+        "discount": "15%",
+        "image": "https://via.placeholder.com/800x400?text=Dell+XPS+14+2024+OLED",
+        "amazonLink": "https://www.amazon.com/dp/B0D1CY8P2C",
+        "review_link": "reviews/Dell_XPS_14_(2024)_Review:_A_Futuristic_Vision_of_Premium_Performance.html"
     }
 ]
