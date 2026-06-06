@@ -25,6 +25,11 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
+      # --- NAYA STEP: Pull changes BEFORE running script ---
+      - name: Sync with Remote
+        run: |
+          git pull --rebase origin main
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -40,17 +45,17 @@ jobs:
         run: |
           python script.py
 
+      # --- UPDATED STEP: Robust Commit and Push ---
       - name: Commit and Push
         run: |
-          # 1. Sabse pehle local changes ko commit karein
           git add reviews/ reviewed_laptops.txt laptops.json
-          # Agar koi badlav nahi hai toh commit skip karein
+          # Commit only if there are changes
           git commit -m "Auto Update: New Review + JSON Sync" || echo "No changes to commit"
           
-          # 2. Rebase karte waqt '-X theirs' ka use karein.
-          # Ye conflict hone par script wala data hi rakhega.
+          # Pull again before pushing to catch any race conditions, 
+          # using '-X theirs' to prioritize your script's output
           git pull --rebase -X theirs origin main
           
-          # 3. Ab push karein
+          # Push the changes
           git push origin main
           
