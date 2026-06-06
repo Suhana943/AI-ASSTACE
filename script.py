@@ -28,18 +28,18 @@ Output ONLY JSON format, no extra text.
 Structure:
 {{
     "title": "...",
-    "image_url": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=600",
-    "amazon_link": "https://www.amazon.in/",
-    "price": "99,999",
-    "oldPrice": "1,20,000",
-    "discount": "15% OFF",
+    "image_url": "Provide direct link to an image of the laptop",
+    "amazon_link": "Provide the direct URL to the product on Amazon",
+    "price": "...",
+    "oldPrice": "...",
+    "discount": "...",
     "intro": "Write a 3-sentence intro.",
     "specs": {{"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "..."}},
     "pros": ["...", "..."],
     "cons": ["...", "..."],
     "verdict_intro": "...",
     "pro_tip": "...",
-    "rating": "4.5/5"
+    "rating": "..."
 }}
 """
 
