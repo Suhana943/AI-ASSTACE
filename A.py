@@ -3,48 +3,40 @@ import json
 import os
 
 def update_laptops_data():
-    API_KEY = os.environ.get('API_KEY') 
+    # Nayi API Key ko fetch karein aur strip() lagayein taaki extra spaces hat jaye
+    API_KEY = os.environ.get('API_KEY', '').strip() 
     
-    # Debugging print
-    if API_KEY:
-        print("API KEY mil gayi! (Key length: " + str(len(API_KEY)) + ")")
-    else:
-        print("ERROR: API KEY nahi mili. Secret check karo.")
+    if not API_KEY:
+        print("Error: API_KEY set nahi hai!")
         return
 
-    params = {
+    # Yahan 'url' wo Amazon search link hai jiska data aapko chahiye
+    # Amazon search link ko proper URL encoding ke saath rakhein
+    amazon_search_url = "https://www.amazon.in/s?k=gaming+laptop"
+    
+    # Payload settings
+    payload = {
         'api_key': API_KEY,
-        'type': 'search',
-        'amazon_domain': 'amazon.in',
-        'search_term': 'gaming laptop',
-        'sort_by': 'featured'
+        'url': amazon_search_url,
     }
 
     try:
-        print("Request bhej rahe hain...")
-        response = requests.get('https://api.rainforestapi.com/request', params=params)
-        print("Status Code: " + str(response.status_code))
+        print("Scraper API se data mangwa rahe hain...")
+        # API request
+        response = requests.get('http://api.scraperapi.com/', params=payload)
         
-        data = response.json()
-
-        if 'search_results' in data:
-            formatted_data = []
-            for item in data['search_results']:
-                title = item.get('title', '')
-                if "Gaming" in title or "RTX" in title:
-                    formatted_data.append({
-                        "title": title,
-                        "price": item.get('price', {}).get('raw', 'N/A'),
-                        "image": item.get('image', ''),
-                        "amazonLink": item.get('link', ''),
-                        "discount": "Deal Available"
-                    })
-
-            with open('laptops.json', 'w') as f:
-                json.dump(formatted_data, f, indent=4)
-            print("SUCCESS: " + str(len(formatted_data)) + " laptops save ho gaye!")
+        if response.status_code == 200:
+            print("Success! Data mil gaya.")
+            # Yahan ab aapko HTML parse karna hoga (BeautifulSoup use karein)
+            # Ya agar API JSON deta hai, toh directly use karein
+            # Example parsing (yahan aap apna custom logic daalein):
+            print("Data process ho raha hai...")
+            
+            # Simulated data save (Yahan apni parsing logic daalein)
+            # with open('laptops.json', 'w') as f:
+            #     json.dump(data, f, indent=4)
         else:
-            print("ERROR: API response mein search_results nahi mile.")
+            print(f"Error: API status code {response.status_code}")
             
     except Exception as e:
         print(f"Error: {e}")
