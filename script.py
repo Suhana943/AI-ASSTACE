@@ -88,7 +88,7 @@ try:
     </style>
 </head>
 <body>
-    <header>laptoptec.online</header>
+    
     <div class="container">
         <h1>{data['title']}</h1>
         <img src="{data['image_url']}" alt="{data['title']}" class="product-img">
