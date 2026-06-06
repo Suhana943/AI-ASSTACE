@@ -24,8 +24,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          # Sabse pahle latest changes pull karo taaki conflict na ho
-          git pull origin main
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -41,14 +39,20 @@ jobs:
           API_1: ${{ secrets.API_1 }}
         run: |
           python script.py
-          
+
       - name: Commit and Push
         run: |
-          # Check karo agar koi badlav hua hai
+          # 1. Check karo ki koi badlav hua hai ya nahi
           if [ -n "$(git status --porcelain)" ]; then
             git add reviews/ reviewed_laptops.txt laptops.json
             git commit -m "Auto Update: New Review + JSON Sync"
-            git push
+            
+            # 2. Push karne se pehle latest changes pull karo (Rebase mode mein)
+            # --rebase se commit history saaf rehti hai
+            git pull --rebase origin main
+            
+            # 3. Ab push karo
+            git push origin main
           else
             echo "No changes found, skipping commit."
           fi
