@@ -7,7 +7,7 @@ from datetime import datetime
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
 # Fix: 'gemini-3.5-flash' invalid hai, isliye 'gemini-1.5-flash' use karein
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-3.5-flash')
 
 # 2. Prompt (Image aur Amazon Link ke saath)
 prompt = """
