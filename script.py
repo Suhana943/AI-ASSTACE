@@ -1,6 +1,7 @@
 import json
 import os
 import google.generativeai as genai
+from datetime import datetime
 
 # API Setup
 genai.configure(api_key=os.environ["API_1"])
@@ -16,38 +17,43 @@ try:
     response = model.generate_content(prompt)
     json_text = response.text.replace("```json", "").replace("```", "").strip()
     
-    # DEBUG LOG
-    print(f"DEBUG AI RESPONSE: {json_text}")
+    # Parse the data
+    laptop = json.loads(json_text)
     
-    new_laptop = json.loads(json_text)
+    # Prepare HTML content
+    # Using a timestamp to ensure every review file has a unique name
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"reviews/review_{timestamp}.html"
+    
+    html_template = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{laptop['title']}</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; padding: 20px; }}
+            img {{ max-width: 300px; display: block; margin-bottom: 10px; }}
+            .price {{ color: green; font-weight: bold; }}
+        </style>
+    </head>
+    <body>
+        <h1>{laptop['title']}</h1>
+        <img src="{laptop['image']}" alt="{laptop['title']}">
+        <p><strong>Discount:</strong> {laptop['discount']}</p>
+        <p class="price">Price: {laptop['price']} <strike>{laptop['oldPrice']}</strike></p>
+        <a href="{laptop['amazonLink']}" target="_blank" style="padding: 10px; background: orange; color: white; text-decoration: none; border-radius: 5px;">View on Amazon</a>
+    </body>
+    </html>
+    """
+
+    # Save HTML file
+    if not os.path.exists('reviews'): os.makedirs('reviews')
+    
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(html_template)
+
+    print(f"Success! Review saved at: {filename}")
+
 except Exception as e:
-    print(f"FATAL ERROR: AI Response is invalid. {e}")
-    exit(1) # Error ke saath band karo taaki action stop ho jaye
-
-# JSON file handle karna
-json_file = 'laptops.json'
-laptops = []
-
-if os.path.exists(json_file):
-    try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            content = f.read()
-            if content.strip():
-                laptops = json.loads(content)
-    except:
-        laptops = []
-
-# Insert and Limit
-laptops.insert(0, new_laptop)
-if len(laptops) > 30: laptops = laptops[:30]
-
-with open(json_file, 'w', encoding='utf-8') as f:
-    json.dump(laptops, f, indent=2, ensure_ascii=False)
-
-# HTML Reviews generation (Same logic as before)
-if not os.path.exists('reviews'): os.makedirs('reviews')
-for i, lap in enumerate(laptops):
-    with open(f'reviews/review_{i}.html', 'w', encoding='utf-8') as f:
-        f.write(f"<html><body><h1>{lap['title']}</h1><a href='{lap['amazonLink']}'>Buy Now</a></body></html>")
-
-print("Update Successful!")
+    print(f"FATAL ERROR: {e}")
+    
