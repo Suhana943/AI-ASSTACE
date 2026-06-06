@@ -37,13 +37,17 @@ def update_laptops_data():
                         "discount": "Deal Available" # API se discount field map karein
                     })
 
+            # ... (upar ka code waisa hi rahega)
             # JSON file update karein
-            with open('laptops.json', 'w') as f:
-                json.dump(formatted_data, f, indent=4)
-            print("Laptops.json successfully update ho gaya!")
+            if len(formatted_data) > 0:
+                with open('laptops.json', 'w') as f:
+                    json.dump(formatted_data, f, indent=4)
+                print(f"SUCCESS: {len(formatted_data)} laptops save ho gaye!")
+            else:
+                print("WARNING: Data mila, lekin 'Gaming' filter match nahi hua.")
+        else:
+            print("ERROR: API se 'search_results' nahi mile. Data khaali hai.")
             
     except Exception as e:
         print(f"Error: {e}")
 
-if __name__ == "__main__":
-    update_laptops_data()
