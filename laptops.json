@@ -928,5 +928,14 @@
         "image": "https://via.placeholder.com/800x400?text=ASUS+Zenbook+Duo+2024+UX8406",
         "amazonLink": "https://www.amazon.com/ASUS-Zenbook-UX8406-Processor-UX8406MA-DS91T/dp/B0CTD1GG87",
         "review_link": "reviews/ASUS_Zenbook_Duo_(2024)_UX8406_Review:_The_Dual-Screen_Productivity_Revolution.html"
+    },
+    {
+        "title": "ASUS ROG Strix Scar 16 (2024) Review: The Ultimate High-End Gaming Powerhouse",
+        "price": "$2,899.99",
+        "oldPrice": "$3,299.99",
+        "discount": "12%",
+        "image": "https://via.placeholder.com/800x400?text=ASUS+ROG+Strix+Scar+16+2024",
+        "amazonLink": "https://www.amazon.com/ASUS-GeForce-Windows-G634JYR-XS96-Scar/dp/B0CSD8P6P5",
+        "review_link": "reviews/ASUS_ROG_Strix_Scar_16_(2024)_Review:_The_Ultimate_High-End_Gaming_Powerhouse.html"
     }
 ]
