@@ -864,5 +864,14 @@
         "image": "https://via.placeholder.com/800x400?text=Acer+Predator+Helios+16+2024",
         "amazonLink": "https://www.amazon.com/Acer-Predator-Helios-Gaming-Laptop/dp/B0CTD1M196",
         "review_link": "reviews/Acer_Predator_Helios_16_(2024)_Review:_The_Ultimate_High-Performance_Gaming_Beast.html"
+    },
+    {
+        "title": "Microsoft Surface Pro 11 Review: The Ultimate Copilot+ 2-in-1 Experience",
+        "price": "$1,499.99",
+        "oldPrice": "$1,699.99",
+        "discount": "12%",
+        "image": "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable",
+        "amazonLink": "https://www.amazon.com/dp/B0D1898W9G",
+        "review_link": "reviews/Microsoft_Surface_Pro_11_Review:_The_Ultimate_Copilot+_2-in-1_Experience.html"
     }
 ]
