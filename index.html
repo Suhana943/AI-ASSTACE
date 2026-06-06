@@ -636,6 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <a href="${reviewUrl}" class="action-btn btn-learn">Learn More</a>
                             <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
 // 2. Amazon Laptops Dynamic Loader
+// Amazon Laptops Dynamic Loader
 document.addEventListener("DOMContentLoaded", () => {
     fetch('laptops.json')
         .then(response => response.json())
@@ -645,7 +646,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
             container.innerHTML = ''; 
 
-            laptops.forEach((laptop, index) => {
+            laptops.forEach((laptop) => {
+                // Yahan humne ₹ symbol add kar diya hai
                 container.innerHTML += `
                     <div class="laptop-item-card">
                         <div class="card-main-body">
