@@ -40,6 +40,28 @@ Structure:
 """
 
 try:
+    # --- Ye History wala function add karo ---
+def check_duplicate(laptop_name):
+    if os.path.exists("reviewed_laptops.txt"):
+        with open("reviewed_laptops.txt", "r") as f:
+            history = f.read().lower()
+            return laptop_name.lower() in history
+    return False
+
+# --- Content generate hone ke baad ye logic lagao ---
+# ... (Jab AI se response aa jaye) ...
+laptop_name = data['title']
+
+if check_duplicate(laptop_name):
+    print(f"Skipping {laptop_name}, already reviewed.")
+else:
+    # --- Yahan apna HTML file save karne wala code daal do ---
+    
+    # Aur end mein history update karo
+    with open("reviewed_laptops.txt", "a") as f:
+        f.write(f"{laptop_name}\n")
+    print("New laptop reviewed and saved!")
+    
     response = model.generate_content(prompt)
     json_text = response.text.replace("```json", "").replace("```", "").strip()
     data = json.loads(json_text)
