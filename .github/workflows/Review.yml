@@ -31,7 +31,7 @@ jobs:
         env:
           API_1: ${{ secrets.API_1 }}
         run: |
-          python script.py
+          python update_script.py
 
       # Yahan niche hai sahi jagah:
       - name: Commit and Push Changes
