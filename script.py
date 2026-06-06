@@ -1,4 +1,3 @@
-
 import json
 import os
 import google.generativeai as genai
@@ -6,46 +5,58 @@ from datetime import datetime
 
 # 1. API Configuration
 genai.configure(api_key=os.environ["API_1"])
-# Fix: 'gemini-3.5-flash' invalid hai, isliye 'gemini-1.5-flash' use karein
 model = genai.GenerativeModel('gemini-3.5-flash')
 
-# 2. Prompt (Image aur Amazon Link ke saath)
-prompt = """
-Ek naye trending laptop ka professional review likho.
-Output ONLY JSON format, koi extra text nahi.
+HISTORY_FILE = "reviewed_laptops.txt"
+
+# 2. History Load karna
+def get_history():
+    if os.path.exists(HISTORY_FILE):
+        with open(HISTORY_FILE, "r") as f:
+            return [line.strip() for line in f.readlines()]
+    return []
+
+reviewed_list = get_history()
+exclude_string = ", ".join(reviewed_list) if reviewed_list else "None"
+
+# 3. Prompt (Excluded list ke sath)
+prompt = f"""
+Write a professional review for a popular trending laptop.
+IMPORTANT: Do NOT review any of these laptops: {exclude_string}.
+Output ONLY JSON format, no extra text.
 Structure:
-{
-    "title": "String",
-    "image_url": "URL of a product image",
-    "amazon_link": "Amazon product link",
-    "intro": "String (Short para)",
-    "specs": {"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "...", "Weight": "..."},
-    "pros": ["Point 1", "Point 2", "Point 3"],
-    "cons": ["Point 1", "Point 2", "Point 3"],
-    "verdict_intro": "String",
-    "who_should_buy": "String",
-    "pro_tip": "String",
+{{
+    "title": "...",
+    "image_url": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=600",
+    "amazon_link": "https://www.amazon.in/",
+    "intro": "Write a 3-sentence intro.",
+    "specs": {{"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "..."}},
+    "pros": ["...", "..."],
+    "cons": ["...", "..."],
+    "verdict_intro": "...",
+    "pro_tip": "...",
     "rating": "4.5/5"
-}
+}}
 """
 
 try:
-    # 3. Content generation
     response = model.generate_content(prompt)
     json_text = response.text.replace("```json", "").replace("```", "").strip()
     data = json.loads(json_text)
+    
+    laptop_name = data['title']
 
-    # 4. Dynamic HTML components
+    # 4. HTML Components
     specs_html = "".join([f"<tr><td><strong>{k}</strong></td><td>{v}</td></tr>" for k, v in data['specs'].items()])
     pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
     cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
 
-    # 5. HTML Template (Image aur Buy Button ke saath)
+    # 5. HTML Template
     html_content = f"""<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>{data['title']} - Review</title>
+    <title>{data['title']} - Professional Review</title>
     <style>
         body {{ font-family: sans-serif; background: #f4f4f4; padding: 20px; }}
         .container {{ max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; }}
@@ -62,34 +73,32 @@ try:
         <h1>{data['title']}</h1>
         <img src="{data['image_url']}" alt="{data['title']}" class="product-img">
         <a href="{data['amazon_link']}" class="buy-btn" target="_blank">🛒 Buy Now on Amazon</a>
-        
         <p>{data['intro']}</p>
-        
         <h2>📋 Specifications</h2>
         <table class="spec-table">{specs_html}</table>
-
         <div class="pros"><h3>✅ Pros</h3><ul>{pros_html}</ul></div>
         <div class="cons"><h3>❌ Cons</h3><ul>{cons_html}</ul></div>
-
-        <div class="verdict">
-            <h3>⚖️ Final Verdict</h3>
-            <p>{data['verdict_intro']}</p>
-            <p><strong>💡 Pro-Tip:</strong> {data['pro_tip']}</p>
-            <p><strong>Rating: {data['rating']}</strong></p>
-        </div>
+        <h3>⚖️ Verdict</h3>
+        <p>{data['verdict_intro']}</p>
+        <p><strong>💡 Pro-Tip:</strong> {data['pro_tip']}</p>
+        <p><strong>Rating: {data['rating']}</strong></p>
     </div>
 </body>
 </html>"""
 
-    # 6. File Save
+    # 6. Save File
     if not os.path.exists('reviews'): os.makedirs('reviews')
-    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    filename = f"reviews/laptop-{timestamp}.html"
+    filename = f"reviews/{laptop_name.replace(' ', '_')}.html"
     
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
+
+    # 7. Update History
+    with open(HISTORY_FILE, "a") as f:
+        f.write(f"{laptop_name}\n")
     
-    print(f"Success! File created: {filename}")
+    print(f"Success! Review saved: {filename}")
+    print(f"Added {laptop_name} to history.")
 
 except Exception as e:
     print(f"Error: {e}")
