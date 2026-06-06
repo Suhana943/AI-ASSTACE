@@ -1,53 +1,47 @@
-name: Laptop Scraper
+name: Laptop Review Workflow
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 0 * * *' # Ye rozana ek baar chalega (optional)
 
 jobs:
-  scrape:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required to push changes back to the repo
     steps:
-      - uses: actions/checkout@v4
-      
-      # 1. Latest changes pull karein
-      - name: Configure Git and Pull
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git pull origin main
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
-        with: 
-          python-version: '3.11'
-          
+        with:
+          python-version: '3.9'
+
       - name: Install dependencies
-        run: pip install google-generativeai
-        
-      # 2. Main review script chalayein
+        run: |
+          pip install google-generativeai
+
       - name: Run Python Script
         env:
           API_1: ${{ secrets.API_1 }}
-        run: python script.py
-
-      # 3. Nayi file banne ke baad JSON sync karein
-      - name: Run JSON Sync Script
-        run: python sync_json.py
+        run: |
+          python script.py
           
-      # 4. Commit and Push
       - name: Commit and Push
         run: |
-          # Add review folder, history, aur JSON file
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          
+          # Sirf unhi files ko add kar rahe hain jo update hui hain
           git add reviews/ reviewed_laptops.txt laptops.json
           
-          # Check if there are any changes to commit
+          # Check karo agar koi badlav hua hai, tabhi commit karo
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Auto Update: Added new laptop review and synced JSON"
+            git commit -m "Auto Update: New Review + JSON Sync"
             git push
           else
-            echo "No new updates found, skipping commit."
+            echo "No changes found, skipping commit."
           fi
+          
