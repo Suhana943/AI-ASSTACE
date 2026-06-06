@@ -1,4 +1,4 @@
-name: Auto Intel Laptop Scraper
+name: Auto Intel Laptop Pipeline
 
 on:
   workflow_dispatch: 
@@ -6,39 +6,50 @@ on:
     - cron: '0 0 * * *' 
 
 jobs:
-  scrape:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # v3 se v4 kar diya
+        uses: actions/checkout@v4
 
+      # 1. Scraping Step
       - name: Setup Node.js
-        uses: actions/setup-node@v4  # v3 se v4 kar diya
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: |
-          npm cache clean --force
-          npm install axios cheerio
+      - name: Install Node deps
+        run: npm install axios cheerio
 
-      - name: Run Scraper Script
+      - name: Run Scraper
         run: node scraper.js
 
-      - name: Commit and Push laptops.json
+      # 2. Review Generation Step
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python deps
+        run: pip install google-generativeai
+
+      - name: Run Review Generator
+        run: python processor.py
+        env:
+          API_1: ${{ secrets.API_1 }}
+
+      # 3. Final Commit (Laptops.json aur Reviews folder dono save honge)
+      - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "actions@github.com"
           
-          # Check karein agar file bani hai toh hi push karein
-          if [ -f "laptops.json" ]; then
-            git add laptops.json
-            git commit -m "Auto-update: Laptops data" || exit 0
-            git push
-          else
-            echo "Error: laptops.json file generate nahi hui!"
-            exit 1
-          fi
+          # Add changes (json + reviews folder)
+          git add laptops.json reviews/
+          
+          # Commit only if there are changes
+          git commit -m "Auto-update: Scraped laptops and generated new reviews" || echo "No changes to commit"
+          git push
           
