@@ -63,7 +63,9 @@ try:
         pros_html = "".join([f"<li>{p}</li>" for p in data['pros']])
         cons_html = "".join([f"<li>{c}</li>" for c in data['cons']])
 
-        html_content = f"""
+        
+        
+    html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,11 +78,11 @@ try:
         /* Branding Header */
         header {{ background: #1a1a1a; color: #ff9f00; padding: 20px; text-align: center; font-size: 24px; font-weight: bold; border-bottom: 4px solid #ff9f00; }}
         
-        /* Full Width Container */
-        .container {{ width: 95%; max-width: 1200px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }}
+        /* Full Width Container - Screen Cover Karega */
+        .container {{ width: 95%; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }}
         
         h1 {{ color: #1a1a1a; font-size: 32px; margin-bottom: 20px; }}
-        .product-img {{ width: 100%; max-width: 600px; border-radius: 8px; margin: 20px 0; display: block; border: 1px solid #ddd; }}
+        .product-img {{ width: 100%; max-width: 800px; border-radius: 8px; margin: 20px 0; display: block; border: 1px solid #ddd; }}
         
         .buy-btn {{ display: inline-block; background: #ff9f00; color: #fff; padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; transition: 0.3s; }}
         .buy-btn:hover {{ background: #e68e00; }}
