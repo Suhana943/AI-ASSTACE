@@ -769,7 +769,6 @@
         closeMenuBtn?.addEventListener('click', safeCloseDrawer);
         menuOverlay?.addEventListener('click', safeCloseDrawer);
 
-        // Sidebar Accordion Logic
         document.querySelectorAll('.accordion-trigger').forEach(acc => {
             acc.addEventListener('click', function() {
                 this.classList.toggle('active');
@@ -778,8 +777,8 @@
             });
         });
 
-        // --- PART 2: Dynamic Data Fetching (HP Laptops) ---
-        fetch('hp-laptops.json') 
+        // --- PART 2: Dynamic Data Fetching (S.json) ---
+        fetch('S.json') 
             .then(response => response.json())
             .then(data => {
                 const container = document.querySelector('.grid-container');
@@ -788,24 +787,26 @@
                 container.innerHTML = ''; 
 
                 data.forEach(laptop => {
+                    // Name cleaning (metadata remove karne ke liye)
+                    const cleanName = laptop.Name.split('|')[0];
+                    
+                    // HTML Generator
                     container.innerHTML += `
                     <div class="laptop-item-card">
                         <div class="card-main-body">
-                            <span class="badge-tag">HP Laptop</span>
-                            <div class="img-holder"><img src="${laptop.image}" alt="${laptop.title}"></div>
+                            <span class="badge-tag">Laptop</span>
+                            <div class="img-holder"><img src="laptop-placeholder.png" alt="${cleanName}"></div>
                             <div class="details-holder">
-                                <div class="item-name">${laptop.title}</div>
+                                <div class="item-name">${cleanName}</div>
+                                <div class="specs-mini">${laptop.Processor_Name} | ${laptop.RAM} | ${laptop.SSD}</div>
                                 <div class="price-container">
-                                    <span class="badge-discount">${laptop.discount}</span>
-                                    <span class="price-current">₹${laptop.price}</span>
-                                    <span class="price-original">₹${laptop.oldPrice}</span>
+                                    <span class="price-current">₹${laptop.Price}</span>
                                 </div>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-link-logo">
                             </div>
                         </div>
                         <div class="card-actions-row">
-                            <a href="${laptop.learnMoreLink}" class="action-btn btn-learn">Learn More</a>
-                            <a href="${laptop.amazonLink}" target="_blank" class="action-btn btn-buy">Buy Now</a>
+                            <a href="#" class="action-btn btn-learn">Details</a>
+                            <a href="#" class="action-btn btn-buy">Buy Now</a>
                         </div>
                     </div>`;
                 });
@@ -814,9 +815,10 @@
                 const counter = document.querySelector('.product-counter');
                 if (counter) counter.innerText = data.length + " Laptops";
             })
-            .catch(err => console.error("Data load error:", err));
+            .catch(err => console.error("Error fetching S.json:", err));
     });
 </script>
+    
 
 </body>
 </html>
