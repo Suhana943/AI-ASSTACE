@@ -10,7 +10,7 @@ jobs:
   update-laptops:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Ye zaroori hai file save karne ke liye
+      contents: write 
     steps:
       - uses: actions/checkout@v3
       
@@ -20,11 +20,13 @@ jobs:
           python-version: '3.9'
           
       - name: Install dependencies
-        run: pip install requests
+        # Maine saari dependencies add kar di hain
+        run: pip install requests google-generativeai beautifulsoup4
         
       - name: Run A.py
         env:
-          API_KEY: ${{ secrets.API_KEY }}  # Yahan secret connect ho raha hai
+          # Yahan API_KEY ko change karke API_1 kar diya
+          API_1: ${{ secrets.API_1 }}  
         run: python A.py
         
       - name: Commit and push changes
@@ -32,6 +34,7 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add laptops.json
-          git commit -m "Update laptops.json via GitHub Action" || echo "No changes to commit"
+          git add reviews/  # Reviews folder ko bhi track karna zaroori hai
+          git commit -m "Update laptops.json and review files via GitHub Action" || echo "No changes to commit"
           git push
           
