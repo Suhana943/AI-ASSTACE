@@ -33,8 +33,11 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
+          # Sabse pehle server ke changes lo
+          git pull --rebase origin main 
+          
           git add laptops.json
-          git add reviews/  # Reviews folder ko bhi track karna zaroori hai
-          git commit -m "Update laptops.json and review files via GitHub Action" || echo "No changes to commit"
-          git push
+          git commit -m "Update laptops.json via GitHub Action" || echo "No changes to commit"
+          # Phir push karo
+          git push origin main
           
