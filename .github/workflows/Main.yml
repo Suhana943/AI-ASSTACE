@@ -33,11 +33,16 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          # Sabse pehle server ke changes lo
-          git pull --rebase origin main 
           
+          # 1. Pehle changes ko staging area mein daalein
           git add laptops.json
-          git commit -m "Update laptops.json via GitHub Action" || echo "No changes to commit"
-          # Phir push karo
+          
+          # 2. Phir commit karein (agar koi change hai toh)
+          git commit -m "Update laptops.json" || echo "No changes to commit"
+          
+          # 3. Ab pull karein (ab unstaged changes nahi hain, toh rebase work karega)
+          git pull --rebase origin main
+          
+          # 4. Ant mein push karein
           git push origin main
           
