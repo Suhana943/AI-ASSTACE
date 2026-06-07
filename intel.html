@@ -49,23 +49,33 @@
         const container = document.getElementById('laptop-list');
         const counter = document.querySelector('.product-counter');
 
+        // 1. Yahan Image IDs ki list rakhein
+        const laptopImages = [
+            "1588872657578-7efd1f1555ed", 
+            "1593642632823-8f785ba67e45",
+            "1603686860366-50c55f271701",
+            "1525547719571-700684278453",
+            "1517336714731-353135894107"
+        ];
+
         fetch('S.json')
-            .then(response => {
-                if (!response.ok) throw new Error("File not found");
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                container.innerHTML = ''; // Clear loading state
+                container.innerHTML = ''; 
                 counter.innerText = data.length + " Laptops Found";
 
                 data.forEach(laptop => {
                     const cleanName = laptop.Name.split('|')[0];
                     
+                    // 2. Yahan random image select karein
+                    const randomId = laptopImages[Math.floor(Math.random() * laptopImages.length)];
+                    const imageUrl = `https://images.unsplash.com/photo-${randomId}?auto=format&fit=crop&w=300&q=80`;
+                    
                     const card = document.createElement('div');
                     card.className = 'laptop-item-card';
                     card.innerHTML = `
                         <div class="card-main-body">
-                            <div class="img-holder"><img src="laptop-placeholder.png" alt="${cleanName}"></div>
+                            <div class="img-holder"><img src="${imageUrl}" alt="${cleanName}"></div>
                             <div class="details-holder">
                                 <div class="item-name">${cleanName}</div>
                                 <div class="specs-mini">${laptop.Processor_Name} | ${laptop.RAM} | ${laptop.SSD}</div>
@@ -86,6 +96,7 @@
             });
     });
 </script>
+    
 </body>
 </html>
 
