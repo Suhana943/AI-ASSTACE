@@ -28,7 +28,7 @@ IMPORTANT: Do NOT review any of these laptops: {exclude_string}.
 INSTRUCTIONS:
 1. Output ONLY valid JSON format.
 2. Price and Old Price: Must be in Indian Rupees (e.g., "₹75,000").
-3. Image URL: Try to find a high-quality direct URL. If not found, use: "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable"
+3. Image URL: Try to find a high-quality direct URL from Amazon and imge compulsary hona chahiye. If not found, use: "https://via.placeholder.com/800x400?text=Laptop+Image+Unavailable"
 4. Structure:
 {{
     "title": "...",
@@ -36,7 +36,7 @@ INSTRUCTIONS:
     "price": "₹...",
     "oldPrice": "₹...",
     "discount": "...",
-    "intro": "Write a 9-sentence intro.",
+    "intro": "Write a 5-sentence intro.",
     "specs": {{"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "..."}},
     "pros": ["...", "..."],
     "cons": ["...", "..."],
