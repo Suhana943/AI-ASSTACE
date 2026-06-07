@@ -34,10 +34,10 @@ INSTRUCTIONS:
 Structure (JSON only):
 {{
     "title": "...",
-    "image_url": "https://placehold.co/800x400/png?text=Laptop+Review",
+    "image_url": "",
     "amazon_link": "https://www.amazon.in/s?k=laptop",
-    "price": "₹...",
-    "oldPrice": "₹...",
+    "price": "...",
+    "oldPrice": "...",
     "discount": "...",
     "intro": "5 sentences in Hindi.",
     "specs": {{"Processor": "...", "RAM": "...", "Storage": "...", "Display": "...", "Battery": "..."}},
