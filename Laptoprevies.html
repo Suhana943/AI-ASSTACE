@@ -3,21 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 10 Laptop Picks | LaptopTec</title>
+    <title>Top 10 Laptop Picks | LaptopTec</title><meta name="description" content="Best laptops in India 2026, gaming laptops, student laptops, business laptops, ASUS, Lenovo, Dell, HP reviews and buying guides.">
+
+<meta name="keywords" content="best laptop 2026, gaming laptop India, laptop review, ASUS Zenbook, Lenovo IdeaPad, Dell Inspiron, HP Victus, student laptop, budget laptop, LaptopTec">
+
+<meta name="robots" content="index, follow">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 1100px; margin: auto; }
-        .header { text-align: center; padding: 40px 0; }
-        .header h1 { color: #2c3e50; }
-        .header p { color: #555; font-weight: bold; }
-        
-        /* Grid Layout */
-        .laptop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        
-        /* Laptop Card */
-        .laptop-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        .laptop-card img { width: 100%; height: 200px; object-fit: contain; border-radius: 8px; }
-        .laptop-card h3 { font-size: 1.1em; color: #2980b9; height: 60px; overflow: hidden; }
+        body{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+    background:#f4f7f6;
+}
+
+/* Full Width Container */
+.container{
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:20px 40px;
+    box-sizing:border-box;
+}
+
+/* Hero Section */
+header{
+    width:100%;
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:#fff;
+    border-radius:0;
+    padding:60px 20px;
+}
+
+/* Full Width Image */
+.img-placeholder{
+    width:100%;
+    max-width:1200px;
+    height:auto;
+    background:none;
+    border:none;
+}
+
+.img-placeholder img{
+    width:100%;
+    height:auto;
+    border-radius:16px;
+    object-fit:cover;
+}
+
+/* Large Grid */
+.laptop-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    width:100%;
+}
+
+/* Modern Cards */
+.laptop-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.laptop-card:hover{
+    transform:translateY(-8px);
+}
+
+.laptop-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+/* Mobile Friendly */
+@media(max-width:768px){
+    .container{
+        padding:15px;
+    }
+
+    header{
+        min-height:50vh;
+        padding:40px 15px;
+    }
+
+    .laptop-grid{
+        grid-template-columns:1fr;
+    }
+
+    .laptop-card img{
+        height:220px;
+    }
+
         .price-section { margin: 15px 0; }
         .price { font-size: 1.5em; font-weight: bold; color: #d32f2f; }
         .old-price { text-decoration: line-through; color: #888; font-size: 0.9em; }
