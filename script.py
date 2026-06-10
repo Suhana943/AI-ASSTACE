@@ -91,7 +91,7 @@ try:
 
         laptops.append({
             "title": laptop_name,
-            "price": data.get('price', '₹0'),
+            "price": data.get('price', '0'),
             "oldPrice": data.get('oldPrice', 'N/A'),
             "discount": data.get('discount', '0% OFF'),
             "image": data.get('image_url', ''),
