@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Laptops | LaptopTec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --primary-color: #2d6cdf; 
+            --text-dark: #222; 
+            --bg-light: #f8f9fa; 
+            --border-color: #e5e5e5; 
+            --accent-gold: #ffd700;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text-dark); line-height: 1.6; }
+
+        /* Navbar */
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border-bottom: 1px solid var(--border-color); background: #fff; position: sticky; top: 0; z-index: 1000; }
+        .logo-text { font-size: 22px; font-weight: 800; color: #111; text-decoration: none; }
+        .logo-text span { color: var(--primary-color); }
+
+        /* Gaming Hero Header */
+        .gaming-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .badge { background: var(--primary-color); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .gaming-hero h1 { font-size: 40px; margin: 15px 0; }
+        .gaming-btn { display: inline-block; padding: 12px 30px; background: transparent; border: 2px solid var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; margin-top: 15px; }
+        .gaming-btn:hover { background: var(--primary-color); box-shadow: 0 0 15px var(--primary-color); }
+
+        /* Main Content */
+        main { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .laptop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .laptop-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; background: #fff; }
+        .laptop-img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .price { font-weight: bold; color: #d32f2f; margin: 10px 0; }
+        .btn { display: block; padding: 10px; background: var(--primary-color); color: #fff; text-align: center; border-radius: 6px; text-decoration: none; }
+        
+        /* Review Section */
+        .review-section { margin-top: 50px; padding: 30px; background: #f4f8ff; border-radius: 12px; border-left: 5px solid var(--primary-color); }
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .box { padding: 20px; border-radius: 8px; border: 1px solid #ddd; background: #fff; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo-text">Laptop<span>Tec</span></a>
+    </nav>
+
+    <!-- Gaming Header -->
+    <header class="gaming-hero">
+        <div class="hero-content">
+            <span class="badge">PRO SERIES</span>
+            <h1>Level Up Your Game</h1>
+            <p>Experience ultra-high FPS, liquid cooling, and ray-tracing performance with our top-tier gaming rigs.</p>
+            <a href="#gaming-list" class="gaming-btn">Explore Gaming Laptops</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Gaming Laptop Grid -->
+        <section id="gaming-list">
+            <h2>Featured Gaming Rigs</h2>
+            <div class="laptop-grid" id="laptop-list"></div>
+        </section>
+
+        <!-- Review Template -->
+        <section class="review-section">
+            <h2>Gaming Laptop Spotlight: Lenovo Legion 9i</h2>
+            <div class="verdict-box">
+                <p><strong>Verdict:</strong> The Lenovo Legion 9i is a monster machine offering liquid cooling and raw power. Ideal for pro-gamers.</p>
+            </div>
+            <div class="pros-cons">
+                <div class="box">
+                    <h3><i class="fa-solid fa-thumbs-up" style="color:green"></i> Pros</h3>
+                    <ul><li>Best-in-class liquid cooling</li><li>Stunning Mini-LED display</li></ul>
+                </div>
+                <div class="box">
+                    <h3><i class="fa-solid fa-thumbs-down" style="color:red"></i> Cons</h3>
+                    <ul><li>Extremely expensive</li><li>Heavy power brick</li></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Gaming Laptop Data
+        const laptops = [
+            { title: "ASUS TUF Gaming A15", price: "₹68,990", image: "https://m.media-amazon.com/images/I/71K4CpdfmHL._AC_UY218_.jpg" },
+            { title: "Lenovo Legion 9i", price: "₹4,49,990", image: "https://placehold.co/800x400/png?text=Legion+9i" },
+            { title: "Acer Nitro V", price: "₹75,990", image: "https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg" }
+        ];
+
+        const container = document.getElementById('laptop-list');
+
+        laptops.forEach(laptop => {
+            container.innerHTML += `
+                <div class="laptop-card">
+                    <img src="${laptop.image}" alt="${laptop.title}" class="laptop-img">
+                    <h3>${laptop.title}</h3>
+                    <p class="price">Price: <strong>${laptop.price}</strong></p>
+                    <a href="#" class="btn">View Deal</a>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
