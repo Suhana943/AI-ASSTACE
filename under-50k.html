@@ -1116,16 +1116,19 @@
     }
 ]
         const container = document.getElementById('laptop-list');
-        laptops.forEach(laptop => {
-            container.innerHTML += `
-                <div class="laptop-card">
-                    <img src="${laptop.img}" alt="${laptop.name}" class="laptop-img">
-                    <h3>${laptop.name}</h3>
-                    <p class="price">Price: <strong>${laptop.price}</strong></p>
-                    <a href="#" class="btn">View Deal</a>
-                </div>
-            `;
-        });
+    
+    // Function to render laptops
+    laptops.forEach(laptop => {
+        container.innerHTML += `
+            <div class="laptop-card ${laptop.isPremium ? 'premium-card' : ''}">
+                <img src="${laptop.image}" alt="${laptop.title}" class="laptop-img">
+                <h3>${laptop.title}</h3>
+                <p class="price">Price: <strong>${laptop.price}</strong></p>
+                <a href="${laptop.link}" class="btn">View Deal</a>
+            </div>
+        `;
+    });
+
     </script>
 </body>
 </html>
