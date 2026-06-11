@@ -223,154 +223,71 @@
     <p class="intro">
         Kya aap ₹50,000 ke andar best laptop dhoond rahe hain? Humne gadgets ke latest database se aapke liye top models select kiye hain jo aapke budget aur kaam dono mein fit baithenge.
     </p>
+    <table class="laptop-table">
+    <thead>
+        <tr>
+            <th>Laptop Model</th>
+            <th>Specs (Processor / RAM / SSD)</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Acer TravelLite</td>
+            <td>Ryzen 5 7430U / 16GB / 512GB</td>
+            <td><strong>₹49,699</strong></td>
+        </tr>
+        <tr>
+            <td>Lenovo IdeaPad 1</td>
+            <td>Ryzen 5 5500U / 8GB / 512GB</td>
+            <td><strong>₹49,999</strong></td>
+        </tr>
+        <tr>
+            <td>Dell 15 (Inspiron)</td>
+            <td>Core i3 14th Gen / 8GB / 512GB</td>
+            <td><strong>₹44,990</strong></td>
+        </tr>
+        <tr>
+            <td>MSI Modern 14</td>
+            <td>Core i3 13th Gen / 8GB / 512GB</td>
+            <td><strong>₹44,990</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+.laptop-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: sans-serif; }
+.laptop-table th { background-color: #333; color: white; padding: 12px; }
+.laptop-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+.laptop-table tr:nth-child(even) { background-color: #f2f2f2; }
+</style>
     
-    <!-- Laptop List -->
-    <div class="laptop-card">
-        <img src="https://m.media-amazon.com/images/I/71ouu-iX3pL._AC_UY218_.jpg" alt="Acer Aspire One">
-        <div>
-            <h3>Acer Smartchoice Aspire One (Ryzen 3)</h3>
-            <p class="price">Price: ₹39,990</p>
-            <a href="https://www.amazon.in/Acer-Smartchoice-3-7320U-35-56cm-A114-43/dp/B0GYRK1RZC/" class="cta-button">Check on Amazon</a>
-        </div>
-    </div>
-
-    <div class="laptop-card">
-        <img src="https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg" alt="Dell Laptop">
-        <div>
-            <h3>Dell Laptop Model 5420 (i5 11th Gen)</h3>
-            <p class="price">Price: ₹35,490</p>
-            <a href="https://www.amazon.in/%F0%9D%97%97%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%B9Laptop-5420-%F0%9D%97%9C%F0%9D%97%A1%F0%9D%97%A7%F0%9D%97%98%F0%9D%97%9Fi5-Processor-Condition/dp/B0H1JV266J/" class="cta-button">Check on Amazon</a>
-        </div>
-    </div>
-
-    <div class="laptop-card">
-        <img src="https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg" alt="Lenovo V15">
-        <div>
-            <h3>Lenovo V15 G4 (Athlon Silver)</h3>
-            <p class="price">Price: ₹42,999</p>
-            <a href="https://www.amazon.in/Lenovo-V15-Lifetime-Validity-Warranty/dp/B0CL7CMTXS/" class="cta-button">Check on Amazon</a>
-        </div>
-    </div>
-
-    <div class="laptop-card">
-        <img src="https://m.media-amazon.com/images/I/61O737i7QeL._AC_UY218_.jpg" alt="MSI Modern 14">
-        <div>
-            <h3>MSI Modern 14 (Core i3 13th Gen)</h3>
-            <p class="price">Price: ₹44,990</p>
-            <a href="https://www.amazon.in/MSI-Business-Windows-Classic-C13M-1465IN/dp/B0G7L4PFFM/" class="cta-button">Check on Amazon</a>
-        </div>
-    </div>
-
-    <div class="laptop-card">
-        <img src="https://m.media-amazon.com/images/I/81fYz-KdI6L._AC_UY218_.jpg" alt="Acer TravelLite">
-        <div>
-            <h3>Acer TravelLite (Ryzen 5 7430U)</h3>
-            <p class="price">Price: ₹49,699</p>
-            <a href="https://www.amazon.in/TravelLite-Anti-Glare-Display-Privacy-Warranty/dp/B0GVJ5CHP9/" class="cta-button">Check on Amazon</a>
-        </div>
-    </div>
+    <div class="main-container" id="laptop-list">
+    <!-- Laptops will be injected here -->
 </div>
 
-  
+<script>
+    const laptops = [
+        { name: "Acer Smartchoice Aspire One", price: "₹39,990", img: "https://m.media-amazon.com/images/I/71ouu-iX3pL._AC_UY218_.jpg", link: "#" },
+        { name: "Dell Latitude 5420", price: "₹35,490", img: "https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg", link: "#" },
+        { name: "Lenovo V15 G4", price: "₹42,999", img: "https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg", link: "#" },
+        { name: "MSI Modern 14", price: "₹44,990", img: "https://m.media-amazon.com/images/I/61O737i7QeL._AC_UY218_.jpg", link: "#" },
+        { name: "Acer TravelLite", price: "₹49,699", img: "https://m.media-amazon.com/images/I/81fYz-KdI6L._AC_UY218_.jpg", link: "#" }
+    ];
 
+    const container = document.getElementById('laptop-list');
+    laptops.forEach(laptop => {
+        container.innerHTML += `
+            <div class="laptop-card">
+                <img src="${laptop.img}" class="laptop-img">
+                <h3>${laptop.name}</h3>
+                <p class="price">${laptop.price}</p>
+                <a href="${laptop.link}" class="btn">View Deal</a>
+            </div>
+        `;
+    });
+</script>
 
-    <h2>Real-World Experience: The Deep Dive</h2>
-    <!-- Laptop 1 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000" alt="Apple MacBook Air M3">
-        <h3>1. Apple MacBook Air (M3 Chip, 2024 Model)</h3>
-        <div class="price-row">
-            <span class="price">₹96,990</span> 
-            <span class="old-price">₹1,14,900</span> 
-            <span class="discount">16% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> Exceptional premium performance meets legendary battery life. Perfect for professional users who love the macOS ecosystem.</p>
-        <a href="https://www.amazon.in/s?k=macbook+air+m3+13+inch" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 2 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/71ouu-iX3pL._AC_UY218_.jpg" alt="Acer Aspire One">
-        <h3>2. Acer Smartchoice Aspire One (AMD Ryzen 3-7320U)</h3>
-        <div class="price-row">
-            <span class="price">₹39,990</span> 
-            <span class="old-price">₹71,999</span> 
-            <span class="discount">44% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> A stellar everyday value option. It is ideal for college students, online classes, and daily office documentation on a budget.</p>
-        <a href="https://www.amazon.in/Acer-Smartchoice-3-7320U-35-56cm-A114-43/dp/B0GYRK1RZC/" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 3 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg" alt="Dell 5420 Refurbished">
-        <h3>3. Dell Latitude 5420 (Certified Refurbished)</h3>
-        <div class="price-row">
-            <span class="price">₹35,490</span> 
-            <span class="old-price">₹49,999</span> 
-            <span class="discount">29% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> Reliable enterprise-grade durable construction for a fraction of the cost. A smart choice for freelance professionals starting out.</p>
-        <a href="https://www.amazon.in/%F0%9D%97%97%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%B9Laptop-5420-%F0%9D%97%9C%F0%9D%97%A1%F0%9D%97%A7%F0%9D%97%98%F0%9D%97%9Fi5-Processor-Condition/dp/B0H1JV266J/" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 4 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/717WZ7WriwL._AC_UY218_.jpg" alt="Dell 15">
-        <h3>4. Dell 15 (Inspiron Series) - 14th Gen Intel Core i3</h3>
-        <div class="price-row">
-            <span class="price">₹44,990</span> 
-            <span class="old-price">₹48,692</span> 
-            <span class="discount">7% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> Boasts a massive, comfortable display pane. Highly recommended for remote working and continuous media consumption.</p>
-        <a href="https://www.amazon.in/Dell-Previously-Inspiron-Processor-Display/dp/B0BQJ68HHC/" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 5 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg" alt="Lenovo V15">
-        <h3>5. Lenovo V15 G4 (AMD Athlon Silver 7120U)</h3>
-        <div class="price-row">
-            <span class="price">₹42,999</span> 
-            <span class="discount">Standard Price</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> A solid, no-nonsense office workhorse designed with a comfortable, tactile keyboard layout for extensive typing workloads.</p>
-        <a href="https://www.amazon.in/Lenovo-V15-Lifetime-Validity-Warranty/dp/B0CL7CMTXS/" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 6 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/616Jpqwdp3L._AC_UY218_.jpg" alt="ASUS Chromebook">
-        <h3>6. ASUS Chromebook CX1405 (2026 Edition)</h3>
-        <div class="price-row">
-            <span class="price">₹30,990</span> 
-            <span class="discount">Standard Price</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> Unbeatable simplicity for browser-focused operations. Boots instantly and offers fantastic battery life for school kids.</p>
-        <a href="https://www.amazon.in/ASUS-Chromebook-Smartchoice-Processor-CX1405CTA-S60622/dp/B0GN2Y3T6M/" class="btn">View Current Deals</a>
-    </div>
-
-    <!-- Laptop 7 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/71uoRYyilhL._AC_UY218_.jpg" alt="Acer Aspire Celeron">
-        <h3>7. Acer Smartchoice Aspire One (Celeron N4500 with 12GB RAM)</h3>
-        <div class="price-row">
-            <span class="price">₹38,990</span> 
-            <span class="old-price">₹59,999</span> 
-            <span class="discount">35% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> The extra 12GB RAM layout ensures surprisingly stable web multitasking performance despite the entry-level budget processor.</p>
-        <a href="https://www.amazon.in/Acer-Smartchoice-Celeron-LPDDR4X-A114-45/dp/B0GW8JNM6J/" class="btn">View Current Deals</a>
-    </div>
-
-  <!-- Laptop 8 -->
-    <div class="laptop-item">
-        <img class="laptop-img" src="https://m.media-amazon.com/images/I/61tjQ9CkAhL._AC_UY218_.jpg" alt="ASUS Zenbook 14 Core Ultra 9">
-        <h3>8. ASUS Zenbook 14 (2026 flagship) - Intel Core Ultra 9</h3>
-        <div class="price-row">
-            <span class="price">₹1,24,990</span> 
-            <span class="old-price">₹1,53,990</span> 
-            <span class="discount">18% OFF</span>
-        </div>
-        <p><strong>Suhana's Verdict:</strong> The absolute gold standard performance pick for high-end graphic creators and software developer
+</body>
+</html>
+    <!-- Laptop
