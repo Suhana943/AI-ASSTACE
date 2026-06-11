@@ -123,10 +123,16 @@
 
     <script>
         const laptops = [
-            { name: "Acer Smartchoice Aspire One", price: "₹39,990", img: "https://m.media-amazon.com/images/I/71ouu-iX3pL._AC_UY218_.jpg" },
-            { name: "Dell Latitude 5420", price: "₹35,490", img: "https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg" },
-            { name: "Lenovo V15 G4", price: "₹42,999", img: "https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg" }
-        ];
+            {title: "Acer Smartchoice Aspire One", price: "39,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/71ouu-iX3pL._AC_UY218_.jpg", link: "#" },
+            { title: "Dell Latitude 5420", price: "35,490", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg", link: "#" },
+            { title: "Lenovo V15 G4", price: "42,999", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/61AccNkmFFL._AC_UY218_.jpg", link: "#" },
+            { title: "ASUS Chromebook CX1405", price: "30,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/616Jpqwdp3L._AC_UY218_.jpg", link: "#" },
+            { title: "Acer Aspire One (N4500)", price: "38,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/71uoRYyilhL._AC_UY218_.jpg", link: "#" },
+            { title: "MSI Modern 14", price: "44,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/61O737i7QeL._AC_UY218_.jpg", link: "#" },
+            { title: "Dell 15 (14th Gen)", price: "44,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/717WZ7WriwL._AC_UY218_.jpg", link: "#" },
+            { title: "Lenovo IdeaPad 1", price: "49,999", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/71xHNSCyRsL._AC_UY218_.jpg", link: "#" },
+            { title: "Acer Aspire 3", price: "36,990", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/41bdNUDc8pL._AC_UY218_.jpg", link: "#" },
+            { title: "Acer TravelLite", price: "49,699", discount: "12% OFF", image: "https://m.media-amazon.com/images/I/81fYz-KdI6L._AC_UY218_.jpg", link: "#" }  ];
 
         const container = document.getElementById('laptop-list');
         laptops.forEach(laptop => {
