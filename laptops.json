@@ -18,7 +18,7 @@
         "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
     },
     {
-        "title": "\ud835\uddd7\ud835\uddf2\ud835\uddf9\ud835\uddf9Laptop Model 5420 | \ud835\udddc\ud835\udde1\ud835\udde7\ud835\uddd8\ud835\udddfi5 11th Gen Processor |8GB DDR4 RAM |256GB SSD |14\" FHD Display | Win10 | A+ Condition Laptop (Refab)",
+        "title": "𝗗𝗲𝗹𝗹Laptop Model 5420 | 𝗜𝗡𝗧𝗘𝗟i5 11th Gen Processor |8GB DDR4 RAM |256GB SSD |14\" FHD Display | Win10 | A+ Condition Laptop (Refab)",
         "price": "35,490",
         "oldPrice": "49,999",
         "image": "https://m.media-amazon.com/images/I/51LHNjAjH9L._AC_UY218_.jpg",
@@ -99,7 +99,7 @@
         "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
     },
     {
-        "title": "MSI Modern 14, Intel 13th Gen. Core i3 1315U,14\u201d Inch (36CM) FHD 60Hz Thin & Light Business Laptop (8GB/512GB NVMe SSD/Windows 11 Home/Intel UHD/Classic Black/1.4Kg), C13M-1465IN",
+        "title": "MSI Modern 14, Intel 13th Gen. Core i3 1315U,14” Inch (36CM) FHD 60Hz Thin & Light Business Laptop (8GB/512GB NVMe SSD/Windows 11 Home/Intel UHD/Classic Black/1.4Kg), C13M-1465IN",
         "price": "44,990",
         "oldPrice": "58,999",
         "image": "https://m.media-amazon.com/images/I/61O737i7QeL._AC_UY218_.jpg",
@@ -117,7 +117,7 @@
         "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
     },
     {
-        "title": "Apple 2026 MacBook Neo 13\u2033 Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 256GB SSD Storage, 1080p FaceTime HD Camera; Blush",
+        "title": "Apple 2026 MacBook Neo 13″ Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 256GB SSD Storage, 1080p FaceTime HD Camera; Blush",
         "price": "64,990",
         "oldPrice": "69,900",
         "image": "https://m.media-amazon.com/images/I/61dLund7bhL._AC_UY218_.jpg",
@@ -187,5 +187,14 @@
         "amazonLink": "https://www.amazon.in/Acer-Celeron-Processor-LPDDR4X-A325-45/dp/B0D7PTFFZH/ref=sr_1_20?dib=eyJ2IjoiMSJ9.srKY5Rdi7rHpWE_PyCZPAB2GUArlj-FvL3yxvEd9cVP6IcCJIhtckoyY6aQ_azCkxlJWtIDeWrLQypDxj2vovTlpsdGqqiGh4UrlCZJB5BMznUxaqmpsNJI9xmfm7BcGgOYc6hBKzd04AUFMzjd3h5U-G-OpY0hPlYPSkTo280Fn_j_1PX-oz6olFJWOLzRqT1EyEPKjvff08QU2pllzSmmi2sp9QeCK2Yp7ZAqvLDQ.6trPtpwXuYHRmetN6d7CJohUIy_niKUjoZT_dB4lh-E&dib_tag=se&keywords=laptops&qid=1780664358",
         "discount": "12% OFF",
         "review_link": "https://www.laptoptec.online/reviews/laptop-guide"
+    },
+    {
+        "title": "ASUS Vivobook 15 (12वीं जनरेशन इंटेल कोर i5 थिन और लाइट लैपटॉप)",
+        "price": "₹42,990",
+        "oldPrice": "₹60,990",
+        "discount": "29% OFF",
+        "image": "https://m.media-amazon.com/images/I/71c6P0yVb9L._SL1500_.jpg",
+        "amazonLink": "https://www.amazon.in/s?k=ASUS%20Vivobook%2015%20%2812%E0%A4%B5%E0%A5%80%E0%A4%82%20%E0%A4%9C%E0%A4%A8%E0%A4%B0%E0%A5%87%E0%A4%B6%E0%A4%A8%20%E0%A4%87%E0%A4%82%E0%A4%9F%E0%A5%87%E0%A4%B2%20%E0%A4%95%E0%A5%8B%E0%A4%B0%20i5%20%E0%A4%A5%E0%A4%BF%E0%A4%A8%20%E0%A4%94%E0%A4%B0%20%E0%A4%B2%E0%A4%BE%E0%A4%87%E0%A4%9F%20%E0%A4%B2%E0%A5%88%E0%A4%AA%E0%A4%9F%E0%A5%89%E0%A4%AA%29",
+        "review_link": "reviews/ASUS_Vivobook_1.html"
     }
 ]
